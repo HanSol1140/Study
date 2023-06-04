@@ -1,0 +1,1139 @@
+<오라클서버가 계속안될시>
+    시작메뉴에서 Oracle -> Stop Database -> Start Database해줄것
+
+<DB생성>
+이클립스 하단에 data Source Explorer - databse 우클릭 - New
+(없을시 윈도우 - Data Source Explorer )
+Oracle 선택후 Next,
+
+상단 드라이브 우측 삼각형 좌측에잇는 동그라미?네모? 클릭
+Name/Type
+	Oracle 11 선택,
+JAR List
+	Clear All 해서 모두지울것
+	ADD JAR/ZIP 해서
+	오라클EX 설치경로로 들어간뒤
+	oraclexe-app-oracle-product-11-server-jdbc(폴더명임)-lib
+	lib 에있는 ojdbc6.jar파일 선택
+Properties
+	<Connertion URL>
+	jdbc:oracle:thin:@server:1521:db
+	이것을
+	jdbc:oracle:thin:@localhost:1521:xe
+	jdbc:oracle:thin:@localhost:1521:xe
+	로 변경
+	<Database name>
+	XE로 변경
+	<패스워드,아이디>
+	hr로 설정
+	Ok
+	save password 체크
+
+	테스트하고 실행되면 <FINISH>
+
+
+
+<받은 SQL파일 압축해제해서 exe 실행>
+임포트하냐고 물어보면 <아니오>
+수동으로 접속생성 누르기
+<Name>
+	Oracle
+<사용자이름>
+	hr
+<비밀번호>
+	hr
+하단에 테스트 눌러보면 좌측하단 도움말위에 성공 실패가 뜸
+성공이면 접속
+
+접속후 뜨는창에
+select * from tab;
+입력하고 좌측위에 재생버튼, 재생버튼 우측에 출력창 눌러서 뭔가나오면 성공
+
+
+※※※
+※※
+※
+<톰캣 포트번호와 겹치면 둘중에 하나가 안켜짐!! 
+톰캣 server.xml로 가서 포트번호를 미리바꿔둘것>
+※
+※※
+※※※
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+-- 테이블 정보 조회
+select * from tab;
+-- 1. 테이블 생성
+create table m_member(
+    id varchar2(10) primary key,
+    pwd varchar2(10),
+    name varchar2(50),
+    email varchar2(50)
+--  id varchar2(데이터형)(10자 이상안됨)
+-- primary : 주된, 주요한
+-- 모든 table에 primary key는 같은 값이 존재할 수 없음,(unique해야함)
+);
+-- 2. 생성한 테이블 조회
+select * from m_member;
+
+-- 3. 컬럼값 입력
+-- m_member에 값종류 4개(id,pwd,name,email를 넣엇기때문에 꼭 4개를 넣어야함
+insert into m_member
+values(
+    'SongHanSol','1111','송한솔','skycriper@naver.com'
+);
+
+insert into m_member
+values(
+    'indopop','1111','이젠','indopop@naver.com'
+);
+-- 4. 최종완료
+commit;
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+select * from m_member;
+
+select * from m_member where id='indopop';
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+<이클립스 web.xml 설정바꾸기>
+소스로 들어가서 155줄을 보면
+<Context docBase="Chap05JSPBasic" path="/Chap05JSPBasic" reloadable="true" source="org.eclipse.jst.jee.server:Chap05JSPBasic"/><Context docBase="Chap06_JSP" path="/Chap06_JSP" reloadable="true" source="org.eclipse.jst.jee.server:Chap06_JSP"/><Context docBase="Chap01ServletBasic" path="/Chap01ServletBasic" reloadable="true" source="org.eclipse.jst.jee.server:Chap01ServletBasic"/><Context docBase="exercise" path="/Exercise" reloadable="true" source="org.eclipse.jst.jee.server:exercise"/><Context docBase="Chap04ServletCookieSession" path="/Chap04ServletCookieSession" reloadable="true" source="org.eclipse.jst.jee.server:Chap04ServletCookieSession"/><Context docBase="Chap02ServletFormData" path="/Chap02ServletFormData" reloadable="true" source="org.eclipse.jst.jee.server:Chap02ServletFormData"/><Context docBase="Chap100_Pratice" path="/Chap100_Pratice" reloadable="true" source="org.eclipse.jst.jee.server:Chap100_Pratice"/><Context docBase="Chap03ServletForwardBinding" path="/Chap03ServletForwardBinding" reloadable="true" source="org.eclipse.jst.jee.server:Chap03ServletForwardBinding"/><Context docBase="Chap07_JSP_ActionTag" path="/Chap07_JSP_ActionTag" reloadable="true" source="org.eclipse.jst.jee.server:Chap07_JSP_ActionTag"/><Context docBase="Chap08DbConnection" path="/Chap08DbConnection" reloadable="true" source="org.eclipse.jst.jee.server:Chap08DbConnection"/></Host>
+<!-- 가장 뒤에 </HOST>잇음 -->
+이것가장뒤에보면
+<Context docBase="원하는프로젝트"/></Context></Host> 호스트부분 찾아서엔터
+
+시행시
+<Context docBase="Chap05JSPBasic" path="/Chap05JSPBasic" reloadable="true" source="org.eclipse.jst.jee.server:Chap05JSPBasic"/><Context docBase="Chap06_JSP" path="/Chap06_JSP" reloadable="true" source="org.eclipse.jst.jee.server:Chap06_JSP"/><Context docBase="Chap01ServletBasic" path="/Chap01ServletBasic" reloadable="true" source="org.eclipse.jst.jee.server:Chap01ServletBasic"/><Context docBase="exercise" path="/Exercise" reloadable="true" source="org.eclipse.jst.jee.server:exercise"/><Context docBase="Chap04ServletCookieSession" path="/Chap04ServletCookieSession" reloadable="true" source="org.eclipse.jst.jee.server:Chap04ServletCookieSession"/><Context docBase="Chap02ServletFormData" path="/Chap02ServletFormData" reloadable="true" source="org.eclipse.jst.jee.server:Chap02ServletFormData"/><Context docBase="Chap100_Pratice" path="/Chap100_Pratice" reloadable="true" source="org.eclipse.jst.jee.server:Chap100_Pratice"/><Context docBase="Chap03ServletForwardBinding" path="/Chap03ServletForwardBinding" reloadable="true" source="org.eclipse.jst.jee.server:Chap03ServletForwardBinding"/><Context docBase="Chap07_JSP_ActionTag" path="/Chap07_JSP_ActionTag" reloadable="true" source="org.eclipse.jst.jee.server:Chap07_JSP_ActionTag"/>
+<Context docBase="Chap08DbConnection" path="/Chap08DbConnection" reloadable="true" source="org.eclipse.jst.jee.server:Chap08DbConnection">
+</Host>
+가되는데
+
+Context뒤에 /지우고
+<Context docBase="Chap08DbConnection" path="/Chap08DbConnection" reloadable="true" source="org.eclipse.jst.jee.server:Chap08DbConnection"></Context>
+</Context>
+</Host>
+로바꾼뒤
+
+<Context docBase="Chap08DbConnection" path="/Chap08DbConnection" reloadable="true" source="org.eclipse.jst.jee.server:Chap08DbConnection"></Context>
+<Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" loginTimeout="10" maxWait="5000" name="jdbc/pool" password="hr" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:xe" username="hr"/>
+</Context>
+</Host>
+리소스 정보들을 추가함
+url = data source explorer에서 properties - driver properties - url부분 복붙
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+2022.11.02
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+<SQL 회원정보 수정>
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+<멤버테이블삭제>
+delete * from m_member;
+<멤버테이블의 ID송한솔 테이블 삭제>
+delete from m_member where id='1234';
+<멤버테이블의 ID 송한솔의 name을 '컴퓨터'로 ㅊ정
+update m_member set name='컴퓨터' where id='songhansol';
+delete * from m_member;
+delete from m_member where id='?';
+>
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+2022.11.04
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+select * from employees;
+연습용 테이블
+select * from tab;
+내 계정에서 볼수잇는 테이블 명 확인
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+-- 주석문
+select * from tab;
+select * from emp;
+select * from employees;
+/*
+    # 데이터베이스 (Database)
+    
+      - 데이터 창고
+      - 데이터를 효율적으로 저장하기 위한 데이터 저장 전문 프로그램
+      - 파일 시스템의 많은 문제점과 한계를 극복하기 위한 프로그램
+      
+    # 파일 시스템의 문제점
+    
+      - 데이터 불일치가 발생할수 있음
+      - 다수 사용자를 위한 동시 제공이 불가능
+      - 중복 데이터를 필요 이상으로 많이 저장
+      - 파일 복구 기능이 없음
+      
+    # DBMS (Database Management System)
+    
+      - 데이터베이스를 관리하기 위한 프로그램
+      - 데이터베이스는 데이터를 보관하는 장소이고, 데이터를 다루는 작업은 DBMS가 함
+      
+    # RDBMS (Relational Database Management System)
+    
+      - 데이터들 간의 관계를 이용 데이터의 중복을 최소화하는 방식
+      - 관계형 데이터베이스는 데이터를 표 형태로 저장
+      - 필드(속성, 컬럼) : 한열에 저장될 데이터들의 이름
+      - 레코드(튜플, 행) : 한 행에 저장되는 하나의 개체에 대한 데이터들의 묶음
+      - 쿼리문을 이용하여 명령 함
+      - 쿼리는 국제표준을 따른다.
+    
+    # SQL (Sturucted Query Language)
+    
+      - RDBMS에 명령을 내리기 위한 언어  
+*/
+-- 현재 접속 계정을 확인하는 명령어
+show user;
+-- 현재 접속한 계정이 가지고 있는 모든 테이블을 확인하는 명령어
+select * from tab;
+-- 테이블 구조 조회
+desc employees;
+-- 테이블의 모든 내용을 확인하는 명령어
+select * from employees;
+select * from countries;
+select * from departments;
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+/*
+    # SELECT 컬럼명 FROM 테이블명;
+        - 원하는 테이블을 조회하는 쿼리문
+        - 컬럼명 자리에 *은 모든 컬럼을 의미
+        - 컬럼명과 테이블명은 대소문자를 구분하지 않음
+        - 쿼리문도 대소문자를 구분하지 않음
+        - 단, 데이터는 대소문자를 구분
+*/
+select * from employees;
+
+
+SELECT * FROM tab;
+/*
+    # 연습용 테이블
+        - EMPLOYEES : 모든 사원 정보를 저장한 테이블
+        - DEPARTMENTS : 모든 부서 정보를 저장한 테이블
+        - JOBS : 모든 직급 정보를 저장한 테이블
+        - LOCATIONS : 지역 정보를 저장한 테이블
+        - REGIONS : 대륙 정보를 저장한 테이블
+*/
+--select * from employees;
+--select * from departments;
+--select * from jobs;
+--select * from locations;
+--select * from regions;
+/*
+    # SQL DATATYPE
+    
+    # NUMBER(n), NUMBER(n,m)
+        
+        - 숫자 데이터만 저장할 수 있는 컬럼
+        - 숫자가 하나만 적혀 있으면 정수를 저장하는 컬럼임
+        - 숫자가 두개 적혀 있으면 실수를 저장하는 컬럼임
+            (예) NUMBER(8) => 정수 8자리
+                 NUMBER(8,2) => 정수 6자리, 소수 2자리
+                 
+    # CHAR(n)
+    
+        - 고정 길이 문자 데이터를 저장하는 컬럼 타입
+        - 저장하는 데이터의 크기에 따라 고정된 공간만 사용
+        - 데이터를 저장할 때 설정이전에 크기 계산이 필요
+        
+    # VARCHAR2(n)
+    
+        - 가변 길이 문자 데이터를 저장하는 컬럼 타입
+        - 저장하는 데이터의 크기를 자동으로 할당
+        - 가장 많이 사용하는 데이터타입
+    # DATE
+        - 날짜 및 시간을 저장하는 컬럼 타입
+*/
+
+-- 실습1 : 모든 사원의 사번/이름/월급/부서번호를 조회
+select * from employees;
+select employee_id, first_name, last_name, salary, department_id from employees;
+-- AS를 이용해 해당 컬럼을 원하는 이름으로 조회할 수 있음
+select
+    employee_id AS a,
+    first_name AS b,
+    salary AS c,
+    department_id AS d
+FROM
+    employees;
+    
+-- 산술 연산자를 이용할 수 있음
+SELECT last_name, salary FROM employees;
+SELECT last_name, salary * 12 AS "이 사람의 연봉" FROM employees;
+SELECT last_name, salary *0.8 AS "삭감된 연봉" FROM employees;
+
+/*
+    #NVL(column, value)
+    
+        - 계산에 사용되는 컬럼의 값에 NULL이 있는경우
+        - NULL을 대체할 값을 지정하는 함수
+*/
+select * from employees;
+select last_name, salary, commission_pct, job_id, salary from employees;
+
+SELECT
+    last_name
+    salary,
+    commission_pct,
+    job_id,
+    salary * (1 + NVL(commission_pct,0)) AS "커미션 적용 급여"
+    -- commission_pct,0 => 0 = null(값이없을때) 기본값
+FROM
+    employees;
+    
+    
+-- 실습2. 모든 사원들의 사번/이름/직책ID/  보너스가 적용된 '연봉'을 출력
+
+select * from employees;
+select employee_id, first_name, department_id, salary * (1 + NVL(commission_pct,0)) *12 AS "커미션 적용연봉" from employees;
+
+-- SELECT DISTINCT : 중복되는 내용은 한번씩만 출력
+SELECT DISTINCT job_id FROM employees; -- 존재하는 모든 직책을 한번씩 조회
+-- 존재하는 모든 부서를 한번씩 조회
+select distinct department_id from employees;
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+/*
+    # SELECT 컬럼명 FROM 테이블명 WHERE 조건절;
+    - 어디에? => 컬럼에
+    - 특정 컬럼에 명령문을 주고 싶을때 사용
+    
+        -SELECT문에 WHERE절을 추가하여 해당조건을 만족하는 컬럼만 조회할 수 있음
+        - 오라클은 비교연산자들을 활용
+        
+    # 비교연산자 : true/false
+    
+        = : 같으면 true
+        비교 : <,> <= ,>=
+        !=, <>, ^= : 다르면 true
+*/
+select * from employees;
+SELECT
+    first_name,
+    last_name,
+    job_id,
+    salary
+FROM
+    employees
+WHERE
+    salary >= 10000;
+-- salary가 10000이상인 사람들만 조회
+
+--실습. 모든 직원들의 월급이 10000인 직원 모두를 검색
+SELECT
+    first_name,
+    last_name,
+    job_id,
+    salary
+FROM
+    employees
+WHERE
+    salary = 10000;
+-- salary가 10000인 사람들만 조회
+
+
+-- 문자 타입 비교
+select * from employees where first_name > 'P';
+select * from employees where first_name > 'V';
+
+-- 실습1 성이 Vance 인 직원의 모든 정보를 출력
+select * from employees where first_name = 'Vance';
+
+-- 날짜 타입 비교
+select * from employees where hire_date < '2006/01/01';
+
+-- AND, OR, NOT
+SELECT * FROM employees WHERE hire_date >= '2006/05/01' AND hire_date < '2008/09/01';
+
+--실습2 JOB_ID가 IT_PROG 또는 SH_CLERK인 직원 모두를 조회하세요
+select * from employees;
+SELECT * FROM employees WHERE job_id = 'IT_PROG' or job_id = 'SH_CLERK';
+
+--실습3. JOB_ID가 IT_PROG가 아닌 직원 모두를 조회하세요
+SELECT * FROM employees WHERE job_id != 'IT_PROG';
+
+/*
+    연습1 : 2000에서 3000사이의 월급을 받는 사원들의 모든 정보를 조회해보세요
+    연습2 : 30, 60, 90번 부서에 속한 사원들의 이름/직책 전화번호/ 부서번호를 조회해보세요
+*/
+
+
+-- 연습1
+select * from employees where salary >= 2000 AND salary <= 3000;
+-- 연습2
+select
+    first_name,
+    job_id,
+    phone_number,
+    department_id
+from
+    employees
+where
+    department_id = 30 
+    OR department_id = 60
+    OR department_id = 90;
+    
+    
+-- MOD(value1, value2)
+select * from employees where MOD(employee_id,2) = 0;
+
+-- 컬럼명 BETWEEN A AND B : 해당컬럼의 값이 A이상 B이하인 경우 True
+SELECT * FROM employees WHERESUM(column) : 총합 salary BETWEEN 2000 AND 3000;
+
+-- 컬럼명 IN(A,B,C...) : ()안에 내용에 값이 있으면 True
+SELECT * FROM employees WHERE department_id in (30,60,90);
+
+-- NULL은 크기비교가 불가능하기 때문에 비교연산자를 사용 못함
+select * from employees where commission_pct < 0.2;
+select * from employees where commission_pct > 0.2;
+select * from employees where commission_pct = null; -- 비교연산자 사용 불가
+select * from employees where commission_pct is null; -- IS NULL 사용
+
+-- NOT 연산자의 위치 : 비교적 자유롭다
+select * from employees where commission_pct IS NOT NULL;
+select * from employees where NOT commission_pct IS NULL;
+
+select * from employees where salary NOT BETWEEN 2000 AND 3000;
+select * from employees where NOT salary BETWEEN 2000 AND 3000;
+
+
+
+/*
+    # LIKE
+        - 데이터의 일부분으로 원하는 내용을 검색할 수 있음
+        - 문자 타입과 날짜 타입에 사용할 수 있음
+            % : 길이 제한 없이 아무 문자나 와도 상관없는 와일드 카드
+            _ : 반드시 하나의 문자가  와야하는 와일드 카드
+*/
+SELECT * FROM employees WHERE first_name LIKE 'D%';
+-- employees에서 FIRST_NAME이 첫문자 D로 시작하는 데이터를 가져와라
+
+SELECT * FROM employees WHERE first_name LIKE '_e%';
+-- 두번째 문자에 e가 나오는 데이터를 가져와라
+SELECT * FROM employees WHERE first_name LIKE '__e%';
+-- 세번째 문자에 e가 나오는 데이터를 가져와라
+SELECT * FROM employees WHERE first_name LIKE '_ea%';
+--두번째 문자에 ea가 나오는 데이터를 가져와라
+SELECT * FROM employees WHERE first_name LIKE '%t%';
+-- 문자열 중간에 t가 들어간 데이터를 가져와라
+SELECT * FROM employees WHERE first_name LIKE '%a__';
+-- 뒤에서 세번째 문자에 글자가 a인 사원들의 모든 정보를 조회
+SELECT * FROM employees WHERE first_name LIKE '%e%e%';
+-- 이름 중간에 e가 두 개 이상 포함된 사원들의 모든 정보를 조회
+/*
+    연습1 : 이름의 뒤에서 세번째 글자가 a인 사원들의 모든 정보를조회
+    연습2 : 이름에 e가 두 개 이상 포함된 사원들의 모든 정보를 조회
+    연습3 : 이름이 다섯글자이면서 r로 끝나는 사원들의 성과급+월급을 조회
+    연습4 : 고용일이 5월인 사원들의 모든 정보를 조회
+    연습5 : 고용일이 5일인 사원들의 모든 정보를 조회
+*/
+SELECT * FROM employees;
+-- 연습1
+SELECT * FROM employees WHERE first_name LIKE '%a__';
+-- 연습2
+SELECT * FROM employees WHERE first_name LIKE '%e%e%';
+-- 연습3
+SELECT first_name, salary * (1+NVL(commission_pct,0)) FROM employees WHERE first_name like '____r';
+-- 연습4
+SELECT * FROM employees WHERE hire_date LIKE '___05___';
+SELECT * FROM employees WHERE hire_date LIKE '%/05/%';
+-- 연습5
+SELECT * FROM employees WHERE hire_date LIKE '%__/__/_5%';
+SELECT * FROM employees WHERE hire_date LIKE '%_5';
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+2022.11.07
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+select * from employees;
+select * from employees order by first_name;
+-- order by : 순서대로
+select * from employees where first_name like 'J%' and (first_name like '%s' or first_name like '%n');
+
+
+
+-- UNION : 합집합
+SELECT * FROM employees WHERE first_name LIKE 'J%n'-- J로 시작해서 N으로 끝나는 first_name을 검색하라
+UNION
+SELECT * FROM employees WHERE first_name LIKE 'J%s'; -- J로 시작해서 S으로 끝나는 first_name을 검색하라
+
+-- 부서명이 30이고, 10에서 30 사이인 컬럼을 합집합으로 조회하세요.ㅁ
+
+-- UNION ALL : 합집합(중복제거 안함)
+SELECT * FROM employees WHERE department_id = 30
+UNION ALL
+SELECT * FROM employees WHERE department_id BETWEEN 10 AND 30;
+
+--MINUS : 차집합
+SELECT * FROM employees WHERE department_id BETWEEN 10 AND 30
+MINUS
+SELECT * FROM employees WHERE department_id = 30;
+
+--INTERSECT : 교집합
+SELECT * FROM employees WHERE department_id = 30
+INTERSECT
+SELECT * FROM employees WHERE department_id BETWEEN 10 AND 30;
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+/*
+
+    #그룹함수
+    
+        - 테이블의 행들을 특정 컬럼을 기준으로 그룹화하여 계산하는 함수들
+        - 특정 글부의 총합, 갯수 평균등을 구하는 함수들
+        - 그룹의 기준이 되는 컬럼은 GROUP BY 절을 통해 [선택]함
+        - 그룹 함수의 결과는 일반 컬럼과 함께 출력될 수 없음
+*/
+
+select * from employees;
+select salary from employees;
+select sum(salary) from employees;
+--salary의 합
+--salary가 뭔지 모를 수 있으니 아이디값을 줄것
+SELECT job_id, SUM(salary) FROM employees GROUP BY job_id;
+-- job_id를 선택, salary를합친다 employees의 job_id그룹에서
+
+/*
+    SUM(column) : 총합
+    AVG(column) : 평균
+    MAX(column) : 최댓값
+    MIN(column) : 최소값
+    COUNT(column) : 갯수
+*/
+
+--각 job_id(직종)의 평균급여avg()를 출력
+SELECT job_id, AVG(salary) FROM employees GROUP BY job_id;
+
+
+--부서별(department_id)로 커미션 받는 직원들의 총 인원수를 출력
+select * from employees;
+SELECT department_id, COUNT(commission_pct) FROM employees GROUP BY department_id;
+SELECT * FROM employees WHERE department_id = 80;
+--INTERSECT : 교집합
+
+
+/*
+    연습1 : 각 부서별로 가장 최근에 입사한 날짜와, 가장 오래전 입사한 날짜를 출력해주세요.
+*/
+select * from employees;
+SELECT department_id, MAX(hire_date) AS "최근", MAX(hire_date) AS "오래전" FROM employees GROUP BY department_id;
+
+
+/*
+    연습2 : 각 직책별 평균 연봉을 구한 후 조회하세요.
+*/
+select * from employees;
+select  job_id, SUM(salary) FROM employees GROUP BY job_id; --월급
+select  job_id, SUM(salary*12) FROM employees GROUP BY job_id; --연봉
+
+SELECT
+    job_id,
+    AVG(salary*(1+NVL(commission_pct,0))*12) AS "평균연봉"
+FROM
+    employees
+GROUP BY
+    job_id;
+        
+        
+SELECT
+    job_id,
+    AVG(salary*(1+NVL(commission_pct,0))*12) as 평균연봉
+FROM
+    employees
+GROUP BY
+    job_id;
+        
+--그룹함수 결과에 대한 조건을 주고 싶을때는 HAVING 절을 사용
+SELECT job_id, AVG(salary) AS avg_sal FROM employees GROUP BY job_id HAVING AVG(salary) >= 10000;
+
+--5명 이하로 구성된 부서의 최고 급여자의 총인원수를 그룹화하여 부서명을 조회
+
+-- 내가한거 / 실패
+SELECT job_id AS "업종", COUNT(department_id) AS "인원수", AVG(salary) "평균임금" FROM employees GROUP BY job_id HAVING COUNT(department_id) <= 5;
+
+--견본
+SELECT department_id, MAX(salary), count(*) FROM employees GROUP BY department_id HAVING count(*) <= 5;
+
+--WHERE절과 GROUP BY과 함께 사용되면 WHERE의 조건을 모든 행에 적용한 결과를 통해 GROUP BY 그룹이 생성됨
+SELECT department_id, MIN(salary) FROM employees WHERE salary >= 5000 GROUP BY department_id;
+
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+/*
+
+    #그룹함수
+    
+        - 테이블의 행들을 특정 컬럼을 기준으로 그룹화하여 계산하는 함수들
+        - 특정 그룹의 총합, 갯수 평균등을 구하는 함수들
+        - 그룹의 기준이 되는 컬럼은 GROUP BY 절을 통해 [선택]함
+        - 그룹 함수의 결과는 일반 컬럼과 함께 출력될 수 없음
+*/
+
+select * from employees;
+select salary from employees;
+select sum(salary) from employees;
+--salary의 합
+--salary가 뭔지 모를 수 있으니 아이디값을 줄것
+SELECT job_id, SUM(salary) FROM employees GROUP BY job_id;
+-- job_id를 선택, salary를합친다 employees의 job_id그룹에서
+
+/*
+    SUM(column) : 총합
+    AVG(column) : 평균
+    MAX(column) : 최댓값
+    MIN(column) : 최소값
+    COUNT(column) : 갯수
+*/
+
+--각 job_id(직종)의 평균급여avg()를 출력
+SELECT job_id, AVG(salary) FROM employees GROUP BY job_id;
+
+
+--부서별(department_id)로 커미션 받는 직원들의 총 인원수를 출력
+select * from employees;
+SELECT department_id, COUNT(commission_pct) FROM employees GROUP BY department_id;
+SELECT * FROM employees WHERE department_id = 80;
+--INTERSECT : 교집합
+
+
+/*
+    연습1 : 각 부서별로 가장 최근에 입사한 날짜와, 가장 오래전 입사한 날짜를 출력해주세요.
+*/
+select * from employees;
+SELECT department_id, MAX(hire_date) AS "최근", MAX(hire_date) AS "오래전" FROM employees GROUP BY department_id;
+
+
+/*
+    연습2 : 각 직책별 평균 연봉을 구한 후 조회하세요.
+*/
+select * from employees;
+select  job_id, SUM(salary) FROM employees GROUP BY job_id; --월급
+select  job_id, SUM(salary*12) FROM employees GROUP BY job_id; --연봉
+
+SELECT
+    job_id,
+    AVG(salary*(1+NVL(commission_pct,0))*12) AS "평균연봉"
+FROM
+    employees
+GROUP BY
+    job_id;
+        
+        
+SELECT
+    job_id,
+    AVG(salary*(1+NVL(commission_pct,0))*12) as 평균연봉
+FROM
+    employees
+GROUP BY
+    job_id;
+        
+--그룹함수 결과에 대한 조건을 주고 싶을때는 HAVING 절을 사용
+SELECT job_id, AVG(salary) AS avg_sal FROM employees GROUP BY job_id HAVING AVG(salary) >= 10000;
+
+--5명 이하로 구성된 부서의 최고 급여자의 총인원수를 그룹화하여 부서명을 조회
+
+-- 내가한거 / 실패
+SELECT job_id AS "업종", COUNT(department_id) AS "인원수", AVG(salary) "평균임금" FROM employees GROUP BY job_id HAVING COUNT(department_id) <= 5;
+
+--견본
+SELECT department_id, MAX(salary), count(*) FROM employees GROUP BY department_id HAVING count(*) <= 5;
+
+--WHERE절과 GROUP BY과 함께 사용되면 WHERE의 조건을 모든 행에 적용한 결과를 통해 GROUP BY 그룹이 생성됨
+SELECT department_id, MIN(salary) FROM employees WHERE salary >= 5000 GROUP BY department_id;
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+/*
+
+    #그룹함수
+    
+        - 원하는 컬럼 기준으로 정렬하여 조회할 수 있음
+        - ORDER BY 컬럼명 [ASC | DESC]
+        - ASC : 오름차순, Ascending(기본값 = 생략하면 오름차순 // A -> Z // 9 -> 1)
+        - DESC : 내림차순 , Descending ( 기본값 = 생략하면 내림차순 // Z -> A // 1 -> 9)
+*/
+select * from departments;
+
+SELECT * FROM departments ORDER BY department_name;
+--departments을 department_name으로 정렬
+SELECT * FROM departments ORDER BY department_id ASC;
+SELECT * FROM departments ORDER BY department_id DESC;
+
+--null은 오름차순하면 가장 나중에 등장, 내림차순 하면 가장 먼저 등장
+
+SELECT * FROM employees ORDER BY commission_pct;
+SELECT * FROM employees ORDER BY commission_pct DESC;
+
+--컬럼별 정렬
+
+SELECT * FROM employees ORDER BY job_id ASC, hire_date ASC;
+
+
+/*
+    연습
+*/
+SELECT * FROM employees;
+-- 연습1. 모든 사원들을 최근 입사한 순서대로 정렬하여 조회
+SELECT * FROM employees ORDER BY hire_date DESC;
+
+-- 연습2. 이름에 i가 포함되어 있는 사원들의 급여를 많이 받는 순서대로 조회
+SELECT * FROM employees WHERE first_name like '%i%' ORDER BY salary DESC;
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+/*
+    # DML (Data Manipulation Language = 데이터 조작어)
+    
+        - SELECT : 데이터 조회
+        - INSERT : 데이터 추가
+        - UPDATE : 데이터 수정
+        - DELETE : 데이터 삭제
+    
+    # DDL (Data Definition Language = 데이터 정의어)
+    
+        - 테이블, 시퀸스 등 DB에서 사용하는 객체 구조를 생성할때 사용하는 명령어
+        - CREATE : 객체만들기
+        - DROP : 객체 삭제
+        - ALTER : 객체 수정
+        - TRUNCATE : 객체 완전 삭제
+        
+    # DCL (Data Control Language = 데이터 제어어)
+    
+        - GRANT : 권한 부여
+        - REVOKE : 권한 회수
+*/
+
+-- 테이블 생성 : CREATE TABLE 만들 테이블명 (컬럼명1 :  컬럼데이터타입1,  컬럼명2 컬럼데이터타입2, ....);
+-- 이클립스 VO에서 멤버변수를 만들때 테이블 데이터 컬럼명과 멤버변수명은 똑같아야함
+
+--테이블 생성 1
+CREATE TABLE goods (
+    name VARCHAR2(20),
+    qty NUMBER(4),
+    price NUMBER(5)
+);
+
+-- 테이블 구조 조회
+DESC goods;
+-- 유저명 조회
+show user;
+
+--데이터 삽입
+insert into goods values('굿즈1','5','50000');
+
+--테이블 조회
+select * from goods;
+
+--테이블 삭제
+DROP TABLE goods;
+
+
+
+
+
+
+
+
+-- 테이블 생성 2
+create table test_member (
+    id VARCHAR2(10) primary key,
+    pw VARCHAR2(10) not null,
+    name VARCHAR2(20),
+    email VARCHAR2(30)
+);
+--생성된 테이블 확인
+select * from test_member;
+
+-- 데이터 삽입
+insert into test_member values('ezen','1234','이젠','ezen@co.kr');
+
+
+
+
+/*
+    #데이터 딕셔너리 (Data Dictionary)
+    
+        - 현재 DB 상황을 DB가 알아서 정리하고 관리하는 데이터
+*/
+
+SELECT * FROM all_tables;
+SELECT * FROM user_tables;
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+/*
+    실제 사용 TABLE 설계 연습
+    1.
+    회원 정보 테이블 명 : board_user
+    컬럼명 : id, password, name, role
+    데이터 형 : 모두 문자열
+    데이터 길이 : 28, 8, 30, 5
+    제약사항 : pk, not null, not null, default 'User'
+    2.
+    회원 정보 테이블 명 : board_board
+    컬럼명 : seq, title, contents, regdate, cnt, userid
+    데이터 형 : 숫자, 문자열, 문자열, 문자열, date, 숫자형
+    데이터 길이 : 4, 200, 30, 2000, date, 5, 8
+    제약사항 : pk, not null, not null, not null, default sysdate, default 0, 8
+    
+    두 테이블 모두 임의의 데이터 5개씩 insert
+    seq = 1,2,3,4,5
+    sysdate = 문자열로 넣어줌 '2020-02-06'
+*/
+--1.
+CREATE TABLE board_user (
+    id VARCHAR2(28) primary key,
+    password VARCHAR2(8) not null,
+    name VARCHAR2(30) not null,
+    role VARCHAR2(5) default 'User'
+);
+
+insert into board_user values('borard_user1','12341','보더유저1','User');
+insert into board_user values('borard_user2','12342','보더유저2','User');
+insert into board_user values('borard_user3','12343','보더유저3','User');
+insert into board_user values('borard_user4','12344','보더유저4','User');
+insert into board_user values('borard_user5','12345','보더유저5','User');
+
+SELECT * FROM board_user;
+
+
+
+--2.
+CREATE TABLE board_board (
+    seq NUMBER(4) primary key,
+    title VARCHAR2(200) not null,
+    content VARCHAR2(30) not null,
+    regdate VARCHAR2(2000) not null,
+    cnt DATE default sysdate,
+    userid NUMBER(8) default '8'
+);
+
+insert into board_board values('1', '타이틀1', '컨텐츠1', '등록날짜1', '', '1001');
+insert into board_board values('2', '타이틀2', '컨텐츠2', '등록날짜2', '', '1002');
+insert into board_board values('3', '타이틀3', '컨텐츠3', '등록날짜3', '', '1003');
+insert into board_board values('4', '타이틀4', '컨텐츠4', '등록날짜4', '', '1004');
+insert into board_board values('5', '타이틀5', '컨텐츠5', '등록날짜5', '', '1005');
+
+update board_board set regdate='등록날짜1' where seq='1';
+
+SELECT * FROM board_board;
+
+
+--3.
+commit;
+
+
+--4
+drop table board_board;
+drop table board_user;
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+/*
+    # DML (Data Manipulation Language = 데이터 조작어),
+    가장 많이 사용
+        - SELECT
+        - INSERT
+        - UPDATE
+        - DELETE     
+*/
+/*
+    # 테이블 데이터 생성
+    
+        - INSERT INTO 테이블명
+        
+        - INSERT INTO 테이블명 (컬럼명1, 컬럼명2 ....) VALUES(데이터형 맞춰서 값1, 데이터형 맞춰서 값2, ...)
+        - 테이블명만 넣엇을경우, 순서대로 데이터값을 넣어줘야 함
+        - 테이블명(컬러명1, 컬럼명2, ....) 일 경우, 컬럼명 순서대로 데이터값 넣어줘야 함
+*/
+
+--테이블 생성 | 테이블명 = ezen / 컬럼명 = subject(문) / name(문) / count(숫)
+
+create table ezen(
+    subject VARCHAR2(20),
+    name VARCHAR2(20),
+    count NUMBER(10)
+);
+select * from ezen;
+desc ezen;
+
+
+
+
+
+--테이블 생성
+CREATE TABLE fruits(
+    name VARCHAR2(20),
+    qty NUMBER(5),
+    price NUMBER(5)
+);
+select *from fruits;
+desc fruits;
+--데이터 삽입
+insert into fruits values('오렌지', 10, 3000);
+INSERT INTO fruits(name,qty,price)  VALUES('사과',20,5000);
+INSERT INTO fruits(name,qty) VALUES('참외',5);
+-- 서브쿼리(테이블 복사) 사용
+CREATE TABLE fruits2 AS (select * from fruits);
+select * from fruits2;
+INSERT INTO fruits2 (select * from fruits);
+select * from fruits2;
+
+/*
+   - UPDATE 테이블명 SET 컬럼명 = 값 WHERE 조건들...;
+*/
+
+commit;
+
+UPDATE fruits SET name='메론';
+select * from fruits;
+
+
+--롤백
+rollback;
+
+--※commit; 당시 상태로 되돌려줌
+
+update fruits set name='메론' where name='오렌지';
+select * from fruits;
+
+--가격이 3000원 이상인 과일의 qty를 100으로 변경
+update  fruits set qty=100 where price >= 3000;
+
+/*
+    # 테이블 데이터 삭제
+        -DELETE FROM 테이블명 WHERE 조건들;
+*/
+DELETE FROM fruits WHERE name='참외';
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+/*
+    # 테이블 JOIN
+    
+        - PK(기본키), FK(외래키) 관계
+        - INNER JOIN(=EQUI JOIN)을 주로 사용
+        - 두 테이블에서 서로 동일한 값을 가진 컬럼을 이용(PK,FK)데이터
+        - 두 테이블을 실제 사용시 이름이 같은 컬럼이 있으면, 컬럼명 앞에 테이블 명을 반드시 표기해야함(.연산자 이용)
+*/
+
+select * from employees;
+select * from departments;
+
+SELECT
+    employees.first_name,
+    department_name
+FROM
+    employees,
+    departments
+WHERE
+    employees.department_id = departments.department_id;
+    
+--연습1 : 조인을 이용하여 모든 사원들의 사원번호/이름/부서이름을 조회 사용테이블은 위와 동일
+select * from employees;
+select * from departments;
+SELECT
+    employee_id,
+    first_name,
+    department_name
+FROM
+    employees,
+    departments
+WHERE
+    employees.department_id = departments.department_id;
+    
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+/*
+    # 서브쿼리
+    
+        - 하나의 SELECT 문에 포함된 또 하나의 SELECT문
+        - 메인 쿼리 아래에 포함된 쿼리임
+        - 서브쿼리가 먼저 실행되어 그 결과를 메인쿼리에 전달함
+        
+    # 단일행 서브쿼리 주로 사용
+    
+        - 서브 쿼리의 실행 결과가 하나인 서브쿼리     
+*/
+
+SELECT * FROM employees;
+SELECT * FROM board_board;
+
+drop table board_board; --혹시 테이블이 이미 생성되어잇으면 제거하고 다시만들기
+
+CREATE TABLE board_board (
+    seq NUMBER(4) primary key,
+    title VARCHAR2(200) not null,
+    nickname VARCHAR2(20) not null,
+    content VARCHAR2(30) not null
+);
+
+INSERT INTO board_board(seq,title,nickname,content)
+VALUES(
+    (SELECT nvl(MAX(seq),0)+1 FROM board_board), '타이틀', '닉네임', '콘텐츠'
+);
+
+-- 다중행 서브쿼리
+SELECT * FROM employees;
+SELECT * FROM JOBS;
+SELECT * FROM jobs WHERE job_id In(SELECT job_id FROM employees WHERE first_name = 'Peter');
+
+
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+/*
+    # 제약조건 (RDBMS) = 개념 위주 학습
+    
+    # 데이터 무결성
+    
+        - 정확성, 일관성, 유효성
+    
+    ## 데이터 무결성
+    
+        - NOT NULL  : NULL 허용안함
+        - UNIQUE : 중복되는 값 허용안함
+        - PRIMARY KEY ; 테이블의 기본 키로 사용(NOT NULL, UNIQUE임)
+        - FOREIGN KEY : 해당 컬럼을 외래키로 설정. 참조컬럼을 반드시 지정
+        - CHECK : 원하는 조건 지정 도메인 무결성 유지
+        
+        
+    # 개체 무결성
+        
+        - 테이블의  데이터는 반드시 컬럼을 구분할 수 있어야함
+        - 데이터 개체 무결성을 지키기위해 제약조건으로 PK를 사용
+        
+    # 참조 무결성
+    
+        - 참조 관계에 있는 데이터는 항상 일관된 값을 가져야함
+        - 제약조건 FK를 사용
+        
+    # 도메인 무결성
+        - 하나의 데이터는 반드시 컬럼을 구분할 수 있어야 함
+        - 데이터 개체 
+    
+*/
+-- 데이터 딕셔너리 => 제약사항
+
+SELECT *  FROM all_constraints;
+SELECT * FROM user_constraints;
+
+-- 테이블 생성과 동시에 제약조건 만들기
+
+create table fruits3(
+    name varchar2(20) primary key,
+    price number(5) not null
+);
+
+insert into fruits3 values('banana',100);
+select * from fruits3;
+
+
+--제약조건을 확인 할 수 있는 명령어 // 제약사항 데이터 딕셔너리 검색시 테이블 대문자로 표기
+SELECT * FROM user_constraints where table_name ='FRUITS3';
+
+select * from user_constraints; -- 밑을 보면 FRUITS3이 있음
+
+/*
+    # 이미 생성된 테이블에 제약조건 추가
+*/
+
+
+-- 테이블 추가
+create table fruits4 (
+    fid number(4),
+    fname varchar2(20),
+    grade varchar2(2),
+    fsize number(2)
+);
+desc fruits4;
+
+ALTER TABLE fruits4 ADD CONSTRAINT f4_fid_pk PRIMARY KEY(fid); -- f4_fid_pk 별칭
+desc fruits4; -- NOT NULL 추가 확인
+
+ALTER TABLE fruits4 ADD CONSTRAINT f4_fname_uk UNIQUE(fname); -- 안되는 명령어, UNIQUE는 PRIMARY KEY와 겹침
+-- MODIFY : 수정
+ALTER TABLE fruits4 MODIFY (fname varchar2(20) CONSTRAINT f4_fname_nn NOT NULL);
+desc fruits4;
+
+desc fruits4;
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+/*
+    # 테이블 수정하기
+    
+    # 테이블 복사
+    
+        -   CREATE TABLE 테이블명 AS (서브쿼리)
+*/
+
+-- employees 테이블을 employees2 테이블로 테이블 복사
+-- employeess2 유저 제약사항 확인
+
+
+--서브쿼리(테이블 복사)
+CREATE TABLE employees2 AS (select * from employees);
+--제약사항(딕셔너리) 확인
+SELECT * FROM user_constraints WHERE table_name ='EMPLOYEES2'; 
+
+
+/*
+    테이블에 새 컬럼 추가
+        - ALTER TABLE 테이블명 ADD (컬럼명 컬럼타입1, 컬럼명 컬럼타입2, ....);
+*/
+create table Jelly (
+    color varchar2(20) not null
+);
+desc jelly;
+drop table jelly;
+--  풀어쓰면
+create table Jelly (
+    color varchar2(20)
+        constraint jelly_color_nn NOT NULL
+);
+-- 컬럼추가 // 추가하면서 제약사항 확인
+ALTER TABLE Jelly ADD (
+    brand varchar2(30)
+        constraint jelly_brand_uk UNIQUE
+        constraint jelly_brand_nn NOT NULL,
+    code char(2)
+        COnstraint jelly_code_nn NOT NULL
+);
+desc jelly;
+drop table jelly;
+/*
+
+    # 테이블의 컬럼 이름 변경
+        - ALTER TABLE 테이블명 RENAME COLUMN 현재이름 TO 바꿀이름;
+*/
+SELECT * FROM jelly;
+ALTER TABLE jelly RENAME COLUMN code TO record;
+
+/*
+    # 테이블 이름 변경 
+    
+        - RENAME 현재 테이블명 TO 바꿀 테이블명;
+*/
+RENAME jelly TO zelly;
+SELECT * FROM zelly;
+
+/*
+    # 컬럼 구조 수정하기
+    
+        - ALTER TABLE 테이블명 MODIFY (컬럼명 컬럼데이터타입1, 컬럼명 컬럼데이터타입2, ...);
+*/
+desc zelly;
+ALTER TABLE zelly MODIFY (
+    record  varchar2(10)
+);
+desc zelly;
+
+
+/*
+    # 컬럼 삭제하기
+    
+        - ALTER TABLE 테이블명 DROP COLUMN 컬럼명;
+*/
+ALTER TABLE zelly DROP COLUMN record;
+SELECT * FROM zelly;
+
+
+/*
+    # 테이블 제약조건 삭제
+        - ALTER TABLE 테이블명 DROP CONSTRAINT 제약조건명;
+    
+*/
+ALTER TABLE zelly DROP CONSTRAINT jelly_color_nn;
+SELECT * FROM user_constraints;
+
+SELECT * FROM user_constraints WHERE table_name = 'ZELLY';
+
+desc zelly;
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

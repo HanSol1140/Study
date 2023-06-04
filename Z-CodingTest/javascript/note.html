@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+       
+function solution(num_list) {
+    var answer = 0;
+    var odd = "";
+    var even = "";
+    
+    for(var i = 0; i < num_list.length; i++){
+        if(num_list[i] % 2 != 0){
+            odd += num_list[i];
+        }else{
+            even += num_list[i];
+        }
+    }
+    return answer = Number(odd) + Number(even);
+}
+   
+
+
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,5024 @@
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+자바jdk(zulu)설치방법
+
+1. 하드디스크 C나 D드라이브에 폴더만들기, 폴더명은 상관이없지만
+   ※경로에 한글이 있으면 안됨
+
+2. JavaUtils 폴더명 생성, 
+    앞으로 여기에 자바파일들 집어넣어서 압축,저장할것
+
+3. https://www.azul.com/downloads/?architecture=x86-64-bit&package=jdk
+   JAVA ZULU 다운로드 링크
+
+4. Java 8(LTS) => Windows => x86 64-bit => JDK => MSI =>설치
+
+5. next,next,install
+
+6. 시작 - CMD 실행
+   windows = GUI = 그래픽 유저 인터페이스
+
+7. 'java -version'입력후 자바 버전 확인
+8. 내PC -> 속성 -> 고급시스템 설정 -> 고급 -> 환경변수 -> 시스템변수
+9. 시스템변수 -> 새로만들기
+
+새 시스템 변수
+10. 변수이름 : 'JAVA_HOME'
+11. 변수값 설정
+    디렉터리 찾아보기 - C드라이브 ->프로그램파일 -> zulu -> zulu-8 선택
+                  <!-- ex)C:\Program Files\Zulu\zulu-8 -->
+12. CMD에 'javac' 입력해서 뜨는지 확인
+13 시스템변수 -> Path -> 편집
+   새로만들기 '%JAVA_HOME%\bin' 등록
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+<이클립스> 설정방법
+JavaUtils의 받은 파일중에 eclipse-jee-2021-06-R-win32-x86_64 압축해제
+<!-- 실행가능한 이클립스 압축파일임 -->
+eclipse.exe 실행
+실행된 창에서 open 실행하고 파일선택창이 뜨는데 누르지않고 esc
+
+우측창 task list랑 outline X눌러서 창을 꺼버릴것
+우측상단(에서좀아래) JAVA EE(커피콩) 옆에 <Open Perspective> 클릭
+
+1. ※중요
+    폴더선택
+    좌측상단 File - Switch Workspace C:\JavaWorks 폴더선택 <!-- 없을시 직접선택해줘야함 -->
+    선택시 재실행이된다
+
+2. 설정 좌측상단 Window - Preferences 클릭
+    General - Appearance => Dark
+    General - Appearance - Colors and Fonts => 원하는항목 눌러서 Edit후 설정
+        => Basic - Text Fonts => Edit 폰트크기 16으로 설정
+    General - Workspace - => Text file encoding => Other: UTF-8
+    General - WEB Browser => Use external web browser
+    WEB - CSS Files => Encoding => UTF-8 (제일 상단에 있음)
+    WEB - HTML Files => Encoding => UTF-8 (제일 상단에 있음)
+    WEB - JSP Files => Encoding => UTF-8 (제일 상단에 있음)
+
+3. File - New - Java Project
+    a. project네임 설정
+    b. Use an execution environment JRE: <JavaSE1.8>선택
+    c. Next
+    d. 하단 Default output folder = 저장폴더 경로(기본값사용)
+    e. Finish
+    New - Java Project가 안나올때
+    ※Windows - Perspective - Java를 눌러서 우측상단에 띄우고 체크할것
+
+4. 좌측경로 만들어진 폴더에 New - class 
+        Name 설정
+    ※  public static void main(String[] args) 박스체크
+        Finish
+    
+5.        
+public class Good {
+	public static void main(String[] args) {
+		System.out.println("이클립스테스트");
+	}
+}
+입력후 상단에 실행창 눌러서
+하단 콘솔에 이클립스테스트 뜨는지 확인하면됨
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+<파일을 옮길때>
+이클립스에서 똑같은 java project, package 생성후
+src파일만 이클립스프로그램에 드래그하여 카피할것
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+<데이터형>
+<1. 변수선언 | Integer 정수형>
+    int point;
+    <2. 변수초기값>
+    <!-- 변수를 선언했기 때문에 Ctrl+Space로 확인해보면 메모리에 올라가 있음 -->
+    point = 0;
+    <2. 변수값 할당>
+    point = 10;
+    System.out.println(point);
+    
+    <a. 숫자형>
+    int num = 100;
+    System.out.println(num);
+    
+    <b. 실수형>
+    double num2 = 100.1;
+    System.out.println(num2);
+    
+    <c. 문자형>
+    String str = "First Java";
+    System.out.println(str);
+
+    <d. 참/거짓형 (논리연산자)>
+        <boolean>
+    int num1 = 5;
+    int num2 = 3;
+    boolean val = (num1 > num2);
+
+    System.out.println("맞니? " + val);
+    System.out.println("크거니 같니? " + (num1 >= num2));
+    System.out.println("작거나 같니? " + (num1 <= num2));
+    System.out.println("같니? " + (num1 >= num2));		
+    System.out.println("논리부정 " + (num1 != num2));
+    <!--(콘솔출력)
+        맞니? true
+        크거니 같니? true
+        작거나 같니? false
+        같니? true
+        논리부정 true
+    --> 
+    <long 자료형>
+    <!-- int보다 점수 표현 범위가 더 넓음 |  범위: -26 3제곱 ~ 26 3제곱 -1 -->
+        long numLong = 12345678900L;
+        long numLong2 = 1234;
+        System.out.println("long 자료형 : " + (numLong + numLong2));
+
+    <short 자료형>
+    <!-- int보다 점수 표현 범위가 좁음 | -32,768 ~ 32,768 -->
+        short numShort = 30000;
+        short numShort2 = 123;
+        System.out.println("short 자료형 : " + (numShort + numShort2));
+    
+    <char 데이터형>
+        <!-- 문자 1개를 저장하는 자료형 -->
+        char ch;
+        ch = (age1>age2)?'M':'F';
+        System.out.println("성별기호는 : " + ch);
+    
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+<단축키 모음>
+<Ctrl+Space>
+    자동완성, 메모리단에 올라가있을때 사용가능함
+<Ctrl+Alt+↑↓>
+    줄복사
+<Ctrl+F11>
+    컴파일(실행)
+
+<setter, getter 자동생성>
+	우클릭 -> Source -> Generate Getters and Setters
+	좌측상단메뉴 - Source 에서도 가능
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+<명령어 모음>
+<Escape(이스케이프) 문자>
+\n
+new line = 줄바뀜		
+System.out.println("Hellow \nWorld");
+    <!--(콘솔출력)
+        Hellow 
+        World
+    -->
+
+\"
+""겹침
+System.out.println("Hellow "World""); => 오류
+System.out.println("Hellow \"World\"");
+    <!--(콘솔출력)
+        Hellow "World"
+    -->
+
+
+<println>
+    System.out.println();에서
+    print+ln(줄바꿈)
+
+<length>
+    <!-- 문자열 갯수 -->
+    String str2 = "Ezen Computer";
+    System.out.println(str2.length());
+	or
+	System.out.println("Ezen Computer".length());
+    <!--(콘솔출력)
+        13
+    -->
+
+<replace>
+    String str2 = "Ezen Computer";
+    String str3 = "mcssam";
+    System.out.println(str2);
+    <!--(콘솔출력)
+        Ezen Computer
+    -->
+    System.out.println(str3);
+    <!--(콘솔출력)
+        mcssam
+    -->
+    System.out.println(str3.replace("mcssam", "gimssam"));
+    <!--(콘솔출력)
+        gimssam
+    -->
+
+<수학에 관한 객체 = Math>
+    // 객체 = 폴더 = 수학에 관련된 중요한 것을 그룹화 해놓은 명령어 메서드, 프로퍼티들이 있다
+    //Math에 Ctrl + Space 자동완성해보면 java.lang이 보임
+    // java 폴더에 lang 패키지 안에 소속된 메서드		
+    
+    <PI(파이,원주율)메서드>
+    파이값 3.14~
+        System.out.println(Math.PI);
+		<!--(콘솔출력)Math.PI = 원주율
+			3.14~~~~
+		-->
+    <Math.ceil(올림 메서드)>
+    소수점을 올리고 실수로 리턴해줌	
+        System.out.println(Math.ceil(Math.PI));
+		<!--(콘솔출력)
+			4
+		-->
+    <Math.floor(내림 메서드)>
+    소수점을 내리고 실수로 리턴해줌
+        System.out.println(Math.floor(Math.PI));
+		<!--(콘솔출력)
+			3
+		-->
+    
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+IDE C++
+모든 언어를 사용할수있는 툴
+사용전제조건 = oracle 사에서 제공하는 JDK설치가 필요함
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+자바를 할때는 원리 위주로 공부를 해야함
+
+OOP  => 객체지향의 시작점
+
+규칙성을 띄고 있고, <엄격함>
+
+전체적인 작업플로우
+
+HTML,CSS,자바스크립트계열로
+
+프론트단을 완성하고 <프론트엔드>
+
+Java(JSP) 계열들을 이용해서 단순화시키면 된다
+→데이터 베이스서버
+<CRUD>
+	CRUD는 대부분의 컴퓨터 소프트웨어가 가지는 기본적인 데이터 처리 기능인
+	Create(생성), Read(읽기), Update(갱신), Delete(삭제)를 묶어서 일컫는 말이다.
+	사용자 인터페이스가 갖추어야 할 기능(정보의 참조/검색/갱신)을 가리키는 용어로서도 사용된다.
+	- 네이버 지식백과
+
+
+프로젝트 = > 폴더관리 = > 애플리케이션 앱
+
+JRE = java runtime environment = 자바 실행환경
+컴파일러 = 기계어
+※뭐가 안될때
+new java project로 생성된 폴더 우클릭
+-> properties => Java Build Path => 라이브러리 => JavaSE1.8인지 확인할것
+JavaSe1.8 = 안정화버전 <!-- 버그가 없음 -->
+
+<객체의 기본단위는 Class>
+자식폴더 src => 우클릭 => New => Package => Name
+    ※패키지명은 무조건 소문자
+    실습패키지명 : hello
+생성된 Package 우클릭 => New => Class
+    ※Class명의 시작은 무조건 영문대문자
+    실습클래스명 : HelloWorld
+
+public class <HelloWorld> <= 파일명
+    ※이름을 바꾸고싶으면 HelloWorld.java 우클릭 => Refactor =>ReName
+	※F2 눌러도 가능
+public static void main(String[] args) {
+}
+public(공공의)
+=> 접근제어자
+=> 누구나 접근해서 사용할 수 있다는 뜻
+
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+2022.10.05
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+<패키지 = 폴더로 관리하는 개념>
+package hello;
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("첫번째 자바 코딩!!");//print+ln(줄바꿈)
+    }
+}
+
+/*	public static void main(String[] args) {
+    <public>
+        접근제어자 | 누구나 제어 할 수 있다는 뜻(public)
+    <static>
+        메모리 공간을 의미
+    <void>
+        리턴 데이터타입(DataType)
+        void : 데이터타입이 정해지지 않음
+    <main(String[] args)>
+        main() : 메서드
+        String[] args 매개변수 <!-- [] : 배열 -->
+	
+	<작동방식>
+        : *.java = 사람이 볼수 잇는 코드
+        저장 후 컴파일(실행)을 하면 *.class가 만들어짐(= 컴퓨터가 알 수 있는 코드)
+        a. HelloWorld.java 코딩
+        b. HelloWorld.class 컴파일
+        c. Java Virtual Machine(JDK설치시 생김)이 해석
+        d. 결과 출력
+	
+	<JVM>
+        a. HelloWorld.java와 같은 이름의 HelloWorld.class 파일을 찾아
+        b. (무조건) main메서드를 찾아 첫번째로 실행시키도록 약속이 되어 있음
+        c. 자바의 Entry Point(시작점) = main메서드 = main()
+		d. 메모리 순서를 정렬시켜서 메모리 관리를 해줌
+
+ 	<컴파일 방식>
+        TopDown, 인터프리터 방식과 다르게 한번에 코드를 읽음
+        *.java 파일에 컴파일을 실행하면 기계어로 변경 => 이것을 실행하는것
+    
+    <자바의 장점>
+        1. *.java를 컴파일을 하면 OS에 맞는 파일로 변환해줌(이식성이 좋다)
+        2. 메모리를 자동으로 관리해줌
+            메모리에 객체를 올려놨을때
+            사용하지 않는 객체를 자동으로 지워줌
+        3. ※멀티스레드(MultiThread)
+            1번부터 100번까지 출력하는 실행순서가 정해져있을때
+            1번과 20번을 따로 떼어내서 실행할 수 있음
+ */
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package datatype;
+public class JB00Variable01 {
+
+	public static void main(String[] args) {
+		<1. 변수선언 | Integer 정수형>
+		int point;
+
+		<2. 변수초기값>
+		//    변수를 선언했기 때문에 Ctrl+Space로 확인해보면 메모리에 올라가 있음
+		point = 0;
+
+		<3. 변수값 할당>
+		point = 10;
+		System.out.println(point);
+		
+		<a. 숫자형>
+		int num = 100;
+		System.out.println(num);
+		
+		<b. 실수형>
+		double num2 = 100.1;
+		System.out.println(num2);
+		
+		<c. 문자열>
+		String str = "First Java";
+		System.out.println(str);
+		
+
+	}
+}
+/*
+	<변수 : 값이 변할 수 있는 데이터>
+		Java에서는 반드시 명확하게 DataType(데이터형)을 선언해줘야 함
+		※JVM은 명확한 데이터만 컴파일하게 설계됨 = 합리성을 위해
+
+	<변수 할당>
+		a. 변수선언 -> b. 초기화 -> c. 변수값 할당
+
+	<변수 선언 형식>
+	: DataType(데이터형) 변수명;
+	
+*/
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package datatype;
+
+public class JB01DataType {
+
+	public static void main(String[] args) {
+		<1. 숫자형>
+		System.out.println(2);
+		<2. 문자형>
+		System.out.println("2");
+		<3. 연산 예시>
+		System.out.println(2 + 2); // 사칙연산
+		System.out.println("2" + 2 + 2); // 문자열 결합
+//		System.out.println("2" * 2); // Error 발생 => 문자열은 *연산이 안됨
+		
+		<문자열 길이 메서드>
+		System.out.println("문자열 길이 자동계산 메서드".length());
+//		System.out.println(123456.length()); // Error 발생 => 숫자형은 문자열길이 메서드를 못씀
+	}
+
+}
+
+<!--
+    데이터 타입에 따라 계산할 수 있는 연산이 다름.
+	따라서 데이터 타입을 반드시 알아야 함
+	숫자형 문자형 데이터 타입의 핵심
+-->
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+2022.10.06
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+JAVA = 객체지향언어
+객체지향 = 각각의 부품, 레고를 생각하라
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package datatype;
+<!-- Stirng Type = 문자열 -->
+<!-- 문자열이란? 한개 이상 결합된 문자들 -->
+public class JB03String {
+	public static void main(String[] args) {
+		String str1 = "Hello World";
+		System.out.println(str1);
+			<!--(콘솔출력)
+                Hello World
+            -->
+		
+		<!-- Character(한글자만 표현) -->
+		char str2 = 'H';
+		System.out.println(str2);
+			<!--(콘솔출력)
+                H
+            -->
+		
+		<!-- 개행(줄바꿈)시 에러 발생
+		System.out.println("Hello"
+	    "World");-->
+		
+		<!-- 개행이 아니라 단순 문자열 결합		 -->
+		System.out.println("Hello "
+				+ "World");
+			<!--(콘솔출력)
+                Hello World
+            -->
+		
+    <Escape 문자>
+		\n
+        : new line = 줄바꿈
+		System.out.println("Hellow \nWorld");
+        <!--(콘솔출력)
+            Hellow 
+			World
+        -->
+		
+		\"
+		: ""겹침
+		<!-- System.out.println("Hellow "World""); 를 입력하면 에러가뜸 -->
+		System.out.println("Hellow \"World\"");
+			<!--(콘솔출력)
+                Hellow "World"
+            -->
+
+    <!-- 실습1.
+        변수명 str3, str4에 문자열 각각 Ezen Computer, Hello mcssam... 할당
+        (콘솔) str1의 문자 갯수를 구한 후 출력 | 캡쳐, 넘버링
+        (콘솔) str	2의 mcssam을 gimssam으로 바꾸는 메서드 이용 | 캡쳐,넘버링
+	-->
+		String str2 = "Ezen Computer";
+		String str3 = "mcssam";
+		System.out.println(str2.length()); //13
+		System.out.println(str3);
+		System.out.println(str3.replace("mcssam", "gimssam"));
+
+        
+    <!--실습2.
+        (변수명) name, (문자열) 영문본인이름
+        (콘솔) 안녕하세요. ???? 님 반갑습니다.
+	-->
+		String name = "Songhansol";
+		System.out.println("안녕하세요\n" + name + "님 반갑습니다.");
+	}
+}
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package operator;
+	<기본 연산자>
+	: 연산에 사용 => 연산자
+	  연산에 사용하는 값 => operand(항)
+	  수학에 연산자 우선순위 적용
+
+public class Operator {
+	public static void main(String[] args) {
+
+	<대입연산자(할당연산자) = (연산우선순위) 최하위>
+
+		int mathScore = 90;
+		System.out.println(mathScore);
+		int engScore = 100;
+		System.out.println("영어 점수는 : "+ engScore);
+
+	<산술연산자 = 사칙연산 +,1,*,/,%(나머지)>
+		int totalScore = mathScore + engScore;
+		System.out.println("두과목의 총점은 : " + totalScore);
+
+		<!-- 
+			실습 두 과목 평균 구하기.
+			(콘솔)평점은 ???입니다.
+		-->
+		double avgScore = totalScore/2;
+		System.out.println("평점은 " + avgScore + "입니다.");
+		
+		
+		<증감연산자 = 단항 연산자>
+		int gameScore = 150;
+		int gameScore2 = 200;
+		int gameScore3 = 100;
+		System.out.println(gameScore);
+		
+		<증가연산자 = 1씩 증가 (전위) => 결괏값이 바로 적용>
+		int plusScore = ++gameScore;
+		System.out.println("증가연산자(전위) : " + plusScore); //151
+		<증가연산자 = 1씩 증가(후위) => 일단 초깃값을 한번 적용후 1이 더해짐>
+		int plusScore2 = gameScore2++;
+		System.out.println("증가연산자(후위) : " + plusScore2); //200
+
+		<비교연산자 = 이항 연산자 =>(중요) 결괏값이 true, false만 나옴>
+		<!--
+		비교연산자를 이용하여 myAge의 상태를 콘솔에 출력
+		: 비교값은 40
+		--> 
+			int myAge = 30;
+			boolean tf = myAge > 40;
+			System.out.println("비교연산자 값 : " + tf); //false
+		
+		<비교연산자 정리>
+			int num1 = 5;
+			int num2 = 3;
+			boolean val = (num1 > num2);
+			System.out.println("맞니? " + val);
+			System.out.println("크거니 같니? " + (num1 >= num2));
+			System.out.println("작거나 같니? " + (num1 <= num2));
+			System.out.println("같니? " + (num1 >= num2));		
+			System.out.println("논리부정 " + (num1 != num2));
+		
+		<논리연산자>
+		//&&(논리곱 = 참&&참 => 참)
+		//||(논리합 = 참||거짓 =>참)
+		//!(논리부정 = 단항연산자 => 결괏값의 반대)
+		int data = 10;
+		int i = 2;
+		
+		<논리곱>
+			boolean value = ((data = data +10) < 10 && ((i = i + 2) < 10));
+			System.out.println("논리곱 && : " + value);
+		<논리합>
+			boolean value2 = ((data = data +10) < 10 || ((i = i + 2) < 10));
+			System.out.println("논리합 || : " + value2);
+		<논리부정>
+			System.out.println("논리부정 ! : " + !(value));
+			System.out.println("논리부정 ! : " + !(value2));
+		
+		<복합대입연산자 = 대입연산자와 다른 연산자를 조합하여 사용, 데이터 누적 | +,-,*,/,%>
+			int com1 = 5;
+			int com2 = 5;
+			com1 +=5; // com1 = com1+5; (같은 의미)
+			System.out.println("복합대입연산자 : " + com1); //10
+			com1 *= com2;
+			System.out.println("복합대입연산자 : " + com1); //50
+		
+		<삼항조건 연산자>
+			= 조건식?결과1(true)일 경우 실행:결과2(false일 경우 실행)
+
+			int age1 = 32;
+			int age2 = 27;
+		<!-- (콘솔) 비교연산자 age1이 더 클경우 -->
+		<!-- 첫번째 변수의 변수값이 더 크네요, 작네요 -->
+7		System.out.println((age1>age2)?"첫번째 변수의 변수값이 더 크네요":"첫번째 변수의 변수값이 더 작네요");
+        <!-- 주의할점
+			 삼항조건연산자의 ;는 필수구성이 아님 -->
+		<!-- ; 는 단을 끝마치는 의미로 사용하는것이고 삼항조건연산자와 서로 별개의 존재 -->
+		String text3 = age1>age2?"첫번째":"두번째";
+		System.out.println(text3);
+		
+		// char 데이터형 : 문자 1개를 저장하는 자료형
+		char ch;
+		ch = (age1>age2)?'M':'F';
+		System.out.println("성별기호는 : " + ch);
+	}
+}
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package casting(캐스팅);
+	<Casting>
+		데이터 형을(약강제) 바꾸는 것
+		Java는 데이터형을 굉장히 엄격하게 다루고 있음
+		Casting은 굉장히 ※중요하다
+
+public class JB05Casting {
+
+	public static void main(String[] args) {
+		double fl = 1.1; //실수
+		
+	<자동 형변환 / 실수가 정수형으로 바뀜>
+		double num = 1;
+		System.out.println(num); //1.0
+		<큰 구조에서 하위의 작은구조로 올때는 대부분 자동변환이 된다>
+			정수 > 실수로
+			이클립스 구조적으로 정수가 실수보다 크기 때문에
+			└─ 정수안에 실수가 포함되어있어서 자동형변환이 가능하다
+		
+		<반대로 작은 구조에서 큰 구조로 자동변환은 불가능>
+			int num2 = 1.1; // Error!!
+		
+		<이때 사용하는것이 Casting(강제형변환)>
+
+			int num3 = (int)1.1;
+			System.out.println("Casting : " + num3); // 1;
+	}
+}
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package controlstatement;
+
+	<조건문>
+	: 프로그램을 특정 '조건'에 맞게 수행 또는 '반복'하도록 제어
+
+		<if문>
+		if(조건식){ //결과값 true, false
+			실행문; //true일때만 실행
+		}
+		if(조건식){
+			실행문1;
+		}else{
+			실행문2;
+		}
+
+public class Control01IF {
+	public static void main(String[] args) {
+		<단일 if문>
+			int age = 10;
+			System.out.println(age);
+			if(age < 8) {
+				System.out.println("미취학아동!!");
+			}
+			if(age >= 8) {
+				System.out.println("입학아동!!");
+			}
+		
+		<if ~ else문>
+			int childAge = 6;
+			if(childAge >= 8) {
+				System.out.println("초등학교 입학대상");
+			}else {
+				System.out.println("미취학 대상");
+			}
+		
+		<조건문 연습>
+			boolean inStudent = true;
+			if(inStudent) {
+				System.out.println("학생");
+			}else {
+				System.out.println("학생아님");
+			}
+		
+		<실습 num 짝수면 "짝수", 홀수면 "홀수" 출력>
+		int num = 2;
+		
+		if((num%2)==0){
+			System.out.println("짝수");
+		}else {
+			System.out.println("홀수");
+		}
+	}
+
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package controlstatement;
+
+	<switch~case문>
+		조건이 여러개일때 사용
+		[형식]
+		switch(조건식){
+		case 조건값1: 실행문1;
+		break;
+		case 조건값2: 실행문2;
+		break;
+		default:조건값에 값이 없는 경우의 실행문
+		}
+
+public class Control02SwitchCase {
+
+	public static void main(String[] args) {
+		int rank = 2;
+		char medalColor = 'A';
+		switch (rank) {
+			case 1: medalColor = 'G';
+				break;
+			case 2: medalColor = 'S';
+				break;
+			case 3: medalColor = 'B';
+				break;
+		}
+		System.out.println(rank + "등 메달의 색깔은" + medalColor + "입니다.");
+		
+	<switch문 실습>
+		<!-- (변수명)medal (변수값)gold,Silver,Bronze
+			 (조건)만약 메달이 Gold면, (콘솔에)금메달입니다.
+		-->
+		int medal = 1;
+		String mdc = "메달입니다";
+		switch (medal) {
+		case 1: mdc = "금메달입니다.";
+				break;
+		case 2: mdc = "은메달입니다.";
+				break;
+		case 3: mdc = "동메달입니다.";
+				break;
+		}
+		System.out.println(medal + "등 메달의 색깔은 " + mdc);
+	}
+
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package controlstatement;
+
+	<반복문 : loop>
+	[형식]
+	while(조건식) { <!-- 조건식이 참인 경우 반복 수행 -->
+		수행문;
+		증감식; <!-- (중요)반드시 있어야함. 없으면 무한루프 -->
+
+public class Control03While {
+
+	public static void main(String[] args) {
+		<!-- 초기값 할당 -->
+		int num = 1;
+		int sum = 0;
+		while(num <= 10) { <!-- // 조건식 -->
+			sum += num;
+			<!-- (중요)증감식 -->
+			num++;
+		}
+		System.out.println("1부터 10까지의 합은 : " + sum + "입니다.");
+	}
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+2022.10.07
+<객체의 구성>
+1. 메서드
+2. 멤버변수 = Properties(속성)
+
+각 객체를 조합해서 만드는것이 <객체지향>
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package object;
+<객체 import>
+import java.util.Scanner;
+<!-- java.utll.Scanner(객체)를 수입해온다  -->
+<!-- import = 수입하다 -->
+<!-- Scanner = 객체, / 객체는 대문자로 시작 -->
+<!-- 주소값만 참조해서 사용하는 객체 -->
+
+<1. 자바는 변수선언>
+<2. 변수선언은 데이터타입이 앞에들어옴>
+<3. 객체또한 데이터타입을 선언할 수 있음>
+<이후는 아래에서시작>
+public class OJ01Scanner {
+
+	public static void main(String[] args) {
+		<!-- 키보드로 부터 입력 받기위한 클래스 = new 키로드로 객체 Scanner 생성 -->
+		<!-- 키보드로 부터 입력을 받으려면 생성시에 인자값으로 System.in => 사용자로부터 입력받기 위한 입력스트림 -->
+		<!-- 콘솔창에 입력하여 엔터를 누르면 입력됨 (데이터타입 확인) -->
+		Scanner scan = new Scanner(System.in); <!-- System 객체는 콘솔과 관련이 있음 -->
+		<!-- Scanner의 대표선수 = scan -->
+		<!-- scanner scan(선언명) = new Scanner(System.in);(생성자함수Constructor) -->
+		<!-- 생성자함수 = 해당 객체가 초기값 설정할 시 사용 -->
+		<!-- 해당 명령문의 의미 = Scanner(System.in)의 초기값과 해당 기능을 scan에 위임함 -->
+		<!-- System.out.println(scan); -->
+		<!-- ▲ 확인해보면 scan 에는 모든값이아니라 '참조주소값'만 지니고 있음 -->
+		
+	<a. 정수값 입력받기>
+		String str1 = "정수를 입력하세요";
+		System.out.println(str1);
+		int num = scan.nextInt(); <!-- ◀ 이부분 -->
+		System.out.println(num);
+		
+	<b. 문자 입력받기>
+		String msg = "문자를 입력하세요";
+		System.out.println(msg);
+		String name = scan.next(); <!-- ◀ 이부분 -->
+		System.out.println(name);
+	}
+
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package object;
+
+import java.util.Scanner;
+
+public class OJ01SCanner2Exe {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("질문 1. 이름?");
+		String name = scan.next();
+
+		System.out.println("질문 2. 영어?");
+		int num = scan.nextInt();
+
+		System.out.println(name + " : " + num + "점");
+		
+		String question = "이름은 무엇인가요?";
+		System.out.println(question);
+		String name = scan.next();
+		
+		String question2 = "영어점수 입력";
+		System.out.println(question2);
+		int engScore = scan.nextInt();
+		System.out.println(name + " : " + engScore);
+	}
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package controlstatement;
+
+import java.util.Scanner;
+
+public class Control02SwitchCase2Exe {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		<!--실습.
+			스캐너 객체를 이용하여 
+			(콘솔) switch~case문 이용
+			일수를 알고 싶은 달을 입력하세요(정수형)
+			{ 10 }
+			10월은 ??일까지 입니다.
+			소스캡쳐 / 넘버링
+			1,3,5,7,8,10,12 = 31일
+			2월 = 28일
+			4,6,9,11 = 30일
+			1~12이외의 숫자 입력시 = 다시입력해주세요
+		-->
+		
+		System.out.println("일수를 알고 싶은 달을 입력하세요");
+//		int Month = scan.nextInt(); 
+//		String stringtext = "~일 입니다.";
+//		switch (Month) {
+	//		case 1:case 3:case 5:case 7:case 8:case 10:case 12:
+	//			stringtext = Month + "월의 일수는 31일 입니다.";
+	//			break;
+	//		case 4:case 6:case 9:case 11:
+	//			stringtext = Month + "월의 일수는 30일 입니다.";
+	//			break;
+	//		case 2:
+	//			stringtext = Month +"월의 일수는 28일 입니다";
+	//			break;
+	//		default: 
+	//			stringtext = "다시 입력해주세요.";
+	//			break;
+//		}
+//		System.out.println(stringtext);
+		int month = scan.nextInt();
+		int day;
+		switch (month) {
+			case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+				day = 31;
+				break;
+			case 4: case 6: case 9: case 11:
+				day = 30;
+				break;
+			case 2:
+				day = 28;
+				break;
+			// 범위에 없는 경우
+			default:
+				day = 0;
+				System.out.println("다시 입력해주세요.");
+				break;
+			}
+		System.out.println(month + "월은 " + day + "일까지 입니다.");
+	}
+	
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+<else if>
+package controlstatement;
+
+import java.util.Scanner;
+
+public class Control04ElseIf {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("점수입력");
+		int num = scan. nextInt();
+		if(num>=90) {
+			System.out.println("A");
+		}else if(num>=80) {
+			System.out.println("B");
+		}else if(num>=70) {
+			System.out.println("C");
+		}else if(num>=60) {
+			System.out.println("D");
+		}else {
+			System.out.println("F");
+		}
+	}		
+}
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package controlstatement;
+/*
+
+	For문
+	:가장 많이 사용되는 반복문
+	[형식]
+	for(초기식; 조건식; 증감식;){
+		실행문;
+	}
+
+*/
+public class Control05For {
+	public static void main(String[] args) {
+	<1. 기본 for문>
+		int i,j,k;
+		for(i=0; i<5; i++) {
+			System.out.println("i for문 반복횟수 : " + i);	
+		}
+		<!-- 조건이 false 시 {}코드블록을 커서가 빠져나옴 -->
+		System.out.println("i for문 종료 : " + i);
+
+		
+	<2. for문 예시>
+		int num = 0;
+		int sum = 0;
+		<!-- (콘솔) 1부터 10까지 더하기 방법 A -->
+		for(num=0; num<=10; num++) {		
+			sum += num;
+		}
+		System.out.println(sum);
+		<!-- (콘솔) 1부터 10까지 더하기 방법 B -->
+		int num2 = 0;
+		int sum2 = 0;
+		for(num2=0; sum2<50 ; num2++) {
+			sum2 += num2;
+		}
+		System.out.println(sum2);
+		System.out.println("num2의 반복횟수는 : " + (num2-1));
+	
+		
+	<3. continue문>
+		  <!-- 반복문과 함께 사용 -->
+		  <!-- 반복문 안에서 continue문을 만나면 [다음실행문] 실행 안함 -->
+		  <!-- for문의 처음으로 돌아가 (증감식)수행 -->
+		
+		int total = 0;
+		int num3 = 0;
+		for(num3=0; num3<=100; num3++) {
+			<!-- num3가 100이 될때까지 num3++해라  -->
+			if(num3%2 == 0) {
+				continue;
+				<!-- num3가 짝수인 경우 커서가 다시 num3++로 이동 -->
+			}
+			<!-- total += num3; num3 값이 홀수인 경우에만 실행 -->
+		}
+		System.out.println("1부터 100까지의 홀수의 합 : " + total + "입니다.");
+		
+	
+	<4. 중첩 for문>
+		int dan; <!-- 단수 -->
+		int times; <!-- 승수 -->
+		
+		for(dan = 2; dan <= 9; dan++) { <!-- 바깥 for문 => 단수 -->
+			System.out.println(dan+"단");
+			for(times = 1; times <= 9; times++) { <!-- 안쪽 for문 => 승수 -->
+				System.out.println(dan + "X" + times + " = " + dan*times);
+			}
+			
+		}
+<for문 기타형식>
+	<a. 초기식 생략>
+ 		<!-- 이전에 다른곳에서 변수가 초기화되어 있을때 -->
+		<!-- for(; i<5; i++ ) {실행문;} -->
+		
+	 <b. 조건식 생략>
+		 <!-- 어떤 연산의 결괏값이 나왓을때 for문의 반복수행을 멈추려고 할때 -->
+		 <!-- if 문과 함께 사용 -->
+		int sum5 = 0;
+		int i5 = 0;
+		for(i5=0; ; i5++) {
+			System.out.println(i5);
+			if(i5>=5) break;
+		}
+		
+	 <c. 증감식 생략>
+		 <!-- 증감식 연산이 복잡할때 -->
+		 <!-- for문 안에 코딩 -->
+		for(i=0;i<5; ) {
+			i = (++i);
+		}
+		
+	 <d. 모두 생략>
+		 <!-- 무한루프 = 서버실행시 -->
+		for( ; ; ) {
+			
+		}
+	}
+}	
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package basic;
+
+import java.util.Scanner;
+
+<!--
+	(조건) 정수형 동적데이터 1개를 입력받아,
+	입력받은 데이터가 19세 이상 45세 미만이면 "서류심사통과" 그렇지 않으면 "서류심사보류" 출력
+	(콘솔) "서류심사통과","서류심사보류"
+	(결과) 넘버링
+-->
+public class JE002if {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int age = 0;
+		if((age>=19) && (age < 45)) {
+			System>.out.println("서류심사 통과");
+		}else {
+			System.out.print</45>ln("서류심사 보류");
+		}
+	}
+
+}
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package basic;
+
+import java.util.Scanner;
+
+public class JE002if2 {
+<!--
+   (조건) 정수형 동적데이터 3개를 입력(국어,영어,수학점수)받아, 
+   입력받은 데이터가 3과목 평균 80점이상이고, 각각 점수가 60점 이상이면
+   "시험통과" 그렇지 않으면 "재시험" 출력
+   (콘솔) "시험통과","재시험"
+   (결과) 넘버링
+-->
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+	<!-- 직접한것
+		System.out.println("국어점수는?");
+		int lngScore = scan.nextInt();
+		System.out.println("수학점수는?");
+		int MathScore = scan.nextInt();;
+		System.out.println("영어점수는?");
+		int engScore = scan.nextInt();;
+		int total = (lngScore + MathScore + engScore)/3;
+		if((total>=80) && (lngScore>=60) && (MathScore>=60) && (engScore>=60)) {
+			System.out.println("시험통과");
+		}else {
+			System.out.println("재시험");
+		}
+	-->
+	<!-- 선생님 견본 -->
+		System.out.println("국어점수는?");
+		int kor = scan.nextInt();
+		System.out.println("수학점수는?");
+		int math = scan.nextInt();;
+		System.out.println("영어점수는?");
+		int eng = scan.nextInt();
+		
+		int avg = (kor + eng + math)/3;
+		System.out.println("3과목 평균값" + avg);
+		boolean result = (kor >= 60) && (eng>=60) && (math >= 60);
+		System.out.println("60점 이상 유무 : " + result);
+		
+	      if(avg >= 80 && result) {
+	          System.out.println("시험통과~~");
+	       }else {
+	          System.out.println("재시험!!");
+	       }
+	}
+}
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package basic;
+
+import java.util.Scanner;
+
+public class JE003SwitchCase {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+<!--
+	(조건) 정수형 동적데이터 1개를 입력받아, 
+	입력받은 데이터 홀수이면 홀수입니다., 짝수이면, 짝수입니다.
+	출력
+	(콘솔) "홀수","짝수"
+	(결과) 넘버링
+-->
+		System.out.println("숫자입력");
+		int Score = scan.nextInt();
+		switch(Score%2) {
+			case 0:
+				System.out.println("짝수");
+				break;
+			case 1:
+				System.out.println("홀수");
+				break;
+			default:
+				System.out.println("다시입력해주세요");
+		}
+<!--
+   (조건) 문자형 동적데이터 3개를 입력받아, 
+   입력받은 데이터(서울,경기도,부산) (서울,경기도,부산)이면 지역번호가 ???입니다.
+   (콘솔) ???의 지역번호는 ???입니다.
+   (결과) 넘버링
+-->	
+		
+		System.out.println("지역은?");
+		String area = scan.next();
+		System.out.println(area);
+		switch(area) {
+		case "서울":
+			System.out.println(area + "의 지역번호는 02입니다");
+
+			break;
+		case "부산":
+			System.out.println(area + "의 지역번호는 031입니다");
+
+			break;
+		case "경기":
+			System.out.println(area + "의 지역번호는 041입니다");
+
+			break;
+			default:
+				System.out.println("다시입력");
+		}
+		
+		/*
+		System.out.println("서울,경기도,부산 중 하나 입력!!");
+	      String area = scan.next(); // 문자열 받기
+	      String areaNum = "00";
+	      switch(area){
+	         case "서울":
+	            areaNum = "02";
+	            break;
+	         case "경기도":
+	            areaNum = "031";
+	            break;
+	         case "부산":
+	            areaNum ="051";
+	            break;
+	         default:
+	            System.out.println("다시입력");
+	      }
+	      System.out.println(area + "의 지역번호는 " + areaNum + "입니다.");
+		*/	
+	}
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+2022.10.11
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+java project
+<Chap02>
+	package
+	<object>
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package object;
+/*
+
+	<객체지향 프로그래밍>
+	: 객체 = 각각의 물체
+		예시) 핸드폰, 자동차, 시계 건물 등등
+		객체를 정의하고 객체 간의 협력을 프로그래밍 하는것
+	
+	각자의 모듈화된 부품을 조합해서 하나의 물건을 만드는것을 객체지향이라고 함
+	: 예시)시침, 분침, 초침, 시계판 => 시계
+	
+	<절차지향 프로그래밍>
+	: 순서대로 일어나는 일을 시간순으로 프로그래밍 하는것
+	
+	<클래스>
+		객체지향 프로그래밍의 기반이 됨 => 객체의 속성과 기능을 코드로 구현하는 것
+		객체를 클래스로 구현 => 자바
+		클래스의 소속 => 속성,메서드
+		클래스의 소속의 속성 = '멤버변수'라고 함
+		클래스 소속의 메서드 = '메서드'라고 함
+		
+	[형식]
+	(접근제어자) class 클래스이름 {
+		멤버변수;
+		메서드
+	}
+*/
+public class Oop01Class {
+	클래스명은 파일명과 같아야함 | <반드시 대문자로 시작>
+	=> 관습적 <개발자들간의 약속>
+}
+	
+<클래스 만들기>
+	멤버 변수와 메서드를 만드는것	
+	
+	<a. 멤버변수>
+			<속성(Property)> = <특성(Attribute)>과 같은 용어
+	
+	int studentId;
+	String studentName;
+	int grade;
+	String address;
+	
+	String은 기본 데이터타입이 아님, <객체>라고 생각할것
+	
+	
+	<b. 메서드() = 멤버함수>
+		클래스의 기능을 구현 => <동사>역활
+     	클래스 내부에서 멤버 변수를 사용, 클래스의 기능을 구현
+
+	public void showStudentInfo() {
+		System.out.println(studentName + " : " + address);
+	}
+
+ 	<패키지>
+ 		클래스 파일의 묶음, 프로젝트 하위에 물리적 디렉토리 생성.
+ 		즉, <계층구조>를 가짐
+ 		(주의) 클래스 이름이 같아도 패키지 이름이 다르면 전혀 다른 클래스임
+ 		(패키지 풀네임) 패키지명.클래스명 | object.Oop01Class
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package object;
+
+<메서드>
+	클래스의 기능을 구현
+	함수의 한 종류
+	=> 하나의 [기능]을 수행하는 코드
+	=> 메서드명, 입력값(=매개변수), 리턴값(결괏값)을 가짐
+	
+	<return>
+	return의 첫번째 기능 = <호출하는곳>으로 반환(※중요:호출하는곳)
+	=> 호출하는곳으로 return값을 반환
+ 		
+<!--
+	[형식1] = 반환값이 있는것
+ 	public[=접근제어자] int[=함수반환형] add[=함수명](int num1, int num2)[=매개변수]{
+ 		실행코드1;
+ 		실행코드2
+ 		int result;
+ 		return[=반환키워드] : 호출시 반환해라!!(호출 안하면 메모리에 상주)
+ 		return result
+ 	}
+-->
+ 	
+ 	예시)
+ 	public int add(int num1, int num2){
+ 		실행코드1;
+ 		실행코드2;
+ 		int result;
+ 		result = num1+ num2;
+ 		return result;
+ 		
+ 		
+ 	}
+ 	
+<!--
+[형식2] = 반환값이 없는것 => 예약어 void
+ 	public[=접근제어자] void[=함수반환형] print[=함수명](String name)[=매개변수]{
+ 		실행코드1;
+ 		실행코드2
+ 		System.out.println(name + "님 안녕하세요~~~");
+ 		return;
+ 	}
+-->
+	예시)
+	public void print(String name){
+ 		실행코드1;
+ 		실행코드2;
+ 		System.out.println(name + "님 안녕하세요~~~");
+ 		return; // 반환데이터값이 없는것
+ 	}
+ 	
+public class Oop02Method {
+
+	public static void main(String[] args) {
+		<!-- 매개변수 있는 함수 호출 -->
+		System.out.println("100 + 80 = " + add(100, 80) + "입니다");
+
+	}
+	<!-- 리턴값이 있는 add 메서드 코딩 -->
+	public static int add(int n1, int n2) {
+		int result = n1 + n2;
+		return result;
+	}
+	
+	
+<중요>
+	<메서드 호출 로직>
+	<a>
+		가장먼저 main()메서드 실행
+	<b>
+		add()메서드 호출 => 매개변수 같이 넘겨줌
+	<c>
+		add()메서드에서 넘겨진 매개변수 값을 할당후에 결괏값을 result 변수에 할당
+	<d>
+		return = 호출한 곳 main()에 결괏값 반환
+	<e>
+		실행문 코드에 따라 결과 실행
+	
+	#. 메서드 메모리공간 = 스택에 메서드 공간
+	##. 메서드 수행이 끝난후 = 자동으로 메모리 공간에서 사라짐
+	###. a(),b(),c() 호출시 c(),b(),a()순서로 메모리 공간에서 자동해제
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package object;
+/*
+	<클래스와 인스턴스>
+		만든 클래스를 사용하는 것
+*/
+public class Oop03ClassInstance {
+
+	<멤버변수 [전역변수]>
+	int studentId;
+	String studentName;
+	int grade;
+	String address;
+	
+	<메서드>
+	값을 가져오는 getter => 학생 이름을 반환하는 메서드
+	public String getStudentName() { //getter 메서드
+		// 메서드앞에 get이 붙으면 getter계열 메서드 [값을 가져오다]
+		// setter 메서드와 세트
+		return studentName;
+		
+	}
+	값을 바꾸는 setter => 학생 이름을 바꾸는 메서드
+	public void setStudentName(String name) { //setter 메서드
+		메서드앞에 set이 붙으면 set계열 메서드 [값을 변경,세팅]
+		getter 메서드와 세트
+		studentName = name;
+	}
+
+
+
+	<EntryPoint>
+		<!--
+		# main() => JVM이 프로그램을 시작하기 위해 처음 호출하는 메서드 = EntryPoint
+		  => main()가 모든 클래스에 있는것은 아님
+		# 클래스 내부에 위치하지만 해당 클래스의 메서드는 아님
+		-->
+	public static void main(String[] args) {
+		위에서 만든 클래스를 참조변수명 studentSong에 생성, 할당하세요
+		Oop03ClassInstance studentSong = new Oop03ClassInstance();
+							<!-- ▲studentSong[인스턴스 or 참조변수명] -->
+		<중요>
+			클래스를 사용하려면 <new>키워드로 <반드시 생성하여 사용>해야함(<메모리영역 할당>)
+		 	<인스턴스>를 할당 받은 변수명을 Reference 또는 참조변수 라고 함
+			객체는 heap(동적메모리) 공간에 할당
+		
+						
+		
+		System.out.println(studentSong); // 값이 미할당되어 있음
+		studentSong.setStudentName("한솔"); //값 할당
+		System.out.println(studentSong.getStudentName());
+		
+
+	}
+
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+<!--
+ 	실습. 인스턴스 생성하여 사용하기
+	기본 클래스를 만드세요
+	클래스명 student
+	
+	멤버변수
+	정수형 studentId
+	문자형 studentName
+	정수형 grade
+	문자형 address
+	
+	메서드 = 각각의 멤버변수 모두를 setter,getter로 만들기
+	메서드명은 관습에 따르세요
+-->
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package object;
+
+public class Student {
+<멤버변수>
+	int studentId;
+	String studentName;
+	int grade;
+	String address;
+	
+<!-- 메서드 = setter, getter -->	
+	<!-- studentId -->
+	public void setStudentId(int id) {
+		studentId = id;
+	}
+	public int getStudentId() {
+		return studentId;
+	}
+	<!-- studentName -->
+	public void setStudentName(String name) {
+		studentName = name;
+	}
+	public String getStudentName() {
+		return studentName;
+	}
+	<!-- grade -->
+	public void setGrade(int pgrade) {
+		grade = pgrade;
+	}
+	public int getGrade() {
+		return grade;
+	}
+	<!-- address -->
+	public void setAddress(String paddress) {
+		address = paddress;
+	}
+	public String getAddress() {
+		return address;
+	}
+	
+}
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package object;
+
+public class Oop04ClassInstanceTest {
+	
+	public static void main(String[] args) {
+	<Student클래스 생성 | 참조변수명 student1>
+		Student student1 = new Student();
+
+	<!-- [방법1] -->
+		student1.studentName = "이젠노원";
+		System.out.println(student1.getStudentName());
+		
+	<!-- // [방법2] -->
+		student1.setGrade(3);
+		System.out.println("grade값은 : " + student1.getGrade());
+		
+		<!-- 학생의 ID : 100 -->
+		<!-- 학생의 ID2 : 100 -->
+		student1.studentId = 100;
+		System.out.println("학생의 아이디는 : " + student1.getStudentId());;
+		int stdt = student1.getStudentId();  <!-- 재할당 -->
+		<!-- System.out.println("학생의 아이디는 : " + stdt); -->
+		
+	
+	<!--
+		실습. student2로 두번째 인스턴스 생성
+	    모든 멤버변수값 할당하여 출력
+	-->
+		Student student2 = new Student();
+		
+		student2.setStudentId(100);
+		int stu2id = student2.getStudentId();
+		student2.setStudentName("송한솔");
+		String stu2name = student2.getStudentName();
+		student2.setAddress("중랑구 망우동");
+		String stu2address = student2.getAddress();
+		student2.setGrade(29);
+		int stu2grade = student2.getGrade();
+		
+
+		System.out.println("==========================");
+		System.out.println("id는 "+ student2.getStudentId() + "입니다");
+		System.out.println("이름은 " + stu2name + "입니다");
+		System.out.println("학년은 " + stu2grade + "입니다");
+		System.out.println("주소는 " + stu2address + "입니다");
+				
+	}
+}
+<!--(콘솔출력)
+	==========================
+	id는 100입니다
+	이름은 송한솔입니다
+	학년은 29입니다
+	주소는 중랑구 망우동입니다
+-->
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+<아래 Excise2 와 연동>
+
+package object;
+
+public class Jumun {
+	int jumunnum;
+	String jumunId;
+	String jumunName;
+	String jumunDate;
+	String name;
+	String jumunNo;
+	String address;
+	// getter, setter 자동생성	
+	// 우클릭 - Source - generate getters and setters
+	
+	public int getJumunnum() {
+		return jumunnum;
+	}
+	public void setJumunnum(int jumunnum) {
+		this.jumunnum = jumunnum;
+	}
+	public String getJumunId() {
+		return jumunId;
+	}
+	public void setJumunId(String jumunId) {
+		this.jumunId = jumunId;
+	}
+	public String getJumunDate() {
+		return jumunDate;
+	}
+	public void setJumunDate(String jumunDate) {
+		this.jumunDate = jumunDate;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getJumunNo() {
+		return jumunNo;
+	}
+	public void setJumunNo(String jumunNo) {
+		this.jumunNo = jumunNo;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getJumunName() {
+		return jumunName;
+	}
+	public void setJumunName(String jumunName) {
+		this.jumunName = jumunName;
+	}
+	<!-- 자바에서 this를 한글로 치환하면 -->
+	<!-- '여기의' 혹은 '우리의'로 해석할 수 있음 -->
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package object;
+
+public class Oop05Excise2 {
+
+	public static void main(String[] args) {
+		Jumun PP = new Jumun();
+		PP.setJumunnum(20221011);
+		PP.setJumunId("HANSOL");
+		PP.setName("송한솔");
+		PP.setJumunDate("2022년 10월 11일");
+		PP.setJumunNo("MC222212");
+		PP.setAddress("서울시 성동구 성수동");
+		System.out.println("주문 " + "번호 : " + PP.getJumunnum());		
+		System.out.println("주문 " + "아이디 : " + PP.getJumunId());		
+		System.out.println("주문 " + "날짜 : " + PP.getJumunDate());		
+		System.out.println("주문자 " + "이름 : " + PP.getName());		
+		System.out.println("배송 " + "주소 : " + PP.getAddress());		
+	}
+}
+<!--(콘솔출력)
+	주문 번호 : 20221011
+	주문 아이디 : HANSOL
+	주문 날짜 : 2022년 10월 11일
+	주문자 이름 : 송한솔
+	배송 주소 : 서울시 성동구 성수동
+-->
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package object;
+
+public class Person {
+	
+<생성자>
+	
+	<a. 디폴트 생성자>
+	public Person() {}
+
+<b. 생성자 만들기>
+	public Person(String name) {
+		this.name = name;
+	}
+	String name;
+	int height;
+	double weight;
+	char gender;
+	boolean married;
+	
+	<!-- setter, getter -->
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getHeight() {
+		return height;
+	}
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	public double getWeight() {
+		return weight;
+	}
+	public void setWeight(double weight) {
+		this.weight = weight;
+	}
+	public char getGender() {
+		return gender;
+	}
+	public void setGender(char gender) {
+		this.gender = gender;
+	}
+	public boolean isMarried() {
+		return married;
+	}
+	public void setMarried(boolean married) {
+		this.married = married;
+	}
+
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package object;
+
+	<생성자(Constructor)>
+		클래스를 생성할때만 호출, 생성자 이름은 클래스 이름과 같고, 반환값은 없음
+		(주된기능) 멤버변수의 초기값 세팅, 상수(constant)를 초기화할때도 사용
+		<a. 디폴트 생성자>
+			생성자가 없는 클래스는 컴파일시 자동으로 자바 컴파일러가 만들어줌
+			생성자 명 = 클래스명과 동일
+		<b. 생성자 만들기>
+			매개 변수의 값으로 클래스 생성시 초기화 해주고 싶은 멤버 변수를 코딩해 줌 
+
+<!-- [사용클래스] Person -->
+public class Oop06Constructor {
+
+	public static void main(String[] args) {
+		Person person1 = new Person();
+		person1.setHeight(174);
+		System.out.println(person1.getHeight());
+		
+		Person person1 = new Person("이젠컴");
+		System.out.println(person1.name);
+	}
+
+}
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package object;
+
+public class OverloadSample {
+<멤버변수>
+	int studentId;
+	String name;
+	double height;
+	double weight;
+<!-- 실습.
+     디폴트 생성자, 이름생성자, 멤버변수 4개 모두 초기화
+-->
+<a. 디폴트 생성자 초기화>
+	public OverloadSample() {}
+	
+<b. 생성자 오버로드>
+	public image.png(String name) {
+		this.name = name;
+	}
+<매개변수 4개를 모두 포함한 생성자>
+	public OverloadSample(int studentId, String name, double height, double weight) {
+		this.studentId = studentId;
+		this.name = name;
+		this.height = height;
+		this.weight = weight;
+	}
+	
+	//setter, getter
+	public int getStudentId() {
+		return studentId;
+	}
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public double getHeight() {
+		return height;
+	}
+	public void setHeight(double height) {
+		this.height = height;
+	}
+	public double getWeight() {
+		return weight;
+	}
+	public void setWeight(double weight) {
+		this.weight = weight;
+	}
+}
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package object;
+	<오버로드>
+		객체지향에서 메서드의 이름은 같고, 매개변수가 다른 경우>
+	<생성자 오버로드>
+		생성자 2개 이상 제공되는 경우임
+		필요에 따라 매개변수가 다른 생성자여러개를 만들 수 있음
+		[장점] 클래스에 생성자를 여러개 제공하면, 원하는 생성자를 선택해 초기값을 편리하게 사용가능
+
+public class Oop06_constructor2Overload {
+
+	public static void main(String[] args) {
+		<!-- public OverloadSample(int studentId, String name, double height, double weight) {}-->
+									<!-- 기입한 순서대로 배열기입한다고 생각하면 됨 -->
+		OverloadSample PP1 = new OverloadSample(100, "송한솔", 100, 200);
+		System.out.println(PP1.getStudentId());
+		System.out.println(PP1.getName());
+		System.out.println(PP1.getWeight());
+		System.out.println(PP1.getHeight());
+		<!--(콘솔출력)
+			100
+			송한솔
+			200.0
+			100.0
+		-->
+		PP1.setStudentId(200); <!-- 재할당 -->
+		System.out.println(PP1.studentId());
+		<!--(콘솔출력)
+			200
+			
+		-->
+		OverloadSample PP2 = new OverloadSample("김수재");
+		<!-- OverloadSample에 public OverloadSample(String name) {
+			this.name = name;
+			이것이 입력되어 있어서 따로 할당가능
+		 -->
+		System.out.println(PP2.getName());
+	<!-- get빼는법
+		this.studentId = studentId;
+		this.name = name;
+		this.height = height;
+		this.weight = weight;
+		───────────────────────────
+		=>
+		System.out.println(PP1.studentId);
+		System.out.println(PP1.name);
+		System.out.println(PP1.weight);
+		System.out.println(PP1.height);
+	-->
+	
+	}
+}
+
+
+
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+2022.10.12
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package object;
+
+	<This 예약어>
+		자신의 메모리 주소를 가르키는 키워드
+		=> 즉, 생성된 인스턴스 스스로를 가르키는 예약어
+		
+	<인스턴스 참조 변수>
+		인스턴스가 가르키는 변수.
+		<중요>
+		참조변수 출력시 = 문자열 메모리 주소값이 나옴
+		[형식]
+		패키지명.클래스이름@메모리주소
+
+
+class Birthday {
+	<!-- 멤버변수 -->
+	int day;
+	int month;
+	int year;
+	<!-- 메서드 = 멤버변수 year - setter, getter 코딩 -->
+	public void setYear(int year) {
+		this.year = year;
+	}
+	public int getYear() {
+		return year;
+	}
+	<!-- this 출력 메서드 -->
+	public void printThis() {
+		System.out.println(this);
+	}
+	<!-- ▲ 실행은 메인메서드에서만 되므로 사용불가능함 -->
+}
+public class Oop07This {
+
+	public static void main(String[] args) {
+		Birthday pp = new Birthday();
+		pp.setYear(1994);
+		int result = pp.getYear();
+		
+		
+		System.out.println(pp.getYear()); 
+		System.out.println(result);
+		System.out.println(pp);
+		pp.printThis();
+		<!--(콘솔출력)
+			1994
+			1994
+			object.Birthday@123a439b
+			object.Birthday@123a439b
+		-->
+	}
+
+}
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package object;
+
+public class Basic {
+	<!-- 멤버변수 -->
+	int studentID;
+	String studentName;
+	<!-- 같은 패키지안에 있을때 클래스끼리 서로 사용가능 -->
+	Subject korean;
+	Subject math;
+
+	public int getStudentID() {
+		return studentID;
+	}
+	public void setStudentID(int studentID) {
+		this.studentID = studentID;
+	}
+	public String getStudentName() {
+		return studentName;
+	}
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+	public Subject getKorean() {
+		return korean;
+	}
+	public void setKorean(Subject korean) {
+		this.korean = korean;
+	}
+	public Subject getMath() {
+		return math;
+	}
+	public void setMath(Subject math) {
+		this.math = math;
+	}
+}
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package object;
+
+public class Subject {
+	String subjectName;
+	int scorePoint;
+	
+	public String getSubjectName() {
+		return subjectName;
+	}
+	public void setSubjectName(String subjectName) {
+		this.subjectName = subjectName;
+	}
+	public int getScorePoint() {
+		return scorePoint;
+	}
+	public void setScorePoint(int scorePoint) {
+		this.scorePoint = scorePoint;
+	}	
+}
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package object;
+
+	<참조자료형>
+		크기 정해진 기본 자료형 = int, char, double....
+		클래스를 자료형으로 선언 = 참조자료형
+		(참조)String = JDK에서 제공하는 클래스
+		
+		<결론>
+		참조자료형도 일반 변수처럼 선언하여 똑같이 사용가능하다
+
+
+
+public class Oop08ReferenceDataType {
+
+	public static void main(String[] args) {
+		// Basic, Subject 객체 각각 생성 사용
+		Basic student = new Basic();
+		Subject subject = new Subje"ct(");
+		
+		<!-- 실습1. studentID를 12345로 세팅하여 (콘솔)출력 -->
+		student.setStudentID(12345);
+		System.out.println(student.getStudentID());
+		<!-- Basic에 잇는 Subject 멤버변수 사용 -->
+		subject.setSubjectName("math");
+		System.out.println(subject.getSubjectName());
+		
+	}
+
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package object;
+
+public class Student {
+	//멤버변수
+	int studentId;
+	// ▼ 접근제어자 변경
+	private String studentName;
+	int grade;
+	String address;
+	
+	//메서드 = setter, getter
+	
+	public void setStudentId(int id) {
+		studentId = id;
+	}
+	public int getStudentId() {
+		return studentId;
+	}
+	
+	public void setStudentName(String name) {
+		studentName = name;
+	}
+	public String getStudentName() {
+		return studentName;
+	}
+	
+	public void setGrade(int pgrade) {
+		grade = pgrade;
+	}
+	public int getGrade() {
+		return grade;
+	}
+	
+	public void setAddress(String paddress) {
+		address = paddress;
+	}
+	public String getAddress() {
+		return address;
+	}	
+}
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package object;
+
+	<정보은닉 = 캡슐화 =  객체지향 프로그래밍의 중요한 특징>
+		접근제어자 = public, private, protected
+		a. public => 변수, 메서드가 외부 클래스에서도 접근 가능, 사용 가능
+부		b. private => 변수, 메서드가 외부클래스에서 사용 불가능
+		c. protected => 같은 패키지내와 상속 관계에 있는 클래스에서만 접근가능
+		
+	private 사용이유
+		외부에서 접근을 막아, 데이터르 외부에서 바꾸지 못하도록 (데이터 보안을 위해)
+	<결론>
+	멤버변수만 private로 선언
+	setter,getter는 public으로 선언하여 사용하면 됨
+
+
+// [사용클래스] Student.java
+public class Oop09Private {
+
+	public static void main(String[] args) {		
+		Student stdt1 = new Student();
+//		stdt1.studentName("김명철"); // 접근불가 에러 =>private시켰기때문
+		stdt1.setStudentName("김명철");
+		System.out.println(stdt1.getStudentName());
+		<!-- 게터와 세터는 아직 public상태라 접근가능한것 -->
+	}
+
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package object;
+/*
+	static 변수 테스트
+*/
+public class Oop10Static2Test {
+
+	public static void main(String[] args) {
+		<!-- 인스턴스 생성 -->
+		Oop10Static song = new Oop10Static();
+		song.setStudentName("송수재");
+		System.out.println(song.serialNum);
+		System.out.println(song.getStudentName());
+		System.out.println("인스턴스의 주소값 : " + song);
+		song.serialNum++;
+		System.out.println(song.serialNum);
+		System.out.println(song.serialNum);
+		System.out.println(song.serialNum);
+		System.out.println(song.serialNum);
+
+		<!--(콘솔출력)
+			1000
+			송수재
+			인스턴스의 주소값 : object.Oop10Static@123a439b
+			1001
+			1001
+			1001
+			1001
+		-->
+	}
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package object;
+/*
+	학번생성하기
+	학생이 생성될때마다 학번을 자동으로 부여하는 프로그램
+*/
+public class Oop10Static3Bean {
+	public static int serialNum = 1000;
+	
+	//멤버 변수
+	int studentId;
+	String studentName;
+	int grade;
+	String address;
+	
+	// 생성자
+	public Oop10Static3Bean() {
+
+		serialNum++;
+		studentId = serialNum;
+	}
+	// setter, getter
+	//static setter, getter	
+	public static int getSerialNum() {
+		return serialNum;
+	}
+	public static void setSerialNum(int serialNum) {
+		Oop10Static3Bean.serialNum = serialNum;
+	}
+	public int getStudentId() {
+		return studentId;
+	}
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
+	}
+	public String getStudentName() {
+		return studentName;
+	}
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+}
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package object;
+   <학번 자동생성 테스트>
+
+public class Oop10Static4BeanTest {
+
+   public static void main(String[] args) {
+      <!-- 1. 첫번째 학생 생성 -->
+      Oop10Static3Bean stdt1 = new Oop10Static3Bean();
+      stdt1.setStudentName("KIM MS");
+      System.out.println(stdt1.getStudentName() + " : 학번 : " + stdt1.studendId);
+      System.out.println("======================================================");
+
+      <!-- 2. 두번째 학생 생성 -->
+      Oop10Static3Bean stdt2 = new Oop10Static3Bean();
+      stdt2.setStudentName("KIM MJ");
+      System.out.println(stdt2.getStudentName() + " : 학번 : " + stdt2.studendId);
+      System.out.println("======================================================");
+      
+      <!-- 3. 세번째 학생 생성 -->
+      Oop10Static3Bean stdt3 = new Oop10Static3Bean();
+      stdt3.setStudentName("LEE GO");
+      System.out.println(stdt3.getStudentName() + " : 학번 : " + stdt3.studendId);
+   }
+
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package array;
+
+	<배열(Array)>
+		변수 => 자료 한개만 저장되는 공간
+		배열 => 같은 변수명에 (자료형)이 같은 여러개의 데이터가 저장
+			자료형 = array(배열형) : 자료구조의 가장 기본
+	<배열선언 방식>
+	자료형[] 배열명 = new 자료형[배열갯수];
+	자료형 배열명[] = new 자료형[배열갯수];
+	ex)
+	int[] arr = new int[10];
+	// int 형으로 4byte짜리 10개 배열을 메모리에 할당해라,
+	// 메모리번짓수(index번호)는 0부터 시작
+
+public class Array01ArrayBasic {
+
+	public static void main(String[] args) {
+		<1. 배열선언 | 초기화 동시에 배열에 값 할당 => new키워드 생략가능>
+
+		
+		int[] arr = {101,102,103,104};
+		System.out.println(arr[0]);
+		System.out.println(arr[1]);
+		System.out.println(arr[2]);
+		System.out.println(arr[3]);
+		
+		<1-1 배열 초기화 할당>
+		
+		int[] num = new int[] {1,2,3,4,5,6,7,8,9,10};
+		System.out.println(num[0]);
+		int i = 0;
+		System.out.println("===========for문 배열요소 array");
+		for(i=0;i<num.length;i++) {
+			System.out.println(num[i] + ". 배열의 개수는" + i + "개 입니다.");
+		}
+		
+		<2. 배열요소(item) 길이만큼 출력>
+		double[] data = new double[5];
+		data[0] = 10.0;
+		data[1] = 20.0;
+		data[2] = 30.0;
+		data[3] = 40.0;
+		data[4] = 50.0;
+		
+		
+		System.out.println("===========for문 배열요소 item : 길이만큼 출력");
+		for(int j=0; j<data.length; j++) {
+			System.out.println(data[j]);
+		}
+		
+	-->
+		<!-- 정수형데이터 7개를 만든후 배열에 순서대로 할당하세요 -->
+	    <!-- 배열 아이템을 모두 출력해주세요 -->
+		
+		
+		int[] numnum = {1,2,3,4,5,6,7};
+		for(int k=0; k<numnum.length; k++) {
+			System.out.println(numnum[k] + ". 배열의 번호는" + k + "입니다.");
+		}
+	}
+}
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package array;
+<html></html>	
+	알파벳 문자와 아스키 코드값 출력
+
+public class Array02Array {
+
+	public static void main(String[] args) {
+		char 26자리 0~25 인덱스번호 할당
+		char [] alphabet = new char[26];
+		 문자열 할당
+		char ch = 'A';
+		System.out.println(ch);
+		
+		<!--
+			A의 아스키코드는 65이다
+			B = 66
+			C = 67
+		-->
+
+		for(int i=0; i<alphabet.length; i++, ch++) {
+			alphabet[i] = ch;
+			
+	 --><!-- 아스키 코드값을 각 인덱스 번짓수에 저장 -->
+			System.out.println(ch + "=>" +(int)ch);
+
+		}
+		
+		<!-- 아스키 코드번호 나오게 출력 -->
+		for(int i=0; i<alphabet.length; i++) {
+			System.out.println(alphabet[i] + "의 아스키코드값 =>>" + (int)alphabet[i]);
+		}
+	}
+
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package array;
+
+	<객체 배열 사용>
+		기본 자료형 배열과 사용방법이 조금 다름
+
+<!-- [사용클래스] Book -->
+public class Array03ArrayObject {
+
+	public static void main(String[] args) {
+		Book info = new Book("책이름","송한솔");
+		<!-- 1. 인스턴스 생성후 배열에 저장 -->
+		Book[] lib = new Book[5];
+		lib[0] = new Book("상실의 시대", "하루키");
+		lib[1] = new Book("외인구단", "이현세");
+		lib[2] = new Book("데미안", "헤르만 헤세");
+		lib[3] = new Book("슬램덩크", "이노우에");
+		lib[4] = new Book("구멍가게", "이미옥");
+		
+		<!-- 2. 배열아이템 추출 -->
+		for(int i=0; i<lib.length; i++) {
+			lib[i].showBookInfo();
+		 }
+	 --><!-- 각 배열의 참조변수 주솟값 모두 콘솔에 출력 -->
+		System.out.println(lib[0]);
+		System.out.println(lib[1]);
+		System.out.println(lib[2]);
+		System.out.println(lib[3]);
+		System.out.println(lib[4]);
+	}
+
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package array;
+
+public class Book {
+	<!-- 멤버변수 -->
+	private String bookName;
+	private String author;
+	
+	<!-- 디폴트 생성자 -->
+	public Book() {}
+	
+	<!-- 생성자 오버로드 = 책이름과 저자이름 매개변수로 초기값 세팅 -->
+	public Book(String bookName, String author) {
+		this.bookName = bookName;
+		this.author = author;
+	}
+	
+	//setter, getter
+	public String getBookName() {
+		return bookName;
+	}
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	
+<!--
+	메서드만들기
+	책이름, 저자정보 출력
+	메서드 구현
+	메서드명 => showBookInfo
+	기능 => 책정보(책이름, 저자정보) 출력방법 세팅
+-->
+	public void showBookInfo() {
+		System.out.println(bookName + ", " + author);
+	}
+		
+	
+
+	
+}
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+2022.10.13
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package array;
+/*
+	<배열복사하기>
+		기존에 배열에 저장된 자료를 가져오려고 할때 배열 복사
+
+
+*/
+public class Array04ArrayCopy {
+
+	public static void main(String[] args) {
+		<1. System.arraycopy() 배열복사>
+			<!--  -->
+		<!-- 정수형 배열명 array1. array2에 각각 5개씩 초기값 할당 -->
+		int[] array1 = {1,2,3,4,5};
+		int[] array2 = {6,7,8,9,10};
+		
+		<!-- 0 = 복사 첫위치, 1 = 붙여넣을 위치, 4 = 복사할 배열아이템 갯수 -->
+		System.arraycopy(array1, 0, array2, 1, 4);
+		for(int i=0; i<array2.length; i++) {
+			><!-- array1의 첫번째 요소부터 array2의 두번째 위치에서 4개를 복사함 -->
+			System.out.println(array2[i]);
+			 
+			<!--(콘솔출력)
+				6
+				1
+				2
+				3
+				4
+			--> 
+		}
+		<배열 향상 for문>
+			배열 요소 값을 순서대로 하나씩 가져와서 변수에 대입
+			무조건 모든 배열의 시작아이템부터 끝아이템까지 반복
+			[형식] for(변수:배열명) {실행문;}
+		
+		<!-- 배열을 만드세요| 배열명 strArray -->
+		<!-- 배열데이터 "Java", "Android", "C", "JavaScript", "Python" -->
+		
+		String[] strArray = {"Java", "Android", "C", "JavaScript", "Python"};
+		for(String strArraycopy: strArray) {
+			System.out.println(strArraycopy);
+
+		<!-- 
+			(콘솔출력)
+			Java
+			Android
+			C
+			JavaScript
+			Python
+			
+		-->
+
+		}
+	}
+}
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package object;	
+/*
+	<Object Copration(객체간 협력 / 객체협력)>
+		객체지향 프로그래밍은 객체간 사용을 안하면 의미가 없음
+		그래서 객체간 협력으로 프로그래밍을 함
+		
+	<0. 클래스 생성	>
+	Student2
+	public String studentName;
+	public int grade;
+	public int money;
+	생성자 => 학생이름, 가진돈을 매개변수값으로 받는 생성자
+	
+	Bus
+	int busNumber;
+	int passengerConut;
+	int money;
+	생성자 => 버스번호를 매개변수로 받는 생성자
+	
+	
+	Subway
+	String lineNumber;
+	int passengerCount;
+	int money;
+	생성자 => 지하철 노선번호를 매개변수로 받는 생성자
+	
+
+public class Oop100ClassCo {
+
+	public static void main(String[] args) {
+		<1. 학생 2명 생성 | 참조변수명 stdtKim, stdtLee => 생성자 규칙에 맞게 생성>
+		
+		Student2 stdtKim = new Student2("Student김", 5000);
+		Student2 stdtLee = new Student2("Student리", 10000);
+		
+		<2. 버스번호 100번 탄다고 가정>
+		bus100 참조변수 => 인자값으로 Bus객체의 모든것을 사용가능하도록 넘겨줌
+		Bus bus100 = new Bus(100);
+		stdtKim.takeBus(bus100);
+		stdtKim.showInfo();
+		
+		<!-- 버스 회사의 정보 출력 -->
+		bus100.showInfo();
+		
+		
+		<3.지하철 2호선을 탄다고 가정>
+		Subway subwaygreen = new Subway("2호선");
+		stdtLee.takesubway(subwaygreen);
+		<!-- stdtLee의 정보 출력 -->
+		stdtLee.showInfo();
+		<!-- 지하철 회사 정보 출력 -->
+		subwaygreen.showInfo();
+	}
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package object;
+
+public class Bus {
+	int busNumber; //버스번호
+	int passengerCount; //승객수
+	int money; //버스요금 수입
+	
+	
+	public int getBusNumber() {
+		return busNumber;
+	}
+	public void setBusNumber(int busNumber) {
+		this.busNumber = busNumber;
+	}
+	public int getPassengerConut() {
+		return passengerCount;
+	}
+	public void setPassengerConut(int passengerConut) {
+		this.passengerCount = passengerConut;
+	}
+	public int getMoney() {
+		return money;
+	}
+	public void setMoney(int money) {
+		this.money = money;
+	}
+	<!-- // 생성자 = 번스번호를 매개변수로 -->
+	public Bus(int busNumber) {
+		this.busNumber = busNumber;
+	}
+	
+	<!-- // 메서드 = 학생이 버스를 탔을 경우 -->
+	public void take(int money) {
+		this.money+= money; // 버스회사 수입이 증가함
+		passengerCount++; //버스 승객수 증가
+	}
+	
+	<!-- // 메서드 = 버스 정보 출력 -->
+	public void showInfo() {
+		System.out.println("버스" + busNumber + "번의 승객은 " + passengerCount + "명 입니다.");
+	}
+}
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package object;
+
+public class Subway {
+	String lineNumber;
+	int passengerCount;
+	int money;
+		
+	public String getLineNumber() {
+		return lineNumber;
+	}
+	public void setLineNumber(String lineNumber) {
+		this.lineNumber = lineNumber;
+	}
+	public int getPassengerCount() {
+		return passengerCount;
+	}
+	public void setPassengerCount(int passengerCount) {
+		this.passengerCount = passengerCount;
+	}
+	public int getMoney() {
+		return money;
+	}
+	public void setMoney(int money) {
+		this.money = money;
+	}
+	<!-- 생성자 => 지하철 노선번호를 매개변수 -->
+	public Subway(String lineNumber) {
+		this.lineNumber = lineNumber;
+	}
+	
+	<!-- 메서드 = 학생이 지하철을 탓을 경우 -->
+	public void take(int money) {
+		this.money += money;
+		passengerCount++;
+		
+	}
+	public void showInfo() {
+		System.out.println("지하철 " + lineNumber + "호선의 승객은 " + passengerCount + "명이고, 수입은" + money + "입니다.");
+	}
+}
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package object;
+
+public class Student2 {
+	public String studentName;
+	public int grade;
+	public int money;
+	
+	public String getStudentName() {
+		return studentName;
+	}
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+	public int getMoney() {
+		return money;
+	}
+	public void setMoney(int money) {
+		this.money = money;
+	}
+	<!-- 생성자 = 학생이름, 돈을 매개변수로 받는 생성자 -->
+	public Student2(String studentName, int money) {
+		this.studentName = studentName;
+		this.money = money;
+	}
+	<!-- 메서드 = 버스를 탄다(버스비는 1000원) -->
+	public void takeBus(Bus bus) {
+		bus.take(1000);
+		this.money -= 1000;
+	}
+	<!-- 메서드 = 지하철을 탄다 -->
+	public void takesubway(Subway subway) {
+		subway.take(1500);
+		this.money -= 1500;
+	}
+	
+	<!-- 메서드 = 학생 정보 출력 -->
+	public void showInfo() {
+		System.out.println(studentName + "님의 남은 돈은 " + money + "입니다.");
+	}
+}
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ackage generic;
+
+	<제네릭(Generic)>
+		자바는 변수, 메서드 선언시 반드시 자료형을 첨부해야 함
+		대부분 하나의 자료형으로 구현되지만,
+		간혹,
+		변수, 메서드가 필요에 따라 자료형을 바꾸어 사용할 경우가 있음
+		=> 이것을 제네릭 이라고 함
+		
+		[결론]
+		어떤 데이터가 [여러가지 참조 자료형]으로 사용할 수 있도록 프로그래밍 하는것
+		=> 제네릭 프로그래밍
+public class Generic01Basic {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package generic;
+
+	<!-- 제네릭 클래스 구현 -->
+	: T형(관습적으로 사용) 사용
+
+public class GenericSample<T> {
+	<!-- 멤버변수 -->
+	private T genMaterial;
+	
+	<!-- setter, getter -->
+	public T getGenMaterial() {
+	 return genMaterial;
+	}
+	
+	public void setGenMaterial(T genMaterial) {
+		this.genMaterial = genMaterial;
+	}
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package arraylist;
+import java.awt.dnd.DropTarget;
+import java.io.ObjectInputStream.GetField;
+	<!-- 기존 배열의 단점 -->
+		기본적으로 배열길이를 정하고 시작
+		하지만, 배열 데이터가 달라지면 코드를 수정해야 하는 불편함이 있음
+		그래서, 자바배열을 좀 더 쉽게 사용할 수 있도록 '객체배열'인 ArrayList 제공
+	
+	<!-- ArrayList 객체 -->
+		객체 배열을 관리할 수 있는 멤버변수와 메서드 제공
+		사용 방법만 알면 편리하게 사용이 가능
+	
+	<!-- ArrayList 주요 메서드 : 구글링 활용 -->
+	
+	<!-- ArrayList 사용법 -->
+		어떤 자료형의 객체를 사용할지 컴퓨터에 알려줘야 함 =>제네릭을 사용함
+		(반드시)import를 해서 사용해야 함
+import java.util.ArrayList;
+
+
+public class ArrayList01Basic {
+	public static void main(String[] args) {
+		<!-- 1. ArrayList 생성 => 해당 객체의 배열과 관련된 기능을 사용가능하게 하는것 -->
+		ArrayList<Book> lib = new ArrayList<Book>();
+		<!-- 2-1. ArrayList 메서드 = add() => 생성자만 호출하여, 배열아이템을 할당할 수 있음 -->
+		lib.add(new Book("상아는 누가?", "박완서1"));
+		lib.add(new Book("상실의 시대", "하루키2"));
+		lib.add(new Book("붉은돼지", "하야오3"));
+		lib.add(new Book("거꾸로", "유시민"));
+		lib.add(new Book("정의란", "샌더스"));
+
+		<!-- 2-2 ArrayList 사용 = size() => 배열에 추가된 요소의 갯수만큼 출력 -->
+		for(int i=0; i<lib.size(); i++) {
+	 	--><!-- 2-3 ArrayList 사용 = get() =></lib.size>  요소를 하나씩 가져오는 것 -->
+			Book book = lib.get(i);
+			book.showBookInfo();
+		}
+		System.out.println("================");
+		lib.get(0).showBookInfo();
+		lib.get(1).showBookInfo();
+		lib.get(2).showBookInfo();
+		lib.get(3).showBookInfo();
+		lib.get(4).showBookInfo();
+		
+		
+		System.out.println("======향상 for문 사용=====");
+		for(Book book : lib) {
+			book.showBookInfo();
+		}
+		
+		
+	}
+
+}
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package arraylist;
+
+public class Book {
+	<!-- 멤버변수 -->
+	private String bookName;
+	private String author;
+	
+	<!-- 디폴트 생성자 -->
+	public Book() {}
+	
+	<!-- 생성자 오버로드 = 책이름과 저자이름 매개변수로 초기값 세팅 -->
+	public Book(String bookName, String author) {
+		this.bookName = bookName;
+		this.author = author;
+	}
+	
+	<!-- setter, getter -->
+	public String getBookName() {
+		return bookName;
+	}
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	
+	<!-- 메서드만들기 -->
+	<!-- 책이름, 저자정보 출력 -->
+	<!-- 메서드 구현 -->
+	<!-- 메서드명 => showBookInfo -->
+	<!-- 기능 => 책정보(책이름, 저자정보) 출력방법 세팅 -->
+	public void showBookInfo() {
+		System.out.println(bookName + "  , " + author);
+	}	
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+2022.10.14
+<다형성>
+= 여러가지 성질을 띄는 형질
+Java는 데이터 타입이 굉장히 중요하고
+객체들은 데이터 타입을 가짐
+
+<묵시적 형변환>
+VIPCusomer => Customer를 상속받앗기때문에
+Customer의 자식 VIPCustom
+<public class VIPCustomer extends Customer>
+<!-- => VipCustomer = Customer에게서 모든걸 상속받음 -->
+VIPCustomer는 VIPCustomer가 되기도하고 Customer로 취급이 가능함
+허나 Customer는 부모기때문에 더작은요소인 VIPCustomer가 될수없다.
+
+Customer vc = new VIPCustomer; // 가능하다
+VIPCustomer vc = new Customer; // 불가능하다 / 성립불가
+
+<MVC>
+	MODEL
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+vo(Values Object)
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package ingeritance;
+
+import ingeritance.vo.Customer;
+import ingeritance.vo.VIPCustomer;
+
+/*
+	패키지의 하위패키지는 .vo를 붙여서 생성한다
+	
+	<extends(상속)>
+		객체지향 프로그래밍의 중요한 특징 중 하나
+		객체지향의 장점인 유지보수,
+		프로그램의 새로운 내용을 추가하는것이 편리하게 해 주는 그 기반이 <상속>이다
+		
+	
+		
+	클래스의 상속
+		상위 클래스 = 부모 클래스 = Super Class = Base Class <------ 하위 클래스 = 자식클래스 = Sub Class = Divided Class
+		상속관계 화살표 방향에 주의
+		B클래스가 A클래스를 상속(받는다) => A클래스의 멤버변수와 메서드를 사용할 수 있음
+		
+		클래스의 상속 문법
+			extents 예약어 사용
+			(예) B클래스가 A클래스를 상속받는다
+			=> A클래스의 멤버변수와 메서드를 받아서 B클래스에서 구현한다는 뜻
+			=> B클래스의 코딩분량이 더 많아지고, 구현에 구체적인 클래스가 됨
+			
+			class B extents A {
+				실행문;
+			}
+			
+ */
+/*
+ 	다형성
+		상속에서 상위클래스로 부터 하위클래스가 상속을 받았을 경우
+		=> 상위 클래스로부터 묵시적 클래스 형변환이 됨 = `다형성과 관련성이 있음 = 업캐스팅
+		즉, 여기서 다형성이란
+		VIPCustomer는 데이터타입이 Customer형도 되고 VIPcustomer형도 된다
+		<결론>하위클래스가 상속을 받았을 경우 상위 클래스로 변화하는 과정에서 묵시적 형변환이 이루어진다.
+		
+*/
+	
+public class Inheritance01Basic {
+
+	public static void main(String[] args) {
+		
+		// ??? 님의 등급은 ???이며, 보너스 포인트는 ???입니다.
+		Customer customer = new Customer(1140, "한솔");
+		customer.setCustomerID(1140);
+		customer.setBonusPoint(2000);
+		
+		customer.calcPrice(2000);
+		System.out.println(customer.showCustomerInfo());
+		System.out.println("================================================");
+		VIPCustomer vipcustomer = new VIPCustomer();
+		vipcustomer.setCustomername("송한솔");
+		vipcustomer.setCustomerID(9999);
+		vipcustomer.setBonusPoint(4000);
+		vipcustomer.calcPrice(114000);
+		System.out.println(vipcustomer.showCustomerInfo());
+		
+		System.out.println("========추가 생성 실습");
+		// VIPCustomer클래스를 생성자 오버로드로 생성하여
+		
+		VIPCustomer vipcustomer2 = new VIPCustomer(100, "송한솔", 2);
+		vipcustomer2.setSaleRadio(0.1);
+		vipcustomer2.setBonusRatio(0.05);		
+		System.out.println(vipcustomer2.showCustomerInfo());
+
+		System.out.println("================다형성실습===============");
+		//실버회원
+		Customer SilverMember = new Customer();
+		SilverMember.setCustomerID(100);
+		SilverMember.setCustomername("이수만");
+		System.out.println("일반회원의 100만원 물품 구매가격" + SilverMember.calcPrice(1000000)+ "원");
+		System.out.println(SilverMember.showCustomerInfo());
+		
+		//VIP회원
+		VIPCustomer VIPMember = new VIPCustomer();
+		VIPMember.setCustomerID(999);
+		VIPMember.setCustomername("VIP이수만");
+		VIPMember.setAgentID(20);
+		VIPMember.calcPrice(2000000);
+		System.out.println("VIP회원의 100만원 물품 구매가격" + VIPMember.calcPrice(1000000)+ "원");
+		System.out.println(VIPMember.showCustomerInfo());
+		System.out.println(VIPMember.bonusPoint);
+	}
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package ingeritance.vo;
+
+
+
+public class Customer {
+
+	//멤버변수
+	protected int customerID; // 고객 아이디
+	protected String customerName; // 고객 이름
+	protected String customerGrade; // 고객 등급
+	
+	public int bonusPoint; // 보너스 포인트
+	public double bonusRatio; //적립비율
+	public int price; // 가격
+	
+	// 생성자
+	public Customer(){
+		customerGrade = "SIlVER"; // 기본등급
+		bonusRatio = 0.01;
+		System.out.println("Customer 디폴트 생성자 호출 => [중요]상속시 부모 클래스가 먼저 생성");
+	}
+	// 생성자 오버로드
+	public Customer(int customerID, String customerName) {
+		this.customerID = customerID;
+		this.customerName = customerName;
+		customerGrade = "SIlVER";
+		bonusRatio = 0.01;
+		System.out.println("Customer 디폴트 생성자 호출 => [중요]상속시 부모 클래스가 먼저 생성");
+	}
+	
+	// 메서드 | 기능 = 보너스 포인트 적립, 지불가격 계산 메서드
+	// 하위 클래스에서 오버라이딩 할 예정
+		// <오버라이딩 | 오버라이드>
+		// 전제조건
+		// 1. 같은 메서드명
+		// 2. 같은 메서드명의 하위 클래스 메서드 재정의
+	public int calcPrice(int price) {
+		bonusPoint += price * bonusRatio;
+		return price;
+	}
+	// 메서드 = 고객정보 반환
+	public String showCustomerInfo() {
+		return customerName + "님의 ID는 " + customerID + "이며 등급은 "
+				+ customerGrade + ", 적립비율은" + bonusRatio + ", 보너스포인트는" + bonusPoint + "입니다.";
+	}
+	
+	
+	//setter, getter
+	public int getCustomerID() {
+		return customerID;
+	}
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
+	}
+	public String getCustomername() {
+		return customerName;
+	}
+	public void setCustomername(String customername) {
+		this.customerName = customername;
+	}
+	public String getCustomerGrade() {
+		return customerGrade;
+	}
+	public void setCustomerGrade(String customerGrade) {
+		this.customerGrade = customerGrade;
+	}
+	public int getBonusPoint() {
+		return bonusPoint;
+	}
+	public void setBonusPoint(int bonusPoint) {
+		this.bonusPoint = bonusPoint;
+	}
+	public double getBonusRatio() {
+		return bonusRatio;
+	}
+	public void setBonusRatio(double bonusRatio) {
+		this.bonusRatio = bonusRatio;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+}
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package ingeritance.vo;
+ <!-- Customer클래스를 상속받아 VIPCustomer 클래스 구현 -->
+ <!-- VIPCustomer = Customer의 하위클래스 -->
+public class VIPCustomer extends Customer {
+//	protected int customerID; // 고객 아이디
+//	protected String customerName; // 고객 이름
+//	protected String customerGrade; // 고객 등급
+//	public int bonusPoint; // 보너스 포인트
+//	public double bonusRatio; //적립비율
+	
+	// 1. VIP 클래스용 멤버변수
+	private int agentID; // VIP 고객 상담원 ID
+	public double saleRadio;
+	
+	// 디폴트 생성자
+	// 생성시에 => customerGrade = VIP, bonusRatio = 0.05 saleRadio = 0.2
+	public VIPCustomer() {
+		customerGrade = "VIP";
+		bonusRatio = 0.05;
+		saleRadio = 0.2;
+
+		System.out.println("VIPCustomer 디폴트 생성자 호출 => [중요]상속시 부모클래스 생성 이후에 생성");
+	}
+	// 생성자 오버로드 | 고객아이디, 고객이름,담당 상담원 ID
+	public VIPCustomer(int customerID, String customerName, int agentID) {
+		
+		// 상위 클래스 생성자 호출하여 사용
+		super(customerID, customerName);
+		
+		customerGrade = "VIP";
+		bonusRatio = 0.05;
+		saleRadio = 0.2;
+		// 하위 클래스의 멤버변수이므로 this사용, 멤버변수값 설정
+		this.agentID = agentID;
+	}
+	
+	@Override // 어노테이션 => 재정의된 메서드입니다. 라고 <컴파일러에게 알려줌>	
+	//오버라이드 = 보너스포인트와 물품 구매가능 기능 메서드
+	public int calcPrice(int price) {
+		bonusPoint += price * bonusRatio; //보너스포인트
+		return (int)(price - (price * saleRadio));
+	}
+	// 회원정보 출력 오버라이드
+	@Override
+	public String showCustomerInfo() {
+		return "고객ID : "+ customerID + "   AgentID : " + agentID 
+				+ "   고객명 : " + customerName
+				+ "   등급 : " + customerGrade 
+				+ "   포인트 : "+ bonusRatio 
+				+ "   할인율 " + saleRadio;
+	}
+
+	public int getAgentID() {
+		return agentID;
+	}
+	public void setAgentID(int agentID) {
+		this.agentID = agentID;
+	}
+	public double getSaleRadio() {
+		return saleRadio;
+	}
+	public void setSaleRadio(double saleRadio) {
+		this.saleRadio = saleRadio;
+	}
+}
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package abstract1;
+/*
+	<추상클래스(abstract Class)>
+		완전하지 않은 클래스
+		구체적이지 않은 클래스
+		=> 가능성이 남아 있는 클래스
+		=> 가능성을 확장헤 다양한 프로그램을 개발 할 수 있는 클래스
+		
+	[추상클래스 문법]
+		항상 추상메서드를 포함 = 추성메서드에서는 구현 코드가 없음(=메서드 실행문이 없음)
+	
+	[추상클래스 원칙]
+		추상 클래스를 상속받은 하위 클래스는 추상메서드를 (무조건) 모두 구현해야 함
+		=> 구체적인 클래스(concrete Class)가 됨
+		만약, 하나라도 구현하지 않으면 => 추상클래스임
+	
+ */
+// []
+// 추상클래스를 만드는 방법 = 예약어 abstract
+public abstract class Abstract01Basic {
+	// 추상 메서드 선언 | 예약어 abstract
+	public abstract void display();
+	public abstract void typing();
+	
+	// 일반 구현도 가능 = 다른클래스에서 기존처럼 사용가능
+	public void turnOn() {
+		System.out.println("전원을 켭니다");
+	}
+	public void turnOff() {
+		System.out.println("전원을 끔");
+	}
+
+}
+
+
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package abstract1;
+
+ 	<추상클래스 이용 실행 클래스>
+
+public class Abstract01Basic02Test {
+
+	public static void main(String[] args) {
+		<!-- 에러 !! -->
+		<!-- Abstract01Basic abs1 = new Abstract01Basic(); -->
+		Abstract01Basic abs2 = new DestTop();
+		abs2.display();
+		abs2.typing();
+		abs2.turnOn();
+		abs2.turnOff();
+
+
+		Abstract01Basic abs3 = new NoteBook();
+		abs3.display();
+		abs3.typing();
+		abs3.turnOn();
+		abs3.turnOff();
+
+		//DestTop 클래스, NoteBook 클래스 데이터 타입으로 같은 결과가 나오도록 코딩
+		
+		DestTop abs4 = new DestTop();
+		abs4.display();
+		abs4.typing();
+		abs4.turnOn();
+		abs4.turnOff();
+		NoteBook abs5 = new NoteBook();
+		abs5.display();
+		abs5.typing();
+		abs5.turnOn();
+		abs5.turnOff();
+	}
+
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package abstract1;
+
+
+	<추상 클래스 구현하는 클래스>
+		추상 클래스 설계도에 따라 각각 다르게 메서드를 구현할 수 있음
+
+public class DestTop extends Abstract01Basic{
+	@Override
+	public void display() {
+		System.out.println("DEST클래스 : 상속받은 추상클래스 display 메서드 구현");
+	}
+	
+	@Override
+	public void typing() {
+		System.out.println("DEST클래스 : 상속받은 추상클래스 typing 메서드 구현");
+	}
+	
+	
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package abstract1;
+
+	<추상 클래스 구현하는 클래스>
+		추상 클래스 설계도에 따라 각각 다르게 메서드를 구현할 수 있음
+
+public class NoteBook extends Abstract01Basic{
+	@Override
+	public void display() {
+		System.out.println("NoteBook클래스 : 상속받은 추상클래스 display 메서드 구현");
+	}
+	
+	@Override
+	public void typing() {
+		System.out.println("NoteBook클래스 : 상속받은 추상클래스 typing 메서드 구현");
+	}
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+package arraylist;
+<!--
+/*
+	[간단 프로젝트] ArrayList 사용 학생 성적 출력 프로그램 구현
+	[ArrayList 시나리오]
+	1. 만약 어떤 학생이 10과목 수강, Subject클래스에는 멤버변수 10개 필요
+	2. 하지만, 어떤 학생은 3과목, 5과목을 수강할수도 있음
+	3. 이 경우 배열을 사용하여 프로그램 구현
+	4. Subject 클래스는 참조자료형 => ArrayList 활용하여 구현
+*/
+//[사용클래스] Subject, Student
+/*
+	[View 츨력]
+	1. 1001학번 KIM MS, 1002학번 KIM MJ 두학생이 있음
+	2. KIM MS는 2과목 수강 => 국어 100점, 수학98점
+	3. KIM MJ는 3과목 수강=> 국어90점, 수학95점, 영어100점
+	4. Student클래스와 Subject클래스 생성후, 두학생의 과목성적과 총점을 각각 출력
+*/
+-->
+public class ArrayList02Project {
+	public static void main(String[] args) {
+		Student kimms = new Student(1001, "김MS");
+		
+		kimms.addSubject("국어", 100);
+		kimms.addSubject("수학", 98);
+		kimms.showStudentInfo();
+	
+		Student kimmj = new Student(1002, "김MJ");
+		kimmj.addSubject("국어", 90);
+		kimmj.addSubject("수학", 95);
+		kimmj.addSubject("영어", 100);
+		kimmj.showStudentInfo();
+	}
+	
+
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package arraylist;
+
+public class Subject {
+	<!-- //멤버변수 -->
+	private String name; // 학생이름
+	private int scorePoint; // 과목 점수
+	
+	//setter, getter
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getScroePoint() {
+		return scorePoint;
+	}
+	public void setScroePoint(int scroePoint) {
+		this.scorePoint = scroePoint;
+	}
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package arraylist;
+
+import java.util.ArrayList;
+
+public class Student {
+	<!-- 멤버변수 -->
+	int studentID;
+	String studentName;
+	int score;
+	
+	<!-- ArrayList 선언 -->
+		<!-- => 데이터타입 = Subject클래스, 변수명 = subjectlist -->
+		ArrayList<Subject> subjectlist = new ArrayList<Subject>();
+	
+	
+	public int getStudentID() {
+		return studentID;
+	}
+	public void setStudentID(int studentID) {
+		this.studentID = studentID;
+	}
+	public String getStudentName() {
+		return studentName;
+	}
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+//	public int getScore() {
+//		return score;
+//	}
+//	public void setScore(int score) {
+//		this.score = score;
+//	}
+	public ArrayList<Subject> getSubjectlist() {
+		return subjectlist;
+	}
+	public void setSubjectlist(ArrayList<Subject> subjectlist) {
+		this.subjectlist = subjectlist;
+	}
+	
+	
+	ArrayList<Subject> subjectlist;
+	<!-- 생성자 -->
+	public Student(int studentID, String studentName) {
+		this.studentID = studentID;
+		this.studentName = studentName;
+		// 생성과 동시에 ArrayList도 생성
+		subjectlist = new ArrayList<Subject>();
+	}
+	
+	<!-- 구현 메서드 -->
+	<!-- 메서드1 = 학생이 수강하는 과목을 하나씩 ArrayList인 subjectList에 추가 -->
+	public void addSubject(String studentName, int score) {
+		// Subject 클래스 생성 => 여기에 데이터 세팅을 위해
+		Subject subject = new Subject();
+		subject.setName(studentName); //이름추가
+		subject.setScroePoint(score); //점수추가
+		subjectlist.add(subject); //에 데이터 추가 저장
+	}
+	<!-- 메서드 2 = 각 과목의 성적과 총점 출력 -->
+	public void showStudentInfo() {
+		int total = 0;
+		// ArrayList인 subjectList의 배열 아이템 출력
+		System.out.println("======향상 for문 사용=====");
+		<!-- 향상for문 조건식 완성 = 받을변수명 s -->
+		for(Subject s : subjectlist) {
+			total += s.getScroePoint();
+			<!-- 정보출력 -->
+			System.out.println("학생 " + studentName + "의 "
+					+ s.getName() + "과목 성적은"
+					+ s.getScroePoint() + "점 입니다.");
+		}
+		System.out.println("학생 " + studentName + "의 총점은 " + total + "입니다." );
+		System.out.println("학생 " + studentName + "의 평균은 " + (total/subjectlist.size()) + "입니다." );
+		
+	}
+	
+
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+2022.10.17
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package ingeritance;
+
+import ingeritance.vo.Customer;
+import ingeritance.vo.VIPCustomer;
+
+public class MethodOverriding {
+
+	public static void main(String[] args) {
+		<!-- 고객아이디 = 1000 ,보너스포인트1000 -->
+		Customer kimjs = new Customer(10010, "KIMMS");
+			 <!-- 멤버변수가 public이므로 직접 멤버변수 접근가능 -->
+		//kimjs.setBonusPoint(1000);
+		System.out.println(kimjs.showCustomerInfo());
+		<!-- VIPCustomer Customer 데이터형으로 생성(int customerID, Stirng customerName, int agentID); -->
+		<!-- => 묵시적 형변환 -->
+		Customer kimjs2 = new VIPCustomer(10011, "kimms2", 3);
+		kimjs.bonusPoint = 100;
+		System.out.println(kimjs2.showCustomerInfo());
+
+		
+		<!-- 오버라이딩, 다형성 적용 -->
+		<!-- (가정) 회원이 백만원짜리 물품을 구매했을경우 ,회원등급에 따라 다르게 적용 -->
+		int goodsPrice = 1000000; // 백만원짜리 물품
+		<!-- 가격 계산 메서드 적용 -->
+		
+		System.out.println("일반 회원분이" + kimjs.calcPrice(goodsPrice) + "원 지불하셨습니다");
+		System.out.println(kimjs.showCustomerInfo());
+		System.out.println("VIP 회원분이" + kimjs2.calcPrice(goodsPrice) + "원 지불하셨습니다");
+		System.out.println("VIP 회원분의 등급은 VIP이면, 보너스 포인트는" + kimjs2.bonusPoint +"입니다");
+		
+	}
+
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package ingeritance.vo;
+
+
+
+public class Customer {
+
+	<!-- 멤버변수 -->
+	protected int customerID; // 고객 아이디
+	protected String customerName; // 고객 이름
+	protected String customerGrade; // 고객 등급
+	
+	public int bonusPoint; // 보너스 포인트
+	public double bonusRatio; //적립비율
+	public int price; // 가격
+	
+	<!-- 생성자 -->
+	public Customer(){
+		customerGrade = "SIlVER"; // 기본등급
+		bonusRatio = 0.01;
+		System.out.println("Customer 디폴트 생성자 호출 => [중요]상속시 부모 클래스가 먼저 생성");
+	}
+	<!-- 생성자 오버로드 -->
+	public Customer(int customerID, String customerName) {
+		this.customerID = customerID;
+		this.customerName = customerName;
+		customerGrade = "SIlVER";
+		bonusRatio = 0.01;
+		System.out.println("Customer 디폴트 생성자 호출 => [중요]상속시 부모 클래스가 먼저 생성");
+	}
+	
+	메서드 | 기능 = 보너스 포인트 적립, 지불가격 계산 메서드
+	하위 클래스에서 오버라이딩 할 예정
+		<오버라이딩 | 오버라이드>
+			전제조건
+			1. 같은 메서드명
+			2. 같은 메서드명의 하위 클래스 메서드 재정의
+
+	public int calcPrice(int price) {
+		bonusPoint += price * bonusRatio;
+		return price;
+	}
+	<!-- 메서드 = 고객정보 반환 -->
+//	public String showCustomerInfo() {
+//		return customerName + "님의 ID는 " + customerID + "이며 등급은 "
+//				+ customerGrade + ", 적립비율은" + bonusRatio + ", 보너스포인트는" + bonusPoint + "입니다.";
+//	}
+	<!-- 다형성 연습 => 사용클래스에 따라 다른 결과가 나옴 -->
+//	@Override
+	public String showCustomerInfo() {
+		return customerName + "님의 등급은" + customerGrade + "이면, 보너스 포인트는 "
+				+ bonusPoint + "입니다.";
+	}
+	
+	
+	//setter, getter
+	public int getCustomerID() {
+		return customerID;
+	}
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
+	}
+	public String getCustomername() {
+		return customerName;
+	}
+	public void setCustomername(String customername) {
+		this.customerName = customername;
+	}
+	public String getCustomerGrade() {
+		return customerGrade;
+	}
+	public void setCustomerGrade(String customerGrade) {
+		this.customerGrade = customerGrade;
+	}
+	public int getBonusPoint() {
+		return bonusPoint;
+	}
+	public void setBonusPoint(int bonusPoint) {
+		this.bonusPoint = bonusPoint;
+	}
+	public double getBonusRatio() {
+		return bonusRatio;
+	}
+	public void setBonusRatio(double bonusRatio) {
+		this.bonusRatio = bonusRatio;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
+	
+
+
+
+
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package ingeritance.vo;
+// Customer클래스를 상속받아 VIPCustomer 클래스 구현
+// VIPCustomer = Customer의 하위클래스
+public class VIPCustomer extends Customer {
+//	protected int customerID; // 고객 아이디
+//	protected String customerName; // 고객 이름
+//	protected String customerGrade; // 고객 등급
+//	public int bonusPoint; // 보너스 포인트
+//	public double bonusRatio; //적립비율
+	
+	<!-- 1. VIP 클래스용 멤버변수 -->
+	private int agentID; // VIP 고객 상담원 ID
+	public double saleRadio;
+	
+	<!-- 디폴트 생성자 -->
+	<!-- 생성시에 => customerGrade = VIP, bonusRatio = 0.05 saleRadio = 0.2 -->
+	public VIPCustomer() {
+		customerGrade = "VIP";
+		bonusRatio = 0.05;
+		saleRadio = 0.2;
+
+		System.out.println("VIPCustomer 디폴트 생성자 호출 => [중요]상속시 부모클래스 생성 이후에 생성");
+	}
+	<!-- 생성자 오버로드 | 고객아이디, 고객이름,담당 상담원 ID -->
+	public VIPCustomer(int customerID, String customerName, int agentID) {
+		
+		<!-- 상위 클래스 생성자 호출하여 사용 -->
+		super(customerID, customerName);
+		
+		customerGrade = "VIP";
+		bonusRatio = 0.05;
+		saleRadio = 0.2;
+		// 하위 클래스의 멤버변수이므로 this사용, 멤버변수값 설정
+		this.agentID = agentID;
+	}
+	
+	@Override // 어노테이션 => 재정의된 메서드입니다. 라고 <컴파일러에게 알려줌>	
+	<!-- 오버라이드 = 보너스포인트와 물품 구매가능 기능 메서드 -->
+	public int calcPrice(int price) {
+		bonusPoint += price * bonusRatio; //보너스포인트
+		return (int)(price - (price * saleRadio));
+	}
+	<!-- 회원정보 출력 오버라이드 -->
+	@Override
+	public String showCustomerInfo() {
+		return "고객ID : "+ customerID + "   AgentID : " + agentID 
+				+ "   고객명 : " + customerName
+				+ "   등급 : " + customerGrade 
+				+ "   포인트 : "+ bonusRatio 
+				+ "   할인율 " + saleRadio;
+	}
+	
+	public int getAgentID() {
+		return agentID;
+	}
+	public void setAgentID(int agentID) {
+		this.agentID = agentID;
+	}
+	public double getSaleRadio() {
+		return saleRadio;
+	}
+	public void setSaleRadio(double saleRadio) {
+		this.saleRadio = saleRadio;
+	}
+}
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package interface1;
+/*
+	<인터페이스(Interface)>
+	=> 개발의 설명문서
+		모든 메서드가 추상 메서드로 이루어져 있는 클래스
+		또는 프로그램이 제공하는 기능을 명시적으로 선언만 하는것
+	즉, 추상메서드 + 상수로만 이루어져 있음
+	인터페이스는 인스턴스 생성이 불가능함 = 추상클래스와 같음
+*/
+public class InterfaceBasic01 implements Calcul {
+
+	@Override
+	public int add(int num1, int num2) {
+		// TODO Auto-generated method stub
+		return num1 + num2;
+	}
+
+	@Override
+	public int substract(int num1, int num2) {
+		// TODO Auto-generated method stub
+		return num1 - num2;
+	}
+
+	@Override
+	public int times(int num1, int num2) {
+		// TODO Auto-generated method stub
+		return num1 * num2;
+	}
+
+	@Override
+	public int divide(int num1, int num2) {
+		// TODO Auto-generated method stub
+		if(num2 != 0){
+			return num1 / num2;
+		}else {
+			return Calcul.ERROR;
+		}
+	}
+	<!-- 클래스 메서드 구현 -->
+	public void showInfo() {
+		System.out.println("Calcul 인터페이스 구현됨");
+	}
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package interface1;
+
+public interface Calcul {
+/*
+	<인터페이스 변수> = 무조건 <상수>
+		public static final 예약어 사용
+		=> 인터페이스에서 사용시 생략가능(컴파일시 자동으로 상수로 변환해줌)
+*/
+	double PI = 3.14;
+	int ERROR = -9999999;
+	
+	// 인터페이스 메서드 => 컴파일시 자동으로 추상메서드로 변환
+	// : 구현코드가 없는 추상메서드임
+	// abstract 예약어 생략가능(컴파일시 자동 변환해줌)
+	
+	int add(int num1, int num2);
+	int substract(int num1, int num2);
+	int times(int num1, int num2);
+	int divide(int num1, int num2);
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package interface1;
+<!-- 구동 -->
+public class InterfaceBasic01Test {
+
+	public static void main(String[] args) {
+		// 인터페이스도 클래스가 포함되므로 인터페이스 구현한 클래스를 인스턴스화 하여 사용
+		InterfaceBasic01 a1 = new InterfaceBasic01();
+		System.out.println("매개변수값 : 10,5 사용");
+		System.out.println("10,5 두수의 합은 : " + a1.add(10, 5));
+		System.out.println("10,5 두수의 뺄셈 : " + a1.substract(10, 5));
+		System.out.println("10,5 두수의 곱은 : " + a1.times(10, 5));
+		System.out.println("10,5 두수의 나눔은 : " + a1.divide(10, 5));
+		a1.showInfo();
+
+		
+
+	}
+
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+인터페이스 실습
+인터페이스명 : Sell,buy
+인터페이스 구성 : 추상메서드만 구성 => busy(), sell()
+
+구현부
+클래스명 : 자유
+기능 : 콘솔출력 "판매", "구매"
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package interface1;
+
+public class InterfaceBasic02buysell implements Sell, Buy {
+
+	@Override
+	public void buy() {
+		System.out.println("구매");
+		
+	}
+
+	@Override
+	public String sell() {
+		
+		return "판매";
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		InterfaceBasic02buysell textms = new InterfaceBasic02buysell();
+		textms.buy();
+		System.out.println(textms.sell());
+		<!--(콘솔출력)
+			구매
+			판매
+		-->
+	}
+
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package interface1;
+
+public interface Buy {
+	void buy();	
+}
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package interface1;
+
+public interface Sell {
+	String sell();
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+2022.10.18
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package generic;
+
+import java.util.ArrayList;
+/*
+	<제네릭의 사용이유 추가설명>
+		데이터형을 자유롭게 받아서 그 데이터만을 사용
+		=> 컴파일시 쓸데없는 에러를 방지함
+*/
+public class Generictest {
+
+	public static void main(String[] args) {
+		ArrayList list = new ArrayList();
+		list.add("Hello");
+			<!-- list => Arraylist 배열 객체(데이터형)이므로 String이아니라서 -->
+			<!-- String str = list.get(0)이 불가능함, 따라서 형변환(Casting/캐스팅)이 필요하다 -->
+		String str = (String) list.get(0);
+					// get(0)은 list.add("Hello")를 통해 배열1(0)에 할당되었기 때문
+		System.out.println(str);
+		
+		
+		<제네릭 적용>
+		ArrayList<String> list2 = new ArrayList<String>();
+			<!-- // ArrayList<String> list2-->
+			<!-- // ArrayList객체의 list2가 스트링타입이 아니면 에러, 라고 선언 -->
+		list2.add("HelloWorld");
+		String str2 = list2.get(0); //이미 <String>을 통해 제네릭으로 형변환이 되어있다
+		System.out.println(str2);
+	}
+}
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package exception;
+/*
+	<예외처리 (Exception)>
+		1. 사용자가 잘못 사용해서 나오는 예외
+		2. 개발자가 잘못해서 나오는 예외의 경우
+	※ 오류 발생시 갑자기 종료되는 것을 막기위해 예외처리 하는 방법을 알려주는 것
+	
+	예외클래스
+		<a. 오류 발생 상황>
+			가. 프로그램 코드 작성 중 실수로 발생하는 컴파일 오류 (compile error)
+			나. 실행 중인 프로그램이 중지되거나 의도하지 않은 방향으로 동작(runtime error)
+			
+		<b. Java는 비정상적 상황을 최대한 줄이기 위해 다양한 예외처리 방법을 제공>
+			가. 프로그램의 비정상적인 종료를 방지하기 위해서
+			나. 예외 발생 상황을 알려주면, 버그 수정시 도움을 받을 수 있음
+		
+		<c. 실행오류 (Runtime Error)>
+			가. JVM에서 발생하는 시스템 오류(Error) // 시스템적인 부분은 고칠수없음, 재설치나 그런종류의 해결책뿐
+			나. 예외상황(Exception) = 프로그래밍을 통해 제어가능
+			
+		<d. 시스템 오류>
+			하드웨어적 오류 = 프로그래밍으로 제어 불가능
+			
+	<예외 클래스 종류>
+		프로그램에서 처리하는 예외클래스의 최상위 클래스 = Exception Class
+		Exception <- IOException(입출력 예외 처리) + RuntimeException(실행오류예외처리) ..등등 여러클래스가 많음
+		
+		(참고)
+		이클립스 개발환경에서 대부분 예외 발생시 컴파일 오류메세지를 보여줌
+		Exception 하위클래스인 RuntimeException은 예외처리를 안해도 컴파일 오류가 나지않음
+		컴파일러에 의해 체크되지 않는 예외는 개발자가 알아서 처리해야 함
+		
+	<예외 처리하기>
+		try ~catch문 = 예외처리하는 가장 기본적인 문법
+			
+	
+*/
+public class Exception01TryCatch {
+
+	public static void main(String[] args) {
+		
+		<!-- 배열선언 정수형 5개짜리 -->
+		<!-- 1. int[] list1 = new int[] {1,2,3,4,5}; -->
+
+		try {
+			int[] arr = new int[5];
+			for(int i=0; i<=5; i++) {
+				arr[i] = i;
+				System.out.println(arr[i]);
+				}
+		} catch(ArrayIndexOutOfBoundsException e) {
+			System.out.println(e);
+			System.out.println("예외처리부분");
+		}
+		System.out.println("for문 종료");
+		System.out.println(list1[0]);
+
+	}
+}
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package exception;
+
+import java.io.FileInputStream;
+//import java.io.FileNotFoundException;
+
+/*
+   <예외처리하기>
+   		try~catch문
+   
+   <컴파일러에 의해 예외가 체크되는 경우>
+   		Java에서 제공하는 많은 예외 클래스들은 컴파일러에 의해 처리
+    	예외처리를 하지 않으면 컴파일 오류가 계속 보이게되므로 처리해 주는것이 좋음
+     
+   <JVM에서 예외 클래스를 생성>
+   		예외가 어디에서 발생했는 지 알려주는 printStactTrace()메서드 호출시킴
+*/
+public class Exception02TryCatch {
+
+   public static void main(String[] args) {
+      try {
+         FileInputStream fis = new FileInputStream("a.txt"); <!-- // 파일이 없으므로 예외발생 -->
+      } catch (Exception e) {
+         e.printStackTrace();<!-- 어디에서 예외가 발생했는지 따라가는 메서드 -->
+      }
+      System.out.println("여기도 수행됨");
+   }
+}
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package exception;
+	import java.io.FileInputStream;
+/*
+	<예외처리하기>
+		try~catch~finally문
+		
+		반복적으로 사용되는 구문을 finally 블록에 한번만 코딩해주면 되게 하는것
+*/
+public class Exception03TryCatchFinally {
+
+	public static void main(String[] args) {
+		FileInputStream fis = null;
+		try {
+			fis = new FileInputStream("a.txt"); //파일이 없으므로 예외발생
+			System.out.println(fis.toString());
+		}catch(Exception e) {
+			System.out.println(e);
+		}finally {
+			if(fis != null) {
+				try {
+					fis.close(); // IO 스트림 닫기
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			System.out.println("finally가 항상 수행");
+		}
+		System.out.println("예외가 없으면 항상 수행");
+
+	}
+
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package exception;
+/*
+	예외처리를 미루는 Throws 사용
+		예외를 해당 메서드에서 처리하지 않고,
+		나중에 메서드를 호출하여 사용하는 부분에서 예외를 처리하는 방법
+*/
+/*
+[형식만 코딩]
+public class Exception04Throws {
+	public class ThrowsTest() throws FileNotFoundException { //예외메서드를 호출하는곳에서 처리하도록 미루는 것
+		실행쿠문;
+	}
+	
+	=========================================================
+	
+	public static void main(String[] args) { //호출한 곳에서 예외처리
+		호출하는 곳에서 처리
+	}
+}
+*/
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+package basicclass;
+/*
+	java.lang(language) 패키지
+		기본 패키지로 가장 많이 사용 | java.lang.String, java.lang.Interger으로 생략 가능
+		컴파일 시 java.lang패키지가 자동으로 문장에 추가되어 하위 패키지클래스를 모두 사용 가능
+		=> 즉, import를 하지 않아도 됨
+
+	============================================================================
+	
+	Object 클래스
+		자바 최상위 클래스 => 모든 클래스는 Object 클래스로 부터 상속을 받음
+		컴파일시 자동으로 extents Object가 쓰임
+		[따라서, 모든 클래스가 Obejct 클래스를 상속] 받음으로써
+		=> Object의 메서드를 사용할수도 있고, 오버라이딩, Object로 형변환 등등이 가능함
+		단, final 예약어로 선원된 메서드는 오버라이딩(재정의) 할 수 없음(= 자바 스레드와 JVM관련된 메서드이므로)
+	
+	※[공통]
+		
+	[0. toString 메서드]
+		Object 클래스에서 기본으로 제공
+		=> 객체정보를 문자열로 바꾸어줌
+		=> 모든 클래스는 toString()으로 재정의 가능
+		=> java.lang.String이나 java.lang.Integer등등
+		   여러 JDK제공 클래스에는 toString()으로 재정의 되어있음
+		   
+   	[1. String, Integer의 toString 메서드]
+   		인스턴스 정보
+   		=> 문자열로 변환하여 보여줌
+   		=> 자동으로 toString()이 호출됨(생략가능(프론트엔드의 윈도우객체를 생각하면 쉬움))
+		String과 Integer 클래스에는 이미 재정의가 되어 있으므로, 클래스 풀네임이 출력이 되지 않음
+		=> 해당 문자열과 숫자가 출력됨
+		
+*/
+
+<!-- //Test용 내부클래스생성 -->
+class Book {
+	<!-- //멤버변수 -->
+	int bookNumber;
+	String bookTitle;
+	
+	<!-- //생성자 -->
+	Book(int bookNumber, String bookTitle) {
+		this.bookNumber = bookNumber;
+		this.bookTitle = bookTitle;
+	}
+}
+
+public class Tostring01Object {
+
+
+	public static void main(String[] args) {
+		<!-- //인스턴스 생성 -->
+		Book book = new Book(100, "거꾸로세계사");
+		System.out.println(book); // (콘솔)basicclass.Book@379619aa => 자체가 이미 toString으로 재정의 되어있다는 뜻
+		System.out.println(book.toString()); // 생략된 toString() 입력해보면 똑같이 출력됨
+		
+
+	}
+
+}
+
+─────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package basicclass;
+/*
+	[1. String, Integer의 toString 메서드]
+		String과 Integer 클래스에는 이미 재정의가 되어 있으므로, 클래스 풀네임이 출력이 되지 않음
+		=> 해당 문자열과 숫자가 출력됨
+		
+		
+*/
+public class Tostring02Object {
+
+	public static void main(String[] args) {
+		// String 클래스와 Integer클래스의 toString()메서드
+		// => 이미 재정의(오버라이딩)되어 있으므로 자동으로 문자열,숫자형 출력
+		String str = new String("문자열 출력");
+		System.out.println(str);
+		Integer itg = new Integer(200); //그어지는거 => 1.8se 이하버전에서 나오는 알림(정상작동)
+		System.out.println(itg);
+
+	}
+
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package basicclass;
+/*
+	[1. 코딩 클래스의 toString 메서드 직접 재정의]
+		오버라이딩을 통해 직접 원하는대로 코딩해 줌
+		=> 코딩하는대로 출력 됨
+*/
+//Test용 내부클래스생성
+class Book1 {
+	<!-- //멤버변수 -->
+	int bookNumber;
+	String bookTitle;
+	
+	<!-- //생성자 -->
+	Book1(int bookNumber, String bookTitle) {
+		this.bookNumber = bookNumber;
+		this.bookTitle = bookTitle;
+	}
+
+	@Override
+	// String 클래스의 toString()재정의
+	public String toString() {
+		return bookNumber + ", " + bookTitle;
+	}
+}
+
+public class Tostring03Class {
+	
+
+
+	public static void main(String[] args) {
+		Book1 book1 = new Book1(100, "구멍가게추억");
+		System.out.println(book1);
+		System.out.println(book1.toString());
+		
+		<!-- //콘솔 멤버변수값이 출력되도록 코딩 -->
+		System.out.println(book1.bookTitle.toString());
+	}
+
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package basicclass;
+/*
+	[공통0. equals 메서드]
+		Object 클래스에서 기본으로 제공
+		=> 두 인스턴스의 주소값을 비교 | boolean값 true, false 반환해줌
+		=> 두 인스턴스의 주소값이 같으면 같은 인스턴스
+		
+	[1. Object 클래스의 equals 메서드]
+		인스턴스가 같다는 의미는 같은 주소값(=메모리 번지수가 같음)
+		but, 다른 인스턴스 메모리를 갖고 있다고 하더라도,
+			 논리적으로 같은 데이터를 가르키고 있다면 같다고 처리하는게 맞음
+	 
+	 (예시코드)
+	 Student song1 = new Student(100,"HanSol");
+	 Student song2 = new Student(100,"HanSol");
+	 => 같은 데이터지만 주소값(song1,song2)이 다름, 이럴때 equals를 사용
+		  
+*/
+// Test용 내부 Class 작성
+class Student {
+	<!-- //멤버변수	 -->
+	int id;
+	String name;
+	<!-- //생성자 -->
+	public Student(int id, String name) {
+		this.id = id;
+		this.name = name;
+		
+	}
+	<!-- //toString() 재정의 -->
+	
+<!-- //	public String toString() { -->
+<!-- //		return id + ", " + name; -->
+<!-- //	} -->
+	
+}
+public class Equals01Object {
+	public static void main(String[] args) {
+		Student song1 = new Student(100,"Hansol");
+		System.out.println(song1.toString());
+		Student song2 = song1;
+		System.out.println(song2);
+		Student song3 = new Student(100,"Hansol");
+		System.out.println(song3.toString());
+		<!-- //동일한 주소의 ㅣ두 인스턴스 비교 -->
+		if(song1 == song2) { // == 기호로 비교 => 단지 물리적 메모리 주소가 같은지 확인
+			System.out.println("인스턴스 song1과 인스턴스 song2의 메모리 주소는 같음");
+		}else {
+			System.out.println("인스턴턴스 song1과 인스턴스 song2의 메모리 주소는 다름");
+		}
+		<!-- // equals()사용 비교 = 논리적으로 같은 인스턴스(물리적 메모리 주소가 다르더라도 같은학생인지 아닌지) 확인하도록 구현 -->
+		if(song1.equals(song2)) {
+			System.out.println("인스턴스 song1과 인스턴스 song2의 메모리 주소는 동일");
+		}else {
+			System.out.println("인스턴턴스 song1과 인스턴스 song2의 메모리 주소는 다름");
+		}
+		<!-- // 동일인이지만 -->
+		if(song1.equals(song3)) {
+			System.out.println("인스턴스 song1과 인스턴스 song3의 메모리 주소는 동일");
+		}else {
+			System.out.println("인스턴턴스 song1과 인스턴스 song3의 메모리 주소는 다름");
+		}
+		if(song2.equals(song3)) {
+			System.out.println("인스턴스 song2과 인스턴스 song3의 메모리 주소는 동일");
+		}else {
+			System.out.println("인스턴턴스 song2과 인스턴스 song3의 메모리 주소는 다름");
+		}
+
+	}
+}
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package basicclass;
+/*
+[1. Object 클래스의 equals 메서드]
+		인스턴스가 같다는 의미는 같은 주소값(=메모리 번지수가 같음)
+		but, 다른 인스턴스 메모리를 갖고 있다고 하더라도,
+			 논리적으로 같은 데이터를 가르키고 있다면 같다고 처리하는게 맞음
+	 
+	 <예시코드>
+	 Student song1 = new Student(100,"HanSol");
+	 Student song2 = new Student(100,"HanSol");
+	 => 같은 데이터지만 주소값(song1,song2)이 다름, 이럴때 equals를 사용
+*/
+public class Equals01StringInteger {
+	public static void main(String[] args) {
+		<!-- // 1. String 생성 -->
+		String str1 = new String("abc");
+		String str2 = new String("abc");
+		
+		<!-- //문자열 출력 -->
+		System.out.println(str1);
+		System.out.println(str2);
+		
+		<!-- //두 인스턴스의 주소값 비교 -->
+		System.out.println(str1 == str2); // 메모리 공간이 다르므로 false
+		System.out.println(str1.equals(str2)); // 문자열(abc==abc)이 같으므로 true
+		
+		<!-- //2. Integer 생성 -->
+		Integer int1 = new Integer(100);
+		Integer int2 = new Integer(100);
+		
+		<!-- //두 인스턴스의 주소값 비교 -->
+		System.out.println(int1 == int2); // false
+		// Integer 클래스의 equals()사용하여 같은 정수값 100이므로 true
+		System.out.println(int1.equals(int2)); // true
+		
+		
+		/*
+		※결론
+		equals() = 문자열 비교
+		*/ 
+	}
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package test20221018;
+
+/*
+	작업지시사항
+	ArrayList사용
+	멤버변수
+	학생이름,국어과목점수,영어과목점수,각과목의 총점
+*/
+public class A1 {
+	public static void main(String[] args) {
+		System.out.println("=========================================");
+		A2 KMC = new A2("김엠씨");
+		KMC.addSubject("국어", 90);
+		KMC.addSubject("영어", 95);
+		KMC.showStudentInfo();
+		
+		A2 KSD = new A2("김수돌");
+		KSD.addSubject("국어", 100);
+		KSD.addSubject("영어", 80);
+		KSD.showStudentInfo();
+		
+		A2 KJD = new A2("김재돌");
+		KJD.addSubject("국어", 90);
+		KJD.addSubject("영어", 95);
+		KJD.showStudentInfo();
+		
+		A2 IJD = new A2("이지돌");
+		IJD.addSubject("국어", 90);
+		IJD.addSubject("영어", 100);
+		IJD.showStudentInfo();
+		<!--(콘솔출력)
+		-->
+	}
+}
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package test20221018;
+
+import java.util.ArrayList;
+
+
+public class A2 {
+	// 멤버변수
+	public String studentName; //학생이름
+	public String subjectName; //과목명
+	public int subjectScore; //과목점수
+	public int totalScore; //총점
+	ArrayList<A2> subjectlist; //배열선언???
+	
+	//생성자
+	public A2() {}
+	//생성자 오버로드
+	public A2(String studentName) {
+		this.studentName = studentName;
+		subjectlist = new ArrayList<A2>();
+	}
+	
+	public void addSubject(String subjectName, int score) {
+		A2 subject = new A2();
+		subject.setSubjectName(subjectName);
+		subject.setSubjectScore(score);
+		subjectlist.add(subject);
+	}
+	
+	public void showStudentInfo() {
+		int totalScore = 0;
+		for(A2 aaa : subjectlist) {
+			totalScore += aaa.getSubjectScore();
+			System.out.println("학생 " + studentName + "의 " + aaa.getSubjectName() + "과목 점수는" + aaa.getSubjectScore() + "점 입니다.");
+		}
+		System.out.println(studentName + "의 총점은 " + totalScore + "점으로 평균 점수는" + totalScore/subjectlist.size() + "점 입니다.");
+		System.out.println("=========================================");
+		
+	}
+	
+	public String getStudentName() {
+		return studentName;
+	}
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+	public String getSubjectName() {
+		return subjectName;
+	}
+	public void setSubjectName(String subjectName) {
+		this.subjectName = subjectName;
+	}
+	public int getSubjectScore() {
+		return subjectScore;
+	}
+	public void setSubjectScore(int subjectScore) {
+		this.subjectScore = subjectScore;
+	}
+	public int getTotalScore() {
+		return totalScore;
+	}
+	public void setTotalScore(int totalScore) {
+		this.totalScore = totalScore;
+	}
+	public ArrayList<A2> getSubjectlist() {
+		return subjectlist;
+	}
+	public void setSubjectlist(ArrayList<A2> subjectlist) {
+		this.subjectlist = subjectlist;
+	}
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+2022.10.19
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+JAVA EE
+Windows-Servers-서버생성-톰캣v8.5 생성
+
+좌측에 서버 누르고 하단에 소스눌러서 63줄
+<Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443"/>
+이게 있는데
+<Connector URIEncoding="UTF-8" connectionTimeout="20000" port="80080" protocol="HTTP/1.1" redirectPort="8443"/>
+URIEncoding="UTF-8" 추가, port번호 80080으로 1만이상숫자로 만들어줄것
+
+톰캣서버삭제
+
+윈도우즈-프리퍼런스(환경설정)-서버-런타임
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package javaobjectexe;
+
+public class Movie {
+	//멤버 변수
+	String audienceName; //관객명
+	
+	int money; //영화관람 비용 | 초기 0으로 생성
+	public String getAudienceName() {
+		return audienceName;
+	}
+	public void setAudienceName(String audienceName) {
+		this.audienceName = audienceName;
+	}
+	public int getMoney() {
+		return money;
+	}
+	public void setMoney(int money) {
+		this.money = money;
+	}
+	// 생성자
+	public Movie() {}
+	public Movie(String audienceName, int money) {
+		this.audienceName = audienceName;
+		this.money = money;
+	}
+	
+	// 메서드1 = 파라마운트 영화 관람
+	public void takeMovie(Paramount paramount) {
+		paramount.watch(12000);
+		this.money += 12000;
+	}
+	// 메서드2 = 디즈니 영화 관람
+	public void watchMovie(Disney disney) {
+		disney.watch(15000);
+		this.money += 15000;	
+	}
+	// 메서드3 = 관객정보 출력
+	public void showInfo() {
+		System.out.println("관객명 : " + audienceName + "님 \n총 영화 관람 요금 : "
+				+ money + "원");
+	}
+}
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package javaobjectexe;
+
+public class MovieTest {
+
+	public static void main(String[] args) {
+		Disney aladin = new Disney("알라딘");
+		Paramount indianajohns = new Paramount("인디애나존스");
+		Movie member1 = new Movie("정우성", 0);
+		Movie member2 = new Movie("이정재", 0);
+		
+		member1.takeMovie(indianajohns);
+		member2.watchMovie(aladin);
+		System.out.println("==============================");
+		member1.showInfo();
+		System.out.println("-----------------");
+		member2.showInfo();
+		System.out.println("==============================");
+		indianajohns.showInfo();
+		System.out.println("-----------------");
+		aladin.showInfo();
+		System.out.println("==============================");
+	}
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package javaobjectexe;
+
+public class Paramount {
+	String movieName; //파라마운트 영화명
+	int audienceCount; //파라마운트 관객수
+	int money; //파라마운트 총 수입
+
+	
+	
+	
+
+	public String getMovieName() {
+		return movieName;
+	}
+	public void setMovieName(String movieName) {
+		this.movieName = movieName;
+	}
+	public int getAudienceCount() {
+		return audienceCount;
+	}
+	public void setAudienceCount(int audienceCount) {
+		this.audienceCount = audienceCount;
+	}
+	public int getMoney() {
+		return money;
+	}
+	public void setMoney(int money) {
+		this.money = money;
+	}
+	
+	//생성자
+	public Paramount() {}
+	public Paramount(String movieName) {
+		this.movieName = movieName;
+	}
+	
+	//메서드 = 관객이 파라마운트 영화를 본 경우
+	//매개변수 money(기능) 관객수 증가, 영화사 수입증가
+	public void watch(int money) {
+		this.money += money; // 영화사 수입증가
+		audienceCount++;
+	}
+	
+	//메서드2 = 파라마운트 영화사 종합 정보 출력
+	public void showInfo() {
+		System.out.println("파라마운트사 영화 : " + movieName
+		+ "\n총 관객수 : " + audienceCount + "명 \n총수입 : "
+		+ money + "원");
+	}
+}
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package javaobjectexe;
+
+public class Disney {
+	String movieName; // 디즈니 영화명
+	int audienceCount; // 디즈니 관객수
+	int money; // 디즈니 총 수입
+
+	
+	
+	
+
+	public String getMovieName() {
+		return movieName;
+	}
+	public void setMovieName(String movieName) {
+		this.movieName = movieName;
+	}
+	public int getAudienceCount() {
+		return audienceCount;
+	}
+	public void setAudienceCount(int audienceCount) {
+		this.audienceCount = audienceCount;
+	}
+	public int getMoney() {
+		return money;
+	}
+	public void setMoney(int money) {
+		this.money = money;
+	}
+	
+	//생성자
+	public Disney() {}
+	public Disney(String movieName) {
+		this.movieName = movieName;
+	}
+	
+	//메서드 = 관객이 디즈니 영화를 본 경우
+	//매개변수 money(기능) 관객수 증가, 영화사 수입증가
+	public void watch(int money) {
+		this.money += money; // 영화사 수입증가
+		audienceCount++;
+	}
+
+	//메서드2 = 디즈니 영화사 종합 정보 출력
+	public void showInfo() {
+		System.out.println("디즈니사 영화 : " + movieName
+		+ "\n총 관객수 : " + audienceCount + "명 \n총수입 : "
+		+ money + "원");
+	}
+}
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package javaobjectexe;
+
+import java.util.ArrayList;
+
+public class StudentArrayList {
+
+	public static void main(String[] args) {
+		ArrayList<StudentData> StudentScore = new ArrayList<StudentData>();
+		StudentScore.add(new StudentData("김엠씨", 90, 95));
+		StudentScore.add(new StudentData("김수돌", 100, 80));
+		StudentScore.add(new StudentData("김재돌", 90, 95));
+		StudentScore.add(new StudentData("이지돌", 90, 100));
+		for(StudentData aaa : StudentScore) {
+			 aaa.showInfo();
+			 aaa.totalScore();
+		}
+	}
+
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package javaobjectexe;
+
+public class StudentData {
+	protected String name;
+	protected int korean;
+	protected int english;
+	protected int totalScore;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getKorean() {
+		return korean;
+	}
+	public void setKorean(int korean) {
+		this.korean = korean;
+	}
+	public int getEnglish() {
+		return english;
+	}
+	public void setEnglish(int english) {
+		this.english = english;
+	}
+
+	public void setTotalScore(int totalScore) {
+		this.totalScore = totalScore;
+	}
+	
+	// 생성자
+	public StudentData() {}
+	public StudentData(String name, int korean, int english) {
+		this.name = name;
+		this.korean = korean;
+		this.english = english;
+	}
+	
+	// 메서드 = 총점구하기
+	public int getTotalScore() {
+		return korean + english;
+	}
+	
+	//메서드 정보를 출력
+	public void showInfo() {
+		System.out.println("이름 : " + name + "님\n국어점수 : " + korean + "점\n영어점수 : " + english + "점");
+	}
+	
+	public void totalScore() {
+		System.out.println("총점 : " + (korean + english) + "점");
+		System.out.println("===========================================");
+	}
+	
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package object;
+/*
+	<싱글톤 패턴>
+		객체지향 개발 디자인 패턴 중 인스턴스를 단 한개만 생성해서 사용하는 것
+		Static에 인스턴스를 하나만 구현해 놓음
+		
+	<싱글톤 패턴 규칙>
+		1. (반드시) 생성자를 private으로 만듦 => 클래스 내부에서 생성하고 제어할 수 있기 때
+		2. 클래스 내부에 static으로 (유일한) 인스턴스를 생성해야함
+		3. (반드시) 메서드를 public으로 코딩 => 인스턴스 외부에서 사용할 수 있도록
+		4. 싱글톤 실제 구현코드 만들기
+*/
+public class Oop11SingletionPattern {
+// 1. 생성자
+	private Oop11SingletionPattern() {}
+// 2. 생성
+	private static Oop11SingletionPattern instance = new Oop11SingletionPattern();
+// 3. 메서드
+	public static Oop11SingletionPattern getInstance() {
+		if(instance == null) { //null 처리
+			instance = new Oop11SingletionPattern();
+		}
+		return instance;
+	}
+
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package object;
+
+public class Oop11SingletionPatternTest {
+
+	public static void main(String[] args) {
+		<!-- // 4. 실제 사용 -->
+		Oop11SingletionPattern sington1 = Oop11SingletionPattern.getInstance();
+		Oop11SingletionPattern sington2 = Oop11SingletionPattern.getInstance();
+		System.out.println(sington1);
+		System.out.println(sington2);
+
+		boolean aa = sington2 == sington2;
+		System.out.println(aa);
+
+	}
+
+}
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+2022.10.20
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+package projectconsole.Excute;
+
+import projectconsole.dto.Score;
+import projectconsole.dto.Student;
+import projectconsole.dto.Subject;
+import projectconsole.school.School;
+import projectconsole.school.report.Report;
+import util.Constant;
+
+/*
+	리포트 출력 = 성적, 학점 
+	학생, 과목, 점수 클래스 사용
+*/
+public class ViewMain {
+	// 1. 싱글톤 접속
+	School goodSchool = School.getInstance(); 
+	Subject korean;
+	Subject math;
+	
+	// 2. 리포트 클래스 생성
+	Report gradeReport = new Report();
+	
+	
+	// 마지막. 테스트 실행 메서드
+	public static void main(String[] args) {
+		ViewMain test = new ViewMain();
+		test.createSubject();
+		test.createStudent();
+		
+		String report = test.gradeReport.getReport();
+		System.out.println(report);
+
+	}
+	
+	
+	// 3. 메서드 = 테스트 과목 생성 
+	public void createSubject() {
+		korean = new Subject("국어", Constant.KOREAN);
+		math = new Subject("수학", Constant.MATH);
+		
+		goodSchool.addSubject(korean);
+		goodSchool.addSubject(math);
+	}
+	
+	// 4. 메서드 = 테스트 학생 생성
+	public void createStudent() {
+		// 테스트 학생 생성 | 학번, 이름, 필수과목
+		Student stdt1 = new Student(12093, "김명철", korean);
+		Student stdt2 = new Student(13043, "김수돌", math);
+		Student stdt3 = new Student(12093, "김재돌", korean);
+		Student stdt4 = new Student(12093, "이지일", korean);
+		Student stdt5 = new Student(12093, "박순임", math);
+		
+		// School에 학생 추가
+		goodSchool.addStudent(stdt1);
+		goodSchool.addStudent(stdt2);
+		goodSchool.addStudent(stdt3);
+		goodSchool.addStudent(stdt4);
+		goodSchool.addStudent(stdt5);
+		
+		// 국어과목 수강 학생
+		korean.register(stdt1);
+		korean.register(stdt2);
+		korean.register(stdt3);
+		korean.register(stdt4);
+		korean.register(stdt5);
+		
+		// 수학과목 수강 학생
+		math.register(stdt1);
+		math.register(stdt2);
+		math.register(stdt3);
+		math.register(stdt4);
+		math.register(stdt5);	
+		
+		// 과목별 점수 추가 = 아래 메서드
+		addScoreStudent(stdt1, korean, 85);
+		addScoreStudent(stdt1, math, 95);
+		
+		addScoreStudent(stdt2, korean, 95);
+		addScoreStudent(stdt2, math, 95);
+		
+		addScoreStudent(stdt3, korean, 100);
+		addScoreStudent(stdt3, math, 90);
+		
+		addScoreStudent(stdt4, korean, 88);
+		addScoreStudent(stdt4, math, 73);
+		
+		addScoreStudent(stdt5, korean, 68);
+		addScoreStudent(stdt5, math, 94);
+		
+	}
+	
+	// 5. 메서드 = 과목별 점수 추가
+	public void addScoreStudent(Student student, Subject subject, int point) {
+		Score score = new Score(student.getStudentId(), subject, point);
+		student.addSubjectScore(score);
+	}
+	
+	
+
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package projectconsole;
+/*
+	최종 자바기반 구현
+	: 학점 산출 프로그램 만들기
+	  자바의 기본 개념과 객체를 기반으로 간단한 콘솔 출력 프로그램 구현
+	  
+	[기본가정] 1. 학생이 해당 과정수업을 수강
+	           2. 시험을 본후
+	           3. 시험 결과에 따라 학점을 부여하는 과정 구현
+	           
+	단계1. 시나리오 작성
+	
+	A. 프로그램 시나리오
+	: 학생수 = 5명 | 과목 = 국어, 수학 | 각각학생 = 두 과목 모두 수강 | 컴공과 = 수학 필수 | 국문과 = 국어 필수
+	
+	  a. 과목별 성적
+	  : 이름   학번   전공    필수과목    수학점수   국어점수
+	  
+	  b. 학점부여방법
+	    b-1. 필수과목
+	      S = 95~100
+	      A = 90~94
+	      B = 80~89
+	      C = 70~79
+	      D = 60~69
+	      F = 60점 미만
+	      
+	    b-2. 일반과목
+	      A = 90~100
+	      B = 80~89
+	      C = 70~79
+	      D = 55~69
+	      F = 55점 미만	
+	
+	B. 과목별 결과 리포트 콘솔 출력
+	: Java언어 사용 = 객체간 협력, 상속, 인터페이스 개념등을 사용
+	
+	----------------------------------------------------------------------------
+	
+	단계2. 클래스 정의, 관계도 그리기
+	  A. 필요 클래스
+	  : 학생클래스, 과목클래스, 점수클래스 
+	  
+	  B. 관계도
+	  
+	----------------------------------------------------------------------------
+	
+	단계3. 자바프로그래밍 구현
+	  1. 클래스 정의
+	  
+	단계4. 리포트 클래스
+	  : 실제 서비스 운영에서 리포트는 매우 많은 양을 차지함
+	    관리/통계등의 정보를 위하여 꼭 필요
+	    Java 솔루션만을 사용할 경우 DB와 연동하여 사용
+	
+	
+*/
+public class Project01Planning {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package projectconsole.dto;
+/*
+	점수클래스
+	: 학번, 과목, 점수
+	  (기능) 학생 ???가 과목???의 점수는 ??점
+*/
+
+public class Score {
+	// 멤버변수
+	int studentId; // 학번
+	Subject subject; // 과목
+	int point; // 점수
+	
+	// 생성자
+	public Score(int studentId, Subject subject, int point) {
+		this.studentId = studentId;
+		this.subject = subject;
+		this.point = point;
+	}
+	
+	// setter, getter
+	public int getStudentId() {
+		return studentId;
+	}
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
+	}
+	public Subject getSubject() {
+		return subject;
+	}
+	public void setSubject(Subject subject) {
+		this.subject = subject;
+	}
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
+	}
+	
+	// 메서드 = 멤버변수 출력
+	public String toString() {
+		return "학번 : " + studentId + " | " + subject.getSubjectName() + " : " + point;
+	}
+	
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package projectconsole.dto;
+/*
+	학생클래스
+	: 이름, 학번, 필수과목, 수강과목, 점수리스트
+	  점수리스트 = ArrayList 사용
+*/
+
+import java.util.ArrayList;
+
+public class Student {
+	// 멤버변수
+	private int studentId; //학번
+	private String studentName; //학생이름
+	private Subject majorSubject; // 필요과목
+	
+	// 수강한 과목의 점수리스트
+	// addSubjectScore() 메서드 호출시 [ArrayList에 추가]
+	private ArrayList<Score> scoreList = new ArrayList<>();
+
+	// 생성자
+	public Student(int studentId, String studentName, Subject majorSubject) {
+		this.studentId = studentId;
+		this.studentName = studentName;
+		this.majorSubject = majorSubject;
+	}
+	
+	// setter, getter
+	public int getStudentId() {
+		return studentId;
+	}
+
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
+	}
+
+	public String getStudentName() {
+		return studentName;
+	}
+
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+
+	public Subject getMajorSubject() {
+		return majorSubject;
+	}
+
+	public void setMajorSubject(Subject majorSubject) {
+		this.majorSubject = majorSubject;
+	}
+
+	public ArrayList<Score> getScoreList() {
+		return scoreList;
+	}
+
+	public void setScoreList(ArrayList<Score> scoreList) {
+		this.scoreList = scoreList;
+	}
+	
+	
+	// 메서드 => 이 메서드 호출시 ArrayList에 배열로 값 추가
+	public void addSubjectScore(Score score) {
+		scoreList.add(score);
+	}
+	
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package projectconsole.dto;
+/*
+	과목클래스
+	: 과목이름, 과목고유번호, 학점, 수강신청한 학생리스트
+	  학생리스트 = ArrayList 사용
+*/
+
+import java.util.ArrayList;
+// 상수클래스 사용
+import util.Constant;
+
+public class Subject {
+	// 멤버변수
+	private String subjectName; // 과목이름
+	private int subjectId; // 과목고유번호
+	private int gradeType; // 학점
+	// 수강한 신청한 학생리스트
+	// register 메서드를 호출하면 ArrayList에 값이 추가됨
+	private ArrayList<Student> studentList = new ArrayList<Student>();
+	
+	// 생성자
+	public Subject(String subjectName, int subjectId) {
+		this.subjectName = subjectName;
+		this.subjectId = subjectId;
+		// 학점 평가의 기본을 A,B 방식을 사용
+		gradeType = Constant.AB_TYPE;
+	}
+	
+	// setter, getter
+	public String getSubjectName() {
+		return subjectName;
+	}
+	public void setSubjectName(String subjectName) {
+		this.subjectName = subjectName;
+	}
+	public int getSubjectId() {
+		return subjectId;
+	}
+	public void setSubjectId(int subjectId) {
+		this.subjectId = subjectId;
+	}
+	public int getGradeType() {
+		return gradeType;
+	}
+	public void setGradeType(int gradeType) {
+		this.gradeType = gradeType;
+	}
+	public ArrayList<Student> getStudentList() {
+		return studentList;
+	}
+	public void setStudentList(ArrayList<Student> studentList) {
+		this.studentList = studentList;
+	}
+	
+	// 메서드 = 수강신청 메서드
+	public void register(Student student) {
+		studentList.add(student);
+	}
+	
+	
+	
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package projectconsole.grade;
+/*
+	인터페이스 = 일반과목, 필수과목 구분 학점 산출
+	GradeEvaluation = 인터페이스
+	BasicEvaluation(일반과목)  MajorEvaluation(필수과목) = 인터페이스 구현 클래스
+*/
+public interface GradeEvaluation {
+	// 점수를 입력받아 점수에 따른 학점을 문자열로 반환
+	public String getGrade(int point);
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package projectconsole.grade;
+/*
+	인터페이스 GradeEvaluation 구현 클래스
+	일반과목 학점 산출
+	
+	일반과목 학점 정책
+	  A = 90~100
+	  B = 80~89
+	  C = 70~79
+	  D = 55~69
+	  F = 55점 미만
+*/
+// 인터페이스를 받아 구현하세요
+public class BasicEvaluation implements GradeEvaluation {
+
+	@Override
+	public String getGrade(int point) {
+		String grade;
+		
+		if(point >= 90) {
+			grade = "A";
+		}else if(point >= 80) {
+			grade = "B";
+		}else if(point >= 70) {
+			grade = "C";
+		}else if(point >= 55) {
+			grade = "D";
+		}else {
+			grade = "F";
+		}
+		return grade;
+	}
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package projectconsole.grade;
+/*
+	인터페이스 GradeEvaluation 구현 클래스
+	필수과목 학점 산출
+	
+	필수과목 학점 정책
+      S = 95~100
+      A = 90~94
+      B = 80~89
+      C = 70~79
+      D = 60~69
+      F = 60점 미만
+*/
+//인터페이스를 받아 구현하세요
+public class MajorEvaluation implements GradeEvaluation {
+
+	@Override
+	public String getGrade(int point) {
+		String grade;
+		
+		if(point >= 95) {
+			grade = "S";
+		}else if(point >= 90) {
+			grade = "A";
+		}else if(point >= 80) {
+			grade = "B";
+		}else if(point >= 70) {
+			grade = "C";
+		}else if(point >= 60) {
+			grade = "D";
+		}else {
+			grade = "F";
+		}
+		return grade;
+	}
+	
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package projectconsole.school;
+/*
+	학교클래스
+	: 학생리스트, 과목리스트
+	  학교클래스는 유일한 객체이므로 싱글톤 패턴으로 구현함
+*/
+
+import java.util.ArrayList;
+
+import projectconsole.dto.Student;
+import projectconsole.dto.Subject;
+
+public class School {
+	// 1. 싱글톤 패턴 생성
+	private static School instance = new School();
+	// 상수
+	private static String SCHOOL_NAME = "Good School";
+	// 사용한 클래스 ArrayList형으로 생성
+	private ArrayList<Student> studentList = new ArrayList<Student>(); // 등록된 학생 객체배열로 저장
+	private ArrayList<Subject> subjectList = new ArrayList<Subject>(); // 과목 리스트 객체배열로 저장
+	
+	// 2. 싱글톤 생성자
+	private School() {}
+	
+	// 3. 싱글톤 접속
+	public static School getInstance() {
+		if(instance == null) {
+			instance = new School();
+		}
+		return instance;
+	}
+	
+	// setter, getter
+	public ArrayList<Student> getStudentList() {
+		return studentList;
+	}
+
+	public void setStudentList(ArrayList<Student> studentList) {
+		this.studentList = studentList;
+	}
+
+	public ArrayList<Subject> getSubjectList() {
+		return subjectList;
+	}
+
+	public void setSubjectList(ArrayList<Subject> subjectList) {
+		this.subjectList = subjectList;
+	}
+	
+	// 메소드1 = 학생 추가하여 ArrayList에 저장
+	public void addStudent(Student student) {
+		studentList.add(student);
+	}
+	// 메소드2 = 과목 추가하여 ArrayList에 저장
+	public void addSubject(Subject subject) {
+		subjectList.add(subject);
+	}
+	
+	
+	
+}
+
+<!-- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+package projectconsole.school.report;
+/* 리포트 클래스 구현 */
+
+import java.util.ArrayList;
+
+import projectconsole.dto.Score;
+import projectconsole.dto.Student;
+import projectconsole.dto.Subject;
+import projectconsole.grade.BasicEvaluation;
+import projectconsole.grade.GradeEvaluation;
+import projectconsole.grade.MajorEvaluation;
+/*
+	StringBuffer 객체
+	: concat(), +를 사용하지 않으려고 사용 
+	  => 기존 값을 추가하거나 변경시 기존에 String에 있던 값을 버리고 새로 할당하므로 속도가 많이 느려짐
+	  다양한 메서드들 제공
+	  
+	  append(값) = 뒤쪽에 값을 붙임
+*/
+import projectconsole.school.School;
+import util.Constant;
+
+public class Report {
+	// 4. 싱글톤 생성
+	School school = School.getInstance();
+	public static final String TITLE = " 수강생 학점 \t\t\n";
+	public static final String HEADER = " 이름 |   학번   |   과목   |  점수  \n";
+	public static final String LINE = "---------------------------------------------\n";
+	
+	// 데이터 사용 기능 구현
+	private StringBuffer buffer = new StringBuffer();
+	
+	// 메서드1 = 과목 성적
+	public String getReport() {
+		// 싱글톤 School클래스에 과목리스트 가져와서 할당
+		ArrayList<Subject> subjectList = school.getSubjectList();
+		
+		for(Subject subject: subjectList) {
+			// 하단 StringBuffer 사용하여 값 추가
+			makeHeader(subject);
+			makeBody(subject);
+			makeFooter();
+		}
+		
+		return buffer.toString(); // String으로 변환
+	}
+	
+	// StringBuffer 사용하여 문자열 연결
+	
+	// 콘솔 출력 상단 문자열
+	public void makeHeader(Subject subject) {
+		buffer.append(Report.LINE);
+		buffer.append(subject.getSubjectName());
+		buffer.append(Report.TITLE);
+		buffer.append(Report.HEADER);
+		buffer.append(Report.LINE);
+		
+	}
+	// 콘솔에 생성후 보여줄 내용
+	public void makeBody(Subject subject) {
+		ArrayList<Student> studentList = subject.getStudentList();
+		
+		for(int i=0; i<studentList.size() ; i++) {
+			Student student = studentList.get(i);
+			buffer.append(student.getStudentName());
+			buffer.append(" | ");
+			buffer.append(student.getStudentId());
+			buffer.append("\t | ");
+			buffer.append(student.getMajorSubject().getSubjectName());
+			buffer.append("\t | ");
+			
+			// 추가
+			getScoreGrade(student, subject.getSubjectId());
+			buffer.append("\n");
+			buffer.append(LINE);
+			
+		}
+	}
+	
+	// 메서드2 = 학생별 수강과목 학점 계산
+	public void getScoreGrade(Student student, int subjectId) {
+		// 과목 점수 객체배열에 할당
+		ArrayList<Score> scoreList = student.getScoreList();
+		// 해당 학생의 필수과목
+		int majorId = student.getMajorSubject().getSubjectId();
+		
+		// 학점 산출을 위해 일반과목 필수과목 클래스를 생성하여 사용
+		GradeEvaluation[] gradeEvaluations = {new BasicEvaluation(), new MajorEvaluation()}; // 일반과목 필수과목 클래스 학점 평가 클래스
+		
+		for(int i=0; i<scoreList.size(); i++) { // 객체배열 데이터 반복
+			Score score = scoreList.get(i);
+			// 학점 산출할 과목
+			if(score.getSubject().getSubjectId() == subjectId) { // Score클래스의 과목과 Subject클래스의 과목 아이디와 매개변수 입력값비교
+				String grade;
+				// 필수과목일 경우 상수풀에 SAB_TYPE값을 배열에 할당
+				if(score.getSubject().getSubjectId() == majorId) { // 필수과목일 경우
+					grade = gradeEvaluations[Constant.SAB_TYPE].getGrade(score.getPoint()); // 해당 인터페이스 구현한 클래스의 메서드 실행
+				}else { // 일반과목일 경우
+					grade = gradeEvaluations[Constant.AB_TYPE].getGrade(score.getPoint()); // 해당 인터페이스 구현한 클래스의 메서드 실행
+				}
+				
+				// 콘솔에 출력될 문자열 구현
+				buffer.append(score.getPoint()); // 정수형 점수 출력 95
+				buffer.append(" : ");
+				buffer.append(grade); // 학점기호 출력 A학점
+				buffer.append(" | ");
+				
+				
+			}
+		}
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	// 콘솔 하단 줄바꿈
+	public void makeFooter() {
+		buffer.append("\n");
+	}
+	
+}
+
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
