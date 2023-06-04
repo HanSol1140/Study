@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Array/Array.iml" filepath="$PROJECT_DIR$/Array/Array.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Java02.iml" filepath="$PROJECT_DIR$/.idea/Java02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StringArray/StringArray.iml" filepath="$PROJECT_DIR$/StringArray/StringArray.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TwoDimensionalArray/TwoDimensionalArray.iml" filepath="$PROJECT_DIR$/TwoDimensionalArray/TwoDimensionalArray.iml" />
+    </modules>
+  </component>
+</project>
