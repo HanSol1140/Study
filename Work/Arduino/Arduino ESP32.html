@@ -1,0 +1,148 @@
+ <ESP32>
+ ESP시리즈는 기본적으로 와이파이를 지원하는 모델이다
+
+<USB 드라이버 설치>
+https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads
+
+CP210x Windows Drivers 설치
+
+<아두이노 IDE에 ESP32 보드 추가>
+
+파일 - 환경설정 - 설정 - 추가 보드 관리자 URL
+https://dl.espressif.com/dl/package_esp32_index.json
+를 입력한뒤
+
+도구(Tool) - 보드 매니저(Board Manager) - ESP32 검색 - 설치
+
+보드 선택에서 ESP32 Dev Module를 선택
+
+도구 - Upload Speed - 115200
+
+이제 코드를 짜면 됩니다.
+
+#define BUILTIN_LED 2 // ESP32의 내장 LED 핀. 모듈에 따라 다를 수 있음.
+
+void setup() {
+  pinMode(BUILTIN_LED, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(BUILTIN_LED, HIGH); // LED 켜기
+  delay(1000);                     // 1초 동안 대기
+  digitalWrite(BUILTIN_LED, LOW);  // LED 끄기
+  delay(1000);                     // 1초 동안 대기
+}
+
+<시리얼 모니터>
+  아두이노 IDE에서 Serial.println(); 명령어를 출력하는 화면
+  CTRL + SHIFT + M으로 띄우거나 도구 - 시리얼모니터를 통해 실행
+  이후 시리얼 모니터의 baud 수치를 Serial.begin(전송속도)의 전송속도와 일치시켜주세요.(안그러면 출력 문자가 깨짐)
+
+<ESP32를 이용한 WIFI 접속(5G 접속불가. 2.4G로 접속해야합니다.)>
+  
+
+
+#include <WiFi.h>
+
+  const char* ssid     = "NNX-2.4G";
+  const char* password = "$@43skshslrtm";
+  
+  WiFiServer server(80);
+  
+  unsigned long previousMillis = 0;  // 마지막으로 메시지를 보낸 시간을 저장합니다.
+  
+  void setup()
+  {
+      Serial.begin(115200);
+      pinMode(5, OUTPUT);      // set the LED pin mode
+  
+      delay(10);
+  
+      // 먼저 WiFi 네트워크에 연결합니다.
+  
+      Serial.println();
+      Serial.println();
+      Serial.print("Connecting to ");
+      Serial.println(ssid);
+  
+      WiFi.begin(ssid, password);
+  
+      // WiFi의 상태가 연결상태가 아니면 500ms간격으로 점 찍는다.
+      // 즉 begin을 하면 사용자가 어떤 제지를 할 때까지는 계속 접속을 시도한다.
+      while (WiFi.status() != WL_CONNECTED) {
+          delay(2000);
+          Serial.println("연결 시도중");
+      }
+  
+      Serial.println("");
+      Serial.println("WiFi connected.");
+      Serial.println("IP address: ");
+      Serial.println(WiFi.localIP());
+      
+      server.begin();
+  
+      previousMillis = millis();  // 현재 시간 가져오기
+  }
+  
+  int value = 0;
+  
+  void loop(){
+    WiFiClient client = server.available();   // listen for incoming clients
+  
+    // WiFi가 연결된 경우 매초마다 메시지를 인쇄합니다.
+    if (WiFi.status() == WL_CONNECTED) {
+      unsigned long currentMillis = millis();
+      if (currentMillis - previousMillis >= 1000) {
+        // save the last time a message was sent
+        previousMillis = currentMillis;
+        Serial.println("연결완료!!");
+      }
+    }
+  
+    if (client) {                             // 클라이언트가 있다면,
+      Serial.println("New Client.");          // 직렬 포트에 메시지를 출력합니다.
+      String currentLine = "";                // 클라이언트에서 들어오는 데이터를 담을 문자열을 만듭니다.
+      while (client.connected()) {            // 클라이언트가 연결되어 있는 동안 반복합니다.
+        if (client.available()) {             // 클라이언트에서 읽을 바이트가 있는 경우,
+          char c = client.read();             // 바이트 읽기, 그 다음
+          Serial.write(c);                    // 시리얼 모니터에 출력합니다.
+          if (c == '\n') {                    // 바이트가 개행 문자인 경우
+  
+            // 현재 줄이 비어 있으면 줄 바꿈 문자가 두 개 연속으로 있는 것입니다.
+            // 클라이언트 HTTP 요청이 끝났으니 응답을 보내세요:
+            if (currentLine.length() == 0) {
+              // HTTP 헤더는 항상 응답 코드(예: HTTP/1.1 200 OK)로 시작합니다.
+              // 콘텐츠 유형으로 시작하여 클라이언트가 어떤 내용이 들어올지 알 수 있도록 한 다음 빈 줄로 끝납니다:
+              client.println("HTTP/1.1 200 OK");
+              client.println("Content-type:text/html");
+              client.println();
+  
+              // HTTP 응답의 내용은 헤더를 따릅니다:
+              client.print("Click <a href=\"/H\">here</a> to turn the LED on pin 5 on.<br>");
+              client.print("Click <a href=\"/L\">here</a> to turn the LED on pin 5 off.<br>");
+  
+              // HTTP 응답은 또 다른 빈 줄로 끝납니다:
+              client.println();
+              // while 루프에서 벗어납니다:
+              break;
+            } else {    // 줄 바꿈이 있으면 currentLine을 지웁니다:
+              currentLine = "";
+            }
+          } else if (c != '\r') {  // 캐리지 리턴 문자 외에 다른 문자가 있는 경우,
+            currentLine += c;      // currentLineentLine 끝에 추가합니다:
+          }
+  
+          // 클라이언트 요청이 "GET /H" 또는 "GET /L"인지 확인합니다:
+          if (currentLine.endsWith("GET /H")) {
+            digitalWrite(5, HIGH);               // GET /H는 LED를 켭니다.
+          }
+          if (currentLine.endsWith("GET /L")) {
+            digitalWrite(5, LOW);                // GET /L은 LED를 끕니다.
+          }
+        }
+      }
+      // 연결을 닫습니다:
+      client.stop();
+      Serial.println("Client Disconnected.");
+    }
+  }
