@@ -1,0 +1,9 @@
+/* ValidationSample.css */
+.success {
+    background-color: lightgreen;
+    /* 초록색으로 변경 */
+}
+.failure {
+    background-color: lightcoral;
+    /* 빨간색으로 변경 */
+}
