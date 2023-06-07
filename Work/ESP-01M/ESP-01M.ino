@@ -277,9 +277,9 @@
 
     if(!digitalRead(18)){
       Serial.println("18번 포트가 LOW입니다");
-      int stopTime1 = min1*60 + sec1;
+      int stopTime1 = (min1*60 + sec1)*1000;
       digitalWrite(18, HIGH);
-      delay(stopTime1*1000);
+      delay(stopTime1);
       Serial.println("청소시작");
       digitalWrite(19, HIGH);
       cleaningLoading();
@@ -293,8 +293,8 @@
   void cleaningLoading(){
     Serial.println("청소중입니다");
     if(digitalRead(19)){
-      int stopTime2 = min1*60 + sec1;
-      delay(stopTime2*1000);
+      int stopTime2 = (min2*60 + sec2)*1000;
+      delay(stopTime2);
     }else{
       Serial.println("청소 시작 다시하기");
       cleaningSign();
