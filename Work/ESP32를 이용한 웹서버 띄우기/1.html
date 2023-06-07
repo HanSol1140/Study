@@ -158,10 +158,7 @@
       <button onclick="setTimerTime2()">2번 타이머 설정</button>
       <button onclick="setTimerTime3()">3번 타이머 설정</button>
     </section>
-
-    <section>
-        <h2>10번 포트 LOW로 변경하기</h2>
-        <button onclick="sendRequest('setportlow10')">10번포트 LOW로 변경</button>
+  
   </body>
   </html>
   )rawliteral";
@@ -248,15 +245,7 @@
     server.send(200, "text/html", index_html);
   }
   
-  // 10번포트를 LOW로 설정 => ESP32에 9, 10번 포트가 없어서 18번 포트로 대체
-  void setPortLow10() {
-    Serial.println("18번 포트가 LOW로 변경합니다.");
-    Serial.println("청소 시작 / IR신호 발생");
-    digitalWrite(18, LOW); // => 청소시작때 바꿔야할거같은데 일단 수동으로바꿈
-    server.send(200, "text/html", index_html);
-  }
-
-
+  
   void InitWebServer(){
       //페이지 요청 처리 함수 등록
       server.on("/", handle_root);
@@ -266,19 +255,13 @@
       server.on("/settimer1", HTTP_GET, setTimerTime1);
       server.on("/settimer2", HTTP_GET, setTimerTime2);
       server.on("/settimer3", HTTP_GET, setTimerTime3);
-      server.on("/setportlow10", HTTP_GET, setPortLow10);
       server.begin();
   }
   
   void setup() { // 실행시
-
-    // 핀 설정
-    pinMode(9, OUTPUT);
-    digitalWrite(9, LOW);
-
-    pinMode(18, OUTPUT); 
-    digitalWrite(18, HIGH);
-  
+    // 핀번호에 따른 초기화 -> 지금은 없으므로 주석처리로 없앰
+    // pinMode(Led1Pin, OUTPUT);
+    // digitalWrite(Led1Pin, 1)
     Serial.begin(115200); // 시리얼 통신 초기화(실행), 전송속도 설정
     Serial.println("ESP32 WEB Start");
     Serial.println(ssid);
@@ -303,33 +286,19 @@
   }
   
   
-  // unsigned long previousTime = 0;  // 이전 시간을 저장하는 변수
-  // unsigned long interval = 3000;   // 출력 간격(3초)
-  // unsigned long currentTime = millis();  // 현재 시간
-
+  unsigned long previousTime = 0;  // 이전 시간을 저장하는 변수
+  unsigned long interval = 3000;   // 출력 간격(3초)
+  
   void loop() {
-
-    server.handleClient();    
-
-    // if (currentTime - previousTime >= interval) {  // 일정 시간이 경과하면 코드 실행
-    //   previousTime = currentTime;  // 이전 시간 업데이트
-    //   // min1, min2, min3 출력
-    //   Serial.println("min1 : " + String(min1) + " / sec1 : " + String(sec1));
-    //   Serial.println("min2 : " + String(min2) + " / sec2 : " + String(sec2));
-    //   Serial.println("min3 : " + String(min3) + " / sec3 : " + String(sec3));
-    // }
-
-    // 10번 포트 LOW시 실행
-    if(!digitalRead(18)){
-      Serial.println("18번 포트가 LOW입니다");
-      int stopTime = min1*60 + sec1;
-      digitalWrite(18, HIGH);
-      delay(stopTime*1000);
-      Serial.println("청소시작");
-      digitalWrite(9, HIGH);
-      delay(2000);
-    }else{
-      Serial.println("18번 포트가 HIGH입니다(에러)");
-      delay(2000);
+    server.handleClient();
+  
+    unsigned long currentTime = millis();  // 현재 시간
+  
+    if (currentTime - previousTime >= interval) {  // 일정 시간이 경과하면 코드 실행
+      previousTime = currentTime;  // 이전 시간 업데이트
+      // min1, min2, min3 출력
+      Serial.println("min1 : " + String(min1) + " / sec1 : " + String(sec1));
+      Serial.println("min2 : " + String(min2) + " / sec2 : " + String(sec2));
+      Serial.println("min3 : " + String(min3) + " / sec3 : " + String(sec3));
     }
   }

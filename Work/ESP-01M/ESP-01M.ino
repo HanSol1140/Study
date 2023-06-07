@@ -10,6 +10,8 @@
   int min3 = 0;
   int sec3 = 3;
   
+  int count = 0;
+
   // SSID & Password
   const char* ssid = "NNX-2.4G";
   const char *password = "$@43skshslrtm";
@@ -160,8 +162,8 @@
     </section>
 
     <section>
-        <h2>10번 포트 LOW로 변경하기</h2>
-        <button onclick="sendRequest('setportlow10')">10번포트 LOW로 변경</button>
+        <h2>청소시작 신호 발생</h2>
+        <button onclick="sendRequest('cleaningsign')">10번포트 LOW로 변경</button>
   </body>
   </html>
   )rawliteral";
@@ -248,12 +250,55 @@
     server.send(200, "text/html", index_html);
   }
   
-  // 10번포트를 LOW로 설정 => ESP32에 9, 10번 포트가 없어서 18번 포트로 대체
-  void setPortLow10() {
-    Serial.println("18번 포트가 LOW로 변경합니다.");
-    Serial.println("청소 시작 / IR신호 발생");
-    digitalWrite(18, LOW); // => 청소시작때 바꿔야할거같은데 일단 수동으로바꿈
+  // 10번포트를 LOW로 설정
+  void cleaningSign() {
+    
+    if(count >= 3){
+      Serial.println("청소 재시도 실패");
+      return;
+    }
+
+    Serial.println("18번 포트를 LOW로 변경합니다.");
+    Serial.println("청소 시작");
+    digitalWrite(18, LOW); 
+    
+    while(count < 3){
+      cleaningStart();
+      count++;
+    }
+
+    
     server.send(200, "text/html", index_html);
+  }
+
+
+  // 10번 포트 LOW시 실행
+  void cleaningStart(){
+
+    if(!digitalRead(18)){
+      Serial.println("18번 포트가 LOW입니다");
+      int stopTime1 = min1*60 + sec1;
+      digitalWrite(18, HIGH);
+      delay(stopTime1*1000);
+      Serial.println("청소시작");
+      digitalWrite(19, HIGH);
+      cleaningLoading();
+    }else{
+      Serial.println("18번 포트가 HIGH입니다(체크용)");
+      delay(2000);
+    }
+  }
+
+
+  void cleaningLoading(){
+    Serial.println("청소중입니다");
+    if(digitalRead(19)){
+      int stopTime2 = min1*60 + sec1;
+      delay(stopTime2*1000);
+    }else{
+      Serial.println("청소 시작 다시하기");
+      cleaningSign();
+    }
   }
 
 
@@ -266,16 +311,19 @@
       server.on("/settimer1", HTTP_GET, setTimerTime1);
       server.on("/settimer2", HTTP_GET, setTimerTime2);
       server.on("/settimer3", HTTP_GET, setTimerTime3);
-      server.on("/setportlow10", HTTP_GET, setPortLow10);
+      server.on("/cleaningsign", HTTP_GET, cleaningSign);
       server.begin();
   }
   
   void setup() { // 실행시
 
     // 핀 설정
-    pinMode(9, OUTPUT);
-    digitalWrite(9, LOW);
 
+    // 9번포트 대체 19번포트
+    pinMode(19, OUTPUT);
+    digitalWrite(19, LOW);
+
+    // 10번포트 대체 18번 포트
     pinMode(18, OUTPUT); 
     digitalWrite(18, HIGH);
   
@@ -319,17 +367,17 @@
     //   Serial.println("min3 : " + String(min3) + " / sec3 : " + String(sec3));
     // }
 
-    // 10번 포트 LOW시 실행
     if(!digitalRead(18)){
       Serial.println("18번 포트가 LOW입니다");
-      int stopTime = min1*60 + sec1;
-      digitalWrite(18, HIGH);
-      delay(stopTime*1000);
-      Serial.println("청소시작");
-      digitalWrite(9, HIGH);
-      delay(2000);
     }else{
-      Serial.println("18번 포트가 HIGH입니다(에러)");
-      delay(2000);
+      Serial.println("18번 포트가 HIGH입니다(체크용)");
     }
+    
+    if(!digitalRead(19)){
+      Serial.println("18번 포트가 LOW입니다");
+    }else{
+      Serial.println("18번 포트가 HIGH입니다(체크용)");
+    }
+
+    delay(2000);
   }

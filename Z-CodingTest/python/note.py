@@ -1,4 +1,7 @@
-string123 = "AaBbcC"
-string1 = string123.upper()
+# 풀이
+myString = "abstract algebra"
 
-print(string1)
+def solution(myString):
+    return myString.lower().replace("a", "A")
+
+print(solution(myString))
