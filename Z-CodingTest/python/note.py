@@ -1,7 +1,7 @@
-# 풀이
-myString = "abstract algebra"
+a = -5
+b = -3.14
+c = 3.14
 
-def solution(myString):
-    return myString.lower().replace("a", "A")
-
-print(solution(myString))
+print(abs(a)) # 5
+print(abs(b)) # 3.14
+print(abs(c)) # 3.14
