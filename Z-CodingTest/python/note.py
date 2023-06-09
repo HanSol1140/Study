@@ -1,7 +1,6 @@
-a = -5
-b = -3.14
-c = 3.14
+import math
 
-print(abs(a)) # 5
-print(abs(b)) # 3.14
-print(abs(c)) # 3.14
+n = 976
+n = math.sqrt(n)
+print(n)
+print(1 if isinstance(n, int) else 2)

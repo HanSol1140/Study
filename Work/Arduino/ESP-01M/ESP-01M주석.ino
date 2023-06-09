@@ -167,6 +167,7 @@ const char index_html[] PROGMEM = R"rawliteral(
   <section>
       <h2>청소시작 신호 발생</h2>
       <button onclick="sendRequest('cleaningsign')">10번포트 LOW로 변경</button>
+  </section>
 </body>
 </html>
 )rawliteral";

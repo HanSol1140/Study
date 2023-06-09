@@ -1,0 +1,59 @@
+<node.js설치>
+    https://nodejs.org/ko
+
+<node red 설치>
+    npm install -g --unsafe-perm node-red
+
+<node red 접속>
+    cmd에 
+    node-red
+    http://localhost:1880/
+    접속
+
+
+<기본으로 사용해보는 예제>
+
+    1. inject - function - debug를 연결합니다.(좌측에서 드래그해서 설정)
+    
+    2. function을 더블클릭해보면 return msg;가 있을텐데
+        
+        msg.payload = "결과출력";
+        return msg;
+        이렇게 수정
+        Node Red 는 json 형태의 msg 를 데이터 운반에 사용합니다.
+
+
+    3. inject 노드의 좌측에 달린 실행버튼을 클릭
+
+        flow가 실행되면서 화면 우측의 디버그창에 결과값이 출력되는것을 확인할 수 있습니다.
+
+<연습>
+
+http in / template / http response 노드 펼치고 이어주기
+
+template노드 대신 function 노드 써도 같습니다.
+
+
+
+<http in 노드>
+    url : hello
+
+<template 노드>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>node red 페이지구현해보기</title>
+    </head>
+    <body>
+        <h1>Hello {{req.query.name}}</h1>
+        <h2>{{req.query.text}}</h2>
+    </body>
+    </html>
+
+<http response 노드>
+    연결만하면됩니다.
+
+
+    두개 다 설치하기

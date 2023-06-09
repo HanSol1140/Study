@@ -1,18 +1,12 @@
 #include <WiFi.h>
 #include <WebServer.h>
 
-// 테이블 청소
-// (input) 
-#define cleanSign 10
-#define cleanStart 9
-
-// 청소로보 호출(17) / 호출취소(18) /
+// 청소로봇 호출(17) / 호출취소(18) /
 //(input)
 
 #define callCleanBot 17
 #define callCleanBotCancel 18
 
-// 키오스크(kiosk)
 // 키오스크상승(19) / 키오스크 하강(21) / 키오스크 정지(23) 
 // (input) 
 #define kioskUp 19  
@@ -25,21 +19,10 @@
 #define liftKioskDown 13
 #define liftKioskStop 12
 
-// Timer #1
+// Timer
 int min1 = 0;
 int sec1 = 3;
 int timerSet1 = 3000;
-
-// Timer #2
-int min2 = 0;
-int sec2 = 3;
-int timerSet2 = 3000;
-// Timer #3
-int min3 = 0;
-int sec3 = 3;
-int timerSet3 = 3000;
-
-int count = 0;
 
 const char* ssid = "NNX-2.4G";
 const char *password = "$@43skshslrtm";
@@ -126,15 +109,12 @@ const char index_html[] PROGMEM = R"rawliteral(
     <h2>타이머 입력해서 변수에 할당</h2>
     <input type="number" id="min" value="0" min="0" max="60" placeholder="MIN" oninput="inputLimit(this)"/>
     <input type="number" id="sec" value="0" min="0" max="60" placeholder="SEC" oninput="inputLimit(this)"/>
-    <button onclick="setTimerTime(1)">1번 타이머 설정</button>
-    <button onclick="setTimerTime(2)">2번 타이머 설정</button>
-    <button onclick="setTimerTime(3)">3번 타이머 설정</button>
+    <button onclick="setTimerTime(1)">타이머 설정</button>
   </section>
 
   <section>
-      <h2>n번포트 토글 onclick의 인자를 바꿔주세요</h2>
-      <button onclick="changePort(12)">kioskUp</button>
-      <button onclick="changePort(32)">kioskDown</button>
+      <h2>n번포트 출력 토글(HIGH/LOW) onclick()의 인자(핀번호)를 바꿔주세요</h2>
+      <button onclick="changePort(12)">12번포트</button>
   </section>
 
 </body>
@@ -167,47 +147,10 @@ void setTimerTime() {
       timerSet1 = ((min1 * 60) + sec1) * 1000;
       Serial.println("타이머 시간설정 1 - " + minStr + "분 " + secStr + "초");
       break;
-    case 2:
-      min2 = minStr.toInt();
-      sec2 = secStr.toInt();
-      timerSet2 = ((min2 * 60) + sec2) * 1000;
-      Serial.println("타이머 시간설정 2 - " + minStr + "분 " + secStr + "초");
-      break;
-    case 3:
-      min2 = minStr.toInt();
-      sec2 = secStr.toInt();
-      timerSet3 = ((min3 * 60) + sec3) * 1000;
-      Serial.println("타이머 시간설정 3 - " + minStr + "분 " + secStr + "초");
-      break;
-  }
   server.send(200, "text/html", index_html);
-}
-void onCheckTime(int time){
-  for(int i = 0; i < time/100; i++){
-    if(digitalRead(cleanStart)){
-      break;
-    }else{
-      delay(100);
-    }
   }
 }
-void offCheckTime(int time){
-  for(int i = 0; i < time/100; i++){
-    if(!digitalRead(cleanStart)){
-      break;
-    }else{
-      delay(100);
-    }
-  }
-}
-void cleaningTryCount(){
-  count++;
-  if(count == 3){
-    Serial.println("청소 재시도 실패 작동을 멈춥니다.");
-    count = 0;
-    return;
-  }
-}
+
 void changePort(){
   String numStr = server.arg("num");
   int num = numStr.toInt();
@@ -219,6 +162,24 @@ void changePort(){
     digitalWrite(num, HIGH);
     Serial.println("ON");
   }
+}
+
+// 버튼 입력시간 체크
+long pressDuration(int button, unsigned long duration) {
+    long startTime = millis();
+
+    while (digitalRead(button) == LOW) { // 2초뒤에 버튼 상태가 LOW라면
+        if (millis() - startTime >= duration) {
+            return 1;
+        }
+        delay(100);
+    }   
+    while (digitalRead(button) == HIGH) { // 2초뒤에 버튼 상태가 HIGH라면
+        if (millis() - startTime >= duration) {
+            return 0;
+        } 
+        delay(100);
+    }
 }
 void InitWebServer(){
   server.on("/", handle_root);
@@ -232,9 +193,6 @@ void InitWebServer(){
 //---------------------------------------------------------------
 
 void setup() {
-  pinMode(cleanStart, INPUT);
-  pinMode(cleanSign, INPUT); 
-
   pinMode(callCleanBot, INPUT);
   pinMode(callCleanBot, INPUT);
 
@@ -269,76 +227,8 @@ void setup() {
 
 void loop() {
   server.handleClient();
-  tableCleaning();
-  callCleaeningBot();
-  callCleaeningBotCancel();
-  kioskOnOffButton();
-  kioskUpButton();
-  kioskDownButton();
-}
-
-//---------------------------------------------------------------
-//---------------------------------------------------------------
-
-// 테이블 청소
-void tableCleaning(){
-  // 동작중인지 체크
-  if(digitalRead(cleanStart)){
-    Serial.println("이미 작동중인 상태입니다.");
-    return;
-  }
-
-  // 신호 감지
-  if(!digitalRead(cleanSign)){
-    Serial.println("청소 시작 신호 수신");
-    /**
-      청소시작 IR 신호 발생
-    **/
-    cleaningTryCount();
-
-    onCheckTime(timerSet1);
-    // 청소 시작
-    if(digitalRead(cleanStart)){
-      Serial.println("청소 중입니다");
-    }else{
-      Serial.println("오류 발생, 처음부터 다시 시작");
-      delay(1000);
-      return;
-    }
-    /**
-      청소 중
-    **/
-    offCheckTime(timerSet2);
-    // 청소 종료  
-    if(!digitalRead(cleanStart)){
-      Serial.println("청소가 끝났습니다.");
-    }else{
-      /**
-        HOME IR 신호 발생
-      **/
-      offCheckTime(timerSet3);
-
-      if(!digitalRead(cleanStart)){
-        Serial.println("청소가 끝났습니다.");
-      }else{
-        Serial.println("오류 발생, 처음부터 다시 시작");
-        return;
-      }
-    }
-
-    count = 0;
-    delay(100);
-
-  }else{
-    Serial.println("청소시작 신호 수신 실패");
-    return;
-  }
-}
-
-
-// 청소봇 호출 / 호출취소
-bool CleaningBotRunning = false;
-void callCleaeningBot(){
+// 로봇 호출
+  bool CleaningBotRunning = false;
   if(CleaningBotRunning) { // 상태 확인
     Serial.println("이미 호출중 입니다.");
     return;
@@ -360,9 +250,8 @@ void callCleaeningBot(){
 
     CleaningBotRunning = false; // 상태 변경
   }
-}
 
-void callCleaeningBotCancel(){
+//호출 취소
   if(!digitalRead(callCleanBotCancel)){
     Serial.println("청소봇 호출을 취소합니다.");
 
@@ -370,29 +259,8 @@ void callCleaeningBotCancel(){
 
     Serial.println("청소봇 호출이 취소되었습니다.");
   }
-}
-
-
-// 버튼 입력시간 체크 함수
-long pressDuration(int button, unsigned long duration) {
-    long startTime = millis();
-
-    while (digitalRead(button) == LOW) { // 2초뒤에 버튼 상태가 LOW라면
-        if (millis() - startTime >= duration) {
-            return 1;
-        }
-        delay(100);
-    }   
-    while (digitalRead(button) == HIGH) { // 2초뒤에 버튼 상태가 HIGH라면
-        if (millis() - startTime >= duration) {
-            return 0;
-        } 
-        delay(100);
-    }
-}
 
 // 키오스크 정지 버튼 입력
-void kioskOnOffButton(){
   if(!digitalRead(kioskStop)){    
     if(!digitalRead(liftKioskStop)){ // 키오스크가 정지되있으면 실행
       Serial.println("키오스크를 실행합니다");
@@ -402,11 +270,8 @@ void kioskOnOffButton(){
       digitalWrite(liftKioskStop, LOW);
     }
   }
-}
-
 
 // 키오스크 상승 버튼 입력
-void kioskUpButton(){
   if(!digitalRead(kioskUp)){
     // 2초간 버튼이 눌릴 때까지 대기
     long pressTime = pressDuration(kioskUp, 2000);
@@ -426,11 +291,8 @@ void kioskUpButton(){
     digitalWrite(liftKioskUp, HIGH);
     Serial.println("키오스크 상승완료");
   }
-}
-
 
 // 키오스크 하강 버튼 입력
-void kioskDownButton(){
   if(!digitalRead(kioskDown)){
     // 2초간 버튼이 눌릴 때까지 대기
     long pressTime = pressDuration(kioskDown, 2000);
@@ -450,4 +312,5 @@ void kioskDownButton(){
     digitalWrite(liftKioskDown, HIGH);
     Serial.println("키오스크 하강완료");
   }
+
 }

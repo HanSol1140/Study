@@ -6,7 +6,7 @@
 #define cleanSign 10
 #define cleanStart 9
 
-// 청소로보 호출(17) / 호출취소(18) /
+// 청소로봇 호출(17) / 호출취소(18) /
 //(input)
 
 #define callCleanBot 17
@@ -371,7 +371,6 @@ void callCleaeningBotCancel(){
     Serial.println("청소봇 호출이 취소되었습니다.");
   }
 }
-
 
 // 버튼 입력시간 체크 함수
 long pressDuration(int button, unsigned long duration) {
