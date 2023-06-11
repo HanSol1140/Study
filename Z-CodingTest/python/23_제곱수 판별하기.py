@@ -23,4 +23,8 @@ def solution(n):
     return answer
 
 # 풀이
-def solution(n)
+import math
+
+def solution(n):
+    n = math.sqrt(n)
+    return 1 if n == int(n) else 2

@@ -7,13 +7,18 @@
 
         import 패키지명.클래스명;
         import 패키지명.*;
-
 **/
+// import
 import java.util.Date; // import문을 사용해서 패키지명을 생략할 수 있습니다.
+
+// static import
+import static java.lang.Integer.*;      // Integer클래스의 모든 static 메서드
 
 public class Main {
     public static void main(String[] args) {
-        // java.util.Date today = new java.util.Date(); // => 너무길다
-        Date today = new Date();
+// import
+    // java.util.Date today = new java.util.Date(); // => 너무길다
+    Date today = new Date();
     }
 }
+
