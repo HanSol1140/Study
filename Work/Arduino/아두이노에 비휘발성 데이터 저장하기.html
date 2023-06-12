@@ -1,0 +1,25 @@
+#include <EEPROM.h> // 비휘발성 데이터를 저장하기위한 라이브러리 => 타이머 시간 저장
+void setup() {
+<!-- 컨트롤러를 통해 데이터를 저장하기 위한 데이터번호 설정(핀번호와 관련이 없습니다.) -->
+
+<!-- 아두이노가 setup(시작)하며 EEPROM에 저장된 데이터를 읽어들입니다. -->
+    min1 = EEPROM.read(0);
+    sec1 = EEPROM.read(1);
+    min2 = EEPROM.read(2);
+    sec2 = EEPROM.read(3);
+    min3 = EEPROM.read(4);
+    sec3 = EEPROM.read(5);
+}
+
+
+<!-- 기입할 데이터 설정 -->
+EEPROM.write(0, min1);
+EEPROM.write(1, sec1);
+    <!-- write는 값의 수정이 있든, 없든 새로 값을 기입합니다. -->
+    
+EEPROM.update(2, min2);
+EEPROM.update(3, sec3);
+    <!-- update는 값의 수정이 없다면 값을 기입하지 않습니다. -->
+
+<!-- 데이터 기입 -->
+EEPROM.commit;

@@ -1,5 +1,6 @@
 #include <WiFi.h>
 #include <WebServer.h>
+#include <EEPROM.h> // 비휘발성 데이터를 저장하기위한 라이브러리 => 타이머 시간 저장
 
 #define cleanSign 18
 #define cleanStart 19
@@ -7,15 +8,12 @@
 // Timer #1
 int min1 = 0;
 int sec1 = 3;
-int timerSet1 = 3000;
-
-// Timer #2
 int min2 = 0;
 int sec2 = 3;
-int timerSet2 = 3000;
-// Timer #3
 int min3 = 0;
 int sec3 = 3;
+int timerSet1 = 3000;
+int timerSet2 = 3000;
 int timerSet3 = 3000;
 
 int count = 0;
@@ -26,6 +24,54 @@ const char *password = "$@43skshslrtm";
 WebServer server(80);
 
 void handle_root();
+
+//---------------------------------------------------------------
+//---------------------------------------------------------------
+
+void setup() {
+  pinMode(cleanStart, INPUT);
+  pinMode(cleanSign, INPUT); 
+
+  Serial.begin(9600);
+
+  EEPROM.begin(12); // EEPROM에 12바이트 할당
+
+  // Timer 기록값
+  min1 = EEPROM.read(0);
+  sec1 = EEPROM.read(1);
+  min2 = EEPROM.read(2);
+  sec2 = EEPROM.read(3);
+  min3 = EEPROM.read(4);
+  sec3 = EEPROM.read(5);
+  timerSet1 = ((min1 * 60) + sec1) * 1000;
+  timerSet2 = ((min2 * 60) + sec2) * 1000;
+  timerSet3 = ((min3 * 60) + sec3) * 1000;
+
+  Serial.print("Timer1 = ");
+  Serial.println(timerSet1);
+  Serial.print("Timer2 = ");
+  Serial.println(timerSet2);
+  Serial.print("Timer3 = ");
+  Serial.println(timerSet3);
+
+  Serial.println("ESP32 WEB Start");
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    Serial.println("접속시도중");
+    delay(1000);
+  }
+  Serial.print("Wifi IP: ");
+  Serial.println(WiFi.localIP());
+
+  InitWebServer(); 
+  
+  Serial.println("HTTP server started");
+  delay(100); 
+}
+
+//---------------------------------------------------------------
+//---------------------------------------------------------------
+
 
 // HTML 페이지
 #if 1
@@ -107,7 +153,8 @@ const char index_html[] PROGMEM = R"rawliteral(
 </html>
 )rawliteral";
 #endif
-
+//---------------------------------------------------------------
+//---------------------------------------------------------------
 
 void handle_root(){
   server.send(200, "text/html", index_html);
@@ -136,18 +183,23 @@ void setTimerTime() {
       sec1 = secStr.toInt();
       timerSet1 = ((min1 * 60) + sec1) * 1000;
       Serial.println("타이머 시간설정 1 - " + minStr + "분 " + secStr + "초");
+      EEPROM.write(0, min1);
+      EEPROM.write(1, sec1);
+      EEPROM.commit();
       break;
     case 2:
-      min2 = minStr.toInt();
-      sec2 = secStr.toInt();
       timerSet2 = ((min2 * 60) + sec2) * 1000;
       Serial.println("타이머 시간설정 2 - " + minStr + "분 " + secStr + "초");
+      EEPROM.write(2, min2);
+      EEPROM.write(3, sec2);
+      EEPROM.commit();
       break;
     case 3:
-      min2 = minStr.toInt();
-      sec2 = secStr.toInt();
       timerSet3 = ((min3 * 60) + sec3) * 1000;
       Serial.println("타이머 시간설정 3 - " + minStr + "분 " + secStr + "초");
+      EEPROM.write(4, min3);
+      EEPROM.write(5, sec3);
+      EEPROM.commit();
       break;
   }
   server.send(200, "text/html", index_html);
@@ -193,26 +245,8 @@ void InitWebServer(){
   server.begin();
 }
 
-//---------------------------------------------------------------
-//---------------------------------------------------------------
-void setup() {
-  pinMode(cleanStart, INPUT);
-  pinMode(cleanSign, INPUT); 
-  Serial.begin(115200);
-  Serial.println("ESP32 WEB Start");
-  WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED) {
-    Serial.println("접속시도중");
-    delay(1000);
-  }
-  Serial.print("Wifi IP: ");
-  Serial.println(WiFi.localIP());
 
-  InitWebServer(); 
-  
-  Serial.println("HTTP server started");
-  delay(100); 
-}
+
 //---------------------------------------------------------------
 //---------------------------------------------------------------
 void loop() {
@@ -257,5 +291,15 @@ void loop() {
 
   }
   count = 0;
-  delay(100);
+
+  // Serial.print("타이머 1 시간은");
+  // Serial.print(timerSet1);
+  // Serial.println("초 입니다.");
+  // Serial.print("타이머 2 시간은");
+  // Serial.print(timerSet2);
+  // Serial.println("초 입니다.");
+  // Serial.print("타이머 3 시간은");
+  // Serial.print(timerSet3);
+  // Serial.println("초 입니다.");
+  // delay(1000);
 }
