@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9f202509-9b05-4547-8819-290c8835042e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Java04/VariablesReset/VariablesReset.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ObjectControllOfArray/ObjectControllOfArray.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ObjectControllOfArray2/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ObjectControllOfArray2/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ObjectControllOfArray2/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ObjectControllOfArray2/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ObjectControllOfArray2/ObjectControllOfArray2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReferenceVariablesCasting/ReferenceVariablesCasting.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReferenceVariablesPolymorphism/ReferenceVariablesPolymorphism.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReferenceVariablesPolymorphism2/ReferenceVariablesPolymorphism2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../정리/01_JAVA.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../정리/01_JAVA.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Java03/VariablesReset/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Java03/VariablesReset/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Java03/VariablesReset/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Java03/VariablesReset/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Java03/VariablesReset/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Java03/VariablesReset/VariablesReset.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Java03/VariablesReset/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../Work/MQTT/MQTT프로토콜.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../Work/MQTT프로토콜.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../Z-CodingTest/python/12_배열만들기1_listComprehension.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../Z-CodingTest/python/13_A 강조하기.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../Z-CodingTest/python/14_n개 간격의 원소들_slice구문.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../Z-CodingTest/python/15_접미사인지 확인하기_endswith().py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../Z-CodingTest/python/16_마지막 두 원소_append().py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../Z-CodingTest/python/17_특정한 문자를 대문자로 바꾸기_replace().py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../Z-CodingTest/python/18_문자열안에 문자열_삼항조건연산자.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../Z-CodingTest/python/19_주사위 게임1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../Z-CodingTest/python/20_배열의 길이에 따라 다른 연산하기.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../Z-CodingTest/python/21_뒤에서 5등 위로_[slice].py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../Z-CodingTest/python/22_꼬리 문자열.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
+  </component>
+  <component name="ProjectId" id="2R5oGstNyFm8k1BQk81huyoOyRO" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9f202509-9b05-4547-8819-290c8835042e" name="Changes" comment="" />
+      <created>1686549210760</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1686549210760</updated>
+    </task>
+    <servers />
+  </component>
+</project>
