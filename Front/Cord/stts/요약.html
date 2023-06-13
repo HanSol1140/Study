@@ -1,0 +1,31 @@
+<설치>
+    <리액트>
+    npx create-react-app
+    npm install axios
+
+    <익스프레스>
+    npm install express
+    npm install cors
+    npm install --save @google-cloud/text-to-speech	 <!-- TTS API -->
+    npm install dotenv
+
+
+<구글 클라우드에서 콘솔로 이동>
+
+text to speech을 상단에 검색해서 사용-관리로 이동
+
+좌측 탭에서 <사용자 인증정보>
+
+<사용자 인증정보 만들기> => <서비스 계정> => <만들고 계속하기> => <역할선택(소유자) => <완료>
+
+그러면 인증정보 탭에서 아래에 아이디가 생성된 것을 볼 수 있습니다.
+
+<생성된 아이디를 눌러서> => <상단 키 선택> => <키 추가(새 키 만들기)> => <JSON형식> => <선택하면 파일이 다운로드 됩니다.>
+
+
+
+<express dotenv 설정>
+    
+    <dotenv.env파일 생성>
+<터미널에서 실행>
+set GOOGLE_APPLICATION_CREDENTIALS="./key-hope-389706-a991d39a7ce8.json"

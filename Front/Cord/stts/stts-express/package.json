@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "@google-cloud/text-to-speech": "^4.2.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.1.4",
     "express": "^4.18.2"
   }
 }

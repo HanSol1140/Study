@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React, { useState } from 'react';
+import axios from 'axios';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [text, setText] = useState('');
+
+    const sendTTSRequest = async () => {
+        try {
+            const response = await axios.post('http://localhost:5000/synthesize', { text }, {
+                responseType: 'arraybuffer',  // This is needed because the server returns binary data
+            });
+            const audioBlob = new Blob([response.data], { type: 'audio/mp3' });
+            const audioUrl = URL.createObjectURL(audioBlob);
+            const audio = new Audio(audioUrl);
+            audio.play();
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    return (
+        <div>
+            <input type="text" value={text} onChange={e => setText(e.target.value)} />
+            <button onClick={sendTTSRequest}>Speak</button>
+        </div>
+    );
+
+
 }
 
 export default App;

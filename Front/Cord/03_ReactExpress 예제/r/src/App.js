@@ -1,21 +1,28 @@
 // App.js
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 function App() {
-    const [data, setData] = useState(null);
+    const [inputValue, setInputValue] = useState([]);
+    const [dynamicContent, setDynamicContent] = useState('');
 
-    useEffect(() => {
-        axios.get('http://localhost:5000/api/data')  // 포트 번호를 5000으로 변경
-        .then((response) => {
-            setData(response.data.message);
-        });
-    }, []);
-
+    const handleInputChange = (e) => {
+        setInputValue(e.target.value);
+    };
+    const sendDataToServer = () => {
+        axios.post('http://localhost:5000/api/console', { message: inputValue })
+            .then((response) => {
+                setDynamicContent(inputValue); // 전달받은 값으로 동적 콘텐츠 업데이트
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
     return (
         <div>
-            <h1>{data}</h1>
-            <h2>테스트</h2>
+            <input type="text" value={inputValue} onChange={handleInputChange} />
+            <button onClick={sendDataToServer}>Send</button>
         </div>
     );
 }
