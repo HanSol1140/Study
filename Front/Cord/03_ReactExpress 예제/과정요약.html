@@ -1,0 +1,101 @@
+<설치>
+03_ReactExpress 예제에서 터미널 실행
+터미널경로
+
+    PS C:\HanSol\Alldata\Study\Front\Cord\03_ReactExpress 예제> npx create-react-app r
+    리액트 설치
+    
+    PS C:\HanSol\Alldata\Study\Front\Cord\03_ReactExpress 예제\r> npm install axios
+    라이브러리 axios 설치
+    
+
+    익스프레스 설치
+    PS C:\HanSol\Alldata\Study\Front\Cord\03_ReactExpress 예제\r> mkdir r =>
+    r 폴더생성(굳이 터미널로 생성할 필요는 없음)
+    PS C:\HanSol\Alldata\Study\Front\Cord\03_ReactExpress 예제\e> npm install express
+    r폴더로 진입해서 익스프레스 설치
+<!------------------------------------------------------------------------------------ -->
+
+<express(e)에 server.js 생성>
+// server.js
+const express = require('express');
+const app = express();
+const port = 5000;
+
+app.get('/api/data', (req, res) => {
+    res.json({ message: 'Hello from Express!' });
+});
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
+
+<!-------------------------------------------------------------------------------------->
+
+<react(r)의 App.js 수정>
+// App.js
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+function App() {
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        axios.get('http://localhost:5000/api/data')
+        .then((response) => {
+            setData(response.data.message);
+        });
+    }, []);
+
+    return (
+        <div>
+            <h1>{data}</h1>
+        </div>
+    );
+}
+
+export default App;
+
+<!-------------------------------------------------------------------------------------->
+<서버 실행>
+express 터미널로 가서
+
+node server.js
+
+<페이지 실행>
+react 터미널로 가서
+
+npm start
+
+
+해보면 오류가 납니다.
+<!-------------------------------------------------------------------------------------->
+<cors에러로 인한 네트워크 문제 해결>
+    그래도 네트워크 에러가뜨는데, cors에러라고 판단이 됩니다.
+    브라우저상에서 보안상의 이유로 같은 주소에서만 요청이 가능합니다.
+    <!-- 3000포트(react) 5000포트(express)에서 동시에 요청을 보내고 받는데 -->
+    <!-- 서로 다른 주소이기 때문에 cors에러라고 합니다. -->
+
+<express 터미널로 가서 cors패키지 설치>
+    PS C:\HanSol\Alldata\Study\Front\Cord\03_ReactExpress 예제\e> npm install cors
+<!-------------------------------------------------------------------------------------->
+<cors 수정(server.js)>
+// server.js
+const express = require('express');
+const cors = require('cors');  // import the 'cors' module
+const app = express();
+const port = 5000;
+
+app.use(cors());  // use cors middleware
+
+app.get('/api/data', (req, res) => {
+    res.json({ message: 'Hello from Express!' });
+});
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
+<!-------------------------------------------------------------------------------------->
+
+이 뒤에 다시 실행해보면
+원하는 요청이 잘 출력됩니다.
