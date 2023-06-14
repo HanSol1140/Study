@@ -1,18 +1,73 @@
 // App.js
-import React, { useState } from 'react';
-import axios from 'axios'; // axios 라이브러리를 이용해 서버와 통신합니다. 설치가 필요하면 'npm install axios'를 실행해주세요.
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function App() {
-  const [text, setText] = useState(''); // 사용자 입력을 저장할 state
+  const [text, setText] = useState(''); // TTS 사용자 입력을 저장할 state
+
+  const [recorder, setRecorder] = useState(null);
+  const [recording, setRecording] = useState(false);
+  const [audioData, setAudioData] = useState(null);
+
+
+// Start recording
+  const startRecording = async () => {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const recorder = new MediaRecorder(stream);
+    setRecorder(recorder);
+    recorder.start();
+
+    const data = [];
+    recorder.ondataavailable = e => {
+      data.push(e.data);
+    };
+
+    recorder.onstop = () => {
+      setAudioData(new Blob(data, { type: 'audio/wav' }));
+    };
+
+    setRecording(true);
+  };
+
+  // Stop recording
+  const stopRecording = () => {
+    if (recorder) {
+      recorder.stop();
+      setRecorder(null);
+      setRecording(false);
+    }
+  };
+
+// Send audio data to server when recording stops
+useEffect(() => {
+  if (audioData) {
+    const sendData = async () => {
+      try {
+        const response = await axios.post('http://localhost:5000/voiceSynthesize', audioData, {
+          
+          headers: {
+            'Content-Type': 'audio/wav',
+          },
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error with speech-to-text conversion! :', error);
+      }
+    };
+    sendData();
+  }
+}, [audioData]);
+
+
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
 
   const handleChange = (event) => {
-    setText(event.target.value); // 사용자 입력을 state에 저장
+    setText(event.target.value); // 사용자 입력을 state에 저장 => 저장해야 보낼 수 있음 안하면 ''(공백)보내짐
   }
-
-  const handleSubmit = async () => {
-
+  const textSynthesize = async () => {
     try{
-      const response = await axios.post('http://localhost:5000/synthesize', { text }, { responseType: 'arraybuffer' });
+      const response = await axios.post('http://localhost:5000/textSynthesize', { text }, { responseType: 'arraybuffer' });
       const audioBlob = new Blob([response.data], {type: 'audio/mp3'});
       const audioUrl = URL.createObjectURL(audioBlob);
       const audio = new Audio(audioUrl);
@@ -21,11 +76,24 @@ function App() {
       console.error('eror with text-to-speech conversion:', error);
     }
   }
+
+
   return (
     <div>
-      <input type="text" value={text} onChange={handleChange} />
-      <button onClick={handleSubmit}>Submit</button>
+      <section id = "TTS">
+        <input type="text" value={text} onChange={handleChange} />
+        <button onClick={textSynthesize}>Submit</button>
+      </section>
+
+      <section id="STT">
+        {recording ? (
+          <button onClick={stopRecording}>Stop Recording</button>
+        ) : (
+          <button onClick={startRecording}>Start Recording</button>
+        )}
+      </section>
     </div>
+    
   );
 }
 
