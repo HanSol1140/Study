@@ -4,8 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        td, tr{
+            border: 1px solid #000;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello World!</h1>
+    <table>
+         <tr>
+              <td colspan="3">1행1열</td>
+              <!--
+              <td>2행1열</td>
+              <td>2행2열</td>
+              <td>2행3열</td>
+              => <td colspan="3">1행1열</td>으로 합쳐짐 -->
+         </tr>
+         <tr>
+              <td rowspan="2">2행1열</td>
+              <td>2행2열</td>
+              <td>2행3열</td>
+              <!--
+              <td>2행1열</td>
+              <td>2행2열</td>
+              <td>2행3열</td> -->
+         </tr>
+         <tr>
+              <!-- 2행 rowspan에 의해 첫번째 td가 사라져서 2번째 td부터 시작됨 -->
+              <td>3행2열</td>
+              <td>3행3열</td>
+         </tr>
+    </table>
 </body>
 </html>
