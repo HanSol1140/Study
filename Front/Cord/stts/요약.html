@@ -6,26 +6,163 @@
     <익스프레스>
     npm install express
     npm install cors
-    npm install --save @google-cloud/text-to-speech	 <!-- TTS API -->
+    npm install @google-cloud/text-to-speech <!-- TTS API => 사용법은 구글 클라우드에 검색하면 나옴-->
     npm install dotenv
 
 
-<구글 클라우드에서 콘솔로 이동>
+<구글 클라우드에서 서비스 계정 생성, 키 받기>
 
-text to speech을 상단에 검색해서 사용-관리로 이동
+    text to speech을 상단에 검색해서 사용 - 관리로 이동
+    <!-- 사용한적이 없다면 사용이나오고 사용을 누른후에는 관리로 버튼이 변경됨-->
 
-좌측 탭에서 <사용자 인증정보>
+    좌측 탭에서 <햄버거 버튼> => <API 및 서비스> => <사용자 인증정보>
 
-<사용자 인증정보 만들기> => <서비스 계정> => <만들고 계속하기> => <역할선택(소유자) => <완료>
+    <사용자 인증정보 만들기> => <서비스 계정> => <만들고 계속하기> => <역할선택(소유자) => <완료>
 
-그러면 인증정보 탭에서 아래에 아이디가 생성된 것을 볼 수 있습니다.
+    그러면 인증정보 탭에서 아래에 아이디가 생성된 것을 볼 수 있습니다.
 
-<생성된 아이디를 눌러서> => <상단 키 선택> => <키 추가(새 키 만들기)> => <JSON형식> => <선택하면 파일이 다운로드 됩니다.>
+    <생성된 아이디를 눌러서> => <상단 키 선택> => <키 추가(새 키 만들기)> => <JSON형식> => <선택하면 파일이 다운로드 됩니다.>
 
+<ID 서비스계정 Key파일>
+    <!--
+    파일명
+    key-hope-389706-a991d39a7ce8.json
 
+    내용
+    {
+        "type": "service_account",
+        "project_id": "key-hope-389706",
+        "private_key_id": "a991d39a7ce8faf3be58e71296ea777f574edbaf",
+        "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC1N1JbI9KIqMzQ\nrnYZoywTm5PHv9oQ856G1D6uhyUE+dUl/9+zLLPMiZY/qN9yPl5gXe7kkFb/p8el\nxfrmZkSH4AqWFwNoHuGWgo7hNqZnsNr2SArNauhia1OZs2F7z85jIXqNybR/r6Q0\nPXeK6eqyqJC2RLEUePtq6D2Rq1ZqmuGxZ51dp5FbKXUbeGobC0PhLaEoTCE/jsY/\nNbW6oafON57hR5xaGIGROHxV3f31wf+u2ia0cwuS/gqytK982D1hzw9CQlokgCc1\n6LiTKlWmRWYpJd44v1Yz+/3Ql/isCwPxjE46SdV2aZcchHtyfwyZ/3XyX9gVB2KQ\n3GyC5AnfAgMBAAECggEAAxrZAKYLyXrr30JpBRVKFXJNN37Q2UXvHLa2AglfdMob\nhBPZm20JSvDiXBK5kxTWJmh9/M4HEXmunc71v8PvzoOCc043HOTlanJm7a+ItrGs\nD+TPSsNLCuimL6N79O/mDbmp9EsPCBtptJ0NSCxi2FH8nwralxoWsvp8HaryE5lA\nx6ZEsjyo7rurgPUrtjuFjpzZ5ir2jc8brOgu0QpveHte/cqFAxCSTy4wThNZwBo7\n0onfYu8q7O0q6kLG2LmV8nftqHXPFBp+XXb52uow5GkT36QCnA/qPJefNZD47VOT\nZ0LSipue81vXrsz/VNg3bj72GiqNviZy5o69iKQClQKBgQDni2/1hV57t4hU3qqQ\nuf10+MqbB0uM0gfMOZKAv6RDjATSFnkxvyB4q2UwL0cQOk0MaoTt5EZnDV4ZSQ62\njDhsmBQF5NAKCJuvUADU8wgyPHw1CGmcNoQHQQt3o3ltSDgsMA0XjtOcK+yuf7Vp\nNgFiOufUwWfDHXpL0/cB6jLEZQKBgQDIWxZ4Ap7PyUL1IrKyUWqR8gbKXCWdYzLL\nRVOVdDWi3V91Y10gKlHg8shxwcHxiCcqL+7BHF5lpxRPqxA836ei6wiw3195P2Xz\nA5dIgxZar/PTUm4Wurb7WO9zf49DS3o33fRVlULrVIXjZr8HIjUXudgWyqZSOKmM\nWBbXVwBG8wKBgQDcdw7uZsPU5qbfsHgVf5JOiwlW3XZZKi6UjQjqoA7G5g48/3r8\nG/DOFNwvKgTu9aQhO1dAr8c9HiRHzSE+PXsIIzGFfx17QEEEhxeTq6hVNPRLBqyQ\nOfQyeAN0MepPXKFnqYT9tlfUbppYeG8CM5LTtiTBljm3NV0Z0ERzxUv7ZQKBgHpi\n8dGzQBGLToRxgpjclO272xwHt85xRxjWK12TFCR9d488eClq0INJqtmaUv9YfRwP\nFZgO3TbZHdYgl5WnxT4GtlNcz3RAHuWYXvQjZydUbeu7YZYuzhGxXOu/kuK3m1u/\nED6rI6qfAf5LyArygV4R3wblGT4GcMNTF/jIo1mzAoGAfOnpMxYs2mdWKZdIE7rY\np7Fs1KPhpGDIixq41V3LK21UGUNRIjcBnV4uUDCnn/RCJHLeQ5sx0+X33Rukk9qC\nLwQkB4Xe2cmJuOT/VymMo3FReZzU8nTUa64lmXMxquHOFqswLMRENqWpHnjzOcBN\nc4zwZ77OII6DD/k74BfucAU=\n-----END PRIVATE KEY-----\n",
+        "client_email": "tts-808@key-hope-389706.iam.gserviceaccount.com",
+        "client_id": "115307896794809741531",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tts-808%40key-hope-389706.iam.gserviceaccount.com",
+        "universe_domain": "googleapis.com"
+    }
+    -->
+    
+    <사용자 인증 정보> => <사용자 인증정보 만들기를 누르면 나오는 탭> =><API키 생성>
+    <!-- 
+        AIzaSyA6IHmjJFTcRtkg-cAB2EzgdjH2zkpHh4k
+    -->
+    <!-- 근데 이거 필요없는듯? 이 코드를 입력한 기억이 없는데 -->
+
+<!--
+  <시스템 환경변수 추가>
+    시작 - 시스템 환경 변수 - 환경 변수 - 시스템 변수 - 새로만들기
+        
+        GOOGLE_APPLICATION_CREDENTIALS
+        C:\key-hope-389706-a991d39a7ce8.json
+        내가 위에서 서비스 계정을 생성하고
+-->
+
+<google Colud SDK Shell 실행>
+    https://cloud.google.com/sdk/docs/quickstart-windows
+    <!-- 여기서 y만 누르면 된다는데 실수로 꺼버림 -->
+    
+
+    <!-- 그래서 여기서부터 다시함 -->
+    <gcloud sdk 설치후 생성된 SDK 실행>
+    gcloud auth application-default login
+    
+    gcloud config list project
+    gcloud auth list
+    
+    이걸입력해서 project와 id를 확인
+
+    만약 gcloud config list project을 실행해서 프로젝트가 unset이라면 <!-- your active configuration is : [default]는 뜨는게 맞음-->
+    gcloud config set project 프로젝트ID(key--hope-389706 => 콘솔에가서 새로만들거나, 받아오면 됨)
+
+    입력이 됫다면 창을 꺼도 상관이 없음
+    
 
 <express dotenv 설정>
+    <!-- 따로 설정한게 없어서 넘어감 -->
     
-    <dotenv.env파일 생성>
-<터미널에서 실행>
-set GOOGLE_APPLICATION_CREDENTIALS="./key-hope-389706-a991d39a7ce8.json"
+<SERVER.JS>
+<!-- 주석부분은 .js파일에서 문자열 오류나오니 지워야함 -->
+
+const express = require('express');
+const app = express();
+const cors = require('cors');
+const textToSpeech = require('@google-cloud/text-to-speech');
+    
+require('dotenv').config({ path: 'dotenv.env' });
+<!-- .env을 가져와서 지정된 값을 설정합니다. -->
+const PORT = process.env.PORT || 5000;
+const HOST = process.env.HOST || 'localhost';
+<!-- env 파일에 포트번호와 호스트명이 지정되어 있지 않다면 5000 / localhost로 설정 -->
+
+app.use(cors());
+app.use(express.json());
+
+<!-- Google Cloud Text-to-Speech 클라이언트 생성 -->
+const client = new textToSpeech.TextToSpeechClient({
+  keyFilename: './key-hope-389706-a991d39a7ce8.json',
+  <!-- 주의해야 할점은 앞에 ./을 확인해서 key값이 아닌 key파일 경로라는점을 인지할것 -->
+});
+
+// 여기에 코딩
+app.post('/synthesize', async (req, res) => {
+    const text = req.body.text;
+  
+    const request = {
+      input: {text: text},
+      // Select the language and SSML voice gender (optional)
+      voice: {languageCode: 'ko-KR',  ssmlGender: 'FEMALE'}, // languageCode: 'ko-KR', name: 'ko-KR-Neural2-B', ssmlGender: 'FEMALE' 
+      // Select the type of audio encoding
+      audioConfig: {audioEncoding: 'MP3'},
+    };
+  
+    // Performs the Text-to-Speech request
+    const [response] = await client.synthesizeSpeech(request);
+    // The response's audioContent is binary.
+    const audio = response.audioContent;
+    res.send(audio);
+});
+
+  
+// 서버 시작
+  app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+})
+
+
+
+
+
+<App.js>
+    // App.js
+import React, { useState } from 'react';
+import axios from 'axios';
+
+function App() {
+  const [text, setText] = useState(''); // 사용자 입력을 저장할 state
+
+  const handleChange = (event) => {
+    setText(event.target.value); // 사용자 입력을 state에 저장 => 저장해야 보낼 수 있음 안하면 ''(공백)보내짐
+  }
+
+  const handleSubmit = async () => {
+    try{
+      const response = await axios.post('http://localhost:5000/synthesize', { text }, { responseType: 'arraybuffer' });
+      const audioBlob = new Blob([response.data], {type: 'audio/mp3'});
+      const audioUrl = URL.createObjectURL(audioBlob);
+      const audio = new Audio(audioUrl);
+      audio.play();
+    } catch (error){
+      console.error('error with text-to-speech conversion! :', error);
+    }
+  }
+  return (
+    <div>
+      <input type="text" value={text} onChange={handleChange} />
+      <button onClick={handleSubmit}>Submit</button>
+    </div>
+  );
+}
+
+export default App;
