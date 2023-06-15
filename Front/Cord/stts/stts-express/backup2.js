@@ -43,10 +43,11 @@ app.post("/voiceSynthesize", async (req, res) => {
   const audioData = Buffer.from(base64Audio, 'base64'); // Convert Base64 to Buffer
 
   const request = {
+    // audio: { content: base64Audio },
     audio: { content: audioData.toString('base64') }, // Base64 string for Google's API
     config: {
       encoding: 'LINEAR16',
-      sampleRateHertz: 48000,
+      sampleRateHertz: 16000,
       languageCode: 'ko-KR',
     },
   };
@@ -54,7 +55,7 @@ app.post("/voiceSynthesize", async (req, res) => {
   try {
     const [response] = await STTclient.recognize(request);
     const transcription = response.results.map(result => result.alternatives[0].transcript).join('\n');
-    res.send(transcription);
+    res.send(res.json);
     
   } catch (error) {
     console.error('Error with speech-to-text conversion! :', error);

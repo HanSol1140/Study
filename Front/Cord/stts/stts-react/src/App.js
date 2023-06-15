@@ -8,60 +8,7 @@ function App() {
   const [recorder, setRecorder] = useState(null);
   const [recording, setRecording] = useState(false);
   const [audioData, setAudioData] = useState(null);
-
-
-// Start recording
-  const startRecording = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    const recorder = new MediaRecorder(stream);
-    setRecorder(recorder);
-    recorder.start();
-
-    const data = [];
-    recorder.ondataavailable = e => {
-      data.push(e.data);
-    };
-
-    recorder.onstop = () => {
-      setAudioData(new Blob(data, { type: 'audio/wav' }));
-    };
-
-    setRecording(true);
-  };
-
-  // Stop recording
-  const stopRecording = () => {
-    if (recorder) {
-      recorder.stop();
-      setRecorder(null);
-      setRecording(false);
-    }
-  };
-
-// Send audio data to server when recording stops
-useEffect(() => {
-  if (audioData) {
-    const sendData = async () => {
-      try {
-        // Convert Blob to Base64
-        const reader = new FileReader();
-        reader.onloadend = async () => {
-          const base64data = reader.result.split(",")[1]; // Remove the "data:audio/wav;base64," part
-          const response = await axios.post('http://localhost:5000/voiceSynthesize', { audioData: base64data }, {
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          });
-          console.log(response.data);
-        };
-        reader.readAsDataURL(audioData);
-      } catch (error) {
-        console.error('Error with speech-to-text conversion! :', error);
-      }
-    };
-    sendData();
-  }
-}, [audioData]);
+  const [chunks, setChunks] = useState([]);
 
 
 // -----------------------------------------------------------------------------------------------------
@@ -81,6 +28,77 @@ useEffect(() => {
       console.error('eror with text-to-speech conversion:', error);
     }
   }
+  // Start recording
+  const startRecording = async () => {
+    try {
+      // Request permissions to record audio
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+      // Create new MediaRecorder instance
+      const newRecorder = new MediaRecorder(stream);
+      setRecorder(newRecorder);
+
+      // Start recording
+      newRecorder.start();
+
+      // Initialize new array for chunks of audio data
+      setChunks([]);
+
+      // Add recorded chunks to array when data is available
+      newRecorder.ondataavailable = (event) => {
+        setChunks((oldChunks) => [...oldChunks, event.data]);
+      };
+
+      // Set recording state
+      setRecording(true);
+
+    } catch (err) {
+      console.error('Error starting recording: ', err);
+    }
+  };
+
+  const stopRecording = () => {
+    // Stop the recording
+    recorder.stop();
+
+    // Set recording state
+    setRecording(false);
+
+    // Create single Blob out of the chunks of audio data
+    recorder.onstop = () => {
+      const blob = new Blob(chunks, { type: 'audio/wav' });
+      setAudioData(blob);
+    };
+  };
+
+  // Send audio data to server when recording stops
+  useEffect(() => {
+    if (audioData) {
+      const sendData = async () => {
+        try {
+          // Convert Blob to Base64
+          const reader = new FileReader();
+          reader.onloadend = async () => {
+            const base64data = reader.result.split(",")[1]; // Remove the "data:audio/wav;base64," part
+            try {
+              const response = await axios.post('http://localhost:5000/voiceSynthesize', { audioData: base64data }, {
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+              });
+              console.log(response.data);
+            } catch (error) {
+              console.error('Error with speech-to-text conversion! :', error);
+            }
+          };
+          reader.readAsDataURL(audioData);
+        } catch (error) {
+          console.error('Error with converting blob to base64 :', error);
+        }
+      };
+      sendData();
+    }
+  }, [audioData]);
 
 
   return (
