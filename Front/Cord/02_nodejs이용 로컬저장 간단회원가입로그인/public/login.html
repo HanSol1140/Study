@@ -3,15 +3,49 @@
 <head>
     <title>로그인</title>
 </head>
+<script>
+function call() {
+  try {
+    const id = '07040994350';
+    const pass = '6195nix*';
+    const destnumber = '01031277711'; // 실제 상대방 번호를 입력하세요.
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost:84/RestApi/clickdial", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          console.log(xhr.responseText);
+          // 응답 데이터 처리
+        } else {
+          console.error("Error with API call:", xhr.status);
+          // 에러 처리
+        }
+      }
+    };
+
+    var data = JSON.stringify({
+      id,
+      pass: sha512(pass).toString(),
+      destnumber,
+    });
+
+    xhr.send(data);
+  } catch (error) {
+    console.error('Error with API call:', error);
+  }
+}
+</script>
 <body>
     <h2>로그인</h2>
     <form action="/login" method="post">
-        <label for="username">아이디:</label><br>
-        <input type="text" id="username" name="username"><br>
-        <label for="password">비밀번호:</label><br>
-        <input type="password" id="password" name="password"><br>
-        <input type="submit" value="로그인">
+        <h1>요청을 보낸다</h1>
+        <button>요청보내기버튼</button>
+
+            
     </form>
-    <button onclick="window.location='http://localhost:3000/register.html'">회원가입</button>
+    
 </body>
 </html>

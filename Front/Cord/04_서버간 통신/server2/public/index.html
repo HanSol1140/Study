@@ -1,0 +1,55 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>로그인</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+</head>
+<script>
+  function sha512(value) {
+  return CryptoJS.SHA512(value).toString();
+}
+function call() {
+  try {
+    id = '07040994350';
+    pass = '6195nix*';
+    destnumber = '01031277711'; // 실제 상대방 번호를 입력하세요.
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://192.168.0.137:84/Apitest", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          console.log(xhr.responseText);
+          // 응답 데이터 처리
+        } else {
+          console.error("Error with API call:", xhr.status);
+          // 에러 처리
+        }
+      }
+    };
+
+    var data = JSON.stringify({
+      id,
+      pass: sha512(pass),
+      destnumber,
+    });
+
+    xhr.send(data);
+  } catch (error) {
+    console.error('Error with API call:', error);
+  }
+}
+</script>
+<body>
+    <h2>로그인</h2>
+        <h1>요청을 보낸다</h1>
+        <button onclick="call()">요청보내기버튼</button>
+
+            
+    </form>
+    
+</body>
+</html>
