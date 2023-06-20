@@ -1,0 +1,25 @@
+<설치이후 화면이 출력되면 - 설치된 SD카드를 받아버려서 이전과정을 모름>
+터미널을 열고 다음 명령을 실행하여 패키지 관리자를 업데이트
+sudo apt update
+다음 명령을 사용하여 필요한 의존성 패키지를 설치
+sudo apt install -f
+<VS Code를 설치>
+sudo apt install code
+    설치 과정에서 계속 멈추므로 몇번씩 다시입력해보세요
+    설치가 다됬다면 터미널에 code 입력
+<node.js설치>
+    sudo apt install nodejs
+
+<포트 데이터를 읽기위해 minicom 설치>
+sudo apt-get install minicom
+
+미니컴 실행
+sudo minicom -b 9600 -o -D /dev/ttyUSB0
+신호 보내기 - 터미널을 하나 더켜서
+echo "Hello, World!" > /dev/ttyUSB0
+
+<특정 포트에 번호판이 연결되엇는지 체크>
+이경우엔 usb로 연결되었으므로
+lsusb를 통해 리스트를확인하고
+usb를 뽑아봄으로써 2303이라는걸 확인할 수 잇음
+ID:067b:2303
