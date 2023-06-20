@@ -2,11 +2,12 @@
 const express = require('express');
 const cors = require('cors');
 
-const PORT = process.env.PORT || 84;
+const PORT = process.env.PORT || 8090;
 const app = express();
 
-app.use(cors());
+app.use(cors({ origin: '*' }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.redirect('/.html');

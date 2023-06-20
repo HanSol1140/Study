@@ -10,14 +10,15 @@
 }
 function call() {
   try {
-    id = '07040994350';
-    pass = '6195nix*';
-    destnumber = '01031277711'; // 실제 상대방 번호를 입력하세요.
+    var sender = '07040994350';
+    var receiver = "123123";
+    var kind = '6195nix*';
+    var inner_num = '01031277711'; // 실제 상대방 번호를 입력하세요.
+    var message = "123123123";
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://192.168.0.137:84/Apitest", true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-
+    var url = `http://192.168.0.137:8082/setringcallback.html?sender=${sender}&receiver=${receiver}&kind=${kind}&inner_num=${inner_num}&message=${message}`;
+    xhr.open("GET", url, true);
     xhr.onreadystatechange = function () {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
@@ -30,13 +31,7 @@ function call() {
       }
     };
 
-    var data = JSON.stringify({
-      id,
-      pass: sha512(pass),
-      destnumber,
-    });
-
-    xhr.send(data);
+    xhr.send();
   } catch (error) {
     console.error('Error with API call:', error);
   }
