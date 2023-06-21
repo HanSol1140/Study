@@ -107,7 +107,31 @@ ID:067b:2303
                 let phoneNumber2 = data[4]+data[5]+data[6]+data[7];
                 let phoneNumber3 = data[8]+data[9]+data[10]+data[11];
                 console.log(data);
+                console.log("입력한 숫자의 갯수 : " + (data.length-2));
+                if((data.length == 13 && phoneNumber1 == "010") || data.length == 11){
+                    console.log("조건 충족, 문을 개방합니다.");
+                }else{
+                    console.log("번호가 틀렸습니다.");
+                }
             });
     
-    
-    
+<라즈베리파이에서 익스프레스 서버로 핀 컨트롤하기>
+    <라이브러리 설치>
+        onoff => node.js에서 라즈베리파이의 GPIO를 제어하기위한 라이브러리
+        npm install onoff
+
+    <코드>
+        const Gpio = require('onoff').Gpio;
+
+        const pinNumber = 37;
+        const button = new Gpio(pinNumber, 'in', 'both');
+        
+        setInterval(() => {
+        button.read((err, state) => {
+            if (err) {
+            console.error('GPIO 핀 읽기 오류:', err);
+            return;
+            }
+            console.log(`Pin ${pinNumber} 상태: ${state}`);
+        });
+        }, 1000);
