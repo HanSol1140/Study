@@ -31,11 +31,12 @@ app.post("/textSynthesize", async (req, res) => {
   const request = {
     input: { text: text },
     voice: { languageCode: "ko-KR", ssmlGender: "FEMALE" }, // languageCode: 'ko-KR', name: 'ko-KR-Neural2-B', ssmlGender: 'FEMALE'
-    audioConfig: { audioEncoding: "MP3" },
+    // audioConfig: { audioEncoding: "MP3" },
+    audioConfig: { audioEncoding: "LINEAR16" },
   };
   const [response] = await TTSclient.synthesizeSpeech(request);
   const audio = response.audioContent;
-  fs.writeFile('output.mp3', audio, (err) => {
+  fs.writeFile('output.wav', audio, (err) => {
     if (err) {
       console.log(err);
       res.status(500).send('Error while saving audio to a file');
