@@ -2,6 +2,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const fs = require('fs');
 
 const textToSpeech = require("@google-cloud/text-to-speech");
 const voiceTospeech = require('@google-cloud/speech');
@@ -34,6 +35,13 @@ app.post("/textSynthesize", async (req, res) => {
   };
   const [response] = await TTSclient.synthesizeSpeech(request);
   const audio = response.audioContent;
+  fs.writeFile('output.mp3', audio, (err) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send('Error while saving audio to a file');
+      return;
+    }
+  });
   res.send(audio);
 });
 
