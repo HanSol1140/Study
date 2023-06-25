@@ -1,0 +1,64 @@
+<Express.js를 통한 MQTT 통신>
+
+    <예제를 위한 통신 방법 설명>
+        컴퓨터 A / B 두 대를 통해 MQTT통신을 해볼 것입니다.
+        컴퓨터 A => 데스크탑
+        컴퓨터 B => 노트북
+        => 이경우 데스크탑/노트북 여부는 상관없고 지금 가지고있는 컴퓨터가 데스크탑/노트북임
+
+        A의 컴퓨터에서 발신 / 수신을 모두 할 예정
+        => 8082포트 서버(발신) / 8083포트 서버(수신)
+    
+        B는 MQTT 브로커로 사용할 예정
+
+
+<1. 발신 / 수신할 서버에서 Express.js를 설치>
+    # Express.js 설치
+    npm install express
+
+    # MQTT 클라이언트 라이브러리 설치
+    npm install mqtt
+
+<2. MQTT 브로커로 사용할 컴퓨터에서 Mosquitto설치>
+    https://mosquitto.org/download/
+
+
+<3. 토픽 발신 페이지 작성>
+    var express = require('express');
+    var mqtt = require('mqtt');
+    var app = express();
+    var client = mqtt.connect('mqtt://<컴퓨터B의 IP 주소>:1883');<!-- MQTT 서버의 주소 -->
+    <!-- var client = mqtt.connect('mqtt://192.168.0.3:1883'); -->
+    app.get('/send', function (req, res) {
+    client.publish('my_topic', 'Hello MQTT');
+    res.send('Message sent to MQTT broker');
+    });
+
+    app.listen(8081, function () {
+    console.log('Example app listening on port 8081!');
+    });
+
+
+<4. 토픽 수신 페이지 작성>
+    var express = require('express');
+    var mqtt = require('mqtt');
+    var app = express();
+    var client = mqtt.connect('mqtt://<컴퓨터B의 IP 주소>:1883');<!-- MQTT 서버의 주소 -->
+    <!-- var client = mqtt.connect('mqtt://192.168.0.3:1883'); -->
+
+    client.on('connect', function () {
+    client.subscribe('my_topic', function (err) {
+        if (!err) {
+        console.log('Connected to MQTT broker');
+        }
+    });
+    });
+
+    client.on('message', function (topic, message) {
+    // message is Buffer
+    console.log(message.toString());
+    });
+
+    app.listen(8082, function () {
+    console.log('Example app listening on port 8082!');
+    });
