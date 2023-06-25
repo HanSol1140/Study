@@ -12,6 +12,14 @@ client.on('error', function (err) {
   console.log('MQTT Error: ', err);
 });
 
+client.on('offline', function() {
+  console.log('MQTT client is offline');
+});
+
+client.on('reconnect', function() {
+  console.log('MQTT client is trying to reconnect');
+});
+
 app.get('/send', function (req, res) {
   client.publish('my_topic', 'Hello MQTT');
   res.send('Message sent to MQTT broker');
@@ -19,5 +27,5 @@ app.get('/send', function (req, res) {
 });
 
 app.listen(8082, function () {
-  console.log('Example app listening on port 8082!');
+  console.log('포트 8082 서버실행 완료');
 }); 
