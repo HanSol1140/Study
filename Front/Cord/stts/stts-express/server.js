@@ -31,8 +31,8 @@ app.post("/textSynthesize", async (req, res) => {
   const request = {
     input: { text: text },
     voice: { languageCode: "ko-KR", ssmlGender: "FEMALE" }, // languageCode: 'ko-KR', name: 'ko-KR-Neural2-B', ssmlGender: 'FEMALE'
-    // audioConfig: { audioEncoding: "MP3" },
-    audioConfig: { audioEncoding: "LINEAR16" },
+    audioConfig: { audioEncoding: "MP3" },
+    // audioConfig: { audioEncoding: "LINEAR16" },
   };
   const [response] = await TTSclient.synthesizeSpeech(request);
   const audio = response.audioContent;

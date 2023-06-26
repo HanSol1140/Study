@@ -20,8 +20,8 @@ function App() {
   const textSynthesize = async () => {
     try{
       const response = await axios.post('http://localhost:5000/textSynthesize', { text }, { responseType: 'arraybuffer' });
-      // const audioBlob = new Blob([response.data], {type: 'audio/mp3'});
-      const audioBlob = new Blob([response.data], {type: 'audio/wav'});
+        const audioBlob = new Blob([response.data], {type: 'audio/mp3'});
+      // const audioBlob = new Blob([response.data], {type: 'audio/wav'});
       const audioUrl = URL.createObjectURL(audioBlob);
       const audio = new Audio(audioUrl);
       audio.play();
