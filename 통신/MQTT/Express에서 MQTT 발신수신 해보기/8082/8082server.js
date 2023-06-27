@@ -1,8 +1,9 @@
 var express = require('express');
 var mqtt = require('mqtt');
 var app = express();
-var client = mqtt.connect('mqtt://192.168.0.3:1883');
+// var client = mqtt.connect('mqtt://192.168.0.3:1883');
 // var client = mqtt.connect('mqtt://183.91.206.122:8081');
+var client = mqtt.connect('mqtt://192.168.0.71:1884');
 
 client.on('connect', function () {
   console.log('Connected to MQTT broker');
