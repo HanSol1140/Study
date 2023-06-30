@@ -4,6 +4,7 @@ var app = express();
 // var client = mqtt.connect('mqtt://192.168.0.3:1883');
 // var client = mqtt.connect('mqtt://183.91.206.122:8081');
 // var client = mqtt.connect('mqtt://192.168.0.71:1884');
+// var client = mqtt.connect('mqtt://1.212.172.134:8081');
 var client = mqtt.connect('mqtt://localhost:1883');
 
 client.on('connect', function () {
