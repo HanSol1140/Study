@@ -1,7 +1,7 @@
 var express = require('express');
 var mqtt = require('mqtt');
 var app = express();
-var client = mqtt.connect('mqtt://192.168.0.2:1884');
+var client = mqtt.connect('mqtt://192.168.0.137:1883');
 
 
 client.on('connect', function () {
