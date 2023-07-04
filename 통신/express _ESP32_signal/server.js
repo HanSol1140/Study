@@ -10,7 +10,8 @@ app.use(express.json());
 // const response = await axios.post(`http://1.212.172.134:8082/?id=${req.body.id}&pass=${req.body.pass}&callbackurl=${req.body.callbackurl}&callbackhost=${req.body.callbackhost}&callbackport=${req.body.callbackport}`);
 app.get('/send', async function (req, res) {
     try {
-        const response = await axios.get(`http://1.212.172.134:8082/nanonix.html?sender=01031277711`);
+        // const response = await axios.get(`http://1.212.172.134:8082/nanonix.html?sender=01031277711`);
+        const response = await axios.get(`http://192.168.0.8:80/callcancle`);
             console.log("전송완료");
         if (response.status === 200) {
             console.log(response.data);
