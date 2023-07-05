@@ -20,11 +20,21 @@ client.on('reconnect', function() {
   console.log('MQTT client is trying to reconnect');
 });
 
-app.get('/send', function (req, res) {
-  client.publish('my_topic', 'Hello MQTT');
+// app.get('/send', function (req, res) {
+//   client.publish('outTopic', 'Hello MQTT');
+//   res.send('Message sent to MQTT broker');
+//   console.log('발신확인용 콘솔메세지');
+// });
+
+app.get('/send', function (req, res) { // JSON 형식으로 보내기
+  var message = {
+    cleaningRobotState : "false"
+  };
+  client.publish('outTopic', JSON.stringify(message));
   res.send('Message sent to MQTT broker');
   console.log('발신확인용 콘솔메세지');
 });
+
 
 app.listen(8082, function () {
   console.log('포트 8082 서버실행 완료');

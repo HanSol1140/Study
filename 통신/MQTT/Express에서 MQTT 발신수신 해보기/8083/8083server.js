@@ -4,11 +4,12 @@ var app = express();
 // var client = mqtt.connect('mqtt://192.168.0.3:1883');
 // var client = mqtt.connect('mqtt://183.91.206.122:8081');
 // var client = mqtt.connect('mqtt://localhost:1883');
-var client = mqtt.connect('mqtt://192.168.0.2:1884');
+// var client = mqtt.connect('mqtt://192.168.0.2:1884');
+
 
 client.on('connect', function () {
 
-    client.subscribe('my_topic', function (err) {
+    client.subscribe('outTopic', function (err) {
         if (!err) {
         console.log('Connected to MQTT broker');
         }
