@@ -20,9 +20,10 @@
 
 
 # 주어진 함수
-def solution(str1, str2):
-    answer =""
-    return answer
+# def solution(str1, str2):
+#     answer =""
+#     return answer
+
 
 # 풀이
 def solution(str1, str2):

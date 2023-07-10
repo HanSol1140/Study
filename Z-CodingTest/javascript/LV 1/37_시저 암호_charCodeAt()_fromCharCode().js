@@ -36,7 +36,12 @@ function solution(s, n) {
       }
       
       answer += String.fromCharCode(charNum);
-
   }
     return answer;
 }
+// charCodeAt() 메서드는 문자열에서 지정된 인덱스에 있는 문자의 유니코드 값을 반환합니다.
+
+// String.fromCharCode() 메서드는 유니코드를 사용해 문자열을 생성합니다
+// 이 메서드는 정적 메서드이기 때문에 String 객체의 인스턴스가 아니라 String 객체 자체에서 호출해야 합니다.
+// 이 메서드에는 숫자로 된 유니코드 값을 인자로 받습니다.
+
