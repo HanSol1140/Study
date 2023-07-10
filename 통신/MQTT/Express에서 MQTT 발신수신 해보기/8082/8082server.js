@@ -28,7 +28,9 @@ client.on('reconnect', function() {
 
 app.get('/send', function (req, res) { // JSON 형식으로 보내기
   var message = {
-    cleaningBotState : "false"
+    cMarks : "44407907080018250611",
+    advertName : "one",
+    marqueName : "test0, test1, test2"
   };
   client.publish('outTopic', JSON.stringify(message));
   res.send('Message sent to MQTT broker');
