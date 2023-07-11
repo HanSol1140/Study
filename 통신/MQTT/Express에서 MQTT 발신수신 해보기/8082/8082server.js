@@ -26,11 +26,12 @@ client.on('reconnect', function() {
 //   console.log('발신확인용 콘솔메세지');
 // });
 
-app.get('/send', function (req, res) { // JSON 형식으로 보내기
+app.get('/send', function (req, res) { // JSON 형식으로 요청
+  // json 형식으로 message 생성
   var message = {
-    cMarks : "44407907080018250611",
-    advertName : "one",
-    marqueName : "test0, test1, test2"
+    cMarks : "44407907080018250612, 44407907080018250611",
+    advertName : "3advert, 2advert",
+    marqueName : "test0"
   };
   client.publish('outTopic', JSON.stringify(message));
   res.send('Message sent to MQTT broker');
