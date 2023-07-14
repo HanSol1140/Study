@@ -6,14 +6,11 @@
 // JSON으로 보내고 싶다면 sendMqttJson함수 참조
 #include <ArduinoJson.h>
 
-
-
 // SSID & Password
 const char *ssid = "NNX-2.4G";
 const char *password = "$@43skshslrtm";
 const char *mqttServer = "192.168.0.137";
 const int mqttPort = 1883;
-
 
 // 고정 IP 설정
 IPAddress ip(192, 168, 0, 2);
@@ -67,30 +64,35 @@ const char index_html[] PROGMEM = R"rawliteral(
 
 //---------------------------------------------------------------
 // 페이지 요청이 들어 오면 처리 하는 함수
-void handle_root(){
+void handle_root()
+{
     server.send(200, "text/html", index_html);
 }
 //---------------------------------------------------------------
 // HTML 조작 함수
-void setLedStatusOn(){
+void setLedStatusOn()
+{
     Serial.println("ON 함수 실행");
 }
-void setLedStatusOff(){
+void setLedStatusOff()
+{
     Serial.println("OFF 함수 실행");
 }
 
-void handleInput() {
-  if (server.hasArg("value")) {
-    String value = server.arg("value");
-    Serial.println("input값 출력");
-    Serial.println(value);
-    
-  }
-  server.send(200, "text/html", index_html);
+void handleInput()
+{
+    if (server.hasArg("value"))
+    {
+        String value = server.arg("value");
+        Serial.println("input값 출력");
+        Serial.println(value);
+    }
+    server.send(200, "text/html", index_html);
 }
 
 // MQTT JSON 포맷으로 데이터 전송하기
-void sendMqttJson() {
+void sendMqttJson()
+{
     StaticJsonDocument<200> doc;
     // JSON 오브젝트에 cleaningRobotState 값을 추가
     doc["cleaningRobotState"] = "true";
@@ -102,7 +104,8 @@ void sendMqttJson() {
 }
 
 //---------------------------------------------------------------
-void InitWebServer(){
+void InitWebServer()
+{
     // 페이지 요청 처리 함수 등록
     server.on("/", handle_root);
     server.on("/on", HTTP_GET, setLedStatusOn);
@@ -113,8 +116,9 @@ void InitWebServer(){
 
 //---------------------------------------------------------------
 
-void setup(){    
-    // WIFI 접속           
+void setup()
+{
+    // WIFI 접속
     setup_wifi();
     InitWebServer();
     Serial.println("HTTP server started");
@@ -129,18 +133,20 @@ void setup(){
     // 이거 json형식 아니라서 json으로 받을때 보내면 오류로 장치 멈춤
 }
 
-
-void loop(){
+void loop()
+{
     server.handleClient();
     client.loop();
 }
 
 // 와이파이 접속
-void setup_wifi(){
+void setup_wifi()
+{
     // 시리얼 통신 초기화(실행), 전송속도 설정
-    Serial.begin(9600);   
+    Serial.begin(9600);
     // 고정 IP 설정
-    if (!WiFi.config(ip, gateway, subnet)) {
+    if (!WiFi.config(ip, gateway, subnet))
+    {
         Serial.println("STA Failed to configure");
     }
     // 먼저 WiFi 네트워크에 연결합니다.
@@ -149,7 +155,7 @@ void setup_wifi(){
     Serial.println(ssid);
 
     WiFi.begin(ssid, password);
-    
+
     // 와이파이가 접속이 됬는지 확인
     while (WiFi.status() != WL_CONNECTED)
     {
@@ -174,48 +180,57 @@ void setup_wifi(){
 // }
 
 // JSON파싱을 위한 MQTT 콜백함수
-void mqttCallback(char* topic, byte* payload, unsigned int length) {
-  Serial.print("Message arrived [");
-  Serial.print(topic);
-  Serial.print("] ");
+void mqttCallback(char *topic, byte *payload, unsigned int length)
+{
+    Serial.print("Message arrived [");
+    Serial.print(topic);
+    Serial.print("] ");
 
-  // Create a buffer to store the incoming payload
-  char message[length + 1];
-  for (int i = 0; i < length; i++) {
-    message[i] = (char)payload[i];
-  }
-  // Null-terminate the array
-  message[length] = '\0';
+    // Create a buffer to store the incoming payload
+    char message[length + 1];
+    for (int i = 0; i < length; i++)
+    {
+        message[i] = (char)payload[i];
+    }
+    // Null-terminate the array
+    message[length] = '\0';
 
-  // Parse the JSON payload
-  StaticJsonDocument<200> doc; // adjust the capacity depending on your payload
-  DeserializationError error = deserializeJson(doc, message);
-  if (error) {
-    Serial.println(F("Failed to parse JSON!"));
-    return;
-  }
+    // Parse the JSON payload
+    StaticJsonDocument<200> doc; // adjust the capacity depending on your payload
+    DeserializationError error = deserializeJson(doc, message);
+    if (error)
+    {
+        Serial.println(F("Failed to parse JSON!"));
+        return;
+    }
 
-  // Extract values from the JSON
-  const char* robotState = doc["cleaningRobotState"];
-  if (robotState != nullptr) {
-    Serial.println(robotState);
-
-  // Check the value of cleaningRobotState
-  if (strcmp(robotState, "signal") == 0) {
+    // Extract values from the JSON
+    const char *robotState = doc["cleaningRobotState"];
+    if (robotState != nullptr)
+    {
+        Serial.println(robotState);
+    }
+    // Check the value of cleaningRobotState
+    if (strcmp(robotState, "signal") == 0)
+    {
         // cleaningRobotState = false;
         Serial.println("!!!");
-  }
+    }
 }
 
 // MQTT 재접속
-void setup_mqtt(){
-    while (!client.connected()){
-        if (client.connect("ESP32MQTTBrokerClient")){
+void setup_mqtt()
+{
+    while (!client.connected())
+    {
+        if (client.connect("ESP32MQTTBrokerClient"))
+        {
             Serial.println("MQTT 브로커에 연결됨");
             client.publish("outTopic", "hello world");
             client.subscribe("outTopic");
         }
-        else{
+        else
+        {
             Serial.print("MQTT 브로커 연결 실패, 상태코드: rc =  ");
             Serial.print(client.state());
             Serial.println(" 3초 후 재시도...");
@@ -223,6 +238,3 @@ void setup_mqtt(){
         }
     }
 }
-
-
-
