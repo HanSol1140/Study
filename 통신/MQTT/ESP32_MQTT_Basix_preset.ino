@@ -118,6 +118,7 @@ void InitWebServer()
 
 void setup()
 {
+    Serial.begin(9600);
     // WIFI 접속
     setup_wifi();
     InitWebServer();
@@ -143,7 +144,7 @@ void loop()
 void setup_wifi()
 {
     // 시리얼 통신 초기화(실행), 전송속도 설정
-    Serial.begin(9600);
+
     // 고정 IP 설정
     if (!WiFi.config(ip, gateway, subnet))
     {
