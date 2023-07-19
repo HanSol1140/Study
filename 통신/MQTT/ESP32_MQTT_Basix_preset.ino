@@ -17,7 +17,9 @@ IPAddress ip(192, 168, 0, 2);
 IPAddress gateway(192, 168, 0, 1);
 IPAddress subnet(255, 255, 255, 0);
 
-WebServer server(8083); // Object of WebServer(HTTP port, 80 is defult)
+// 포트 설정
+const int serverPort = 8083;
+WebServer server(serverPort);
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -166,8 +168,10 @@ void setup_wifi()
 
     Serial.println("");
     Serial.println("WiFi connected");
-    Serial.println("IP address: ");
+    Serial.print("IP address: ");
     Serial.println(WiFi.localIP());
+    Serial.print("Port address: ");
+    Serial.println(serverPort);
 }
 // MQTT 수신 콜백 함수
 // void mqttCallback(char *topic, byte *payload, unsigned int length){

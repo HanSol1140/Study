@@ -34,7 +34,7 @@ client.on('message', function (topic, message) {
             bluetoothmac : "5C:52:30:42:B5:CA"
             
           };
-        client.publish('bluetooth_door_in', JSON.stringify(message));
+        client.publish('door_in', JSON.stringify(message));
     }
 });
 

@@ -47,7 +47,7 @@ app.get('/send', function (req, res) { // JSON 형식으로 요청
     bluetoothmac : "5C:52:30:42:B5:CA"
     
   };
-  client.publish('bluetooth_door_in', JSON.stringify(message));
+  client.publish('door_in', JSON.stringify(message));
   res.send('Message sent to MQTT broker');
   console.log('발신확인용 콘솔메세지');
 });
