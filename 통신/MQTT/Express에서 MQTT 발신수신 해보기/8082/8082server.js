@@ -28,13 +28,16 @@ client.on('reconnect', function() {
 
 
 // app.get('/send', function (req, res) { // JSON 형식으로 요청
-//   // json 형식으로 message 생성
-//   var message = {
-//     planName: "advertplan001",
-//     cMarksNames : "nnx10",
-//     marqueName : "test0"
-//   };
-//   client.publish('outTopic', JSON.stringify(message));
+  // json 형식으로 message 생성
+  var message = {
+    cMarksNames : "nnx10",
+    // cMarksNames : "nnx10, nnx11",
+    planName: " image advert 006",
+    // planName: "hansol image advert 004, hansol image advert 005, hansol image advert 006",
+    marqueName : "test0"
+    // marqueName : "test1, test2"
+  };
+  client.publish('did_in', JSON.stringify(message));
 //   res.send('Message sent to MQTT broker');
 //   console.log('발신확인용 콘솔메세지');
 // });
@@ -54,11 +57,11 @@ client.on('reconnect', function() {
 
 
 
-    var message = {
-        cleaningRobotState: true,
-    };
-    client.publish('table_in', JSON.stringify(message));
-    console.log('발신확인용 콘솔메세지');
+    // var message = {
+    //     cleaningRobotState: true,
+    // };
+    // client.publish('table_in', JSON.stringify(message));
+    // console.log('발신확인용 콘솔메세지');
     
     // client.publish('table_in', 'Hello MQTT')    ;
 app.listen(8082, function () {
