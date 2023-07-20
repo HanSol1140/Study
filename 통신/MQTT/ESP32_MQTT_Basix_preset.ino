@@ -185,41 +185,35 @@ void setup_wifi()
 // }
 
 // JSON파싱을 위한 MQTT 콜백함수
-void mqttCallback(char *topic, byte *payload, unsigned int length)
-{
-    Serial.print("Message arrived [");
+// MQTT JSON 받기
+void mqttCallback(char *topic, byte *payload, unsigned int length){
+    Serial.print("Topic Name [");
     Serial.print(topic);
-    Serial.print("] ");
+    Serial.println("] ");
 
-    // Create a buffer to store the incoming payload
-    char message[length + 1];
-    for (int i = 0; i < length; i++)
-    {
-        message[i] = (char)payload[i];
+    char json[length + 1];
+    for (int i = 0; i < length; i++){
+        json[i] = (char)payload[i];
     }
-    // Null-terminate the array
-    message[length] = '\0';
+    json[length] = '\0';
+    Serial.println(json);
+    
+    // Parse JSON
+    StaticJsonDocument<200> doc;
+    DeserializationError error = deserializeJson(doc, json);
 
-    // Parse the JSON payload
-    StaticJsonDocument<200> doc; // adjust the capacity depending on your payload
-    DeserializationError error = deserializeJson(doc, message);
-    if (error)
-    {
-        Serial.println(F("Failed to parse JSON!"));
+    if (error) {
+        Serial.print(F("deserializeJson() failed: "));
+        Serial.println(error.f_str());
         return;
     }
 
-    // Extract values from the JSON
-    const char *robotState = doc["cleaningRobotState"];
-    if (robotState != nullptr)
-    {
-        Serial.println(robotState);
-    }
-    // Check the value of cleaningRobotState
-    if (strcmp(robotState, "signal") == 0)
-    {
-        // cleaningRobotState = false;
-        Serial.println("!!!");
+    // Extract values
+    bool cleaningRobotState = doc["cleaningRobotState"];
+
+    if (cleaningRobotState == false){
+        cleaningRobotState = false;
+        Serial.println("청소봇 호출 끝");
     }
 }
 
