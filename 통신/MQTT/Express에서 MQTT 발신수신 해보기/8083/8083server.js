@@ -10,7 +10,7 @@ var client = mqtt.connect('mqtt://192.168.0.137:1883');
 
 client.on('connect', function () {
 
-    client.subscribe('door_out', function (err) {
+    client.subscribe('loadcell_out', function (err) {
         if (!err) {
         console.log('Connected to MQTT broker');
         }
