@@ -201,7 +201,7 @@ void mqttCallback(char *topic, byte *payload, unsigned int length){
     // Parse JSON
     StaticJsonDocument<200> doc;
     DeserializationError error = deserializeJson(doc, json);
-
+    // json형식이 아닐때를 위한 에러 핸들링
     if (error) {
         Serial.print(F("deserializeJson() failed: "));
         Serial.println(error.f_str());

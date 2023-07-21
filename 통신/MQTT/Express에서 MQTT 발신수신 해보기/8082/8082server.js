@@ -25,9 +25,8 @@ client.on('reconnect', function() {
 //   res.send('Message sent to MQTT broker');
 //   console.log('발신확인용 콘솔메세지');
 // });
-
-
 // app.get('/send', function (req, res) { // JSON 형식으로 요청
+
   // json 형식으로 message 생성
   var message = {
     cMarksNames : "nnx10",
@@ -37,7 +36,7 @@ client.on('reconnect', function() {
     marqueName : "test0"
     // marqueName : "test1, test2"
   };
-  client.publish('did_in', JSON.stringify(message));
+  client.publish('cleaningRobotRuningState_in', JSON.stringify(message));
 //   res.send('Message sent to MQTT broker');
 //   console.log('발신확인용 콘솔메세지');
 // });
@@ -54,16 +53,17 @@ client.on('reconnect', function() {
 //   res.send('Message sent to MQTT broker');
 //   console.log('발신확인용 콘솔메세지');
 // });
-
-
-
     // var message = {
     //     cleaningRobotState: true,
     // };
     // client.publish('table_in', JSON.stringify(message));
     // console.log('발신확인용 콘솔메세지');
-    
     // client.publish('table_in', 'Hello MQTT')    ;
+
+    var message = {
+        cleaningRobotRuningState : true,
+      };
+      client.publish('cleaningbot_in', JSON.stringify(message));
 app.listen(8082, function () {
   console.log('포트 8082 서버실행 완료');
 }); 
