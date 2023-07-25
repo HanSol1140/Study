@@ -90,7 +90,7 @@ async function getPose(){
     }
 }
 
-// 주행중 속도체크(정지상태에선 오류를 발신함)
+// // 주행중 속도체크(정지상태에선 오류를 발신함)
 // async function speedcheck(){
 //     try {
 //         const response = await axios.get(`http://192.168.0.13/reeman/speed`);
@@ -107,7 +107,7 @@ async function getPose(){
 // speedcheck();
 
 
-// 전진,회전 setInterval로 누르고 있는 식으로 반복해야 제대로 동작함, API설명과 다름
+// // 전진,회전 setInterval로 누르고 있는 식으로 반복해야 제대로 동작함, API설명과 다름
 // async function speedcheck(){
 //     try {
 //         const response = await axios.post(`http://192.168.0.13/cmd/speed`,{
@@ -124,7 +124,33 @@ async function getPose(){
 //     }
 // }
 
+async function setSpeed(){
+    try {
+        const response = await axios.post(`http://192.168.0.13/cmd/max_speed`,{
+            speed : 0.5
+        });
+        if (await response.status === 200) {
+            console.log(response.data);
+        }
+
+    } catch (error) {
+        console.error('Error with API call:', error);
+        console.log("error : ", error);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 module.exports = {
     getPose: getPose,
-    move: move
+    move: move,
+    setSpeed: setSpeed
 };

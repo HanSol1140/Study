@@ -20,5 +20,6 @@ app.use('/', routerhandler);
 
 // 함수
 
-const { getPose, move } = require('./func');
-getPose();
+const { getPose, move, setSpeed } = require('./func');
+// getPose();
+setSpeed();
