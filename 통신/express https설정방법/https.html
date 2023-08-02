@@ -1,0 +1,20 @@
+<OpenSSL 설치>
+    https://slproweb.com/products/Win32OpenSSL.html
+    해당 경로에서 최신파일을 받아서 설치
+    설치할때 설치된 경로를 잘 확인할것(추후에 패스설정을 해줘야함)
+
+    이후 next를 막누르지말고 
+    The OpenSSL binaries (/bin) directory에 체크하여 Next 클릭후 Install
+
+    이후 기부에대한 체크란이 있는데 생각이 없다면 체크해제하고 Finish
+    
+    <환경변수 편집>
+
+    시스템 환경 변수 편집 - 환경 변수로 이동 
+    Path 변수에 새로만들기 'C:\Program Files\OpenSSL-Win64\bin' 로 추가(설치한 경로와 같음)
+
+    이제 변수 새로 만들기 - 변수이름 'OPENSSL_CONF', 변수 값 'C:\Program Files\OpenSSL-Win64\bin\openssl.cfg'
+
+    저장
+
+    cmd에 onpenssl이나 openssl version을 입력하여 설치확인
