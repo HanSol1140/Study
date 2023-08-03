@@ -36,9 +36,9 @@ client.on('reconnect', function() {
     marqueName : "test0"
     // marqueName : "test1, test2"
   };
-  client.publish('cleaningRobotRuningState_in', JSON.stringify(message));
+  client.publish('mainserver', JSON.stringify(message));
 //   res.send('Message sent to MQTT broker');
-//   console.log('발신확인용 콘솔메세지');
+  console.log('발신확인용 콘솔메세지');
 // });
 
 // app.get('/send', function (req, res) { // JSON 형식으로 요청
@@ -63,7 +63,7 @@ client.on('reconnect', function() {
     var message = {
         cleaningRobotRuningState : true,
       };
-      client.publish('cleaningbot_in', JSON.stringify(message));
+      client.publish('mainserver', JSON.stringify(message));
 app.listen(8082, function () {
   console.log('포트 8082 서버실행 완료');
 }); 

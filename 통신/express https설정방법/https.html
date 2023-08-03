@@ -18,3 +18,10 @@
     저장
 
     cmd에 onpenssl이나 openssl version을 입력하여 설치확인
+
+    인증서를 설치할 터미널 경로로 이동후
+
+    openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
+
+
+    주의)자체 인증서는 실제 서비스에 사용하기 어렵습니다.
