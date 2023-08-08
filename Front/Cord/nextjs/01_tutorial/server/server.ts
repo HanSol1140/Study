@@ -6,7 +6,7 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-const PORT: Number = 8083;
+const PORT: Number = 8088;
 
 // 라우터 모듈화
 const routerhandler = require('./routerhandler');
