@@ -1,113 +1,14 @@
-#if 1
-const char index_html[] PROGMEM = R"rawliteral(
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8"><!-- 한글을 출력하기 위한 인코딩설정 -->
-  <style>
-    button{
-        font-weight: bold;
-        font-size: 24px;
-        padding: 8px;
-        border-radius: 12px;
-        border: 2px solid #000;
-    }
-    input{
-      font-size: 24px;
-      padding: 8px;
-      border-radius: 4px;
-    }
-
-    section div {
-        font-size: 24px;
-        font-weight: bold;
-        border: 1px solid #000;
-        border-radius: 4px;
-        padding: 10px;
-        margin-bottom: 4px;
-        width: 200px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
-
 <body>
-  <section class="title">
-    <h2>ESP32 Web Server</h1>
-  </section>
-
-  <script>
-    function zeroScale() {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "/zeroscale", true);
-        xhr.send();
-    }
-    function basketZeroscale(){
-          var xhr = new XMLHttpRequest();
-        xhr.open("GET", "/basketzeroscale", true);
-        xhr.send();
-    }
-    function calibrationControl(){
-        var input = document.getElementById("inputValue").value;
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "/calibrationcontrol?value=" + input, true);
-        xhr.send();
-    }
-
-    function sendInputValue(){
-      var input = document.getElementById("inputValue").value;
-      var xhr = new XMLHttpRequest();
-      xhr.open("GET", "/input?value=" + input, true);
-      xhr.send();
-    }    
-  var weight = 0;
-  function fetchWeight() {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "/weight", true);
-    xhr.onload = function() {
-      if (this.status == 200) {
-        var response = JSON.parse(this.responseText);
-        document.getElementById("weightDisplay").textContent = response.weight;
-        document.getElementById("basketDisplay").textContent = response.basket;
-      }
-    }
-    xhr.send();
-
-  }
-  setInterval(fetchWeight, 1000); // 매 1초마다 무게를 업데이트
-
-  function reset() {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "/reset", true);
-    xhr.send();
-  }
-
-  </script>
-  <section>
-    <h2>ESP32 재부팅</h2>
-    <p><button onclick="reset()">재부팅</button> </p>
-  </section>
-  <section>
-    <h2>0 잡기</h2>
-    <p><button onclick="zeroScale()">현재값을 0으로 조정하기</button> </p>
-    <p><button onclick="basketZeroscale()">바구니 올리기</button></p>
-  </section>
-  <input>
-
-  <section>
-    <!-- <h2>calibration_factor값 재입력하기 </h2>
-    <input type="number" id="inputValue" placeholder="전송할 값 입력">
-    <button onclick="calibrationControl()">전송</button>
-  </section> -->
-
-  <section>
-    <h2>영점 잡기</h2>
-    <div>Weight: <span id="weightDisplay"></span></div>
-    <div>Basket: <span id="basketDisplay"></span></div>
-  </section>
-
-
+    <script>
+        var a = 2^10;
+        console.log(a);
+    </script>
 </body>
 </html>
-)rawliteral";
-#endif
