@@ -1,0 +1,72 @@
+<자바 빌드하는법>
+    
+    명령프롬프트를 실행 시켜서 빌드할 프로젝트로 이동
+    dir이나 ls명령어를 통해 gradlew파일을 확인
+    프로젝트 경로에서 gradlew build명령어를 실행
+
+
+    <예시>
+        C:\>cd songhansol
+            
+        C:\songhansol>cd study
+
+        C:\songhansol\Study>cd java
+
+        C:\songhansol\Study\Java>cd 코드
+
+        C:\songhansol\Study\Java\코드>cd 03_spring_helloworld
+
+        C:\songhansol\Study\Java\코드\03_spring_helloworld>dir
+
+            2023-08-10  오전 08:39    <DIR>          .
+            2023-08-10  오전 08:39    <DIR>          ..
+            2023-08-10  오전 08:32               444 .gitignore
+            2023-08-10  오전 08:39    <DIR>          .gradle
+            2023-08-10  오전 08:46    <DIR>          .idea
+            2023-08-10  오전 08:39    <DIR>          build
+            2023-08-10  오전 08:32               540 build.gradle.kts
+            2023-08-10  오전 08:32    <DIR>          gradle
+            2023-08-10  오전 08:32             8,527 gradlew
+            2023-08-10  오전 08:32             2,868 gradlew.bat
+            2023-08-10  오전 08:32             1,437 HELP.md
+            2023-08-10  오전 08:32                42 settings.gradle.kts
+            2023-08-10  오전 08:32    <DIR>          src
+
+        C:\songhansol\Study\Java\코드\03_spring_helloworld>./gradlew build
+        
+        실행하면 build 폴더가 생성됨 생성된 폴더로 이동
+        
+        C:\songhansol\Study\Java\코드\03_spring_helloworld>cd build
+
+        C:\songhansol\Study\Java\코드\03_spring_helloworld\build>cd libs
+
+        C:\songhansol\Study\Java\  코드\03_spring_helloworld\build\libs>
+
+        C:\songhansol\Study\Java\코드\03_spring_helloworld\build\libs>dir
+
+            2023-08-10  오전 09:16    <DIR>          .
+            2023-08-10  오전 09:16    <DIR>          ..
+            2023-08-10  오전 09:16             3,099 03_spring_helloworld-0.0.1-SNAPSHOT-plain.jar
+            2023-08-10  오전 09:16        20,524,325 03_spring_helloworld-0.0.1-SNAPSHOT.jar
+
+        파일이 확인되었다면
+        
+        C:\songhansol\Study\Java\코드\03_spring_helloworld\build\libs>java -jar 03_spring_helloworld-0.0.1-SNAPSHOT.jar
+
+        .   ____          _            __ _ _
+        /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+        ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+        \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+        '  |____| .__|_| |_|_| |_\__, | / / / /
+        =========|_|==============|___/=/_/_/_/
+        :: Spring Boot ::                (v3.1.2)
+        해당 로고가 보이며 서버가 실행됩니다.
+
+        해당 java -jar 03_spring_helloworld-0.0.1-SNAPSHOT.jar을 다른경로로 이동하여 터미널에서 실행하여도 됩니다.
+        서버로 옮긴뒤 java -jar 빌드한파일.jar하면 스프링서버가 실행됨
+
+        <삭제, 빌드다시하기>
+            C:\songhansol\Study\Java\코드\03_spring_helloworld\build\libs>gradlew clean
+            빌드한 폴더 삭제
+            C:\songhansol\Study\Java\코드\03_spring_helloworld\build\libs>gradlew clean build
+            빌드 삭제후 빌드 다시하기
