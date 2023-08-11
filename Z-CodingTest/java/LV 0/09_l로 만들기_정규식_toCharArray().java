@@ -32,7 +32,20 @@ class Solution {
 // 풀이
 class Solution {
     public String solution(String myString) {
-        char[] chars = myString.toCharArray();
-        return answer; 
+        char[] answer = myString.toCharArray();
+
+        for(int i = 0; i < answer.length; i++){
+            if(answer[i] >= 'a' && answer[i] < 'l'){
+                answer[i] = 'l';
+            }
+        }
+        myString = new String(answer);
+        return myString;
+    }
+}
+// replaceAll을 이용한 정규식
+class Solution {
+    public String solution(String myString) {
+        return myString.replaceAll("[^l-z]", "l");
     }
 }

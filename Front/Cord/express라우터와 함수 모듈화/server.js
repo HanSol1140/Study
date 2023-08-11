@@ -22,4 +22,4 @@ app.use('/', routerhandler);
 
 const { getPose, move, setSpeed } = require('./func');
 // getPose();
-setSpeed();
+// setSpeed();
