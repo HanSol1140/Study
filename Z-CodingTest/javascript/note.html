@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-
-        
-
-var num1 = "0010";
-var num2 = "854202";
-
-num1 = num1.replace(/^0+/, "");
-num2 = num2.replace(/^0+/, "");
-
-console.log(num1);  // "10"
-console.log(num2);  // "854202"
-
-
-
+        var text = {
+            신용 : "S0",
+            단말기번호 : "PCR0000001",
+            할부기간 : "00",
+            승인금액 : "000001004",
+            봉사료 : "000000000",
+            세금 : "000000011",
+            승인일자 : "20230816",
+            전자서명특수여부 : "C",
+            특수카드여부 : "R",
+        }
+        console.log(Object.values(text).join(''));
 
     </script>
-    
+
 </body>
-</html>
+
+</html>f

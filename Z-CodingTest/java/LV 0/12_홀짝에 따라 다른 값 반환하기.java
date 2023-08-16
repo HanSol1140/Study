@@ -19,36 +19,20 @@
 // 이들의 제곱의 합인 22 + 42 + 62 + 82 + 102 = 4 + 16 + 36 + 64 + 100 = 220을 return 합니다.
 
 // 주어진 함수
-function solution(n) {
-    var answer = 0;
-    return answer;
+class Solution {
+    public int solution(int n) {
+        int answer = 0;
+        return answer;
+    }
 }
 
 // 풀이
-function solution(n) {
-    var answer = 0;
-    if (n % 2 == 0) {
-        for (var i = 0; i <= n; i++) {
-            if (i % 2 == 0) {
-                answer += i ** 2;
-            }
+class Solution {
+    public int solution(int n) {
+        int answer = 0;
+        for(int i = 0; i <= n; i++){
+            answer += i % 2 == 0 ? i*i: i;
         }
-    } else {
-        for (var i = 0; i <= n; i++) {
-            if (i % 2 == 1) {
-                answer += i;
-            }
-        }
+        return answer;
     }
-    return answer;
-}
-
-// 삼항연산자, map
-function solution(n) {
-    var answer = Array(n).fill().map((item, index) => index + 1);
-    console.log(answer);
-    answer = n % 2 == 0 ?
-        answer.reduce((a, b) => b % 2 == 0 ? a + (Math.pow(b, 2)) : a, 0) :
-        answer.reduce((a, b) => b % 2 == 0 ? a : a + b, 0);
-    return answer;
 }
