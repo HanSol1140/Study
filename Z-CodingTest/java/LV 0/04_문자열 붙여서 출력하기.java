@@ -19,15 +19,17 @@
 // HelloWorld!
 
 // 주어진 함수
-import java.util.Scanner;
+// import java.util.Scanner;
 
-public class Solution {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String a = sc.next();
-        String b = sc.next();
-    }
-}
+// public class Solution {
+//     public static void main(String[] args) {
+//         Scanner sc = new Scanner(System.in);
+//         String a = sc.next();
+//         String b = sc.next();
+//     }
+// }
+
+
 // 풀이
 import java.util.Scanner;
 
