@@ -29,14 +29,14 @@ client.on('reconnect', function() {
 
   // json 형식으로 message 생성
   var message = {
-    cMarksNames : "nnx10",
+    // cMarksNames : "nanonix_did01",
     // cMarksNames : "nnx10, nnx11",
-    planName: " image advert 006",
+    planName: "1, advert004-006",
     // planName: "hansol image advert 004, hansol image advert 005, hansol image advert 006",
-    marqueName : "test0"
+    // marqueName : "test0"
     // marqueName : "test1, test2"
   };
-  client.publish('mainserver', JSON.stringify(message));
+  client.publish('did_in', JSON.stringify(message));
 //   res.send('Message sent to MQTT broker');
   console.log('발신확인용 콘솔메세지');
 // });
