@@ -31,13 +31,23 @@ function solution(myString) {
 // 풀이
 function solution(myString) {
     var answer = [];
-    myString = [...myString];
+    var count = 0;
     for(var i = 0; i < myString.length; i++){
         if(myString[i] == "x"){
-            answer = answer.concat(0);
+            answer.push(0);
+            count++;
         }else{
-            if(answer == null){}
+            if (answer[count] === undefined) {
+                answer[count] = 1;
+            } else {
+                answer[count] += 1;
+            }
         }
     }
     return answer;
+}
+
+// 개선된 풀이 방식
+function solution(myString) {
+    return myString.split('x').map(v => v.length);
 }
