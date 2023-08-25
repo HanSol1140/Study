@@ -61,9 +61,9 @@ client.on('reconnect', function() {
     // client.publish('table_in', 'Hello MQTT')    ;
 
     var message = {
-        cleaningRobotRuningState : true,
+        robotName : "robot1",
       };
-      client.publish('cleaningbot_in', JSON.stringify(message));
+      client.publish('servingbot_in', JSON.stringify(message));
 app.listen(8082, function () {
   console.log('포트 8082 서버실행 완료');
 }); 
