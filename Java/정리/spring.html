@@ -7,6 +7,7 @@ Ctrl + Shift + T => 테스트클래스 생성 = 완성된 클래스를 test로 �
 <Spring 시작하는방법>
     Start.spring.io로 이동
     버전 선택후 SpringWEB, thymeleaf 선택하여 제네레이트
+    gradle을 사용하면 됨
 
 
 <포트 변경하기>
@@ -23,11 +24,27 @@ Ctrl + Shift + T => 테스트클래스 생성 = 완성된 클래스를 test로 �
         }
     }
 
-
     // spring의 기본포트는 8080
     // 만약 변경하고 싶다면 resources/application.properties로 들어가서
     // server.port=9090
     // 입력하면 포트가 9090으로 변함
+
+
+<index.html페이지 만들기>
+    src/main/resources/static 폴더에 index.html 파일을 생성
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <a href="/hello">Hello World!</a>
+    </body>
+    </html>
+    다음과 같이 코딩후에 localhost:8080(스프링의 기본접속포트)로 접속시 index.html로 접속됨
+
 <API 작동방법>
     package com.example._spring_tutorial;
 
@@ -53,6 +70,297 @@ Ctrl + Shift + T => 테스트클래스 생성 = 완성된 클래스를 test로 �
         return hello;
         // http://localhost:8080/hello-api?name=hansol!!@
     }
+<!-- ────────────────────────────────────────────────────────────────────────────────── -->
+<!-- ────────────────────────────────────────────────────────────────────────────────── -->
+<자바 빌드하는법, 빌드방법, 빌드 방법,>
+    
+    명령프롬프트를 실행 시켜서 빌드할 프로젝트로 이동
+    dir이나 ls명령어를 통해 gradlew파일을 확인
+    프로젝트 경로에서 gradlew build명령어를 실행
+
+
+    <예시>
+        C:\>cd songhansol
+            
+        C:\songhansol>cd study
+
+        C:\songhansol\Study>cd java
+
+        C:\songhansol\Study\Java>cd 코드
+
+        C:\songhansol\Study\Java\코드>cd 03_spring_helloworld
+
+        C:\songhansol\Study\Java\코드\03_spring_helloworld>dir
+
+            2023-08-10  오전 08:39    <DIR>          .
+            2023-08-10  오전 08:39    <DIR>          ..
+            2023-08-10  오전 08:32               444 .gitignore
+            2023-08-10  오전 08:39    <DIR>          .gradle
+            2023-08-10  오전 08:46    <DIR>          .idea
+            2023-08-10  오전 08:39    <DIR>          build
+            2023-08-10  오전 08:32               540 build.gradle.kts
+            2023-08-10  오전 08:32    <DIR>          gradle
+            2023-08-10  오전 08:32             8,527 gradlew
+            2023-08-10  오전 08:32             2,868 gradlew.bat
+            2023-08-10  오전 08:32             1,437 HELP.md
+            2023-08-10  오전 08:32                42 settings.gradle.kts
+            2023-08-10  오전 08:32    <DIR>          src
+
+        C:\songhansol\Study\Java\코드\03_spring_helloworld>./gradlew build
+        
+        실행하면 build 폴더가 생성됨 생성된 폴더로 이동
+        
+        C:\songhansol\Study\Java\코드\03_spring_helloworld>cd build
+
+        C:\songhansol\Study\Java\코드\03_spring_helloworld\build>cd libs
+
+        C:\songhansol\Study\Java\  코드\03_spring_helloworld\build\libs>
+
+        C:\songhansol\Study\Java\코드\03_spring_helloworld\build\libs>dir
+
+            2023-08-10  오전 09:16    <DIR>          .
+            2023-08-10  오전 09:16    <DIR>          ..
+            2023-08-10  오전 09:16             3,099 03_spring_helloworld-0.0.1-SNAPSHOT-plain.jar
+            2023-08-10  오전 09:16        20,524,325 03_spring_helloworld-0.0.1-SNAPSHOT.jar
+
+        파일이 확인되었다면
+        
+        C:\songhansol\Study\Java\코드\03_spring_helloworld\build\libs>java -jar 03_spring_helloworld-0.0.1-SNAPSHOT.jar
+
+        .   ____          _            __ _ _
+        /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+        ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+        \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+        '  |____| .__|_| |_|_| |_\__, | / / / /
+        =========|_|==============|___/=/_/_/_/
+        :: Spring Boot ::                (v3.1.2)
+        해당 로고가 보이며 서버가 실행됩니다.
+
+        해당 java -jar 03_spring_helloworld-0.0.1-SNAPSHOT.jar을 다른경로로 이동하여 터미널에서 실행하여도 됩니다.
+        서버로 옮긴뒤 java -jar 빌드한파일.jar하면 스프링서버가 실행됨
+
+        <삭제, 빌드다시하기>
+            C:\songhansol\Study\Java\코드\03_spring_helloworld\build\libs>gradlew clean
+            빌드한 폴더 삭제
+            C:\songhansol\Study\Java\코드\03_spring_helloworld\build\libs>gradlew clean build
+            빌드 삭제후 빌드 다시하기
+<!-- ────────────────────────────────────────────────────────────────────────────────── -->
+<!-- ────────────────────────────────────────────────────────────────────────────────── -->
+<!-- ────────────────────────────────────────────────────────────────────────────────── -->
+<김영한 스프링 입문 - helloworld>
+<!--  -->
+<!--  -->
+<1. index.html생성>
+먼저 프로젝트를 생성후
+src/main/java/resource/static/index.html폴더를 생성
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/hello">Hello World!</a>
+</body>
+</html>
+해당 파일을 생성후 서버를 실행하면 localhost:8080에 접속시
+<a href="/hello">Hello World!</a>가 보임
+
+
+<2. controller패키지 생성>
+    main메서드인 Application파일이 있는 경로에 폴더 controller패키지를 생성
+    HelloWorldController클래스를 생성
+
+<3. helloWorldController에 코드 입력>
+package com.example._spring_helloworld.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HelloWorldController {
+    @GetMapping("hello")
+    public String hello(Model model){
+        model.addAttribute("data", "hello!!");
+        return "hello"; <!-- return hello => templates의 hello.html을 실행시켜라 -->
+                        <!-- @GetMapping => localhost:8080/hello에 접속하면-->
+                        <!-- return "hello" => 리소스의 template에서 hello.html을 찾아서 접속 -->
+                        <!-- hello.html을 찾으면 뷰 리졸버(viewResolver)가 리턴값에 해당하는 화면을 찾아서 처리 -->
+
+        <!-- 즉 해당 코드는 -->
+
+        <!-- @GetMapping("hello") => localhost:8080/hello에 접속하면 -->
+        <!-- model.addAttribute("data", "hello!!");값을 설정한다 => "hello"에서 "data"에 "hello"라는 값을 설정 -->
+        <!-- 어디에? => return "hello" 에 설정한다. -->
+
+        <!-- 라는 코드로 볼 수 있습니다. -->
+    }
+}
+
+<4. 이제 resource/static으로 이동해서 접속할 'hello페이지를 생성합니다.'>
+hello page
+
+
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+    <!--  컨트롤러의 return "hello"에서 받음 -->
+    <p th:text="'안녕하세요. ' + ${dataa}">안녕하세요. 손님</p> <!-- 그냥 화면에 출력, 안녕하세요. 손님은 렌더링이 되기전에만 보여짐 -->
+    <p th:if="${dataa} != null" th:text="'안녕하세요. ' + ${dataa}">안녕하세요. 손님</p> <!-- if로 dataa값이 있다면 출력 -->
+    <p th:unless="${dataa} != null">안녕하세요. 손님</p> <!-- 값이 없다면 출력 -->
+
+    </body>
+</html>
+
+
+
+<5. resources/static/hello-static.html파일 생성>
+    <정적 컨텐츠 제공>
+    <!doctype html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+    <!--  컨트롤러의 return "hello"에서  -->
+    <p th:text="'hello. ' + ${data}">안녕하세요. 손님</p>
+    </body>
+    </html>
+    <!-- localhost:8080/hello-static.html로 접속하면 정적페이지를 볼 수 있음 -->
+    
+
+
+    <!-- 스프링의 원리 -->
+    <!--
+        스프링은 가장먼저 컨트롤러로 페이지를 검색하고,
+        페이지가없다면 정적페이지(static)을 검토해서 화면을 출력함
+    -->
+
+<6. helloWorldController에 코드 입력>
+    <HelloWorldController>
+    <!--
+        package com.example._spring_helloworld.controller;
+        
+        import org.springframework.stereotype.Controller;
+        import org.springframework.ui.Model;
+        import org.springframework.web.bind.annotation.GetMapping;
+        
+        @Controller
+        public class HelloWorldController {
+            @GetMapping("hello")
+            public String hello(Model model){
+                model.addAttribute("data", "hello!!");
+                return "hello";
+    -->
+                @GetMapping("hello-mvc") <!-- localhost:8080/hello_mvc로 접속하면 -->
+                <!-- @RequestParam => 주소창에 파라미터를 넘겨줘야함 => localhost:8080/hello-mvc?name=원하는string -->
+                public String helloMvc(@RequestParam(value = "name") String name, Model model) { <!-- => Ctrl + P : 파라미터 정보보기 -->
+                    model.addAttribute("name", name);
+                    return "hello-templates"; <!-- resources/templates/hello-templates.html을 반환  -->
+                    // <p th:text="'hello. ' + ${name}">hello! empty</p>의 값에 따라
+                    // 'http://localhost:8080/hello-mvc?name=hansol!!'로 접속하면 'hello.hansol!!'이 출력됨
+                }
+    <!--
+            }
+        }
+    -->
+
+
+    <!-- localhost:8080/hello-mvc?name=원하는string로 접속하면 'hello. 기입한string'이 출력됨 -->
+    <resources/tempaltes/hello-mvc.html>
+    <!DOCTYPE html>
+    <html xmlns:th="http://wwwthymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+    <p th:text="'hello. ' + ${name}">hello! empty</p> <!--hello! empty는 렌더링전 기본값(정적페이지에서 보임)  -->
+    </body>
+    </html>
+<7. API>
+    <HelloWorldController>
+    <!--
+        이전 내용 주석처리 생략(봐야할 수 있으니 남겨놓음)
+
+        package com.example._spring_helloworld.controller;
+        
+        import org.springframework.stereotype.Controller;
+        import org.springframework.ui.Model;
+        import org.springframework.web.bind.annotation.GetMapping;
+        
+        @Controller
+        public class HelloWorldController {
+            @GetMapping("hello")
+            public String hello(Model model){
+                model.addAttribute("data", "hello!!");
+                return "hello";
+                @GetMapping("hello-mvc")
+                public String helloMvc(@RequestParam(value = "name") String name, Model model) { => Ctrl + P : 파라미터 정보보기 
+                    model.addAttribute("name", name);
+                    return "hello-templates";
+                    <p th:text="'hello. ' + ${name}">hello! empty</p>의 값에 따라
+                    'http://localhost:8080/hello-mvc?name=hansol!!'로 접속하면 'hello.hansol!!'이 출력됨
+                }
+            }
+            @GetMapping("hello-string")
+            @ResponseBody 웹페이지의 body에 데이터를 넣는다.(html에 직접 내용을 넣겠다)
+            public String helloString(@RequestParam("name") String name){ 주소창에 파라미터 받기
+                return "hello " + name;
+            }
+  
+            html파일이 resources에 없더라도 해당 주소로 기입시 설정된 파라미터를 받아 화면에 출력함
+            실제로 출력된 페이지의 소스를 보면소스를 보면 html소스 하나도없이 "hello " + name;가 출력됨
+    -->
+    <게터 세터 세팅>
+            @GetMapping("hello-api")
+            @ResponseBody
+            public Hello        
+    
+            static class Hello{
+                private String name; <!-- 여기에 Alt + Insert => Getter and Setter -->
+            }
+            <!-- http://localhost:8080/hello-api?name=hansol!!@ -->
+            <!-- ▲ 주소로 접속시 {"name":"hansol!!@"}가 출력됨(json방식) -->
+    <!--
+        }
+    --> 
+    <API 설정>
+        @GetMapping("hello-api")
+        @ResponseBody <!-- 바디로 들어감(html페이지 없어도 출력) -->
+        public Hello helloApi(@RequestParam("name") String name){
+            Hello hello = new Hello(); <!-- 객체를 생성 -->
+            hello.setName(name); <!-- 설정한 setter로 값 할당 -->
+            return hello;
+        }
+        static class Hello{
+            private String name;
+            public String getName() { 
+                return name;
+            }
+            public void setName(String name) {
+                this.name = name;
+            }
+        }
+        <!-- http://localhost:8080/hello-api?name=hansol!!@ -->
+        <!-- ▲ 주소로 접속시 {"name":"hansol!!@"}가 출력됨(json방식) -->
+        <!-- hello라는 오브젝트(객체)에 "name"(키):"hansol!!@"(값)이 들어감 -->
+    <!--
+        }
+    --> 
 
     <ResponseBody의 동작원리>
         
@@ -63,11 +371,37 @@ Ctrl + Shift + T => 테스트클래스 생성 = 완성된 클래스를 test로 �
     기본 문자열이다 => StringHttpMessageCnverter
     기본 객체다 => MappingJackson2HttpConverter
     byte 처리 등등 기타 여럿 => HttpMessageConverter가 기본으로 등록되어 있다
+<!-- ────────────────────────────────────────────────────────────────────────────────── -->
+<!-- ────────────────────────────────────────────────────────────────────────────────── -->
+<김영한 스프링 입문 - 회원 관리 예제 백엔드 개발>
 
-
-<다음예제 비즈니스 요구사항 정리>
+<예제 비즈니스 요구사항 정리>
 데이터 : 회원ID, 이름
 기능 : 회원등록, 조회
 데이터 저장소가 선정되지않아
 추후 변경이 가능하도록 인터페이스로 구현클래스를 변경할 수 있도록 설계
 초기 개발단계에서 구현체로 가벼운 메모리 기반의 저장소 사용
+
+<일반적인 웹 애플리케이션의 계층구조>
+┌───────┐       ┌──────┐        ┌──────────┐         ┌────┐ 
+ 컨트롤러   ──▶  서비스    ──▶   리포지토리    ──▶     DB
+└───────┘       └──────┘        └──────────┘         └────┘
+    │              │                 │
+    │              │                 │
+    │              ▼                 │
+    │          ┌───────┐             │
+    └─▶         도메인            ◀─┘
+               └───────┘             
+
+<클래스의 의존관계>
+                                  interface                         Memory
+MemberService ==============> MemberRepository <============== MemberRepository
+
+    <!-- 일단 저장을 위해 (임시로)저장공간을 메모리로 만든다는 의미 -->
+    <!-- 따라서 교체가 가능하도록 interface로 만들것 -->
+
+<!-- ────────────────────────────────────────────────────────────────────────────────── -->
+<!-- ────────────────────────────────────────────────────────────────────────────────── -->
+
+
+
