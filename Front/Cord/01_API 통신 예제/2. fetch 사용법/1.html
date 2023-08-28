@@ -13,7 +13,13 @@
         // url.searchParams.set('sort_by', 'rating');
         // fetch(url)
         // 한줄로 표현하면
-        fetch('https://yts.mx/api/v2/list_movies.json?limit=10&sort_by=rating')
+        fetch('https://yts.mx/api/v2/list_movies.json?limit=10&sort_by=rating',{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+                // 'Authorization': 'Bearer YOUR_TOKEN_HERE'
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 console.log(data);
