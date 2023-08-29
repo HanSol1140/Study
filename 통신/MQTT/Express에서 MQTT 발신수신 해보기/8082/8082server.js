@@ -61,11 +61,13 @@ client.on('reconnect', function() {
     // client.publish('table_in', 'Hello MQTT')    ;
 
     var message = {
-        servingAPI : "movePoint",
+        servingAPI : "retryMovePoint",
         robotName : "robot1",
         point : "11",
+        coordinatesX : "0.11",
+        coordinatesY : "1.22",
+        coordinatesTheta : "20",
       };
-      console.log("실행 확인");
       client.publish('servingbot_in', JSON.stringify(message));
 
 

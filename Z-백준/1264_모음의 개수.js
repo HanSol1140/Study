@@ -24,9 +24,8 @@
 
 var fs = require('fs');
 // var input = fs.readFileSync('/dev/stdin').toString().split('\r\n');
-var input = fs.readFileSync('C:/songhansol/Study/Z-백준/level01/input.txt').toString().split('\r\n');
+var input = fs.readFileSync('C:/songhansol/Study/Z-백준/level01/input.txt').toString().split('\n');
 input = input.slice(0, input.length - 1);
-console.log(input);
 
 var a = "aeiou";
 for(var i = 0; i < input.length; i++){
@@ -35,4 +34,6 @@ for(var i = 0; i < input.length; i++){
     console.log(answer.length);
 }
 
-console.log(3**7);
+// 해당 문제는 풀이 과정에 문제가 없는걸로 보이는데
+// 아무리 검토해봐도 백준에서 nodejs를 받지않는걸로보임
+// 다른 사용자의 nodejs 합격기록자체가 존재하지않음
