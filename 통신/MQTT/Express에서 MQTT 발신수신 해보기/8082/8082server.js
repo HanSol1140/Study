@@ -68,8 +68,8 @@ client.on('reconnect', function() {
         coordinatesY : "1.22",
         coordinatesTheta : "20",
       };
-      client.publish('servingbot_in', JSON.stringify(message));
-
+    //   client.publish('table_in', JSON.stringify(message));
+      client.publish('table_in', "!!!");
 
 app.listen(8082, function () {
   console.log('포트 8082 서버실행 완료');
