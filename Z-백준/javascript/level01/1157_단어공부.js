@@ -34,10 +34,9 @@
 
 
 var fs = require('fs');
-// var input = fs.readFileSync('/dev/stdin').toString()
-var input = fs.readFileSync('C:/songhansol/Study/Z-백준/input.txt').toString().toUpperCase();
+var input = fs.readFileSync('/dev/stdin').toString().trim().toUpperCase();
+// var input = fs.readFileSync('C:/songhansol/Study/Z-백준/input.txt').toString().trim().toUpperCase();
 
-var input = "MISSISSIPI";
 var keys = {};
 for(var i = 0; i < input.length; i++){
     if(keys[input[i]] == undefined){
@@ -46,13 +45,36 @@ for(var i = 0; i < input.length; i++){
         keys[input[i]] += 1;
     }
 }
+
 // 검증
 var checkBox = [];
 var maxNum = 0;
+var answer = "";
 for(item in keys){
     
-    if(keys[item] > maxValue){
+    if(keys[item] > maxNum){
+        maxNum = keys[item];
         checkBox = [];
-        checkBox.push(keys[item]);
+        checkBox.push(item);
+    }else if(keys[item] == maxNum){
+        checkBox.push(item);
     }
 }
+answer = checkBox.length == 1? checkBox[0]: "?";
+console.log(answer);
+
+
+
+// 개선된 풀이 방식
+var fs = require('fs');
+var input = fs.readFileSync('/dev/stdin').toString().trim().toUpperCase();
+// var input = fs.readFileSync('C:/songhansol/Study/Z-백준/input.txt').toString().trim().toUpperCase();
+
+var charCounts = {};
+for (let char of input) {
+    charCounts[char] = (charCounts[char] || 0) + 1;
+}
+var maxCount = Math.max(...Object.values(charCounts));
+var mostFrequentChars = Object.keys(charCounts).filter(char => charCounts[char] === maxCount);
+console.log(mostFrequentChars.length > 1 ? "?" : mostFrequentChars[0])
+

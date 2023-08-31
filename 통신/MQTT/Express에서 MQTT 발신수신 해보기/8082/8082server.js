@@ -61,15 +61,11 @@ client.on('reconnect', function() {
     // client.publish('table_in', 'Hello MQTT')    ;
 
     var message = {
-        servingAPI : "retryMovePoint",
+        servingAPI : "movePoint",
         robotName : "robot1",
-        point : "11",
-        coordinatesX : "0.11",
-        coordinatesY : "1.22",
-        coordinatesTheta : "20",
+        point : "2",
       };
-    //   client.publish('table_in', JSON.stringify(message));
-      client.publish('table_in', "!!!");
+      client.publish('servingbot_in', JSON.stringify(message));
 
 app.listen(8082, function () {
   console.log('포트 8082 서버실행 완료');

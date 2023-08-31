@@ -23,7 +23,7 @@
 // 9
 
 var fs = require('fs');
-// var input = fs.readFileSync('/dev/stdin').toString().split('\r\n');
+// var input = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
 var input = fs.readFileSync('C:/songhansol/Study/Z-백준/level01/input.txt').toString().split('\n');
 input = input.slice(0, input.length - 1);
 
