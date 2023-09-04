@@ -60,19 +60,69 @@ client.on('reconnect', function () {
 // console.log('발신확인용 콘솔메세지');
 // client.publish('table_in', 'Hello MQTT')    ;
 
-var message1 = {
-    servingAPI: "movePoint",
-    robotName: "robot1",
-    point: "4",
-};
+// setInterval(()=> {
+    // var message1 = {
+        // servingAPI: "movePoint",
+        // robotName: "robot2",
+        // point: "5",
+    // };
+    // client.publish('servingbot_in', JSON.stringify(message1));
+// },10000)
 var message2 = {
     servingAPI: "movePoint",
-    robotName: "robot2",
+    robotName: "robot1",
     point: "5",
 };
-client.publish('servingbot_in', JSON.stringify(message1));
 client.publish('servingbot_in', JSON.stringify(message2));
 
-app.listen(8082, function () {
-    console.log('포트 8082 서버실행 완료');
-}); 
+// setTimeout(() => {
+//     var message1 = {
+//         servingAPI: "movePoint",
+//         robotName: "robot1",
+//         point: "5",
+//     };
+//     var message2 = {
+//         servingAPI: "movePoint",
+//         robotName: "robot2",
+//         point: "4",
+//     };
+//     client.publish('servingbot_in', JSON.stringify(message1));
+//     client.publish('servingbot_in', JSON.stringify(message2));
+// }, 12500);
+
+
+// setInterval(() => {
+//     var message1 = {
+//         servingAPI: "movePoint",
+//         robotName: "robot1",
+//         point: "4",
+//     };
+//     var message2 = {
+//         servingAPI: "movePoint",
+//         robotName: "robot2",
+//         point: "5",
+//     };
+//     client.publish('servingbot_in', JSON.stringify(message1));
+//     client.publish('servingbot_in', JSON.stringify(message2));
+//     console.log("!");
+//     setTimeout(() => {
+//         setTimeout(() => {
+//             var message1 = {
+//                 servingAPI: "movePoint",
+//                 robotName: "robot1",
+//                 point: "5",
+//             };
+//             var message2 = {
+//                 servingAPI: "movePoint",
+//                 robotName: "robot2",
+//                 point: "4",
+//             };
+//             client.publish('servingbot_in', JSON.stringify(message1));
+//             client.publish('servingbot_in', JSON.stringify(message2));
+//         }, 12500);
+//         console.log("2");
+//     }, 12500);
+// }, 25000)
+// app.listen(8082, function () {
+//     console.log('포트 8082 서버실행 완료');
+// }); 
