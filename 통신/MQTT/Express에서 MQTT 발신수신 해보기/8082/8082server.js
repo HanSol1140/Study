@@ -5,19 +5,19 @@ var client = mqtt.connect('mqtt://192.168.0.137:1883');
 
 
 client.on('connect', function () {
-  console.log('Connected to MQTT broker');
+    console.log('Connected to MQTT broker');
 });
 
 client.on('error', function (err) {
-  console.log('MQTT Error: ', err);
+    console.log('MQTT Error: ', err);
 });
 
-client.on('offline', function() {
-  console.log('MQTT client is offline');
+client.on('offline', function () {
+    console.log('MQTT client is offline');
 });
 
-client.on('reconnect', function() {
-  console.log('MQTT client is trying to reconnect');
+client.on('reconnect', function () {
+    console.log('MQTT client is trying to reconnect');
 });
 
 // app.get('/send', function (req, res) {
@@ -27,7 +27,7 @@ client.on('reconnect', function() {
 // });
 // app.get('/send', function (req, res) { // JSON 형식으로 요청
 
-  // json 형식으로 message 생성
+// json 형식으로 message 생성
 //   var message = {
 //     cMarksNames : "nanonix_did01",
 //     cMarksNames : "nnx10, nnx11",
@@ -47,26 +47,32 @@ client.on('reconnect', function() {
 //     timestamp: "2023-7-17 14:00",
 //     phonenumber : "01031277711",
 //     bluetoothmac : "5C:52:30:42:B5:CA"
-    
+
 //   };
 //   client.publish('door_in', JSON.stringify(message));
 //   res.send('Message sent to MQTT broker');
 //   console.log('발신확인용 콘솔메세지');
 // });
-    // var message = {
-    //     cleaningRobotState: true,
-    // };
-    // client.publish('cleaningbot_in', JSON.stringify(message));
-    // console.log('발신확인용 콘솔메세지');
-    // client.publish('table_in', 'Hello MQTT')    ;
+// var message = {
+//     cleaningRobotState: true,
+// };
+// client.publish('cleaningbot_in', JSON.stringify(message));
+// console.log('발신확인용 콘솔메세지');
+// client.publish('table_in', 'Hello MQTT')    ;
 
-    var message = {
-        servingAPI : "movePoint",
-        robotName : "robot1",
-        point : "2",
-      };
-      client.publish('servingbot_in', JSON.stringify(message));
+var message1 = {
+    servingAPI: "movePoint",
+    robotName: "robot1",
+    point: "4",
+};
+var message2 = {
+    servingAPI: "movePoint",
+    robotName: "robot2",
+    point: "5",
+};
+client.publish('servingbot_in', JSON.stringify(message1));
+client.publish('servingbot_in', JSON.stringify(message2));
 
 app.listen(8082, function () {
-  console.log('포트 8082 서버실행 완료');
+    console.log('포트 8082 서버실행 완료');
 }); 
