@@ -61,68 +61,43 @@ client.on('reconnect', function () {
 // client.publish('table_in', 'Hello MQTT')    ;
 
 // setInterval(()=> {
-    // var message1 = {
-        // servingAPI: "movePoint",
-        // robotName: "robot2",
-        // point: "5",
-    // };
-    // client.publish('servingbot_in', JSON.stringify(message1));
+// var message1 = {
+// servingAPI: "movePoint",
+// robotName: "robot2",
+// point: "5",
+// };
+// client.publish('servingbot_in', JSON.stringify(message1));
 // },10000)
 var message2 = {
     servingAPI: "movePoint",
     robotName: "robot1",
-    point: "5",
+    point: "4",
 };
-client.publish('servingbot_in', JSON.stringify(message2));
-
-// setTimeout(() => {
-//     var message1 = {
-//         servingAPI: "movePoint",
-//         robotName: "robot1",
-//         point: "5",
-//     };
-//     var message2 = {
-//         servingAPI: "movePoint",
-//         robotName: "robot2",
-//         point: "4",
-//     };
-//     client.publish('servingbot_in', JSON.stringify(message1));
-//     client.publish('servingbot_in', JSON.stringify(message2));
-// }, 12500);
+client.publish('servingserver', JSON.stringify(message2));
 
 
-// setInterval(() => {
-//     var message1 = {
-//         servingAPI: "movePoint",
-//         robotName: "robot1",
-//         point: "4",
-//     };
-//     var message2 = {
-//         servingAPI: "movePoint",
-//         robotName: "robot2",
-//         point: "5",
-//     };
-//     client.publish('servingbot_in', JSON.stringify(message1));
-//     client.publish('servingbot_in', JSON.stringify(message2));
-//     console.log("!");
-//     setTimeout(() => {
-//         setTimeout(() => {
-//             var message1 = {
-//                 servingAPI: "movePoint",
-//                 robotName: "robot1",
-//                 point: "5",
-//             };
-//             var message2 = {
-//                 servingAPI: "movePoint",
-//                 robotName: "robot2",
-//                 point: "4",
-//             };
-//             client.publish('servingbot_in', JSON.stringify(message1));
-//             client.publish('servingbot_in', JSON.stringify(message2));
-//         }, 12500);
-//         console.log("2");
-//     }, 12500);
-// }, 25000)
+
+setTimeout(() => {
+    console.log("!");
+    var message2 = {
+        servingAPI: "moverCoordinates",
+        robotName: "robot1",
+        coordinatesX: "1.78",
+        coordinatesY: "4.44",
+        coordinatesTheta: "90.90",
+    };
+    client.publish('servingserver', JSON.stringify(message2));
+}, 3000);
+setTimeout(() => {
+    console.log("!!!");
+    var message2 = {
+        servingAPI: "movePoint",
+        robotName: "robot1",
+        point: "4",
+    };
+    client.publish('servingserver', JSON.stringify(message2));
+}, 6000);
+// set
 // app.listen(8082, function () {
 //     console.log('포트 8082 서버실행 완료');
 // }); 
