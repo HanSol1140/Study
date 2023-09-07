@@ -1,0 +1,121 @@
+<안드로이드 스튜디오 설치>
+https://developer.android.com/studio/install?hl=ko
+해당 사이트를 참조하여 안드로이드 스튜디오 설치
+프로그램 실행
+<프로젝트 생성>
+File - New Project
+
+Empty Activity - Next
+프로젝트명 WebView
+
+SDK => API25: Android 7.1.1 (Nougat)
+
+Finish
+<!--────────────────────────────────────────────────────────────────────────────────────────────────────-->
+<app/manifests/AndroidManifext.xml>
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+        <uses-permission android:name="android.permission.INTERNET"/> <!-- 인터넷 사용을 위해 추가 -->
+        <!-- 코드사이에 주석처리가 안되서 위에기입 aplication 태그안에 -->
+        <!-- android:networkSecurityConfig="@xml/network_security_config" => http접속을 위한 설정 -->
+        <!-- res/xml/network_security_config.xml파일 생성, 코드는 아래 기입 -->
+        <application
+            android:allowBackup="true"
+            android:dataExtractionRules="@xml/data_extraction_rules"
+            android:fullBackupContent="@xml/backup_rules"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/Theme.WebView"
+            android:networkSecurityConfig="@xml/network_security_config"
+            tools:targetApi="31">
+            <activity
+                android:name=".MainActivity"
+                android:exported="true"
+                android:label="@string/app_name"
+                android:theme="@style/Theme.WebView">
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+
+                    <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
+            </activity>
+        </application>
+    </manifest>
+
+<!--────────────────────────────────────────────────────────────────────────────────────────────────────-->
+
+<network_security_config>
+    <?xml version="1.0" encoding="utf-8"?>
+    <network-security-config>
+        <base-config cleartextTrafficPermitted="true">
+            <trust-anchors>
+                <certificates src="system" />
+            </trust-anchors>
+        </base-config>
+    </network-security-config>
+
+<!--────────────────────────────────────────────────────────────────────────────────────────────────────-->
+
+    
+
+
+<app/java/com/example.webview/MainActivity.kt>
+    package com.example.webview
+
+    import android.os.Bundle
+    import android.view.ViewGroup
+    import android.webkit.WebChromeClient
+    import android.webkit.WebView
+    import android.webkit.WebViewClient
+    import androidx.activity.ComponentActivity
+    import androidx.activity.compose.setContent
+    import androidx.compose.foundation.layout.fillMaxSize
+    import androidx.compose.runtime.Composable
+    import androidx.compose.runtime.remember
+    import androidx.compose.ui.Modifier
+    import androidx.compose.ui.viewinterop.AndroidView
+    import com.example.webview.ui.theme.WebViewTheme
+
+    class MainActivity : ComponentActivity() {
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            setContent {
+                WebViewTheme {
+                    MyWebView()
+                }
+            }
+        }
+    }
+    @Composable
+    fun MyWebView() {
+        AndroidView(
+            factory = { context ->
+                WebView(context).apply {
+                    layoutParams = ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT
+                    )
+                    webViewClient = WebViewClient() // 앱 내에서 웹 페이지 로드를 가능하게 함
+                    settings.javaScriptEnabled = true // JavaScript 활성화
+                    loadUrl("http://www.naver.com") // 원하는 웹페이지 URL
+                }
+            },
+            modifier = Modifier.fillMaxSize()
+        )
+    }
+
+
+<파일을 Run해서 테스트하기>
+
+우측상단에서 모바일기종을 정해서 파일이 작동하는지 확인
+
+<Build하기>
+    Build > Build Bundle(s) / APK(s) > Build APK 실행
+    빌드가 완료되면
+    app/build/outputs/apk/debug/app-debug.apk파일이 생성됨
+
+    
