@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game {
     private final Car[] cars;
 
@@ -23,16 +26,23 @@ public class Game {
         }
     }
 
-    public String getWinner(){
-        String Winner = "";
-        int a = 0;
+    public List<String> getWinners(){
+        List<String> winners = new ArrayList<>();
+        int highScore = 0;
+
         for (Car car : cars) {
-            if(a < car.getMovePoint()){
-                a = car.getMovePoint();
-                Winner = car.getCarName();
-            };
+            if(highScore < car.getMovePoint()){
+                highScore = car.getMovePoint();
+            }
         }
-        return Winner;
+
+        for (Car car : cars) {
+            if(car.getMovePoint() == highScore) {
+                winners.add(car.getCarName());
+            }
+        }
+
+        return winners;
     }
 
 }

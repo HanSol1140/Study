@@ -11,7 +11,8 @@ public class Main {
         for(var i = 0; i <= rounds; i++){
             aaa.CarMoving();
         }
-        System.out.println("우승자 : " + aaa.getWinner());
+        List<String> winners = aaa.getWinners();
+        System.out.println("우승자 : " + String.join(", ", winners));
 
 
 
