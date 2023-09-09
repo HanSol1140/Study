@@ -16,31 +16,34 @@
 // }
 
 // 방법 2
-var input = 85;
+// var input = 85;
 
-var ranges = [
-    { min: 60, max: 69, startValue: 123, endValue: 150 },
-    { min: 70, max: 79, startValue: 150, endValue: 175 },
-    { min: 80, max: 89, startValue: 175, endValue: 104 },
+// var ranges = [
+//     { min: 60, max: 69, startValue: 123, endValue: 150 },
+//     { min: 70, max: 79, startValue: 150, endValue: 175 },
+//     { min: 80, max: 89, startValue: 175, endValue: 104 },
 
-];
+// ];
 
-var result;
+// var result;
 
-for (let range of ranges) {
-    if (input >= range.min && input <= range.max) {
-        result =
-            range.startValue + ((range.endValue - range.startValue)
-            / (range.max - range.min + 1)
-            * (input - range.min));
-        break;
-    }
-}
+// for (let range of ranges) {
+//     if (input >= range.min && input <= range.max) {
+//         result =
+//             range.startValue + ((range.endValue - range.startValue)
+//             / (range.max - range.min + 1)
+//             * (input - range.min));
+//         break;
+//     }
+// }
 
-if (result !== undefined) {
-    console.log(result);
-} else {
-    console.log('Value is out of range');
-}
+// if (result !== undefined) {
+//     console.log(result);
+// } else {
+//     console.log('Value is out of range');
+// }
 
-console.log(ranges[0].min);
+// console.log(ranges[0].min);
+
+var a = 60*(4000/330);
+console.log(a);
