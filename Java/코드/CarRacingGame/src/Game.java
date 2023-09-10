@@ -10,19 +10,12 @@ public class Game {
             cars[i] = new Car(carNames[i]);
         }
     }
-    public void CarMoving() {
-        for (Car car : cars) {
-            car.move();
-        }
-    }
-    public void getPoint() {
-        for (Car car : cars) {
-            car.getMovePoint();
-        }
-    }
-    public void getCarNames() {
-        for (Car car : cars) {
-            System.out.println(car.getCarName());
+    public void CarMoving(int rounds) {
+        for (int i = 0; i < rounds; i++) {
+            for (Car car : cars) {
+                car.move();
+            }
+            Message.lineWrite();
         }
     }
 
@@ -44,5 +37,4 @@ public class Game {
 
         return winners;
     }
-
 }

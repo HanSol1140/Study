@@ -6,11 +6,9 @@ public class Car {
     public Car(String carName){
         this.carName = carName;
     }
-
     public String getCarName() {
         return carName;
     }
-
     public void move(){
         if((Math.random() * 10) >= 4){
             movePoint++;
