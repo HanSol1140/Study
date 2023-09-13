@@ -68,65 +68,83 @@ client.on('reconnect', function () {
 // };
 // client.publish('servingbot_in', JSON.stringify(message1));
 // },10000)
-var message1 = {
-    servingAPI: "movePoint",
-    robotName: "robot1",
-    point: "5",
-};
+// var message1 = {
+//     servingAPI: "movePoint",
+//     robotName: "robot1",
+//     point: "4",
+// };
 
-var message2 = {
-    servingAPI: "movePoint",
-    robotName: "robot2",
-    point: "4",
+var message1 = {
+    servingAPI: "moverCoordinates",
+    robotName: "robot1",
+    coordinatesX : "2.61",
+    coordinatesY : "5.11",
+    coordinatesTheta : "-70.97",
 };
 client.publish('servingserver', JSON.stringify(message1));
-client.publish('servingserver', JSON.stringify(message2));
-setTimeout(()=>{
+
+setTimeout(() => {
     var message1 = {
-        servingAPI: "movePoint",
+        servingAPI: "moverCoordinates",
         robotName: "robot1",
-        point: "4",
-    };
-    
-    var message2 = {
-        servingAPI: "movePoint",
-        robotName: "robot2",
-        point: "5",
+        coordinatesX : "0.89",
+        coordinatesY : "3.31",
+        coordinatesTheta : "-66.67",
     };
     client.publish('servingserver', JSON.stringify(message1));
-    client.publish('servingserver', JSON.stringify(message2));
-}, 30000);
-
-
-
-
-setInterval(()=>{
-    var message1 = {
-        servingAPI: "movePoint",
-        robotName: "robot1",
-        point: "5",
-    };
+}, 5000);
+// var message2 = {
+//     servingAPI: "movePoint",
+//     robotName: "robot2",
+//     point: "4",
+// };
+// client.publish('servingserver', JSON.stringify(message2));
+// setTimeout(()=>{
+//     var message1 = {
+//         servingAPI: "movePoint",
+//         robotName: "robot1",
+//         point: "4",
+//     };
     
-    var message2 = {
-        servingAPI: "movePoint",
-        robotName: "robot2",
-        point: "4",
-    };
-    client.publish('servingserver', JSON.stringify(message1));
-    client.publish('servingserver', JSON.stringify(message2));
-    setTimeout(()=>{
-        var message1 = {
-            servingAPI: "movePoint",
-            robotName: "robot1",
-            point: "4",
-        };
+//     var message2 = {
+//         servingAPI: "movePoint",
+//         robotName: "robot2",
+//         point: "5",
+//     };
+//     client.publish('servingserver', JSON.stringify(message1));
+//     client.publish('servingserver', JSON.stringify(message2));
+// }, 30000);
+
+
+
+
+// setInterval(()=>{
+//     var message1 = {
+//         servingAPI: "movePoint",
+//         robotName: "robot1",
+//         point: "5",
+//     };
+    
+//     var message2 = {
+//         servingAPI: "movePoint",
+//         robotName: "robot2",
+//         point: "4",
+//     };
+//     client.publish('servingserver', JSON.stringify(message1));
+//     client.publish('servingserver', JSON.stringify(message2));
+//     setTimeout(()=>{
+//         var message1 = {
+//             servingAPI: "movePoint",
+//             robotName: "robot1",
+//             point: "4",
+//         };
         
-        var message2 = {
-            servingAPI: "movePoint",
-            robotName: "robot2",
-            point: "5",
-        };
-        client.publish('servingserver', JSON.stringify(message1));
-        client.publish('servingserver', JSON.stringify(message2));
-    }, 30000);
-},60000);
+//         var message2 = {
+//             servingAPI: "movePoint",
+//             robotName: "robot2",
+//             point: "5",
+//         };
+//         client.publish('servingserver', JSON.stringify(message1));
+//         client.publish('servingserver', JSON.stringify(message2));
+//     }, 30000);
+// },60000);
