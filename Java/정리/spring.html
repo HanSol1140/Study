@@ -150,7 +150,7 @@ Ctrl + Shift + T => 테스트클래스 생성 = 완성된 클래스를 test로 �
 <김영한 스프링 입문 - helloworld>
 <!--  -->
 <!--  -->
-<1. index.html생성>
+<index.html생성>
 먼저 프로젝트를 생성후
 src/main/java/resource/static/index.html폴더를 생성
 <!DOCTYPE html>
@@ -168,11 +168,11 @@ src/main/java/resource/static/index.html폴더를 생성
 <a href="/hello">Hello World!</a>가 보임
 
 
-<2. controller패키지 생성>
+<controller패키지 생성>
     main메서드인 Application파일이 있는 경로에 폴더 controller패키지를 생성
     HelloWorldController클래스를 생성
 
-<3. helloWorldController에 코드 입력>
+<helloWorldController에 코드 입력>
 package com.example._spring_helloworld.controller;
 
 import org.springframework.stereotype.Controller;
@@ -199,7 +199,7 @@ public class HelloWorldController {
     }
 }
 
-<4. 이제 resource/static으로 이동해서 접속할 'hello페이지를 생성합니다.'>
+<이제 resource/static으로 이동해서 접속할 'hello페이지를 생성합니다.'>
 hello page
 
 
@@ -223,7 +223,7 @@ hello page
 
 
 
-<5. resources/static/hello-static.html파일 생성>
+<resources/static/hello-static.html파일 생성>
     <정적 컨텐츠 제공>
     <!doctype html>
     <html xmlns:th="http://www.thymeleaf.org">
@@ -249,7 +249,7 @@ hello page
         페이지가없다면 정적페이지(static)을 검토해서 화면을 출력함
     -->
 
-<6. helloWorldController에 코드 입력>
+<helloWorldController에 코드 입력>
     <HelloWorldController>
     <!--
         package com.example._spring_helloworld.controller;
@@ -291,7 +291,7 @@ hello page
     <p th:text="'hello. ' + ${name}">hello! empty</p> <!--hello! empty는 렌더링전 기본값(정적페이지에서 보임)  -->
     </body>
     </html>
-<7. API>
+<API>
     <HelloWorldController>
     <!--
         이전 내용 주석처리 생략(봐야할 수 있으니 남겨놓음)
@@ -362,6 +362,199 @@ hello page
         }
     --> 
 
+<domain 패키지 생성. 그 안에 Member 클래스 생성>
+    package com.example._spring_helloworld.domain;
+
+    public class Member {
+    
+        private Long id;
+        private String name;
+    
+        public Long getId() {
+            return id;
+        }
+    
+        public void setId(Long id) {
+            this.id = id;
+        }
+    }
+
+    해당 클래스에 id와 Name을 private로 선언해주고
+    Alt + Insert로 Getter and Setter 설정
+<repository 패키지 생성, interface로 MemberRepository 생성>
+    package com.example._spring_helloworld.repository;
+    import com.example._spring_helloworld.domain.Member;
+    import java.util.List;
+    import java.util.Optional;
+    
+    public interface MemberRepository {
+        Member save(Member member);
+        Optional<Member> findById(Long id);
+        Optional<Member> findByName(String name);
+        List<Member> findAll();
+    }
+    
+<MemoriMemberRepository 클래스 생성>
+    
+    package com.example._spring_helloworld.repository;
+
+    public class MemoryMemberRepository implements MemberRepository{
+    }
+    <!-- 먼저 위으 코드를 입력하고, Alt + Enter를 누르면 -->
+    <!-- implements한 MemberRepository의 코드들을 가져올 수 있음-->
+    <!-- 이제 인터페이스를 Override할 수 있다. -->
+    <!-- ▼ -->
+    package com.example._spring_helloworld.repository;
+
+    import com.example._spring_helloworld.domain.Member;
+    
+    import java.util.*;
+    
+    public class MemoryMemberRepository implements MemberRepository{
+        private static Map<Long, Member> store = new HashMap<>();
+        private static long sequence = 0L;
+        @Override
+        public Member save(Member member) {
+            member.setId(++sequence);
+            store.put(member.getId(), member);
+            return member;
+        }
+    
+        @Override
+        public Optional<Member> findById(Long id) {
+            return Optional.ofNullable(store.get(id));
+        }
+    
+        @Override
+        public Optional<Member> findByName(String name) {
+            return store.values().stream()
+                    .filter(member -> member.getName().equals(name))
+                    .findAny();
+        }
+    
+        @Override
+        public List<Member> findAll() {
+            return new ArrayList<>(store.values());
+        }
+        public void clearStore(){
+            store.clear();
+        }
+    }
+<MemoryMemberRepository테스트 케이스 작성>
+    src/test/spring_helloworld에 repository 패키지 작성<!-- repository의 작동을 확인하니까 -->
+    MemoryMemberRepositoryTest <!-- 테스트할 클래스와 같은 이름에 Test를 붙여줌, -->
+    <!--  -->
+    package com.example._spring_helloworld.repository;
+
+    import com.example._spring_helloworld.domain.Member;
+    import org.assertj.core.api.Assertions;
+    import org.junit.jupiter.api.AfterEach;
+    import org.junit.jupiter.api.Test;
+
+    import java.util.List;
+    import java.util.Optional;
+
+    public class MemoryMemberRepositoryTest {
+        MemoryMemberRepository repository = new MemoryMemberRepository();
+        @AfterEach <!-- 
+            메서드가 끝날때마다 동작하는 함수 (콜백 메서드) =>
+            member1, member2이 각 메서드마다 중복되기때문에 스토어를 비워줌
+            안비우면 오류 출력
+                    -->
+        public void afterEach(){
+            repository.clearStore();
+        }
+
+        @Test
+        public void save() {
+            Member member = new Member();
+            member.setName("한솔");
+
+            repository.save(member);
+            System.out.println(member.getId());
+            System.out.println(member.getName());
+            System.out.println("============================");
+            Member result = repository.findById(member.getId()).get();
+            System.out.println(member); // com.example._spring_helloworld.domain.Member@568bf312
+            System.out.println(result); // com.example._spring_helloworld.domain.Member@568bf312
+            System.out.println("============================");
+            System.out.println("result = " + (result == member)); // Java에서 == 연산자는 참조값을 비교함
+            System.out.println("result = " + result.equals(member)); //true
+            System.out.println("============================");
+            /*
+                ※ 헷갈리는 사항
+                Member result = repository.findById(member.getId()).get();
+                이것은 member.getId()의 값을 get하는게 아니라
+                repository의 FindById(member.getId())와 일치하는 객체를 get()해서 result에 할당한다는 의미
+                즉 member.getId()의 Id를 가진 객체를 get()하는 것 이라서
+                result == member / result.equals(member) 모두 true를 반환합니다.
+            */
+            Assertions.assertThat(member).isEqualTo(result); <!-- 아무것도 반환하지않지만, 컴파일 되는것 자체가 문제없다는의미 -->
+            // Assertions.assertThat(member).isEqualTo(null); <!-- 이렇게 틀린 값이 들어갈경우 Run이 동작하지않음 -->
+        }
+
+        @Test
+        public void findByName(){
+            <!-- 테스트할 Name 생성 -->
+            Member member1 = new Member();
+            member1.setName("한솔1");
+            repository.save(member1);
+            <!-- 바꿀 단어를 더블클릭하고 Shift + F6 => 한번에 바꾸기 / 한번에바꾸기 / 일괄변경 -->
+            Member member2 = new Member();
+            member2.setName("한솔2");
+            repository.save(member2);
+            <!-- 테스트 -->
+            Member result = repository.findByName("한솔1").get();
+            Assertions.assertThat(result).isEqualTo(member1);
+            // Assertions.assertThat(result).isEqualTo(member2); // result에 "한솔1"이 들어갔기 때문에 오류
+        }
+
+        @Test
+        public void findAll() {
+            Member member1 = new Member();
+            member1.setName("한솔1");
+            repository.save(member1);
+
+            Member member2 = new Member();
+            member2.setName("한솔2");
+            repository.save(member2);
+
+            List<Member> result = repository.findAll();
+
+            Assertions.assertThat(result.size()).isEqualTo(2);
+        }
+    }
+    <!-- 테스트 클래스를 먼저 작성하고 본 코드를 작성할 수 있음 -->
+    <!-- 틀을 만들고, 이것을 검증할 코드를 만든다 ? -->
+    <!-- TDD(테스트 드라이브 디벨롭) -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ────────────────────────────────────────────────────────────────────────────────── -->
+<!-- ────────────────────────────────────────────────────────────────────────────────── -->
+<!-- ────────────────────────────────────────────────────────────────────────────────── -->
+<!-- ────────────────────────────────────────────────────────────────────────────────── -->
     <ResponseBody의 동작원리>
         
     http://localhost:8080/hello-api?name=hansol!!@로 접속시
@@ -371,7 +564,6 @@ hello page
     기본 문자열이다 => StringHttpMessageCnverter
     기본 객체다 => MappingJackson2HttpConverter
     byte 처리 등등 기타 여럿 => HttpMessageConverter가 기본으로 등록되어 있다
-<!-- ────────────────────────────────────────────────────────────────────────────────── -->
 <!-- ────────────────────────────────────────────────────────────────────────────────── -->
 <김영한 스프링 입문 - 회원 관리 예제 백엔드 개발>
 
