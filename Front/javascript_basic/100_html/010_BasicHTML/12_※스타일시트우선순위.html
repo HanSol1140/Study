@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>스타일시트 우선순위</title>
+     <style>
+          /* 1.2.3.4.5.6 숫자가 높을수록 높은 우선 순위를 가짐 */
+          /* 1. 전체 선택자 */
+          * {
+               color: blue;
+          }
+          /* 2. 요소명 선택자 */
+          p {
+               color: red;
+          }
+          /* 3. 클래스 선택자 */
+          .txt_2 {
+               color: pink !important; /* 6. !important; = 가장 먼저 적용됨(최우선 적용 명령어) */
+
+          }
+           /* 이것도 탑다운형식으로 재할당이 가능 */
+          .txt_3 {
+               color: purple;
+          /* 4. 아이디 선택자 */
+          }
+          #txt_1 {
+               color:black;
+          }
+     </style>
+</head>
+<body>
+     <h1>선택자 우선순위</h1>
+     <p class="txt_2" id="txt_1">
+          선택자에는 적용 우선 순위가 있음 
+     </p>
+     <p>
+          <span class="txt_3">
+          내용1
+          </span>
+     </p>
+     <!-- 5. 인라인 스타일 -->
+     <p class="txt_3" style="color:aqua;">
+          내용2
+     </p>
+     <h2 style="color:red;">선택자 우선순위</h2>
+     </p>
+     <div id="txt_1">
+     <ol>
+          
+          
+          <li class="txt_2">!important</li>
+          <li id="txt_1"> 인라인 스타일</li>
+          <li id="txt_1">#id 선택자</li>
+          <li id="txt_1">.class 선택자</li>
+          <li id="txt_1">요소명 선택자</li>
+          <li id="txt_1">*전체 선택자</li>
+    
+          <li class="txt_2">*전체 선택자</li>
+        
+     </ol>
+     </div>
+     </p>
+</body>
+</html>

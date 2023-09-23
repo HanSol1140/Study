@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="mcssam">
+    <!-- 페이지작성자 -->
+    <meta name="description" content="Portfolio, Float, Montblanc Template">
+    <title>
+        ES6(Ecma Script 6)
+          템플릿 문자열 = 문자열안에 변수와 연산식을 혼합하여 사용
+    </title>
+    <!-- CSS리셋 -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <!-- 폰트 어썸 CDN 링크 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            line-height: 2;
+        }
+        hr {
+            border: 1px solid #000;
+        }
+    </style>
+    <script>
+        // 1. ES5 Script
+        // a.  문자열과 변수 연결시 + 연산자 사용
+        document.write("<b>ES5 Script</b>"+"<br>");
+        var string1 = "안녕하세요";
+        var string2 = "반갑습니다";
+        var greeting = string1 + " " + string2;
+        document.write(greeting, "<br>");
+        // b. 객체 데이터
+        var product = {name: '도서', price: '8800원'};
+        // 콘솔창 product 데이터 타입 출력후 캡쳐/넘버링
+        console.log(typeof(product)); // object
+        var data = '제품 ' + product.name + "의 가격은 " + product.price + "입니다.<br>"
+        document.write(data); // 제품 도서의 가격은 8800원입니다.
+        // c. 숫자값
+        var value1 = 10;
+        var value2 = 20;
+        var op1 = '곱셉값은 ' + (value1 * value2) + "입니다.";
+        document.write(op1,"<br>");
+
+
+
+        document.write("<hr>");
+        document.write("<hr>");
+        document.write("<hr>");
+        document.write("<hr>");
+        document.write("<hr>");
+
+        // 2. ES6 Script
+        // a. + 연산자를 개선한 템플릿 문자열 도입 | `(백틱)사용
+        //    : 문자열과 변수를 연결 = `(백틱)으로 묶은 후 ${변수 또는 식}
+        document.write("<b>ES6 Script</b>"+"<br>");
+        const str1 = "ES6 안녕하세요. <br>";
+        const str2 = "ES6 반갑습니다.";
+        const hap = `${str1} ${str2}`;
+        document.write(`${hap},<br>`);
+        // b. 객체 데이터
+        const product2 = {name: '도서', price: '14,900,000원'}; //제품 도서의 가격은 14,900,000원 입니다.
+        // 템플릿 문자열로 같은결과 나오도록 코딩
+        const data2 = `제품 ${product2.name}의 가격은 ${product2.price} 입니다.<br>`;
+        document.write(`${data2} <br>.`);
+        
+
+        // c. 숫자값
+        var value1 = 10;
+        var value2 = 20;
+        var op2 = `곱셉값은 ${value1*value2}입니다.`;
+        document.write(op2);
+    </script>
+    
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클래스 사용 박스 너비값 지정하기</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        /* Safe Area 너비 클래스화 */
+    .w1440 {
+        width:1440px;
+        margin: 0 auto;
+    }
+    #wrap {
+        width:100%;
+        background-color: darkgray;
+        height:1000px;
+        line-height: 100px;
+    }
+    section, article {
+        background-color: gray;
+        height: 100px;
+        line-height: 100px;
+        margin-bottom: 32px;
+    }
+</style>
+</head>
+<body>
+    <div id="wrap">
+        <section class="w1440">
+            <h2>Section Width 클래스 적용</h2>
+        </section>
+        <article>
+            <h2>Section Width 클래스 적용</h2>
+        </article>
+        <section class="w1440">
+            <h2>Section Width 클래스 적용</h2>
+        </section>
+        <article>
+            <h2>Section Width 클래스 적용</h2>
+        </article>
+    </div>
+    
+</body>
+</html>

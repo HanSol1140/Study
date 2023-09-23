@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리, 이벤트</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 2. 제이쿼리 CDN 방식이용 -->
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <style>
+        h5 {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            // 입력양식 선택자 = type속성
+            /* var out = $(':text').val();
+            alert(out);
+            var fcs = $(':text').focus();
+            fcs.css({background:'blue',color:'#fff',fontSize:20}); */
+
+            /* 실습. 버튼을 클릭했을때(on사용), h3 텍스트노드의 글자색을 레드로 코딩
+            (추가)텍스트 노드 내용 => 바뀌는 문자열 */
+            /* $(':button').on('click',function(){
+                $('h3').css('color','red').text('바뀌는 문자열');
+            }); */
+
+            /* 선언적 함수와 이벤트 연결 */
+            $(':button').on('click',chCss);
+
+            // EventListener
+            function chCss(){
+                $('h3').css({color:'red'}).text('바뀌는 문자열');
+            }
+
+        });
+    </script>
+</head>
+<body>
+    <input type="text" value="텍스트박스">
+    <input type="button" value="클릭">
+    <h3>제이쿼리 이벤트</h3>
+</body>
+</html>

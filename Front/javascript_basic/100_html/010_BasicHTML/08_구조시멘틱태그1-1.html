@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>구조 시멘틱 태그</title>
+     <style>
+          /*  Reset CSS ※몇가지 암기 */
+          /* * = 문서 전체를 나타내는 선택자 기호 */
+          * {
+               margin:0;
+               padding:0;
+          }
+          h1,h2,h3,h4,h5,h6 {
+               font-size: 16px;
+               font-weight: normal;
+          }
+          a {
+               color:inherit;
+               text-decoration: none;
+          }
+          li {
+               list-style: none;
+          }
+          img {
+               vertical-align:top;
+          }
+          #wrap {
+               width: 960px;
+               margin: 0 auto;
+               /* top,right,bottom,left순으로 마진값이 들어감 */
+               text-align: center;
+               border: 1px solid #000;
+          }
+
+     </style>
+</head>
+<body>
+     <div id="wrap">
+          <!-- 1. 헤더영역 시작 -->
+          <header>
+               <h1>로고</h1>
+               <h2>GNB 메뉴</h2>
+               <nav>
+                    <ul>
+                         <li><a href="#">메뉴1</a></li>
+                         <li><a href="#">메뉴2</a></li>
+                         <li><a href="#">메뉴3</a></li>
+                         <li><a href="#">메뉴4</a></li>
+                    </ul>
+               </nav>
+          </header>
+          <!-- 1. 헤더영역 끝  -->
+          <!-- 2. 콘텐츠영역 시작 -->
+          <main role=""main">
+               <!-- 2-1. 섹션영역 시작 -->
+               <section>
+                    <!-- 섹션영역을 시작할때 h태그를 사용해줘야함 -->
+                    <!-- 안써도 오류는 없지만 사용해줄것 -->
+                    <h2>Queen 1집</h2>
+                    <article>
+                         <ul>
+                              <li><a href="#">보헤미안랩소디</a></li>
+                              <li><a href="#">레디오가가</a></li>
+                              <li><a href="#">킬러퀸</a></li>
+                         </ul>
+                    </article>
+               </section>
+               <!-- 2-1. 섹션영역 시작 -->
+                <!-- 2-2. 섹션영역 시작 -->
+               <section>
+                    <h2>Queen 2집</h2>
+                    <article>
+                         <ui>
+                              <li><a href="#">해븐</a></li>
+                              <li><a href="#">시오브더라이</a></li>
+                         </ui>
+                    </article>
+               </section>
+               <!-- 2-2. 섹션영역 끝 -->
+               <!-- 2-3. 아티클영역 시작 -->
+               <article>
+                    <h2>아티클 영역</h2>
+                    <section>1</section>
+                    <section>2</section>
+               </article>
+               <!-- 2-3. 아티클영역 끝 -->
+          </main>
+          <!-- 2. 콘텐츠영역 끝 -->
+          <!-- 3. 푸터영역 시작 -->
+          <footer>
+               <p>
+                    Copyright All Rights Reserved.
+               </p>
+          </footer>
+          <!-- 3. 푸터영역 끝 -->
+          <!-- 4. 어사이드 영역 시작 -->
+          <aside>
+               본문 콘텐츠 내용 이외의 것들을 사용하고 싶을때
+          </aside>
+          <!-- 4. 어사이드 영역 끝 -->
+          <!-- 박스 영역시작 -->
+          <div>
+               부분 박스영역 : 블록요소의 그룹핑 태그
+               div = 작은박스
+          </div>
+          <!-- 박스 영역시작 -->
+     </div>     
+</body>
+</html>

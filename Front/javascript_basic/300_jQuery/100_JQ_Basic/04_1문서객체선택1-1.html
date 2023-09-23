@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <title>준비</title>
+
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/reset.css">
+
+    <!-- 부트스크랩 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+
+    <!-- 2. 제이쿼리 CND 방식이용 -->
+
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    
+    <script>
+        $(document).ready(function(){
+            
+            /* 1. filter() : 기본 선택자를 사용해도 되지만, 배열과 관련된 DOM 객체에서 특정 문서객체를 걸러내서 선택할 목적 포함 */
+           /*  $('li').css('color', 'red');
+            $('li').filter(':even').css('color', 'blue');
+            $('li').filter(':odd').css('color', 'green'); */
+
+            /* 2. eq() : 요소들을  */
+            $('li').eq(2).css('color', 'green');
+            $('li').eq(-1).css({'color':'orange', 'font-size':'24px', 'font-weight':'bold'}); // 마지막 선택 -값
+
+            /* 3. 시작과 끝 요소 선택*/
+            $('li').first().css('background', 'green').css('color', 'white');
+            $('li').last().css('background', 'yellow');
+
+            /* 4. find() : 선택된 DOM객체의 후손문서객체를 선택 - 배열을 관련 있을 때 */
+            $('body').find('span').css('color', 'cyan');
+            $('h3').find('span').css('color', 'pink');
+            $('h4').find('span').css('background', 'purple');
+            $('h3, h4').find('span').css('border', '1px solid #000');
+
+            /* 다양한 메서드를 사용하려면 매개변수와 리턴값만 확인 할 수 있으면 된다. */
+
+            /* 5. is() : 주어진 매개변수와 하나라도 일치하면 true값 리턴 */
+
+            /* var isChild = $('h3, h4').children().is('span');
+            
+            console.log(isChild);
+
+            if(isChild) {
+                alert('자식있음');
+            } else {
+                alert('자식없음');
+            }; */
+
+            /* 6. has() : 주어진 매개변수의 태그가 일치하면 선택 */
+
+             var div = $('div').css('color', 'lightgray').has('h6').css('color', 'orange');
+
+             /* $('table').find('tr').eq(0).css('background', 'red'); */
+
+    
+        });
+
+
+    </script>
+</head>
+<body>
+    <h2>문서객체 선택자1</h2>
+    <h3>문서객체 선택자2</h3>
+    <ul>
+        <li>ONE</li>
+        <li>TWO</li>
+        <li><small>THREE</small></li>
+        <li><small>FOUR</small></li>
+        <li>FIVE</li>
+        <h6>has 메서드</h6>
+    </ul>
+
+    <!-- table>(tr>(td{내용$}*2))*4 -->
+    <table border="1" width="600">
+        <tr>
+            <td>내용1</td>
+            <td>내용2</td>
+        </tr>
+        <tr>
+            <td>내용1</td>
+            <td>내용2</td>
+        </tr>
+        <tr>
+            <td>내용1</td>
+            <td>내용2</td>
+        </tr>
+        <tr>
+            <td>내용1</td>
+            <td>내용2</td>
+        </tr>
+    </table>
+
+    <h3>
+        <span>find 메서드 - FOUR</span>
+    </h3>
+    <h4>
+        <span>find 메서드 - FIVE</span>
+    </h4>
+    <h5>
+        <span>find 메서드 - ONE</span>
+    </h5>
+    <h5>find 메서드 - TWO</h5>
+    <h6>find 메서드 - THREE</h6>
+
+    <div>
+        <h6>has 메서드1</h6>
+    </div>
+    <div>
+        <h6>has 메서드2</h6>
+    </div>
+</body>
+</html>

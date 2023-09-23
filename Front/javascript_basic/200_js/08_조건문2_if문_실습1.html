@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if문 실습</title>
+    <link rel="stylesheet" href="./css/reset">
+    <link rel="stylesheet" href="./css/font.css">
+    
+    <script>
+    // 실습1. (프롬프트)나이를 입력받아,
+    // 만약, 40세 이상이면 "건강검진대상" / 아니면 "건강검진대상아님"
+        // (경고창) var age = Number(prompt("귀하의 연세는?"));
+
+        // if(age>=40) {
+        //     alert("건강검진대상.");
+        // }else {
+        //     alert("건강검진대상아님");
+        // }
+    // 실습2. (프롬프트)나이를 입력받아,
+    // (경고창) 만약, 20세 이상이고 40세 미만이면 "서류심사통과", / 아니면 "서류심사보류"
+        // var age = Number(prompt("귀하의 연세는?"));
+        // if(age >= 20 && age < 40) {
+        //     alert("서류심사통과");
+        // }else {
+        //     alert("서류심사보류."+1);
+        // }
+// location객체 : 브라우저 관련 속성과 메서드 제공
+// (새로고침 메서드) location.reload();
+
+    // 실습3. (프롬프트)ID를 입력받아,
+        // (브라우저) 만약, ID가 입력되면 "???님 반갑습니다!!",
+        // (경고창) ID를 입력하지 않았으면 "ID를 입력해주세요"
+
+    // var id = prompt("귀하의 ID를 입력해주세요");
+    // if(id) {
+    //     document.write(id+"님 반갑습니다");
+    // } else {
+    //     alert("ID를 입력해주세요");
+    //     location.reload();
+    // }
+        
+    // 실습4. (프롬프트)국어,영어,수학 각각의 점수를 입력받아,
+        // (경고창) 만약, 3과목 평균이 80점 이상이고, 각 과목의 점수가 60점 이상이면 "시험통과"
+        // (경고창) 아니면 "재시험"
+    // 본인 실습
+        // var lang = Number(prompt("국어 점수는 몇점입니까?"));
+        // var eng = Number(prompt("영어 점수는 몇점입니까?"));
+        // var math = Number(prompt("수학 점수는 몇점입니까?"));
+        // document.write("국어 점수는 "+lang+"점입니다<br>");
+        // document.write("영어 점수는 "+eng+"점입니다<br>");
+        // document.write("수학 점수는 "+math+"점입니다");
+
+        // if(((lang+eng+math)/3) >= 80 && lang >= 80 && eng>=60 && math >= 60) {
+        //     alert("시험통과");
+        // }else {
+        //     alert("재시험");
+        // }
+    // 견본
+        var kor = Number(prompt("국어 점수"));
+        var eng = Number(prompt("영어 점수"));
+        var math = Number(prompt("수학 점수"));
+        console.log(kor,eng,math);
+        // 평균값
+        var avg = (kor+eng+math)/3;
+        console.log("평균값 : "+avg);
+        // 조건만족 여부 결과
+        var result = avg>=80 && kor>=60 && eng>=60 && math>=60; // 여기가다름
+        if(result) {
+            alert("시험통과");
+        }else {
+            alert("재시험");
+        }
+        
+
+    </script>
+</head>
+<body>
+    
+    
+</body>
+</html>

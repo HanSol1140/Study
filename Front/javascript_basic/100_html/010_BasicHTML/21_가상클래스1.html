@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가상클래스 | link 관련</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <style>
+        .container {
+            width:960px;
+            margin: 100px auto;
+            border: 1px solid #000;
+            border-radius: 16px;
+            /* background-color: red; */
+        }
+        nav {
+            width: 800px;
+            margin: 0 auto;
+            /* background-color: silver; */
+        }
+        ul:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        ul li {
+            width: 150px;
+            float:left;
+            margin-right:32px;
+            /* background-color: blue; */
+        }
+        ul li:last-child {
+            margin-right:0;
+        }
+        /* link관련 가상 클래스 */
+        ul li a:link,
+        ul li a:visited {
+            font-size: 14px;
+        }
+        ul li a:hover,
+        ul li a:focus { /* hover를 입력할때 focus도 항상 같이 입력해줄것 */
+                        /* focus = 키보드관련구문 / 눌럿을시 hover와 같은효과  */
+            background-color: #222;
+            color: #fff
+        }
+        ul li a:active {
+            background-color: red;;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#">이용 안내</a></li>
+                <li><a href="#">객실 소개</a></li>
+                <li><a href="#">예약방법 및 요금</a></li>
+                <li><a href="#">예약하기</a></li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        플렉스 아이템 너비 확대 축소(flex) => [플렉스 아이템]에 설정
+        : 플렉스 아이템의 너비를 설정하는것
+          증가너비 [기본값 0] | #속성명 = flex-grow,
+          감소너비 [기본값 1] | #속성명 = flex-shrink,
+          증가너비 [기본값 auto] | #속성명 = flex-basis,
+
+          코드에서
+
+          선택자 {
+            flex: 1 1 0; // 증가너비 감소너비 기본너비
+            flex: 1 0; // 증가너비 감소너비
+            flex: 1 20px; //증가너비 기본너비(단위를 사용하면 기본너비가 적용)
+            <!-- flex: 2 2 0; => 기본크기 2배 -->
+          }
+    </title>
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/grow.css">
+    <!-- <style> css/grow.css로 링크되어잇음 총정리가독성을위해 합침    
+        body {
+            font-size: 32px;
+            font-family: 'noto sans kr', sans-serif;
+        }
+        #container {
+            width:100%;
+        }
+        header {
+            width: 100%;
+        }
+        header h1 {
+            font:600 2rem 'roboto', sans-serif;
+            text-align: center;
+            padding:12px 0;
+            text-shadow: 0 0 3px #666;
+        }
+        #menus {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+
+        }
+        #menus>div {
+            width:500px;
+            height:300px;
+            border: 1px solid #000;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        #menus h2{
+            /* 포지션 */
+            position: absolute;
+            right:3%;
+            bottom:10px;
+            z-inex:1;
+            padding:10px;
+            font-size: 1.6rem;
+            color:#fff;
+            text-shadow: 3px 3px 5px black;
+            
+            
+        }
+        #menus1 {
+            width:100%;
+            background: url(../images/flex_01.jpg);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            
+        }
+
+        #menus2 {
+            width:100%;
+            background: url(../images/flex_02.jpg) no-repeat center;
+            background-size: cover;
+            background-size: 100% 100%;
+        }
+        #menus3 {
+            width:100%;
+            background: url(../images/flex_03.jpg) no-repeat center;
+            background-size: cover;
+        }
+        #menus4 {
+            width:100%;
+            background: url(../images/flex_04.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+        #menus5 {
+            width:33%;
+            background: url(../images/flex_05.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            /* flex: 2 2 0; */
+            /* 2 2 0 : 기본크기 2배 */
+        }
+        footer {
+            width:100%;
+            background-color: #373737;
+            height: 80px;
+        }
+        footer p {
+            font-size: 1.2rem;
+            color:#fff;
+            text-align: center;
+        }
+    </style> -->
+</head>
+<body>
+    <div id="container">
+        <header>
+            <h1>Remember to Photos</h1>
+        </header>
+        <section id="menus">
+            <div id="menus1">
+                <h2>흑백 옆모습</h2>
+            </div>
+            <div id="menus2">
+                <h2>흑백/여인</h2>
+            </div>
+            <div id="menus3">
+                <h2>흑백/여인2</h2>
+            </div>
+            <div id="menus4">
+                <h2>흑백/여인3</h2>
+            </div>
+            <div id="menus5">
+                <h2>흑백/남자모델</h>
+            </div>
+        </section>
+        <footer>
+            <p>MCSSAM's PhotoGraphy</p>
+        </footer>
+    </div>    
+</body>
+</html>

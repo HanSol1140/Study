@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        /* 헤더영역 */
+        header {
+            width:1120px;
+            height:100px;
+            background-color:#d6d6d6;
+            margin-bottom:30px;
+        }
+        header .h_logo {
+            float:left;
+            padding:10px 0 5px 5px;
+            margin-top:5px;
+        }
+        header section {
+            background: -webkit-linear-gradient(top, white, white 3%, #d6d6d6 25%);
+            }
+        h1{
+            height:100px;
+            color: #9d0b0c;
+            font:bold 80px 'roboto', serif;
+            margin-bottom:5px;
+            margin-bottom: -30px; 
+            float:left;
+        }
+        h1 span {
+            font:bold 16px 'roboto', serif;
+        }
+        header hr {
+            border-top: 3px solid #aaa;
+        }
+        header .h_redline { 
+            height:30px;
+            background-color: #9d0b0c;
+            background: -webkit-linear-gradient(top,#ddd, #9d0b0c 8%, #9d0b0c 8%, #9d0b0c 50%, #9d0b0c 75%, #111 100%);
+            background: -moz-linear-gradient(top,#ddd, #9d0b0c 8%, #9d0b0c 8%, #9d0b0c 50%, #9d0b0c 75%, #111 100%);
+            background: -o-linear-gradient(top,#ddd, #9d0b0c 8%, #9d0b0c 8%, #9d0b0c 50%, #9d0b0c 75%, #111 100%);
+            background: -ms-linear-gradient(top,#ddd, #9d0b0c 8%, #9d0b0c 8%, #9d0b0c 50%, #9d0b0c 75%, #111 100%);
+            background: linear-gradient(top,#ddd, #9d0b0c 8%, #9d0b0c 8%, #9d0b0c 50%, #9d0b0c 75%, #111 100%);
+            opacity:0.9;
+            
+        }
+
+        /* 메인영역 */
+        .main_left {
+            background-color: #dddddd;
+            width:300px;
+            border-radius: 8px;
+            padding:10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <section>
+            <article class="cf">
+                <div class="h_logo">
+                    <img src="./images/filezillalogo.png" alt="">
+                </div>
+                <h1><font style="text-shadow:-0.5px 0 1px black;">FileZilla</font><span>The free FTP solution</span></h1>
+            </article>
+            <article>
+                <hr>
+                <div class="h_redline"></div>
+            </article>
+        </section>
+    </header>
+    <!-- 메인영역 시작 -->
+    <main role="main">
+        <section>
+            <div class="main_left">
+                <p>home</p>
+                <nav>
+                    <ul>
+                        <li>FileZilla
+                            <ul>
+                                <li>Features</li>
+                                <li>Screenshots</li>
+                                <li>Download</li>
+                                <li>Documentation</li>
+                                <li>FileZilla Pro</li>
+                            </ul>
+                        </li>
+                        <li>FileZilla Server
+                            <ul>
+                                <li>Download</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>Community
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+        <section>
+            <div class="main_right"></div>
+        </section>
+    </main>
+    <!-- /메인영역 끝 -->
+</body>
+</html>

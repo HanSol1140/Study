@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리, this 개념</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 2. 제이쿼리 CDN 방식이용 -->
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <style>
+        .clickTest {
+            border: 1px solid #000;
+            background-color: yellowgreen;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            // DOM객체 변수 할당
+            /* var elm = $('.clickTest');
+            elm.on("click",function(){
+                elm.text('클릭되었습니다.');
+            }); */
+
+            /* var div1 = $('#div1');
+            div1.on('click',function(){
+                div1.text('클릭되었습니다.!!');
+            });
+            var div2 = $('#div2');
+            div2.on('click',function(){
+                div2.text('클릭되었습니다.!!');
+            });
+            var div3 = $('#div3');
+            div3.on('click',function(){
+                div3.text('클릭되었습니다.!!');
+            });
+            var div4 = $('#div4');
+            div4.on('click',function(){
+                div4.text('클릭되었습니다.!!');
+            });
+            var div5 = $('#div5');
+            div5.on('click',function(){
+                div5.text('클릭되었습니다.!!');
+            }); */
+
+/* 위의 불편함을 해결한 방법이 this
+: DOM요소 $(this)
+  this는 상황에 따라 들어있는 변수가 바뀌는 '특수변수'임.
+  이벤트 리스너에서의 this는 이벤트가 발생한 DOM요소가 들어감
+  즉, 위의 소스에 경우 '클릭한 요소'가 this에 할당 */
+            // this사용
+            $('.clickTest').on('click',function(){
+                $(this).text('Clicked!');
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="div1" class="clickTest">div!!</div>
+    <div id="div2" class="clickTest">div!!</div>
+    <div id="div3" class="clickTest">div!!</div>
+    <div id="div4" class="clickTest">div!!</div>
+    <div id="div5" class="clickTest">div!!</div>
+</body>
+</html>

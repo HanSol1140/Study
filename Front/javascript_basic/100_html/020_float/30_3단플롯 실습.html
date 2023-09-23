@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3단플롯 실습</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <style>
+        #wrap_box {
+            width:1250px;
+            border: 1px solid #000;
+        }
+        #wrap {
+            width:1200px;
+            margin:20px;
+            border: 1px solid #000;
+            background: rgba(104, 153, 199, 0.87);
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 48px;
+            text-align: center;
+        }
+
+        main {
+            width:1200px;
+            background-color: #666;
+            padding:20px;
+        }
+        section {
+            width:780px;
+            margin:20px;
+            padding:30px;
+            background-color: orange;
+        }
+        .main_left {
+            width:200px;
+            height:200px;
+            background-color: rgb(6, 21, 54);
+            /* margin:30px 0 0 20px; */
+            float:left;
+        }
+        .main_right {
+            width:520px;
+            background-color: pink;
+            /* margin:30px 20px 20px 0; */
+            float:left;
+            font:24px 'gugi', serif;
+        }
+        footer {
+            text-align: center;
+            font-size: 24px;
+            padding: 16px;
+        }
+        .sidebar {
+            font-size: 24px;
+            width:200px;
+            position: absolute;
+            background: #ccc;
+            left:950px;
+            top:100px;
+        }
+        .nanumbrushscript {
+            font-size: 36px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap_box">
+    <div id="wrap">
+        <header>
+            <h1> 사이트제목 </h1>
+        </header>
+        <main role="main" id {}>
+            <section class="cf">
+                <div class="main_left">
+                    <nav>
+                        <ul>
+                            <li>좌측메뉴
+                                <ul>
+                                    <li>좌측메뉴 1</li>
+                                    <li>좌측메뉴 2</li>
+                                    <li>좌측메뉴 3</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="main_right">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate voluptatum repellat modi blanditiis rem, ipsam ab facilis quidem dolores fugiat corrupti eveniet quo eius suscipit aut doloribus quis, aperiam sequi.<br>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate voluptatum repellat modi blanditiis rem, ipsam ab facilis quidem dolores fugiat corrupti eveniet quo eius suscipit aut doloribus quis, aperiam sequi.<br>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate voluptatum repellat modi blanditiis rem, ipsam ab facilis quidem dolores fugiat corrupti eveniet quo eius suscipit aut doloribus quis, aperiam sequi.
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>
+                copyright all rights reserved
+            </p>
+        </footer>
+        <aside>
+            <div class="sidebar">
+                <nav>
+                    <ul>
+                        <li>사이드바
+                            <ul>
+                                <li class="nanumbrushscript">우측메뉴1</li>
+                                <li class="nanumbrushscript">우측메뉴2</li>
+                                <li class="nanumbrushscript">우측메뉴3</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>          
+        </aside>
+    </div> 
+</div>  
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>텍스트실습</title>
+    <style>
+        #wrap {
+            width: 960px;
+            margin: 0 auto;
+            background-color: silver;
+            text-align: center;
+
+        }
+        ul {
+            list-style: none;
+        }
+        table {
+            width: 600px;
+        }
+        table, th, td {
+            border: 1px solid #000;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+        }
+        span{
+            color: red;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+   <div id="wrap">
+        <figure>
+            <img src="./images/applee.png" alt="애플로고" width="200" height="300">
+        </figure>
+        <h1>
+            웹개발자 MCSSAM
+        </h1>
+        <p>
+           indopop@naver.com
+        </p>
+        <h2>자기 소개서</h2>
+        <p>
+            개발자 5년
+        </p>
+        <h2>SNS</h2>
+        <ul>
+            <li><a href="#" target="_blank">facebook</a></li>
+            <li><a href="#" target="_blank">Youtube</a></li>
+            <li><a href="#" target="_blank">Pinterest</a></li>
+            <li><a href="#" target="_blank">Twitter</a></li>
+        </ul>
+        <hr>
+        <h2>Skills</h2>
+            <ul>
+                <li>사용언어</li>
+                    <ul>
+                        <li><mark>HTML</mark></li>
+                        <li><mark>CSS</mark></li>
+                        <li>javaScript</li>
+                        <li>jQuery</li>
+                    </ul>
+                <li>사용툴
+                    <ul>
+                        <li><span>VS CODE</span></li>
+                        <li>eclipse</li>
+                        <li><span>Toad</span></li>
+                    </ul>
+                </li>
+            </ul>
+            <h2>Academic</h2>
+            <!-- table>(tr>td{$}*4)*3 -->
+            <table>
+                <caption>
+                    <p>학력사항</p>
+                </caption>
+                <thead>
+                    <tr>
+                        <th>출신학교</th>
+                        <th>전공</th>
+                        <th>기간</th>
+                        <th>졸업구분</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>이젠 고등학교</td>
+                        <td>해당사항없음</td>
+                        <td>2020.01.01</td>
+                        <td>졸업</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>이젠 대학교</td>
+                        <td>컴퓨터 공학</td>
+                        <td>2020.01.01</td>
+                        <td>졸업</td>
+                    </tr>
+                </tfoot>
+            </table>
+        <br><br><br>
+        <hr>
+        <p>
+            COPYRIGHT &copy; ALL RIGHT RESEVED.
+        </p>
+   </div>
+</body>
+</html>

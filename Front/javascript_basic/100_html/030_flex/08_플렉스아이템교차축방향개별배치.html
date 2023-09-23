@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        플렉스 아이템 교차축방향 개별 배치(align-self) => [플렉스 아이템]에 설정
+        : 교차축 방향으로 플렉스 아이템에 개별적 배치
+        # 속성명 : align-self
+        # 속성값 : flex-start, flex-end, center ...
+    </title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <style>
+        section {
+            width: 300px;
+            height: 200px;
+            background-color: beige;
+            /* 플렉스 */
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+        }
+        section>div {
+            width: 60px;
+            margin: 5px;
+        }
+        section > div:nth-child(1) {
+            background-color: orange;
+            min-height: 30px;
+            align-self: flex-start;
+        }
+        section > div:nth-child(2) {
+            background-color: cyan;
+            min-height: 30px;
+        }
+        section > div:nth-child(3) {
+            background-color: pink;
+            min-height: 30px;
+        }
+        section > div:nth-child(4) {
+            background-color: skyblue;
+            min-height: 30px;
+            align-self: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div>Item #1</div>
+        <div>Item #2</div>
+        <div>Item #3</div>
+        <div>Item #4</div>
+    </section>
+</body>
+</html>

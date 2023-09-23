@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택문 ,switch~case문</title>
+    <script>
+    // switch(조건식) {
+    //     case n 조건값일치여부 :
+    //         실행문;
+    //         break;
+    //     default:
+    //         실행문;
+    // }
+    // 1.입력받은 수가 홀수인지 짝수인지 판별
+        // var num = prompt("숫자입력", 0);
+        // num = Number(num);
+        // switch(num%2) { // 입력받은 num을 2로 나눈 나머지가
+        //     case 0:
+        //         alert("짝수입니다.");
+        //         location.reload();
+        //         break;
+        //         // break; : {}안에 남은 실행을 그만두고 }너머로 넘어감, 작업종료
+        //     case 1:
+        //         alert("홀수입니다.");
+        //         location.reload();
+        //         break;
+        //     default:
+        //         alert("숫자가아닙니다.")
+        //         location.reload();
+        // }
+
+    // 2. 포털사이트 접속하기
+        // var site = prompt("구글,네이버,다음 중 하나 입력", "구글");
+        // var url;
+        // switch(site) {
+        //     case "구글":
+        //         url = "http://google.co.kr";
+        //         break;
+        //     case "네이버":
+        //         url = "http://naver.com";
+        //         break;
+        //     case "다음":
+        //         url = "http://www.daum.net";
+        //         break;
+        //     default:
+        //         alert("다시입력해주세요");
+        //         location.reload();
+        // }
+        // if(url) {
+        //     location.href = url;
+        // }
+
+    // 코딩위치에 따라서 문서 전체에 쓸수잇는게 잇고 없는게있다
+
+        // 어느 위치에 코딩을 하든 문서 어디서든 쓸수잇게 하겠다
+        // ▲2. 예시로 들면 
+        //    var site =prompt
+        // = 전역변수
+
+        // 코드블록 안에서만 쓸수잇다
+        // = 전역변수
+        // ▲2. 예시로 들면
+        //    case "구글":
+        //        url = "구글주소";
+        //        break;
+        // = 지역변수
+
+        // 필요사유 : 개별작업후 파일을 합칠때
+        // 전역변수로 인한 문제를 없애기위해 지역변수를 주로 활용
+        // => 프로그래머는 개별작업후 파일을 합치는 형태의 일을 자주함
+
+
+
+    /*실습. (프롬프트) 지역명 '서울','경기도','부산' 중 하나를 입력받아,
+        '서울'일 경우 지역번호 02,
+        '경기도'일 경우 지역번호 031,
+        '부산'일 경우 지역번호 051을 데이터로 사용.
+        그외 데이터 입력시 (경고창) 다시 입력하세요.
+        
+        (브라우저) ???(지역명)의 지역번호는 ??? 입니다.*/
+
+        var area = prompt("귀하의 거주지는 어디입니까?", "서울")
+        // var areatel;
+        var areatel = "";
+        //             ▲areatel이 문자형데이터라고 선언
+        switch(area) {
+            case "서울":
+                areatel = "02";
+                break;
+            case "경기도":
+                areatel = "031";
+                break;
+            case "부산":
+                areatel = "051";
+                break;
+            default:
+                alert("다시입력해주세요");
+                location.reload();
+        }
+        document.write(area+"의 지역번호는 "+areatel+"입니다.");
+        
+
+
+
+
+    </script>
+    
+</head>
+<body>
+    
+
+</body>
+</html>

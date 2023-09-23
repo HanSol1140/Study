@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폰트사용</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+        /* 도큐먼트 전체에 노토산스KR서체 적용 */
+        body {
+            font-family: 'Noto Sans KR', sans-serif 14px/1.5em;
+        }
+        #wrap {
+            width: 960px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            /* a(alpha) = 투명도,0부터~1까지 */
+            color: rgba(0,0,0,0.3);
+            font-style:italic;
+            margin-bottom: 24px;
+        }
+        h2 {
+            font-family: 'Nanum Pen Script', cursive;
+            font-size: 18px;
+            color: #f00;
+            margin-bottom: 24px;
+        }
+        p {
+            font-family: 'Oswald', sans-serif;
+            /* (30/16) */
+            font-size: 30px;
+            font-size: 1.875em;
+            font-size: 187.5%;
+            /* (14/16) */
+            font-size: 14px;
+            font-size: 0.875em;
+            font-size: 87.5%;
+            /* rem적용 */
+            font-size: 2rem;
+            margin-bottom: 24px;
+        }
+        .font {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.25rem;
+            font-size: 30px;
+            font-weight: 700;
+            font-style: italic;
+            color: purple;
+            /* 행간 */
+            line-height: 1.5em;
+            /* 폰트 한줄쓰기 */
+            font: bold italic 30px/1.5 'Roboto', sans-serif;
+        
+            color: skyblue;
+        }
+        .small {
+            color: #0000ff;
+            color: #00f;
+            color: blue;
+            color: rgb(0,0,255);
+            color: rgba(0,0,255,1);
+            font-variant: small-caps;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <h1>Web Standard Publishing</h1>
+        <h2>웹표준 방식 코딩</h2>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quidem iure
+            maiores sit excepturi, illo fugit ratione tempora nostrum natus neque cum
+            tenetur, quis repellendus nulla ipsa accusamus? Neque, eius?
+        </p>
+        <p class="font">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quidem iure
+            maiores sit excepturi, illo fugit ratione tempora nostrum natus neque cum
+            tenetur, quis repellendus nulla ipsa accusamus? Neque, eius?
+        </p>
+        <p>
+            서울<span class="small">(Seoul)</span>, 대한민국
+        </p>
+    </div>
+</body>
+</html>

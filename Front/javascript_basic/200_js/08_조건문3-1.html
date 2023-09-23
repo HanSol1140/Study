@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조건문, else if문 중첩 if문</title>
+    <script>
+        var grade = prompt('점수입력', 90);
+        grade = Number(grade);
+    // 1. else if문
+        if(grade >= 90) {
+          alert('A학점');
+        }else if(grade>=80) {
+            alert('B학점');
+        }else if(grade>=70) {
+            alert('C학점');
+        }else if(grade>=60) {
+            alert('D학점');
+        }else {
+            alert('재수강');
+        }
+        location.reload();
+
+    // 2. 중첩 if문
+    CRUD(Create Read Update Delete)
+    var dbid = "ezen";
+    var dbpw = "1234";
+
+    var id = prompt("id를 입력해주세요", "ezen");
+    // db아이디와 prompt에서 입력받은 아이디가 같으면
+    if(dbid==id){
+        var pw = prompt("패스워드를 입력해주세요", "1234");
+        // 비밀번호가 맞으면 (경고창에) 로그인 성공 / 아니면 로그인 실패
+        if(dbpw==pw) {
+            alert("로그인 성공")
+        }
+        else {
+            alert("비밀번호 틀림");    
+            location.reload();
+        }   
+    }else{
+        alert("ID가 맞지않음");
+        location.reload();
+    }
+    </script>
+</head>
+<body>
+</body>
+</html>

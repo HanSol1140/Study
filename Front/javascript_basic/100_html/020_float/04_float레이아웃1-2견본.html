@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기초 float 레이아웃 실습</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <style>
+        #wrap {
+            width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        h1 {
+            height: 80px;
+            line-height: 80px;
+            background-color: #079dd9;
+        }
+        /* 플롯해제 */
+        #content:after {
+            content:"";
+            display: block;
+            clear: both;
+        }
+        .sec_part1 {
+            width: 300px;
+            height: 240px;
+            line-height: 240px;
+            background-color: #d90416;
+            /* 플롯 */
+            float: left;
+        }
+        .sec_part2 {
+            width: 600px;
+            height: 240px;
+            line-height: 240px;
+            background-color: #41bdd9;
+            /* 플롯 */
+            float: right;
+        }
+        footer {
+            height: 80px;
+            line-height: 80px;
+            background-color: #c6d93b;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <h1>GNB 메뉴</h1>
+        <section id="content">
+            <h2 class="sec_part1">
+                LNB메뉴
+            </h2>
+            <h2 class="sec_part2">
+                Contents
+            </h2>
+        </section>
+        <footer>
+            <p>
+                Copyright All Rights Reserved.,
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        플렉스 아이템 주축방향배치(justify-content) => [부모박스]에 설정
+        : 플렉스 아이템 플렉스 박스 주축의 시작점부터 배치
+        # 속성명 : justify-content
+        # 속성값 : flex-start [기본값], flex-end, center, space-between, spance-around
+    </title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <style>
+        #wrap {
+            width: 90%;
+            height: 500px;
+            margin: 0 auto;
+            border: 3px solid #000;
+            /* 플렉스 */
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: flex-start;
+            justify-content: flex-end;
+            justify-content: center;
+            justify-content: space-around;
+            justify-content: space-between;
+        }
+        #wrap>div {
+            width: 20%;
+            height: 20%;
+        }
+        #wrap > div:nth-child(1) {
+            background-color: red;
+        }
+        #wrap > div:nth-child(2) {
+            background-color: green;
+        }
+        #wrap > div:nth-child(3) {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가변형단위 vw | vh</title>
+    <!-- viewport-width -->
+    <!-- viewport-height -->
+    <!-- 최신기술 -->
+    <!-- 업데이트문제로 적용이 안되는경우가 잇을것임 -->
+    <!-- => 최신기술이라고 좋은건 아니다 -->
+    <!-- 쓰는데 신중히 고려할것 -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/notosans_kr_CDN.css">
+    <!-- <link rel="stylesheet" href="./css/viewport_v2.css"> -->
+
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Viewport 가변단위 */
+        /* 내 마음속의 기준값 */
+        /* 1920(vw 내 마음속의 너비 기준값) x 936(vh 내 마음속의 높이 기준값) */
+        * {
+            background-color: transparent !important;
+        }
+        .maxw1440 {
+            max-width:1440px;
+            /* (1440/1920)*100 = 75*/
+            max-width: 75vw;
+            margin:0 auto;
+        }
+        body,html {
+            font-size: 16px;
+            /* (16/936)*100 = 1.709401709401709*/
+            font-size: 1.709401709401709vh; /* vh = 높이 비례 크기가변 */
+            font-family: 'noto sans kr', sans-serif;
+        }
+        #wrap {
+            width:100vw;
+            height:100vh;
+            position: fixed;
+            left:0;
+            top:0;
+            z-index: 1;
+        }
+        /* VIDEO BACKGROUND */
+        .video_wrapper {
+            width:100vw;
+            height:100vh;
+            position: fixed;
+            left:0;
+            top:0;
+            z-index: -1;
+        }
+
+        .video_wrapper video {
+            width:100vw;
+            height:100vh;
+            object-fit: fill;
+        }
+        /* VIDEO CONTROL BUTTON */
+        #car_btn {
+            position: absolute;
+            left:48px;
+            /* (48/1920)*100 = 2.5 */
+            left:2.5vw;
+            bottom:56px;
+            /* (56/936)*100 = 5.982905982905983 */
+            bottom:5.982905982905983vh;
+            z-index: 200;
+            background-color: red;
+            bottom: 180px;
+        }
+        #car_btn i {
+            font-size: 2.564102564102564vh;
+            color:#fff;
+            cursor: pointer;
+
+        }
+        #car_sound {
+            position: fixed;
+            left:96px;
+            left:5vw;
+            bottom:56px;
+            bottom:5.982905982905983vh;
+            bottom:180px;
+            z-index: 200;
+        }
+        #car_sound  i {
+            font-size: 2.564102564102564vh;
+            color:#fff;
+            cursor: pointer;
+        }
+        /* /VIDEO CONTROL BUTTON */
+        #car_btn i:nth-child(2) {
+            display: none;
+        }
+        /* IMAGE TEXT */
+        .video_text {
+            position: fixed;
+            /* left:48px; */
+            left:2.5vw;
+            /* bottom:100px; */
+            bottom:10.68376068376068vh;
+            z-index: 100;
+        }
+        .video_text h2 {
+            /* font-size: 72px; */
+            font-size: 7.692307692307692vh;
+            font-weight: 700;
+            line-height: 1;
+            color:#fff;
+            letter-spacing: -2px;
+        }
+        .video_text p {
+            /* font-size: 21px; */
+            font-size: 2.243589743589744vh;
+            color:#fff;
+            font-weight: 300;
+            /* margin-top: 16px; */
+            margin-top: 10.68376068376068vh;
+            text-indent: 0.2em;
+        }
+        /* /IMAGE TEXT */
+        /* /VIDEO BACKGROUND */
+
+        /* HEADER */
+        .header {
+            color:#fff;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            padding-top: 30px;
+            padding-top: 3.8vh;
+            text-align: center;
+        }
+        .header h1 {
+            width:160px;
+            width:8vw;
+        }
+
+        .header .gnb_wrap {
+            font-size: 20px;
+            font-size: 2.1vh;
+            font-weight: 500;
+        }
+        .header .gnb {
+            display: flex;
+        }
+        .header .gnb li {
+            padding: 0 4.273504273504274vw;
+        }
+        .header .sub_wrap {
+            font-size: 14px;
+            font-size: 1.495726495726496vh;
+        }
+        .header .snb {
+            display:flex;
+        }
+        .header .snb li {
+            padding: 0 8px;
+        }
+
+        .header .snb li:last-child {
+            border: 1px solid #fff;
+            font-size: 12px;
+            font-size: 1.282051282051282vh;
+            padding:4px 12px;
+            margin-top: -4px;
+        }
+        /* /HEADER */
+        .footer {
+            background-color: #3e3e3e !important;
+            background: none;
+            width: 100vw;
+            display: flex;
+            justify-content: space-between;
+            color:#737373;
+            padding:32px 72px;
+            padding:3.418803418803419vh 3.418803418803419vw;
+            position:fixed;
+            left:0;
+            bottom:0;
+            z-index: 100;
+        }
+        .footer h3 {
+            /* width:10vw; */
+            height:10vh;
+            border: 1px solid red;
+        }
+        .footer h3 img {
+            width:100%;
+            height:100%;
+        }
+        .footer>nav {
+            font-size: 1.5vh;
+            margin-right: 10vw;
+        }
+        .footer .fnb {
+            display: flex;
+        }
+        .footer .fnb li:after {
+            content:"|";
+            display: inline-block;
+            margin-left: 2vw;
+        }
+        .footer .fnb li:nth-child(5):after {
+            display: none;
+        }
+        .footer .fnb li {
+            margin-right: 2vw;
+        }
+        .copyright {
+            font-size: 1.4vh;
+            margin-top: 3.4vh;
+            line-height: 1.5;
+        }
+        .copyright>span {
+            font-size: 1.3vh;
+        }
+        .sns {
+            display: flex;
+        }
+        .sns li {
+            margin-left: 24px;
+            margin-left: 1.25vw;
+            background-color: #fff;
+            font-size: 3vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <!-- VIDEO BACKGROUND -->
+        <figure class="video_wrapper">
+            <video class="video" autoplay loop muted>
+                <source src="./media/stinger_no_blackbar.mp4" type="video/mp4">
+            </video>
+        <!-- VIDEO CONTROL BUTTON -->
+        <button id="car_btn">
+            <i class="fa fa-pause-circle-o" aria-hidden="true"></i>
+            <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+        </button>
+        <!-- SOUND CONTROL BUTTON -->
+        <button id="car_sound">
+            <i class="fa fa-volume-off" aria-hidden="true"></i>
+            <!-- <i class="fa fa-volume-up" aria-hidden="true"></i> -->
+        </button>
+        <!-- /SOUND CONTROL BUTTON -->
+        <!-- /VIDEO CONTROL BUTTON -->
+        <!-- IMAGE TEXT -->
+        <div class="video_text">
+            <h2>
+                BUILD <br>
+                TOGETHER
+            </h2>
+            <p>
+                고객과 함께 최고의 가치를 실현하는 기업
+            </p>
+        </div>
+        <!-- /IMAGE TEXT -->
+        </figure>
+        <!-- /VIDEO BACKGROUND -->
+        
+        <!-- HEADER -->
+        <header class="header maxw1440">
+            <h1><img src="./images/cocacola.svg" alt="코카콜라 로고1"></h1>
+            <nav class="gnb_wrap">
+                <ul class="gnb">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">사업분야</a></li>
+                    <li><a href="#">홍보센터</a></li>
+                    <li><a href="#">고객센터</a></li>
+                </ul>
+            </nav>
+            <nav class="sub_wrap">
+                <ul class="snb">
+                    <li><a href="#">뉴스룸&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</a></li>
+                    <li><a href="#">투자정보&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</a></li>
+                    <li><a href="#">채용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</a></li>
+                    <li><a href="#">ENG</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- /HEADER -->
+        <!-- FOOTER -->
+        <footer class="footer">
+            <h3><img src="./images/cocacola.svg" alt="코카콜라 로고2"></h3>
+            <nav>
+                <ul class="fnb">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">사이트맵</a></li>
+                    <li><a href="#">사이버감사실</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">이메일수집거부</a></li>
+                </ul>
+                <div class="copyright">
+                    04543 서울특별시 중구 을지로 170 이젠컴퓨터 대표번호 : 02-2299-2312 <br>
+                    <span>
+                        Copyright &copy; MCSSAM *amp; COPORATION Co., Ltd. All Rights Reserved.
+                    </span>
+                </div>
+            </nav>
+            <ul class="sns">
+                <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            </ul>
+
+        </footer>
+        <!-- /FOOTER -->
+    </div>
+<script src="./js/viewport.js"></script>
+</body>
+</html>

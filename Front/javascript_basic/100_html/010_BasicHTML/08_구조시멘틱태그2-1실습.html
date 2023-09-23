@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>구조 시멘틱 태그</title>
+     <style>
+          * {
+               margin:0;
+               padding:0;
+          }
+          h1 {
+               color:brown
+          }
+
+          h2,h3,h4,h5,h6 {
+               font-size: 16px;
+               font-weight: normal;
+          }
+          a {
+               color:inherit;
+               text-decoration: none;
+          }
+          li {
+               list-style: none;
+          }
+          img {
+               vertical-align:top;
+          }
+          footer {
+               background-color: brown;
+          }
+          #wrap {
+               width: 960px;
+               margin: 0 auto;
+               /* top,right,bottom,left순으로 마진값이 들어감 */
+               text-align: center;
+               border: 0px solid #000;
+          }
+          #logo {
+               background-color:#035AA6;
+          }
+          #queen1, #queen2{
+               background-color: aquamarine;
+          }
+          #bottom1{
+               background-color: red;
+          }
+          #asd{
+               background-color: orange;
+          }
+
+
+     </style>
+</head>
+<body>
+     <div id="wrap">
+          <!-- 1. 헤더영역 시작 -->
+          <header>             
+               <div id="logo">
+                    <h1>로고</h1>
+                    <h2>GNB 메뉴</h2>
+                    <nav>
+                         <ul>
+                              <li><a href="#">메뉴1</a></li>
+                              <li><a href="#">메뉴2</a></li>
+                              <li><a href="#">메뉴3</a></li>
+                              <li><a href="#">메뉴4</a></li>
+                         </ul>
+                    </nav>
+               </div>
+          </header>
+          <main role=""main">              
+               <section>
+                    <div id="queen1">
+                         <h2>Queen 1집</h2>
+                    </div>    
+                    <article>
+                         <ul><div id="asd">
+                              <li<a href="#">보헤미안랩소디</a></li>
+                              <li><a href="#">레디오가가</a></li>
+                              <li><a href="#">킬러퀸</a></li>
+                         </div>
+                         </ul>
+                    </article>
+               </section>
+                    <div id="queen2">
+                    <article>
+                         <section>1절</section>
+                         <section>2절</section>
+                    </article>
+                    </div>
+          </main>
+          <footer>
+               <p>
+                    Copyright All Rights Reserved.
+               </p>
+          </footer>
+          
+         <div id="bottom1">
+               <aside>
+                    본문 콘텐츠 내용 이외의 것들을 사용하고 싶을때
+               </aside>
+         </div>
+          <div>
+               부분 박스영역 : 블록요소의 그룹핑 태그
+          </div>
+         </div>     
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수학객체</title>
+    <script>
+        // 최대값
+        var num = 3.283434;
+        var maxNum = Math.max(10,8,21,40); // 40
+        document.write("최대값 : "+ maxNum + "<br>");
+        // 최소값
+        var minNum = Math.min(10,8,21,40); // 8
+        document.write("최소값 : "+ minNum + "<br>");
+        // 반올림
+        var roundNum = Math.round(num); // 3
+        document.write("반올림 : "+ roundNum + "<br>");
+
+
+        // ▼암기항목
+
+        // 올림
+        var ceilNum = Math.ceil(num); // 4
+        document.write("올림 : "+ ceilNum + "<br>");
+        // 내림
+        var floorNum = Math.floor(num); // 3
+        document.write("내림 : "+ floorNum + "<br>");
+        // 랜덤
+        var randomNum = Math.random(); // 0~1사이의 랜덤수(난수)를 발생시켜 리턴
+        // randomNum = (0 < randomNum < 1)
+        // 무조건 0초과 1미만의 소숫점 숫자가나옴 0과 1은 안나옴
+        document.write("랜덤 : "+ randomNum + "<br>");
+
+        // 이미지 랜덤으로 바꾸기
+
+        var imgNum = Math.floor(Math.random()*7)+1;
+        //  1~7에서 랜덤한 숫자 하나를 얻으시오
+        // => 7가지중 랜덤하게 1의 숫자를 구해야할때 자주쓰는식
+        // console.log(imgNum);
+        document.write('<img src="./images/img' + imgNum + '.jpg"' + 'width="300px"' + 'height=300px' + 'id="phone>');
+    </script>
+</head>
+<body>
+    <img src="./images/img1.jpg" alt="갤러리이미지" width="300" height="300" id="phone">    
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float 레이아웃 기초실습</title>
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        body {
+            width: 1000px;
+            background-color: black;
+            /* border: 1px solid #000; */
+        }
+        #wrap {
+            margin: 0 auto;
+            /* border: 1px solid #000; */
+        }
+        /* 헤드영역 */
+        header ul li:hover, header ul li:focus {
+            background-color: blue;
+        }
+        header ul li {
+            background-color: red;
+            font-weight: bold;
+            color:white;
+            margin: 20px 0 20px 20px;
+            padding:10px;
+            float:right;
+        }
+
+        /* 메인영역 */
+        .main_page {
+            width:1000px;
+            height: 600px;
+            background-color: silver;
+            text-align: center;
+            line-height:600px;
+            margin:0 auto;
+            margin-bottom:30px;
+        }
+        
+        .main_bottom1 {
+            width:333px;
+            height:300px;
+            background-color: red;
+            float:left;
+        }
+        .main_bottom2 {
+            width:333px;
+            height:300px;
+            background-color: white;
+            float:left;
+        }
+        .main_bottom3 {
+            width:333px;
+            height:300px;
+            background-color: blue;
+            float:left;
+        }
+
+        /* 푸터영역 */
+        footer {
+            color:white;
+        }
+        footer p {
+            text-align: center;
+            margin: 30px;
+        }
+        footer span {
+            color:red;
+            font-weight: bold;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <nav>
+                <ul class="cf">
+                    <li><a href="#">COMMUNITY</a></li>
+                    <li><a href="#">SERVICE</a></li>
+                    <li><a href="#">PRODUCT</a></li>
+                    <li><a href="#">COMPANY</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main role="main">
+            <section class="main_page">
+                    <h2>1000 x 600<h2>
+            </section>
+            <section class="cf">
+                <h2 class="main_bottom1"></h2>
+                <p class="main_bottom2"></p>
+                <div class="main_bottom3"></div>
+            </section>
+        </main>
+        <footer>
+            <p>
+                Copyright ALL Rights Reserved. <SPAN>MCSSAM</SPAN>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

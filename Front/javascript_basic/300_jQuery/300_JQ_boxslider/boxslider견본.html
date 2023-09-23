@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리, 플러그인 박스슬라이더</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <!-- 박스 슬라이더 CSS -->
+    <link rel="stylesheet" href="./css/jquery.bxslider.css">
+    <!-- 페이지 CSS -->
+    <style>
+        /* 전체 구조 = 본인 사이트에 맞게 수정 */
+        #gallery_wrap {
+            width: 1440px;
+            margin: 0 auto;
+        }
+        .slide_gallery li {
+            /* display: none; */
+        }
+        /* Thumnail 이미지 */
+        .slide_pager {
+            text-align: center;
+        }
+        .slide_pager li {
+            display: inline-block;
+        }
+    </style>
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 2. 제이쿼리 CDN 방식이용 -->
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- 3. 제이쿼리 플러그인 추가 -->
+    <script src="./js/jquery.bxslider.js"></script>
+
+    <!-- BxSlider 스크립트 -->
+    <!-- 1. 기본 속성들 -->
+    <!-- <script>
+        $(document).ready(function(){
+            $('.slide_gallery').bxSlider({
+                /* 1. 슬라이드 이동방향 : 'horizontal', 'vertical', 'fade' */
+                mode: 'horizontal',
+                /* 2. 슬라이드 전환시 속도 : 숫자형 값 = 하나의 이미지가 바뀌는 시간 */
+                speed: 500,
+                /* 3. 슬라이드 자동 실행 전환 사이 시간 : 숫자형 값 = (예)1초마다 다른 이미지로 바뀜 */
+                pause: 1000,
+                /* 4. 블릿(동그라미 버튼) 노출 여부 : 논리형 값 = true,false */
+                pager: true,
+                /* 5. 슬라이드 박스 가로 너비 설정 : 숫자형 값 | (중요) 구조 스타일에 width값이 코딩되어 있으면 안바뀜 */
+                slideWidth: 1440,
+                /* 6. 콘트롤러 중 자동 슬라이드 멈추기 여부 : 논리형 값 = true,false */
+                stopAutoOnClick: true,
+                /* 7. 슬라이드 자동전환 여부 : 논리형 값 = true,false */
+                auto: true,
+                /* 8. 슬라이드 마우스 호버시 자동전환 멈추게 할 것인지 여부 : 논리형 값 = true,false */
+                autoHover: true,
+                /* 9. 플레이 버튼 노출 여부 : 논리형 값 = true,false */
+                autoControls: true,
+                /* 10. 썸네일 이미지 연결 = 구조의 클래스명 */
+                pagerCustom: '.slide_pager'
+            });
+        });
+    </script> -->
+    <!-- 2. 기본효과 -->
+    <script>
+        $(function(){
+            $('.slide_gallery').bxSlider({
+                auto: true,
+                autoControls: true,
+                autoHover:true,
+                pager: true,
+                pagerCustom: '.slide_pager',
+                slideWidth: 1440,
+            });
+        });
+    </script>
+
+
+</head>
+<body>
+    <!-- BxSlider 박스 = 액자역할 -->
+    <div id="gallery_wrap">
+        <ul id="slide_gallery">
+            <li><img src="./images/img_bxSlider/slider1.png" alt="슬라이드01"></li>
+            <li><img src="./images/img_bxSlider/slider2.png" alt="슬라이드02"></li>
+            <li><img src="./images/img_bxSlider/slider3.png" alt="슬라이드03"></li>
+        </ul>
+        <ul class="slide_pager">
+            <li><a href="#" data-slide-index="0"><img src="./images/img_bxSlider/photo1.png" alt="썸내일이미지01"></a></li>
+            <li><a href="#" data-slide-index="1"><img src="./images/img_bxSlider/photo2.png" alt="썸내일이미지02"></a></li>
+            <li><a href="#" data-slide-index="2"><img src="./images/img_bxSlider/photo3.png" alt="썸내일이미지03"></a></li>
+        </ul>
+        <!-- /Thumnail 이미지 -->
+
+    </div>
+    <!-- /BxSlider 박스 = 액자역할 -->
+</body>
+</html>

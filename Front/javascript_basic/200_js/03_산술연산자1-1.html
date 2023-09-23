@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>산술연산자</title>
+     <script>
+          //데이터 형 : 문자형(String)
+          var str1 = "자바스크립트";
+          var str2 = "10";
+          //데이터 형변환 : 문자 -> 숫자
+          str2 = Number(str2);
+          // (콘솔에) str2의 데이터 타입 출력
+          console.log(typeof(str2));
+
+          // 데이터 타입 : 숫자형(Number)
+          var num1 = 10;
+          var num2 = 5;
+          var num3 = 3;
+
+          // 데이터 형 : 논리형(Boolean)
+          var bool = true;
+          var boolTwo = false;
+
+          // 이 변수의 데이터형(Date Type)은? boolean
+          document.write("<h1>이 변수의 데이터형(Date Type)은? "+(typeof(bool))+"입니다.</h1>");
+
+          // 데이터 형 : undefined
+          var undefined;
+
+          //데이터 형 : null
+          var clear = null;
+          console.log(typeof(clear));
+          // 콘솔값에 오브젝트로나옴
+          // null은 문자형,숫자형,논리형으로 모두 변환이 가능하기때문에 object라고 나옴
+
+          
+          /* 산술연산자 */
+          var result = null;
+          result = num1 + num2;
+          document.write("두수의 합은 ?<b> "+result+"</b><br>")
+          result = num1 - num2;
+          document.write("두수의 차는 ?<b> "+result+"</b><br>")
+          result = num1 * num2;
+          document.write("두수의 곱은 ?<b> "+result+"</b><br>")
+          result = num1 / num2;
+          document.write("두수의 나눈값은 ?<b> "+result+"</b><br>")
+
+          // 나머지값 구하기 %
+          result = num1 % num3;
+          document.write("두수의 나머지값은 ?<b> "+result+"</b><br>")
+     </script>
+</head>
+<body>
+     
+</body>
+</html>

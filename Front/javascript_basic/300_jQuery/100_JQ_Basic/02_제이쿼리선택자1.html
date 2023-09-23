@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리준비</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 2. 제이쿼리 CDN 방식이용 -->
+    <script src="http:code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="http:code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <!-- 반드시 jQuery 코어파일 밑에 스크립트를 적어야함 -->
+    <script>
+        $(document).ready(function(){
+        // $ = 선택자 선택기호
+        // 1. 전체 선택자 
+            $("*").css("color","red");
+        // 2. 요소명 선택자.
+            $("h3").css("color","green");
+        // 3. 클래스 선택자
+            $(".author").css("color","blue");
+            $('.author').css({color:'blue', backgroundColor:'yellow', fontSize:'32px'});
+        // 4. 아이디 선택자
+            $("#txt1").css('color','red');
+            $("#txt2").css({'color':'silver', 'background-color':'black'});
+        });        
+        // 실습1. 자바스크립트로 txt2에 글자색 블랙으로    
+            // var text_2 = document.getElementById("txt2");
+            // text_2.style.color = "black";
+            // document.querySelector("#txt2").style.color = "black";
+            // var js = document.querySelector("#txt2");
+            // js.style.color = "black";
+        
+        
+    </script>
+</head>
+<body>
+    <h3 id="txt1">
+        변명 중에서도 가장 어리석고 못난 변명은
+    </h3>
+    <h3 id="txt2">
+        시간이 없어서 하는 변명입니다.
+    </h3>
+    <h4 class="author">
+        By Edison
+    </h4>
+    
+</body>
+</html>

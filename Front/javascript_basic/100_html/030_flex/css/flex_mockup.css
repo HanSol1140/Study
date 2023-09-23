@@ -1,0 +1,96 @@
+@charset "utf-8";
+
+#wrap {
+    width: 90%;
+    margin:0 auto;
+    text-align: center;
+    /* 플렉스 */
+    display: flex;
+    flex-flow:row wrap;
+    background: #faa;
+    
+
+}
+.header {
+    width:100%;
+    display: flex;
+    /* 포지션 */
+    position: relative;
+    /* 플렉스 */
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    
+}
+.header h1 {
+    width: 12.5%;
+    height:142px;
+    line-height:142px;
+    background-color: #77a;
+    /* 포지션 */
+    position: absolute;
+    left: 0;
+    top:0;
+    z-index:1;    
+}
+.header nav{
+    width:87.5%;
+    min-height:80px;
+    line-height: 80px;
+    background-color: cyan;
+}
+
+.slider_section {
+    width:50%;
+    height:440px;
+    line-height:440px;
+    background-color: #3c90be;
+}
+.gallery_section {
+    width:25%;
+    height:440px;
+    line-height:440px;
+    background-color: yellow;
+}
+.rankup_section {
+    width:25%;
+    height:440px;
+    background-color: #00d2a5;
+}
+.lastest_section {
+    width:30%;
+    height:270px;
+    background-color: #9cabe4;
+}
+.popular_section {
+    width:30%;
+    height:270px;
+    background-color: #d76817;
+}
+
+.banner_section {
+    width:20%;
+    height:270px;
+    display: flex;
+    flex-flow:column nowrap;
+}
+
+.banner_section>h2 {
+    background-color:#0175bb;
+    height:50%;
+}
+.banner_section>div {
+    background-color: #1d4a65;
+    height:50%;
+}
+.social_section {
+    width:20%;
+    height:270px;
+    background-color: #fe6eda;
+}
+
+footer {
+    width:100%;
+    height:70px;
+    line-height: 70px;
+    background-color: #747474;
+}

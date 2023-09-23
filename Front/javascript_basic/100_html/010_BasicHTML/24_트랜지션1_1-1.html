@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition, 트랜지션</title>
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        .tr1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border: 2px solid #000;
+            cursor: pointer;
+            /* transition은 원본에 코딩해야함 */
+            /* = 트랜지션 속성은 원본 박스에 코딩 */
+            /* 접두어(prefix) 필요 */
+            
+            /* 트랜지션 시킬 CSS 속성명 */
+            transition-property: width,height,background-color;
+            /* 트랜지션 시간 */
+            transition-duration: 1s,1s,1s;
+            /* 한줄표기법 */
+            transition: all 1s;
+            /*           │   └animation 관련 속성에서 반드시 시간값을 입력해주어야함   */
+            /*           │              ※트랜지션은 tran,animation 둘중 중간값의 속성을 가짐    */
+            /*           └CSS3 관련 속성명 */    
+        }
+        .tr1:hover {
+            width:200px;
+            height:200px;
+            font-size: 32px;
+            transform:rotate(180deg)
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tr1">
+        <h1>!</h1>
+    </div>
+    
+</body>
+</html>

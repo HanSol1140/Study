@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>CSS 스타일시트</title>
+     <!-- 1. 내부스타일(인터널) 방식 -->
+     <style>
+          /* a. 전체선택자 */
+          * {
+               color: red;
+          }
+
+          /* b.요소명 선택자 */
+          h1 {
+               color: green;
+          }
+          /* c. 클래스 선택자 */
+          .txt_1 {
+               color: blue;
+               background-color: black;
+          }
+          /* txt_2 배경색 orange 글자색 purple 글자크기 36 */
+          .txt_2 {
+               color:purple;
+               background-color: orange;
+               font-size: 36px;
+          }
+          /* 캐스케이딩 원리 */
+          .txt_2 {
+               font-size: 18px;
+               font-weight: bold;
+               color: yellow;
+          }
+          /* 같은 이름의 선택자(txt_2)에 같은 속성명(color,font-size)이 정의되어 있을때, */
+          /* 속성값이 다르다면, 하단에 있는 스타일의 속성값이 적용됨 */
+          .sil1 {
+               color: red;
+          }
+          .sil2 {
+               color: green;
+          }
+          .sil3 {
+               color: blue;
+               
+          }
+          /* d. 아이디 선택자 */
+
+          #txt_3{
+               background-color: #990;
+               
+          }
+
+          /* 그룹 선택자 */
+          .group, .group1 {
+               background-color: cyan;
+          }
+          .sil1, .sil2, .sil3 {
+               font-size: 48px;
+               font-weight: bold;
+          }
+          
+     </style>
+     <!-- 3. 외부 스타일 -->
+     <link rel="stylesheet" href="./css/reset.css">
+
+
+</head>
+<body>
+     <h1>CSS(CascadingStyleSheet)</h1>
+     <p>
+          웹표준에 의한 웹문서는 디자인과 내용이 분리되어 있습니다.
+     </p>
+     <p>
+          내용은 HTML을 이용해 구성하고, 디자인은 CSS를 이용해 꾸미는 것입니다.
+     </p>
+
+     <!-- 2. 인라인 스타일 시작태그에 속성명="속성값" -->
+     <h2 style="color: aqua;">인라인 스타일시트 적용하기</h2>
+
+     <!-- c. 클래스 선택자 -->
+     <h3 class="txt_1">class 스타일시트 적용하기</h3>
+     <p>
+          class로 스타일 정의시 구분기호로 <span class="sil1">.</span>을 사용
+     </p>
+     <h3 class="txt_2">스타일 캐스케이딩 원리</h3>
+     <p>
+          같은 이름의 선택자에 같은 속성명이 정의되어 있을때, <br>
+          속성값이 다르다면, 하단에 있는 스타일의 속성값이 적용됨
+     </p>
+
+     <!-- d.아이디 선택자 -->
+     <h3 id="txt_3">ID 스타일시트</h3>
+     <p>
+          id로 스타일 정의시 구분기호로 <span class="sil2">#</span>을 사용
+     </p>
+     <!-- 그룹선택자 -->
+     <h3 class="group">그룹 선택자</h3>
+     <p class="group1">
+          그룹 선택자 구분기호는 <span class="sil3">,</span>을 사용하여 여러개의 요소를 동시에 선택
+     </p>
+</body>
+</html>

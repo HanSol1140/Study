@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin:0 auto;
+            padding:0 auto;
+        }
+        .wrap {
+            width:414px;
+            height:896px;
+            background-color: black;
+            border: 1px solid red;
+            position: relative;
+        }
+        /* .wrap:hover p {
+            left:200px;
+        } */
+        .wrap p {
+            color:white;
+            position:absolute;
+            left:0;
+            top:0;
+            /* animation-name:ani;
+            animation-duration: 4s;
+            animation-iteration-count: infinite; */
+        
+        }
+        /* @keyframes ani{
+            0% {
+                top:0;
+                left:0;
+            }
+            20%{top:0px;
+                left:100px;
+            }
+            40%{left:100px;
+                top:300px;
+            }
+            50% {
+                top:0px;
+                left:300px;
+            }
+            80% {
+                top:400px;
+                left:300px;
+            }
+            100% {
+                top:0;
+                left:0;
+            }
+        }     */
+        .plane {
+            position: absolute;
+            width:200px;
+            animation-duration: 5s;
+            animation-name: ani1;
+            animation-iteration-count: infinite;
+            animation-derection:alternate;
+
+        }
+        .cloud {
+            width:800px;
+            height:1000px;
+            position: absolute;
+            left:-150px;
+            top:500px;   
+            animation-duration: 50s;
+            animation-name: ani2;
+            animation-iteration-count: infinite;
+            animation-derection:alternate;    
+        }
+        @keyframes ani1 {
+            0% {
+                top:800px;
+                left:100px;
+            }
+            20% {top:800px;
+                left:100px;
+            }
+            70% {
+                top:100px;
+                left:100px;
+            }
+            100% {
+                top:0px;
+                left:100px;
+            }
+        }
+        @keyframes ani2 {
+            0% {
+                top:500px;
+                left:-200px;
+            }
+            20% {
+                top:500px;
+                left:-100px;
+            }
+            50% {
+                top:500px;
+                left:30px;
+            }
+            100% {
+                top:500px;
+                left:80px;
+            }
+        }
+        .booster {
+            width:400px;
+            top:100px;
+            opacity:0;
+            position: absolute;
+            animation-name: ani3;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            animation-derection:alternate;   
+   
+        }
+        @keyframes ani3 {
+            0% {
+                opaycity:0.1;
+                top:100px;
+            }
+            20% {
+                opacity:0.1;
+                top:900px;
+            }
+            30% {
+                opacity:0.2;
+                top:800px;
+            }
+            50% {
+                opacity:0.3;
+                top:500px;
+            }
+            60% {
+                opacity:0.4;
+                top:300px;
+            }
+            100% {
+                opacity:0.5;
+                top:0px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="booster">
+            <img src="./20220809-11booster.svg">
+        </div>
+        <div class="plane">
+            <img src="./20220809-11plane.svg">
+        </div>
+
+        <div class="cloud">
+            <img src="./20220809-11cloud.svg">
+        </div>
+        <p>DISCOVER</p>
+
+    </div>
+</body>
+</html>

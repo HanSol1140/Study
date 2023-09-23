@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        .wrap{
+            width:414px;
+            height: 896px;
+            background: #000143;
+            position: relative;
+            overflow: hidden;
+        }       
+        .wrap .cloud1{
+            width: 550px;
+            height: 330px;
+            position: absolute;
+            top: 660px;
+            left: -70px;
+            animation-name: ani1;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation:ani1 3s infinite alternate;
+        }
+        .wrap .cloud2{
+            width: 489px;
+            height: 330px;
+            position: absolute;
+            top: 674px;
+            left: -26px;
+            animation: ani2 3s infinite alternate;
+        }
+        @keyframes ani1{
+            0%{left:-70px;}
+            100%{left:0;}
+        }
+        @keyframes ani2{
+            0%{left:-26px;}
+            100%{
+                left:-80px;
+            }
+        }
+
+        .wrap .plane{
+            width: 88px;
+            height: 400px;
+            position: absolute;
+            top: 1041px;
+            left: 152px;
+            animation-name: ani3;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+        }
+        .plane p:nth-child(2){
+            position: absolute;
+            left: 11px;
+            top: 92px;
+            width: 80px;
+            height: 40px;
+        }
+        @keyframes ani3 {
+            0% {
+                top:1041px;
+                left:152px;
+                }
+        
+            100% {
+                top:0px;
+                left:152px;
+            }
+
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="plane">
+            <p>
+                <img src="./plane.svg" alt="비행기">
+            </p>
+            <p>
+                <img src="./booster.svg" alt="부스터">
+            </p>
+        </div>
+        <div class="cloud1">
+            <img src="./cloud.svg" alt="구름1">
+        </div>
+        <div class="cloud2">
+            <img src="./cloud2.svg" alt="구름2">
+        </div>
+    </div>
+</body>
+</html>

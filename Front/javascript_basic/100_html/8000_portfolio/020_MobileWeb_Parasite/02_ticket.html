@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio, Mobile Web, Parasite</title>
+    <!-- 파비콘 -->
+    <link rel="shortcut icon" href="./images/favicon/montblanc_fav32.png">
+    <link rel="apple-touch-icon=precomposed" href="./images/favicon/montblanc_fav144.png">
+    <!-- reset CSS -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/notosans_kr_CDN.css">
+    <!-- page css -->
+    <link rel="stylesheet" href="./css/display_none_scrollbar.css">
+    <link rel="stylesheet" href="./css/parasite.css">
+    <link rel="stylesheet" href="./css/ticket.css">
+    <!-- 폰트어썸 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <!-- 부트스트랩 -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
+    <!-- 버전 안정화 4 -->
+    <!-- css를 클래스화 해놓음 -->
+
+    <!-- 제이쿼리 코어파일 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/prefixfree.min.js"></script>
+    <!-- page js -->
+    <!-- <script src="./js/calHeight.js"></script> -->
+    <style>
+        #more {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <!-- HEADER -->
+        <header class="header">
+            <!-- 햄버거 메뉴 그리기 -->
+            <input type="checkbox" id="menuicon">
+            <label for="menuicon">
+                <span></span>
+                <span></span>
+            </label>
+            <!-- /햄버거 메뉴 그리기 -->
+            <!-- 햄버거 메뉴 클릭시 나오는 GNB메뉴 -->
+            <nav class="mobile_gnb">
+                <ul class="gnb">
+                    <li><a href="./01_parasite.html">HOME</a></li>
+                    <li><a href="./02_ticket.html">GET&nbsp;TICKETS</a></li>
+                    <li><a href="./03_video.html">VIDEOS</a></li>
+                    <li><a href="./04_synopsis.html">SYNOPSIS</a></li>
+                    <li><a href="./05_jessicajingle.html">JESSICA&nbsp;JINGLE</a></li>
+                    <li><a href="#">SHARE</a></li>
+                </ul>
+                <ul class="sns">
+                    <li><a href="#" class="facebook"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="twitter"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="insta"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                </ul>
+            </nav>
+            <!-- /햄버거 메뉴 클릭시 나오는 GNB메뉴 -->
+            <aside class="banner">
+                <img src="./images/top_banner2.png" alt="배너">
+                <div class="banner_close">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </aside>
+        </header>
+        <!-- /HEADER -->
+        <!-- CONTENTS -->
+        <div id="contents">
+            <!-- Search Form - Hover 검색창 -->
+            <form action="#">
+                <fieldset>
+                    <legend class="blind"></legend>
+                    <div class="box">
+                        <div class="search_container">
+                            <span class="icon">
+                                <i class="fa fa-search"></i>
+                            </span>
+                            <input type="search" id="search" placeholder="Search..." autocomplete="off">
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+            <!-- /Search Form - Hover 검색창 -->
+            <!-- CONTENT SECTION -->
+            <section class="promotion">
+                <p>
+                    IT LOOKS LIKE YOU’RE IN SEONGDONG-GU <br>
+                    AND THIS PAGE IS FOR USERS IN USA! <br>
+                    WOULD YOU LIKE TO SEARCH A LOCATION IN USA? <br>
+                </p>
+                <p>
+                    OR WATCH THE TRAILER BELOW
+                </p>
+            </section>
+            <!-- /CONTENT SECTION -->
+            <!-- YOUTUBE SECTION -->
+            <section class="youtube">
+                <iframe src="https://www.youtube.com/embed/Coze76IIflo" title="" 넷플릭스="넷플릭스" 추천" 역대급 한국 영화 "=" 추천" 역대급
+                    한국 영화 "" 1위" 가장 논란이 많았던 영화 ㄷㄷ [영화리뷰/결말포함]"="1위" 가장 논란이 많았던 영화 ㄷㄷ [영화리뷰/결말포함]"" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen="allowfullscreen">
+                </iframe>
+            </section>
+            <!-- /YOUTUBE SECTION -->
+            <!-- 상영지역 SECTION -->
+            <section class="area">
+                <h3>
+                    MORE SHOWTIMES FOUND IN THE CITIES BELOW
+                </h3>
+                <p>
+                    <button>NEWYORK1</button>
+                    <button>BOSTON</button>
+                    <button>SEAUL</button>
+                    <button>LOSANGELIS</button>
+                    <button>CHICAGO</button>
+                    <button>HOUSTON</button>
+                    <button>PHOENIX</button>
+                    <button>SANANTONIO</button>
+                    <button>DALLAS</button>
+                    <button>COLUMBIA</button>
+
+                    <button id="dots">...</button>
+
+                    <span id="more">
+                        <button>NEWYORK2</button>
+                        <button>BOSTON</button>
+                        <button>SEAUL</button>
+                        <button>LOSANGELIS</button>
+                        <button>CHICAGO</button>
+                        <button>HOUSTON</button>
+                        <button>PHOENIX</button>
+                        <button>SANANTONIO</button>
+                        <button>DALLAS</button>
+                        <button>COLUMBIA</button>
+                    </span>
+                    <button id="myBtn">+MORE</button>
+                </p>
+            </section>
+            <!-- /상영지역 SECTION -->
+
+        </div>
+        <!-- /CONTENTS -->
+    </div>
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            <img src="./images/legal-logos.png" alt="제작사 로고">
+        </p>
+        <div class="copyright">
+            <p>
+                MOVIE PLATFORM &copy; 2022 POWSTER
+            </p>
+            <p>
+                &copy; 2018 NEON RATED, LLC
+            </p>
+        </div>
+    </footer>
+    <!-- /FOOTER -->
+    <script src="./js/ticket.js"></script>
+</body>
+
+</html>

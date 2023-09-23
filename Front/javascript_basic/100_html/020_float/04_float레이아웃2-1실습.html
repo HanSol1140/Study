@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float 레이아웃 실습</title>
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+    #wrap {
+        width: 800px;
+        text-align: center;
+        color:white;
+        line-height: 100px;
+    }
+    /* 헤드영역 */
+    .h_title1 {
+        background-color: red;
+        width: 300px;
+        float:left;
+    }
+    .h_title2 {
+        background-color: pink;
+        width: 500px;
+        float:left;
+    }
+    .h_title3 {
+        background-color: black;
+        float:left;
+        width:800px;
+    }
+    h1:after {
+        content: "";
+        display: inline-block;
+        clear: both;
+    }
+
+    /* 메인영역 */
+    main section {
+        background-color: cyan;
+        width:800px;
+    }
+        /* 첫줄 */
+    .box1, .box2, .box3, .box4, .box5 {
+        height:100px;
+    }
+    .box1, .box2 {
+        width:400px;
+        float:left;
+    }
+    .box1 {
+        background-color: gray;
+    }
+    .box2 {
+        background-color: green;
+    }
+        /* 두번째줄 */
+    .box3, .box4, .box5 {
+        float:left;
+    }
+    .box3 {
+        width:300px;
+        background-color: red;
+    }
+    .box4 {
+        width:400px;
+        background-color: #17ff07;
+    }
+    .box5 {
+        width:100px;
+        background-color: blue;
+    }
+    section:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    /* 푸터영역 */
+    section:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .box6 {
+        background-color: yellow;
+        color: black;
+        font-weight: 700;
+        font-size: 32px;
+    }
+
+
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <h1>
+                <div class="h_title1">로고영역</div>
+                <div class="h_title2">GNB영역</div>
+                <div class="h_title3">공부</div>
+            </h1>
+        </header>
+        <main>
+            <section>
+                <div class="box1">슬라이드 왼쪽</div>
+                <div class="box2">슬라이드 오른쪽</div>
+            </section>
+            <section>            
+                <div class="box3">섹션 왼쪽</div>
+                <div class="box4">섹션 가운데쪽</div>
+                <div class="box5">섹션 오른쪽</div>
+            </section>
+        </main>
+        <footer>
+            <section>
+                <div class="box6">하단부</div>
+            </section>
+        </footer>
+    </div>    
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model : 기본속성</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        h1,h2,h3,h4,h5,h6 {
+            font-size: 16px;
+            font-weight: normal;
+        }
+        a {
+            color:inherit;
+            text-decoration: none;
+        }
+        li {
+            list-style: none;
+        }
+        img {
+            vertical-align: top;
+        }
+
+
+
+        body {
+            width: 1000px;
+            height: 1000px;
+            border: 1px solid #000;
+        }
+    /* 블록레벨요소 */
+        p {
+            width: 200px;
+            height: 200px;
+        }
+        .box1{
+            background-color: yellow;
+            width: 152px;
+            height: 152px;
+            padding: 20px;
+            border: 4px solid;
+            margin-bottom: 40px;
+            /* 간과하기 쉬운 부분 */
+            /* padding,border값 20을 더하면 상하좌우에 20px씩 추가되서 좌우40 상하40씩늘어남 */
+        }
+        .box2{
+            background-color: blue;
+            padding: 10px;
+            border: 4px solid #000;
+            width: 172px;
+            height: 172px;
+            margin-bottom: 40px;
+        }   
+        .box3{
+            background-color: pink;
+            padding: 15px;
+            border: 4px solid #000;
+            width: 162px;
+            height: 172px;
+            margin-bottom: 80px;
+            /* 200*210 */
+            
+        }
+    /* 인라인레벨요소 */
+        /* 인라인 블록 */
+        /* 블록요소의 장점과 인라인의 장점을 합침*/
+        span {
+            width: 200px;
+            height: 200px;
+        }
+        .txt_1 {
+            background-color: yellow;
+            display: inline-block;
+            margin-bottom: 20px;
+            /* 인라인 블록 */
+            /* 블록요소의 장점과 인라인의 장점을 합침*/
+        }
+        .txt_2 {
+            background-color: cyan;
+            display: block;
+            margin-bottom: 30px;
+            /* 줄바꿈됨 */
+        }
+        .txt_3 {
+            background-color: purple;
+            display: inline-block;
+            margin-bottom: 32px;
+        }
+        .txt_4 {
+            background-color: silver;
+            display: inline-block;
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- p.box${BOX$}*3 -->
+    <p class="box1">BOX1</p>
+    <p class="box2">BOX2</p>
+    <p class="box3">BOX3</p>
+    <!-- span.txt_${인라인레벨요소$}*4 -->
+    <span class="txt_1">인라인레벨요소1</span>
+    <span class="txt_2">인라인레벨요소2</span>
+    <span class="txt_3">인라인레벨요소3</span>
+    <span class="txt_4">인라인레벨요소4</span>
+</body>
+</html>

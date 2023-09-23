@@ -1,0 +1,179 @@
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+<단축키 모음>
+<Ctrl+Space>
+    자동완성, 메모리단에 올라가있을때 사용가능함
+<Ctrl+Alt+↑↓>
+    줄복사
+<Ctrl+F11>
+    컴파일(실행)
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+<데이터형>
+<1. 변수선언 | Integer 정수형>
+    int point;
+    <2. 변수초기값>
+    <!-- 변수를 선언했기 때문에 Ctrl+Space로 확인해보면 메모리에 올라가 있음 -->
+    point = 0;
+    <2. 변수값 할당>
+    point = 10;
+    System.out.println(point);
+    
+    <a. 숫자형>
+    int num = 100;
+    System.out.println(num);
+    
+    <b. 실수형>
+    double num2 = 100.1;
+    System.out.println(num2);
+    
+    <c. 문자형>
+    String str = "First Java";
+    System.out.println(str);
+
+    <d. 참/거짓형 (논리연산자)>
+        <boolean>
+    int num1 = 5;
+    int num2 = 3;
+    boolean val = (num1 > num2);
+
+    System.out.println("맞니? " + val);
+    System.out.println("크거니 같니? " + (num1 >= num2));
+    System.out.println("작거나 같니? " + (num1 <= num2));
+    System.out.println("같니? " + (num1 >= num2));		
+    System.out.println("논리부정 " + (num1 != num2));
+    <!--(콘솔출력)
+        맞니? true
+        크거니 같니? true
+        작거나 같니? false
+        같니? true
+        논리부정 true
+    --> 
+    <long 자료형>
+    <!-- int보다 점수 표현 범위가 더 넓음 |  범위: -26 3제곱 ~ 26 3제곱 -1 -->
+        long numLong = 12345678900L;
+        long numLong2 = 1234;
+        System.out.println("long 자료형 : " + (numLong + numLong2));
+
+    <short 자료형>
+    <!-- int보다 점수 표현 범위가 좁음 | -32,768 ~ 32,768 -->
+        short numShort = 30000;
+        short numShort2 = 123;
+        System.out.println("short 자료형 : " + (numShort + numShort2));
+    
+    <char 데이터형>
+        <!-- 문자 1개를 저장하는 자료형 -->
+        char ch;
+        ch = (age1>age2)?'M':'F';
+        System.out.println("성별기호는 : " + ch);
+
+<Casting>
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────    
+<명령어 모음>
+    <Escape 문자>
+        \n
+        new line = 줄바뀜		
+        System.out.println("Hellow \nWorld");
+            <!--(콘솔출력)
+                Hellow 
+                World
+            -->
+
+        \"
+        "사용
+        System.out.println("Hellow "World""); => 오류
+        System.out.println("Hellow \"World\"");
+            <!--(콘솔출력)
+                Hellow "World"
+            -->
+
+
+<println>
+    System.out.println();에서
+    print+ln(줄바꿈)
+
+<length>
+    <!-- 문자열 갯수 -->
+    String str2 = "Ezen Computer";
+    System.out.println(str2.length());
+    System.out.println(Ezen Computer.length());
+    <!--(콘솔출력)
+        13
+    -->
+
+<replace>
+    String str2 = "Ezen Computer";
+    String str3 = "mcssam";
+    System.out.println(str2);
+    <!--(콘솔출력)
+        Ezen Computer
+    -->
+    System.out.println(str3);
+    <!--(콘솔출력)
+        mcssam
+    -->
+    System.out.println(str3.replace("mcssam", "gimssam"));
+    <!--(콘솔출력)
+        gimssam
+    -->
+
+<수학에 관한 객체 = Math>
+    // 객체 = 폴더 = 수학에 관련된 중요한 것을 그룹화 해놓은 명령어 메서드, 프로퍼티들이 있다
+    //Math에 Ctrl + Space 자동완성해보면 java.lang이 보임
+    // java 폴더에 lang 패키지 안에 소속된 메서드		
+    
+    <PI(파이,원주율)메서드>
+    파이값 3.14~
+        System.out.println(Math.PI);
+    <올림 메서드>
+    소수점을 올리고 실수로 리턴해줌	
+        System.out.println(Math.ceil(Math.PI));
+    <내림 메서드>
+    소수점을 내리고 실수로 리턴해줌
+        System.out.println(Math.floor(Math.PI));
+    f
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+<Scanner(스캐너) 사용법>
+    package object;
+    <객체 import>
+    import java.util.Scanner;
+    <!-- java.utll.Scanner(객체)를 수입해온다  -->
+    <!-- import = 수입하다 -->
+    <!-- Scanner = 객체, / 객체는 대문자로 시작 -->
+    <!-- 주소값만 참조해서 사용하는 객체 -->
+    
+
+    public class OJ01Scanner {
+    
+        public static void main(String[] args) {
+        <!-- 키보드로 부터 입력 받기위한 클래스 = new 키로드로 객체 Scanner 생성 -->
+        <!-- 키보드로 부터 입력을 받으려면 생성시에 인자값으로 System.in => 사용자로부터 입력받기 위한 입력스트림 -->
+        <!-- 콘솔창에 입력하여 엔터를 누르면 입력됨 (데이터타입 확인) -->
+            Scanner scan = new Scanner(System.in); <!-- System 객체는 콘솔과 관련이 있음 -->
+            <!-- Scanner의 대표선수 = scan -->
+            <!-- scanner scan(선언명) = new Scanner(System.in);(생성자함수Constructor) -->
+            <!-- 생성자함수 = 해당 객체가 초기값 설정할 시 사용 -->
+            <!-- 해당 명령문의 의미 = Scanner(System.in)의 초기값과 해당 기능을 scan에 위임함 -->
+            <!-- System.out.println(scan); -->
+            <!-- ▲ 확인해보면 scan 에는 모든값이아니라 '참조주소값'만 지니고 있음 -->
+            
+        <a. 정수값 입력받기>
+            String str1 = "정수를 입력하세요";
+            System.out.println(str1);
+            int num = scan.nextInt();  <!-- ◀ 이부분 -->
+            System.out.println(num);
+            
+        <b. 문자 입력받기>
+            String msg = "문자를 입력하세요";
+            System.out.println(msg);
+            String name = scan.next(); <!-- ◀ 이부분 -->
+            System.out.println(name);
+        }
+    
+    }
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

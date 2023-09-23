@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>플롯 기본 실습</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <style>
+        body {
+            background: #000;
+        }
+        #wrap {
+            width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            color: #fff;
+        }
+        /* 플롯해제 */
+        header:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        header h1 {
+            width: 200px;
+            background-color: orange;
+            height: 60px;
+            line-height: 60px;
+            /* 플롯 */
+            float: left;
+        }
+        header nav {
+            width: 400px;
+            background-color: pink;
+            height: 60px;
+            line-height: 60px;
+            /* 플롯 */
+            float: right;
+        }
+        /* 플롯해제 */
+        #slide:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        #slide #left_side {
+            width: 300px;
+            background-color: silver;
+            height: 60px;
+            line-height: 60px;
+            /* 플롯 */
+            float: left;
+        }
+        #slide #right_side {
+            width: 300px;
+            background-color: darkgreen;
+            height: 60px;
+            line-height: 60px;
+            /* 플롯 */
+            float: right;
+        }
+        
+        #content:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        #content .sec_part1 {
+            width: 200px;
+            background-color: red;
+            height: 60px;
+            line-height: 60px;
+            /* 플롯 */
+            float: left;
+        }
+        #content .sec_part2 {
+            width: 300px;
+            background-color: green;
+            height: 60px;
+            line-height: 60px;
+            /* 플롯 */
+            float: left;
+        }
+        #content .sec_part3 {
+            width: 100px;
+            background-color: blue;
+            height: 60px;
+            line-height: 60px;
+            /* 플롯 */
+            float: left;
+        }
+        footer {
+            width: 600px;
+            background-color: greenyellow;
+            height: 60px;
+            line-height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <h1>로고영역</h1>
+            <nav>GNB영역</nav>
+        </header>
+        <main role="main">
+            <article id="slide">
+                <h2 id="left_side">슬라이드왼쪽</h2>
+                <p id="right_side">슬라이드오른쪽</p>
+            </article>
+            <section id="content">
+                <h2 class="sec_part1">섹션 왼쪽</h2>
+                <p class="sec_part2">섹션 가운데</p>
+                <p class="sec_part3">섹션 오른쪽</p>
+            </section>
+        </main>
+        <footer>
+            <p>하단메뉴</p>
+        </footer>
+    </div>
+</body>
+</html>

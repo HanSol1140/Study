@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model : 박스사이징</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* 박스값 자동계산 속성 */
+        }
+        h1,h2,h3,h4,h5,h6 {
+            font-size: 16px;
+            font-weight: normal;
+        }
+        a {
+            color:inherit;
+            text-decoration: none;
+        }
+        li {
+            list-style: none;
+        }
+        img {
+            vertical-align: top;
+        }
+
+
+        div {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 48px;
+            text-align: center;
+        }
+        .box1 {
+            background-color: red;
+            text-align: center;
+            line-height: 200px;
+            padding: 30px;
+        }
+        .box2 {
+            background-color: green;
+            padding: 5px;
+            border: 5px solid #000;
+        }
+        .box3 {
+            background-color: blue;
+            line-height: 200px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- .box${$번째 박스}*3 -->
+    <div class="box1">1번째 박스</div>
+    <div class="box2">2번째 박스</div>
+    <div class="box3">3번째 박스</div>
+    
+</body>
+</html>

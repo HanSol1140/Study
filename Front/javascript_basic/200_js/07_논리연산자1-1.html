@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>논리연산자</title>
+     <script>
+          var a,b,c,d,result;
+          a = 10;
+          b = 20;
+          c = 0;
+          d = 'javaScript';
+          result = null;
+          // 변수값 콘솔로 출력, 캡쳐/넘버림
+          console.log(a);
+          console.log(b);
+          console.log(c);
+          console.log(d);
+          console.log(result);
+
+          // 1. 논리연산자(논리합) : || : or 연산자로 논리식 중 하나라도 true면 true
+          result = b > a || b <= c || a > c;
+          document.write("1.논리연산자(논리합)"+result+"<br>") // true
+
+          // 2. 논리연산자(논리곱) : && : or 연산자로 논리식 모두가 true면 true
+          result = b > a && b <= c && a > c; 
+          document.write("2.논리연산자(논리곱)"+result+"<br>") // false
+
+          result = b > a && b >= c && a > c; //true
+          document.write("3.논리연산자(논리곱)"+result+"<br>") // true
+
+          // 3. 논리연산자(논리부정) : ! : not 연산자, 단항 연산자 = 부정
+          // 틀렷을때 true가 나오는 값
+          result = !(a>b);
+          document.write("3.논리연산자(논리부정)"+result+"<br>") // true
+
+          //※중요※
+          // 삼항조건연산자
+          // 조건식 ? (형식)
+          // 자바스크립트코드1(조건식의 값이 1/true일 경우 실행:)
+          // 자바스크립트코드2(조건식의 값이 0/false일 경우 실행;)
+          var int1 = 10;
+          var int2 = 20;
+          var tf = int1<int2?'4.true일 경우 실행': 'false일 경우 실행';
+          document.write(tf+"<br>"); //true
+          var tf = int1>int2?'true일 경우 실행': '5.false일 경우 실행';
+          document.write(tf+"<br>"); //false
+          
+          // 실습. 삼항조건연산자
+          var cf = confirm("자바스크립트 어렵나요?");
+          // 브라우저에서 확인을 누르면 true
+          // 취소를 누르면 false
+          console.log(cf);// 콘솔에서 true값과 false값이 제대로 출력되는지 확인
+          var ed = cf?'송한솔 YES':'송한솔 NO';
+          document.write("<br><h1>"+ed+"</h1>")
+     </script>
+</head>
+<body>
+     
+</body>
+</html>

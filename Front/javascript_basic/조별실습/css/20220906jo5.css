@@ -1,0 +1,77 @@
+@charset "utf-8"
+body {
+    position: relative;
+}
+#wrap {
+    width: 1200px;
+    height:100%;
+    margin:0 auto;
+    border: 3px solid silver;
+    border-bottom: 5px solid blue;
+}
+#bottom_line {
+    width:100%;
+    border-bottom: 5px solid blue;
+    position: relative;
+    bottom:5px;
+    z-index: 1;
+}
+#wrap>main {
+    display: none;
+}
+main {
+    display: none;
+}
+main p {
+    display: none;
+}
+button {
+    border: 0px solid #000;
+    border-radius: 12px;
+    margin-left: 20px;
+}
+
+
+button {
+   width:100px;
+    height:30px;
+}
+/* 헤더영역 */
+header {
+    width:1200px;
+    margin:0 auto;
+    /* background-color: #faa; */
+    border-bottom: 3px solid silver;
+}
+header h1 {
+    float:left;
+    padding:10px;
+}
+header button {
+    float:right;
+    margin:20px;
+}
+.header_btn2 {
+    margin-left: -10px;
+
+}
+/* 헤더영역끝 */
+/* 메인영역 시작 */
+main {
+    width:1200px;
+    margin:0 auto
+}
+main section {
+    padding:20px;
+}
+main section p {
+    padding-left:30px;
+}
+/* 메인영역 끝 */
+/* 푸터영역 시작*/
+footer {
+    width: 100%;
+    text-align: center;
+        
+}
+/* 푸터영역 끝*/

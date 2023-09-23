@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 반복</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+
+    <!-- 부트스트랩 -->    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- 버전 안정화 4 -->
+    <!-- css를 클래스화 해놓음 -->
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 2. 제이쿼리 CDN 방식이용 -->
+    <!-- <script src="http:code.jquery.com/jquery-1.12.4.min.js"></script> -->
+    <!-- <script src="http:code.jquery.com/jquery-3.3.1.min.js"></script> -->
+
+    <!-- 반드시 jQuery 코어파일 밑에 스크립트를 적어야함 -->
+    <style>
+        div {
+            position: relative;
+        }
+        img {
+            position: absolute;
+            left:200;
+            top:0;
+            z-index:1
+        }
+
+        #cc000:after {
+            content:"";
+            clear:both;
+            display: block;
+        }
+
+        #cc000 {
+            width:800px;
+            position: absolute;
+            left:0;
+            top:0;
+            z-index:1
+        }
+        #aa123 {
+            width:200px;
+            height:720px;
+            float:left;
+            
+        }
+        #aa123 p {
+            width:200px;
+            height:240px;
+            line-height: 240px;
+            text-align: center;
+            border: 1px solid #000;
+        }
+        #bb456 {
+            width:320px;
+            height:240px;
+            float:left;
+            /* border: 1px solid #000; */
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            setInterval(function(){
+                $('img').eq(0).appendTo('#bb456');
+                $('p').eq(0).appendTo('#aa123');;
+            },2000);            
+        });
+    </script>
+</head>
+<body>
+    <div id="cc000">
+        <section id="aa123">
+            <p>sensiblity</p>
+            <p>perserverance</p>
+            <p>determination</p>
+        </section>
+            
+        
+        <section id="bb456">
+            <img src="./images/img1.jpg" alt="이미지1" width="320" height="240">
+            <img src="./images/img2.jpg" alt="이미지2" width="320" height="240">
+            <img src="./images/img3.jpg" alt="이미지3" width="320" height="240">
+        </section>
+    </div>
+</body>
+</html>

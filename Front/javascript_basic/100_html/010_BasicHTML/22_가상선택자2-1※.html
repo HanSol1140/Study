@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        #wrap{
+            width:960px;
+            border: 1px solid #000;
+            margin:0 auto;
+            margin-top : 10px;
+            padding: 10px;
+            font-size: 24px;
+        }
+        
+        /* 헤드영역 */
+        header ul li {
+            /* float:left; */
+            margin:10px;
+            display: inline-block;
+                        text-align: center;
+        }
+        header ul {
+            border-top: 1px dotted black;
+            border-bottom: 1px dashed black;
+            text-align: center;
+        }
+        header ul li {
+            padding:10px;   
+        }
+        /* 메인영역 */
+        main form {
+            padding: 20px;
+        }
+        main fieldset  {
+            border: 2px solid #ccc;
+            margin-bottom: 20px;
+            padding:20px;
+        }
+        main fieldset legend{
+            padding: 0 5px 10px 5px;            
+            
+        }
+        main ul {
+            text-align: center;
+            /* border: 1px solid #ccc; */
+            padding:20px;
+        }
+        main ul li input {
+            font-size: 24px;
+            border-radius: 6px;
+            border-color: #ccc;
+        }
+        main input:checked+label {
+            background-color: red;
+        }
+        main button {
+            font: 32px 'nanumgothic', serif;
+            font-weight: bold;
+            width:100px;
+            border-radius: 8px;
+            margin-left:800px;
+        }
+
+        main ul li input{
+            border: 4px solid red;
+            border-color: #f00;
+        }
+        
+        /* #signup input:not([type=radio]) {} */
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header class="cf">
+            <nav>
+                <ul>
+                    <li>이용안내</li>
+                    <li>객실 소개</li>
+                    <li>예약방법 및 요금</li>
+                    <li>예약하기</li>
+                </ul>
+            </nav>
+        </header>
+        <main role="main">
+            <form action="#" method="#">
+                <fieldset>
+                    <legend>개인정보</legend>
+                    <ul>
+                        <li>
+                            <label for="name">이름</label>
+                            <input type="text" id="name" autocomplete="off" autofocus>
+                        </li>
+                        <li>
+                            <label for="tel">연락처</label>
+                            <input type="tel" id="tel" autocomplete="off">
+                        </li>
+                    </ul>
+                </fieldset>          
+                <fieldset>
+                    <legend>객실 형태</legend>
+                    <ul>
+                        <li>
+                            <input type="radio" name="room" id="2team">
+                            <label for="2team">기본형(최대2인)</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="room" id="4team">
+                            <label for="4team">가족형(최대8인)</label>
+                        </li>
+                    </ul>
+                </fieldset>
+                <button type="submit">제출</button>
+            </form>
+        </main>
+    </div>    
+</body>
+</html>

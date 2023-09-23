@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="mcssam">
+    <!-- 페이지작성자 -->
+    <meta name="description" content="Portfolio, RWD Template">
+    <title>Portfolio, RWD Template</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- favicon -->
+    <!-- favorite icon의 약자 -->
+    <link rel="shortcut icon" href="./images/favicon/montblanc_fav32.png">
+        <!-- 문서 title영역에 들어가는 아이콘, PNG로만 만들 수 있다. -->
+    <link rel="apple-touch-icon=precomposed" href="./images/favicon/montblanc_fav144.png">
+        <!-- 모바일영역 title에 들어가는 아이콘, PNG로만 만들 수 있다. -->
+<!-- css -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/notosans.kr_CDN.css">
+    <!-- 폰트 어썸 CDN 링크 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- 페이지 CSS -->
+    <link rel="stylesheet" href="./css/RWD_template.css">
+<!-- js -->
+    <!-- JS 플러그인 파일-->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- prefix 안붙여도 되는파일 -->
+    <script src="./js/prefixfree.min.js"></script>
+    <!-- 페이지 JS -->
+    <script src="./js/prefixfree.min.js"></script>
+    <style>
+        body {
+            font-family: 'noto sans kr', sans-serif;
+            color:#1b1b1b;
+        }
+        /* 1.HEADER */
+        .header {
+            height: 60px;
+            line-height: 60px;
+            background-color: red;
+        }
+        /* 2. SLIDER */
+        .slider {
+            height: 520px;
+            line-height: 520px;
+            background-color: orange;
+        }
+        /* 3. CONTENT */
+        .content {
+            height: 500px;
+            background-color: green;
+        }
+        .display_section,
+        .promotion_section,
+        .work_ section,
+        .blog_section,
+        .contact_section{
+            height: 100px;
+            line-height: 100px;
+        }
+        .display_section {
+            background-color: pink;
+        }
+        .promotion_section {
+            background-color: rebeccapurple;
+        }
+        .work_section {
+            background-color: palegreen;
+        }
+        .blog_section {
+            background-color: navajowhite;
+        }
+        .contact_section {
+            background-color: brown;
+        }
+        .footer {
+            height: 80px;
+            line-height: 80px;
+            background-color: skyblue;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <!-- 1. HEADER -->
+        <header class="header">
+            1. 로고와 메뉴가 배치 | 
+               모바일 + 태블릿 = 토글 버튼 출력(제이쿼리 사용)
+        </header>
+        <!-- /1. HEADER -->
+
+        <!-- 2. SLIDER -->
+        <article class="slider">
+            2. 슬라이더 영역
+            : 사이트 아이덴티티 이미지가 표현되는 영역
+            #. 가로 전체 너비 사용
+        </article>
+        <!-- .2. SLIDER -->
+
+        <!-- 3. CONTENT -->
+        <section class="contnet">
+            <!-- 3-1. DISPLAY -->
+            <section class="display_section">                
+                3-1. 디스플레이 영역
+                : 타이틀, 내용이 들어감
+                  모바일 + 태블릿 => 세로배치 | PC => 가로배치
+              </section>
+            <!-- /3-1. DISPLAY -->
+            <!-- 3-2. PROMOTION -->
+            <section class="promotion_section">
+                3-2. 프로모션 영역
+                : 아이콘,타이틀, 간단한 내용, 광고를 위한 영역
+                  흥미를 위해 아이콘등을 배치 => 클릭을 유도
+                  모바일 => 세로배치, 태블릿 | PC => 가로배치
+            </section>
+            <!-- /3-2. PROMOTION -->
+
+            <hr class="divider">
+
+            <!-- 3-3. WORK -->
+            <section class="work_section">
+                3-3. 최근작업 영역 = cf. 홍보상품, 포트폴리오
+                : 아이콘, 타이틀, 간단한 내용, 광고를 위한 영역
+                  최대한 잘 보이도록 퀄리티 높은 이미지를 사용
+                  흥미를 위해 아이콘등을 배치 => 클릭을 유도
+                  모바일 => 세로배치, 태블릿 | PC => 가로배치
+            </section>
+            <!-- /3-3. WORK -->
+
+            <!-- 3-4 BLOG -->
+            <section class="blog_section">
+                3-4 . 블로그 영역 = cf. 게시판, 공지사항 등
+                : 최근에 작성한 글들을 보여주는 영역
+                  모바일 + 태블릿 => 세로배치 | PC => 가로배치
+            </section>
+            <!-- /3-4 BLOG -->
+
+            <!-- 3-5 CONTACT -->
+            <section class="contact_section">
+                3-5 연락처 영역
+                : 웹 사이트 관리자에게 연락하기 위한 영역
+                  모바일 + 태블릿 => 세로배치 | PC => 가로배치
+            </section>
+            <!-- /3-5 CONTACT -->
+            <!-- 4. FOOTER -->
+                <footer class="footer">
+                    4. 푸터 영역
+                        : 웹사이트 저작권, 회사 주소, 회사 지도, 로고 등을 보여줌
+                </footer>
+            <!-- /4. FOOTER -->
+
+        </section>
+        <!-- /3. CONTENT -->
+    </div>
+    
+</body>
+</html>

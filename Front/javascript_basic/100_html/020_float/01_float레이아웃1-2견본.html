@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기초 float 레이아웃1</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        h1 {
+            background-color: #ccc;
+            text-align: center;
+            font-size: 42px;
+            /* (42/16) = 2.625 */
+            font-size: 2.625rem;
+            padding: 10px 0;
+        }
+        #container {
+            width: 640px;
+            margin: 0 auto;
+        }
+        #container>h2 {
+            font-size: 200%;
+            padding: 10px;
+            color: red;
+        }
+        #container ul {
+            background-color: rgb(167, 194, 169);
+            /* 플롯해제 = 부모박스에 */
+            overflow: hidden;
+        }
+        #container ul li {
+            /* 플롯 너비값 */
+            width: 160px;
+            /* 플롯 */
+            float: left;
+        }
+        #container ul li h2 {
+            font-size: 32px;
+            background-color: #c00;
+            color: #fff;
+            padding: 10px 0;
+            width: 120px;
+            text-align: center;
+            margin: 0 auto;
+        }
+        #container ul li p {
+            padding: 10px;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <h1>나의 아름다운 정원</h1>
+    <section id="container">
+        <h2>나의 아름다운 정원</h2>
+        <!-- ul>li.flower_$*4 -->
+        <ul>
+            <li class="flower_1">
+                <h2>튜울립</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo porro impedit est
+                    velit delectus molestiae commodi dolores nostrum, similique corporis explicabo
+                    dolor rem deserunt aut voluptas exercitationem, culpa esse debitis.
+                </p>
+            </li>
+            <li class="flower_2">
+                <h2>제비꽃</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo porro impedit est
+                    velit delectus molestiae commodi dolores nostrum, similique corporis explicabo
+                    dolor rem deserunt aut voluptas exercitationem, culpa esse debitis.
+                </p>
+            </li>
+            <li class="flower_3">
+                <h2>개나리</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo porro impedit est
+                    velit delectus molestiae commodi dolores nostrum, similique corporis explicabo
+                    dolor rem deserunt aut voluptas exercitationem, culpa esse debitis.
+                </p>
+            </li>
+            <li class="flower_4">
+                <h2>장미</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo porro impedit est
+                    velit delectus molestiae commodi dolores nostrum, similique corporis explicabo
+                    dolor rem deserunt aut voluptas exercitationem, culpa esse debitis.
+                </p>
+            </li>
+        </ul>
+    </section>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20220901_조별과제</title>
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+    /* 테두리시작 */
+        #wrap {
+            width:1310px;
+            height:806px;
+            padding:37px 20px 50px 11px;
+            margin:0 auto;
+        }
+        main {
+            padding:40px 30px 60px 40px;
+            border: 1px solid #000;
+        }
+    /* 테두리 */
+    /* 헤드 */
+        header h1 {
+            float:left;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        header ul li {
+            float:right;
+            font-size: 24px;
+            font-weight: bold;
+       }
+    /* 헤드끝 */
+    /* 메인섹션시작 */
+        #main_center {
+            width:1207px;
+            height:600px;
+       }
+        /* 좌측 */
+        #main_left {
+            float:left
+        }
+        
+        /* 우측 */
+        #main_right:after {
+            content:"";
+            display: block;
+            clear: both
+        }
+
+        /* #main_right article div:after {
+            content:"";
+            display: block;
+            clear: both;
+        } */
+        #main_right {
+            width:607px;
+            padding:40px 30px 60px 40px;
+            float:right;
+        }
+        #main_right article {
+            width:100%;
+            float:left;
+            
+        }
+        #main_right > article > div > h2{
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 50px;
+        }
+        #main_right > article > div:nth-child(1) > p {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        #main_right > article > div {
+            margin-bottom: 100px;
+        }
+
+        #main_right article article .telmail1 {
+            font-size: 12px;
+            line-height: 20px;
+            color:#333;
+            float:left;
+
+        }
+        #main_right article article .telmail2 {
+            font-size: 16px;
+            margin-left: 40px;
+            float:left;
+        }
+        #main_right article article {
+            margin-bottom: 20px;
+        }
+        #logo {
+            margin-bottom: 80px;
+        }
+        #main_bottom {
+            margin-bottom: 50px;
+            font-size: 12px;
+            color:#ccc;
+        }
+        footer {
+            padding:20px;
+            text-align: center;
+            color:#ccc;
+        }
+    /* 메인섹션끝 */
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <main role="main">
+            <header class="cf">
+                <h1>MCKIM</h1>
+                <ul>
+                    <li>
+                        <img src="./images/icon_xbox.png" alt="X박스">
+                    </li>
+                    <li>
+                        indopop
+                    </li>
+                </ul>
+            </header>
+            <section id="main_center">
+                <article>
+                    <div id="main_left">
+                        <img src="./images/icon_rolex.PNG" alt="시계">
+                    </div>
+                    <div id="main_right">
+                        <article>
+                            <div>
+                                <h2>SONG HANSOL</h2>           
+                                <p>webadd</p>
+                                <p>http://www.webadd.kr</p>
+                            </div>
+                            <article class="cf">
+                                <div class="telmail1">
+                                    <p>TEL</p>
+                                    <p>MAIL</p>
+                                </div>
+                                <div class="telmail2">
+                                    <p>010.3127.7711</p>
+                                    <p>skycriper@naver.com</p>
+                                </div>
+                            </article>
+                            <section id="logo">
+                                <img src="./images/icon_facebook.png" alt="페이스북">
+                                <img src="./images/icon_twitter.png" alt="트위터">
+                                <img src="./images/icon_instagram.png" alt="인스타그램">
+                                <img src="./images/icon_naver.png" alt="네이버">
+                            </section>
+                            <section id="main_bottom">
+                                <p>
+                                    WEB DESIGN:ADOBE PHOTOSHOP | ABDOBE ILLUSTRATOR | ADOBE_XD<br>
+                                    WEB PUBLISHING : HTML | CSS | JAVASCRIPT | JQUERY
+                                </p>
+                            </section>
+                        </article>
+                    </div>
+                </article>
+            </section>
+        </main>
+        <footer>
+            <p>COPYRIGHT 2022 WEBADD ALL RIGHTS RESERVED.,</p>
+        </footer>
+    </div>
+</body>
+</html>

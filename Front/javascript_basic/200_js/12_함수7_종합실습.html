@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+// 익명함수
+    /*실습1. 익명함수를 만들고,
+            로딩시 (경고창)"자바스크립트 수업" */
+    // var silsup1 = function(){
+    //     alert("자바스크립트 수업");
+    // }
+    // silsup1();
+
+
+// 선언적 함수
+    /* 실습2.
+        선언적 함수를 만들고,
+        로딩시 (브라우저) "자바스크립트 개념정리" */
+    // function silsup2(){
+    //     document.write("자바스크립트 개념정리");
+    // }
+    // silsup2();
+
+
+// 매개변수
+    /*실습3. body 버튼과 연동
+        버튼 1을 클릭했을때 => (경고창)"안녕하세요"
+        버튼 2를 클릭햇을때 => (경고창)"반갑습니다" */
+
+        // function hello(msg){
+            // alert(msg);
+        // }
+        // function hello(hello){
+        //         switch(hello){
+        //             case 0:
+        //             alert("안녕하세요");
+        //             break;
+        //             case 1:
+        //             alert("반갑습니다");
+        //             break;
+        //         }
+        //     }
+//
+        /* 번외.
+            배열명 codding
+            배열요소 (문자열)HTML,CSS,javaScript,jQuery,JAVA,JSP,Oracle
+            for문 사용 모든 배열요소 출력하기 */
+
+            var codding = ["HTML","CSS","javaScript","jQuery","JAVA","JSP","Oracle"];
+            console.log(codding);
+            // var num = codding.length;
+            num = 7
+            var i = 0;
+            console.log(num);
+            console.log(codding[0]);
+            // HTML
+            for(i=0;i<codding.length;i++){
+                document.write(codding[i]+"<br>");
+            }
+    </script>
+</head>
+<body>
+    <button onclick="hello('안녕하세요');">버튼1</button>
+    <button onclick="hello('반갑습니다');">버튼2</button>
+    
+</body>
+</html>

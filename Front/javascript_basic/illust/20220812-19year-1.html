@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script>
+        window.addEventListener('load', function(){
+            
+            document.querySelector('#btn').addEventListener('click',function(){
+                 var year = Number(document.querySelector('#year').value);
+
+                 if( (year % 4 == 0 && year%100 !=0) || year%400 == 0 ){
+                    document.querySelector('.res').innerHTML = "윤년입니다."
+                 }else{
+                    document.querySelector('.res').innerHTML = "평년입니다."
+                 }
+            });
+        });
+    </script> -->
+</head>
+<body>
+    <p>윤년계산</p>
+    <p>
+        <input type="text" id="year">
+        <input type="button" value="저장" id="btn">
+        <div class="res"></div>
+        
+    
+    </p>
+    <script>
+        document.querySelector('#btn').addEventListener('click',function(){
+            var year = Number(document.querySelector('#year').value);
+    
+        if( (year % 4 == 0 && year%100 !=0) || year%400 == 0 ){
+            document.querySelector('.res').innerHTML = "윤년입니다."
+        }else{
+            document.querySelector('.res').innerHTML = "평년입니다."
+        }
+        });
+    </script>
+</body>
+</html>

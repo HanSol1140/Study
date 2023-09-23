@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기초 float 레이아웃 실습</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <style>
+        body {
+            width:600px;
+            text-align: center;
+            margin: 0 auto;
+        }
+        h1 {
+            background-color: #3350c4;
+            height:100px;
+            line-height: 100px;
+        }
+        section {
+            height:200px;
+            line-height: 200px;
+        }
+        main:after {
+            content:"";
+            display:block;
+            clear:both;
+        }
+        section .box2 {
+            background-color: red;
+            width:200px;
+            float:left;
+        }
+        section .box3 {
+            background-color: cyan;
+            width:400px;
+            float:left;
+        }
+        footer {
+            background-color: green;
+            height:100px;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>제목영역</h1>
+    </header>
+    <main>
+        <section>
+            <div class="box2">
+                섹션1
+            </div>
+            <div class="box3">
+                섹션2
+            </div>
+        </section>
+    </main>
+    <footer>
+        Copyright All Rights Reserved.
+    </footer>
+</body>
+</html>

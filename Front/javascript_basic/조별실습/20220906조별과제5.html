@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리준비</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font">
+
+    <!-- 부트스트랩 -->    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- 버전 안정화 4 -->
+    <!-- css를 클래스화 해놓음 -->
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 2. 제이쿼리 CDN 방식이용 -->
+    <!-- <script src="http:code.jquery.com/jquery-1.12.4.min.js"></script> -->
+    <!-- <script src="http:code.jquery.com/jquery-3.3.1.min.js"></script> -->
+
+    <!-- 반드시 jQuery 코어파일 밑에 스크립트를 적어야함 -->
+    <script>
+        $(document).ready(function(){
+            // => $(document).ready(function(){
+            // => javascript 의
+            // => window.onload = function(){와같음
+            alert("제이쿼리 준비완료!");
+        });
+    </script>
+    
+    
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <h1>웹 퍼블리셔 면접시 많이 물어보는 질문은?</h1>
+            <button>모두열기</button>
+            <button>모두닫기</button>
+        </header>
+        <main role="main">
+            <div class="div1">
+                1. display:inline 과 display:block의 차이점이 무엇인가요?
+                <p>
+                ul, li 는 목록형 태그를 의미하며,
+                dl은 설명형 목록 태그를 의미합니다.
+                dd은 설명형 목록 태그의 목록 요소를 의미합니다.
+                참고 : https://www.w3schools.com/
+                </p>
+            </div>
+        </main>
+        <footer>
+            <p>
+                COPYRIGHT 2022 &copy;gimssam ALL RIGHTS RESERVED.,
+            </p>
+        </footer>
+    </div>
+    
+</body>
+</html>

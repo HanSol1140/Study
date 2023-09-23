@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>비디오 삽입 실습</title>
+     <style>
+          * {
+               margin: 0 auto;
+               padding : 0px;
+          }
+          h1,h2,h3,h4,h5,h6 {
+               font-size: 16px;
+               font-weight: normal;
+          }
+          li {
+               list-style: none;
+          }
+          a {
+               color: inherit;
+               /* inherit = 상속 */
+               text-decoration: none;
+               /* 이미지 링크걸때 파란색과 밑줄을 제거해줌 */
+          }
+          img {
+               vertical-align: top;
+          }
+          #wrap {
+               width:1280px;
+               margin: 0 auto;
+          }
+          video {
+               width:100%;
+               /* 중요! %는 가변형으로 기준값이 있어야 설정이 가능하다 */
+               /* 밑에 body 구조에 video는 wrap의 아래에 있으므로 */
+               /*  wrap의 CSS값 1280px의 100%로 꽉채워서 들어감!! */
+          }
+          figcaption {
+               font-size: 16px;
+               font-weight: bold;
+               color: red;
+               background-color: silver;
+          }
+     </style>
+</head>
+<body>
+     <div id="wrap">
+          <figure>
+               <figcaption>First MP4</figcaption>
+                    <video muted autoplay loop>
+                         <source src="./media/video_sil1.mp4" type="video/mp4">
+                         이 영상이 보고 싶으시면 최신 브라우저를 설치하여 보세요
+                    </video>
+          </figure>
+          <figure>
+               <figcaption>First MP4</figcaption>
+                    <video muted autoplay loop>
+                         <source src="./media/video_sil2.mp4" type="video/mp4">
+                         이 영상이 보고 싶으시면 최신 브라우저를 설치하여 보세요
+                    </video>
+          </figure>
+     </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>날짜정보객체</title>
+    <style>
+        strong {
+            color:red;
+            font-size: 32px;
+        }
+    </style>
+    <script>
+        // 1. 날짜 객체 생성
+        // new = 대표 객체 생성
+        // 해당 객체를 대표선수격인 객체가 받아서 대표생성
+        // 날짜 객체 생성자 함수 Date
+        var today = new Date();
+        console.log(today);
+        // defalut 생성자 = Date에 기본적으로 설정되어있느 현재시간
+
+        var thisMonth = today.getMonth()+1; // 월 0~11
+        console.log(thisMonth);
+        // 기본적으로 getMonth는 1~12가아닌 0~11로 설정됨
+        // 따라서 식에 +1을 합쳐줘야함
+        document.write("해당월은 : " + thisMonth + "월입니다.<br>");
+        
+        var thisDate = today.getDate(); // 날짜
+        document.write("해당일은 : " + thisDate + "일입니다.<br>");
+        
+        var thisDay = today.getDay(); // 일요일(0) ~ 토요일(6);
+        document.write("해당요일 : " + thisDay + "요일입니다.<br>");
+        console.log(thisDay);
+        
+        var thisHour = today.getHours(); //시간
+        document.write("해당시간은 : " + thisHour + "시간입니다.<br>");
+        
+        var thisMin = today.getMinutes(); //분
+        document.write("해당시간은 : " + thisMin + "분입니다.<br>");
+        
+        var thisSec = today.getSeconds(); // 초
+        document.write("해당시간은 : " + thisSec + "초입니다.<br>");
+        
+        var thisMillSec = today.getMilliseconds(); // 밀리세컨
+        document.write("해당밀리세컨은 : " + thisMillSec + "밀리세컨입니다.<br>");
+        // 밀리세컨?
+        // 1970년 1월 1일부터 밀리세컨으로 경과된 시간
+
+        var thisTime = today.getTime();
+        document.write("경과시간은 : " + thisTime + "밀리세컨입니다.<br>")
+
+        // 실습. switch~case문을 이용하여 해당 요일을
+            // (도큐먼트) 오늘은 ??? 요일 입니다.
+
+            switch(thisDay){
+                case 0:
+                    thisDay = "일";
+                    break;
+                case 1:
+                    thisDay = "월";
+                    break;
+                case 2:
+                    thisDay = "화";
+                    break;
+                case 3:
+                    thisDay = "수";
+                    break;
+                case 4:
+                    thisDay = "목";
+                    break;
+                case 5:
+                    thisDay = "금";
+                    break;
+                case 6:
+                    thisDay = "토";
+                    break;
+            }
+            document.write("해당요일은 <strong>"+thisDay+"</strong>요일입니다.<br>");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

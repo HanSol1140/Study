@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition 쇼핑몰 가격 효과</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <style>
+        body {
+            font-family: 'Noto Sans KR',sans-serif;
+            color: #fff;
+        }
+        #wrap {
+            width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            /* border: 1px solid #000; */
+        }
+        #wrap h1 {
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .prod_list {}
+        .prod_list img {
+            width: 300px;
+            height: 200px;
+        }
+        .prod_list li {
+            /* 플롯 */
+            float: left;
+            margin: 50px;
+            cursor: pointer;
+            /* 위치기준값 */
+            position: relative;
+            
+            /* 트랜지션 중간 실행과정 안보이게 하기 */
+            overflow: hidden;
+        }
+        .prod_list .caption h2 {
+            font-size: 12px;
+            font-weight: 300;
+            color: #666;
+            margin-top: 12px;
+        }
+        .prod_list .caption h2+p {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .prod_list .caption h2+p+p {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        /* 트랜지션 효과 */
+        .prod_list .caption {
+            width: 300px;
+            height: 200px;
+            padding-top: 20px;
+            background-color: rgba(0,0,0,0.4);
+            /* 포지션 */
+            position: absolute;
+            left: 0;
+            top: -200px;
+            z-index: 1;
+            opacity: 0;
+            /* 트랜지션 */
+            transition: all 0.2s linear;
+        }
+        /* 트랜지션 호버시 동작 */
+        .prod_list li:hover .caption {
+            opacity: 1;
+            transform: translateY(200px);
+        } 
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <h1>상품정보</h1>
+        <ul class="prod_list cf">
+            <li>
+                <img src="./images/shoes1.jpg" alt="나이키에어">
+                <div class="caption">
+                    <h2>나이키에어 제품</h2>
+                    <p>나이키에어</p>
+                    <p>219,000원</p>
+                </div>
+            </li>
+            <li>
+                <img src="./images/shoes2.jpg" alt="나이키맥스">
+                <div class="caption">
+                    <h2>나이키맥스 제품</h2>
+                    <p>나이키맥스</p>
+                    <p>199,000원</p>
+                </div>
+            </li>
+            <li>
+                <img src="./images/shoes3.jpg" alt="나이키2019">
+                <div class="caption">
+                    <h2>나이키2019 제품</h2>
+                    <p>나이키2019</p>
+                    <p>229,000원</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

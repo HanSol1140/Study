@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리, 문서객체실습</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 2. 제이쿼리 CDN 방식이용 -->
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            setInterval(function(){
+                $('img').eq(0).appendTo('body');
+            },1000);
+        });
+    </script>
+</head>
+<body>
+    <img src="./images/img1.jpg" alt="이미지1" width="320" height="240">
+    <img src="./images/img2.jpg" alt="이미지2" width="320" height="240">
+    <img src="./images/img3.jpg" alt="이미지3" width="320" height="240">
+</body>
+</html>

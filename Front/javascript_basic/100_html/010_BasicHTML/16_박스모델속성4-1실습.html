@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model : 구글 웹폰트 박스 실습</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">    
+    <style>
+        div {
+            width: 320px;
+            height: 160px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 160px;
+        }
+
+        #wrap {
+            width : 960px;
+            height: 960px;
+            background-color: silver;
+        }
+        #wrap .oswald {
+            background-color: blue;
+
+            float:left;
+            }
+        #wrap .roboto {
+            background-color: blue;
+            display: block;
+            float:left;
+        }
+        #wrap .nanummyeongjo {
+            background-color: cyan;
+     
+            float:left;
+        }
+        #wrap .gugi {
+            background-color: cyan;
+            display: block;
+            float:right
+        }
+        #wrap .miniver {
+            background-color: black;
+            margin-left:0;
+            display: block;
+            color:white;
+        }
+        #wrap .jua {
+            background-color: black;
+            margin-left:0;  
+            display: block;          
+            color:white;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+
+        <div class="oswald">Oswald</div>
+        <div class="roboto">Roboto</div>
+        <div class="nanummyeongjo">나눔명조</div>
+        <div class="gugi">구기</div>
+        <div class="miniver">miniver</div>
+        <div class="jua">주아</div>
+
+</div>
+</body>
+</html>

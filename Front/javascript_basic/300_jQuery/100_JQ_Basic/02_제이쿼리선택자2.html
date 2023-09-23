@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리 선택자2</title>
+    <!-- <link rel="stylesheet" href="./css/reset.css"> -->
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 2. 제이쿼리 CDN 방식이용 -->
+    <script src="http:code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="http:code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // 1. 자식 선택자
+            $('ul>li').css('color','blue');
+            $('ul>li').css('list-style','none');
+            // 같은 결과가 나오도록 한줄로 코딩 | 소스캡쳐, 넘버링
+            $('ul>li').css({'color':'blue', 'list-style':'none'});
+            $('ul').children().css({fontSize:24});
+            // 2. 부모 선택자
+            $('li').parent().css('font-weight','bold');
+            // 3. 형제 선택자
+            $('ul').siblings().css({'background-color':'purple', fontSize:'36px'});
+        })
+        
+    </script>
+</head>
+<body>
+    <ul>
+        <li>First</li>
+        <li>Second</li>
+        <li>Third</li>
+    </ul>
+    <h3>
+        jQuery Selector!!
+    </h3>
+    
+</body>
+</html>

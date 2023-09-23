@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 283.46 2212.9" style="enable-background:new 0 0 283.46 2212.9;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);stroke:#010101;stroke-miterlimit:10;}
+	.st1{clip-path:url(#SVGID_3_);}
+	.st2{clip-path:url(#SVGID_5_);fill:url(#SVGID_6_);}
+	.st3{clip-path:url(#SVGID_3_);fill:none;stroke:#010101;stroke-miterlimit:10;}
+</style>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="167.111" y1="103.355" x2="153.3524" y2="1223.303">
+	<stop  offset="0" style="stop-color:#FFFFFF"/>
+	<stop  offset="1" style="stop-color:#000000"/>
+</linearGradient>
+<polygon class="st0" points="143.26,79.31 156.73,1120.81 175,2162.31 143.26,2162.31 108.63,2162.31 126.91,1120.81 "/>
+<g>
+	<g>
+		<defs>
+			<rect id="SVGID_2_" x="-3240" y="677.87" width="283.46" height="2212.9"/>
+		</defs>
+		<clipPath id="SVGID_3_">
+			<use xlink:href="#SVGID_2_"  style="overflow:visible;"/>
+		</clipPath>
+		<g class="st1">
+			<defs>
+				<polygon id="SVGID_4_" points="-3096.74,757.18 -3083.27,1798.68 -3065,2840.18 -3096.74,2840.18 -3131.37,2840.18 
+					-3113.09,1798.68 				"/>
+			</defs>
+			<clipPath id="SVGID_5_">
+				<use xlink:href="#SVGID_4_"  style="overflow:visible;"/>
+			</clipPath>
+			
+				<linearGradient id="SVGID_6_" gradientUnits="userSpaceOnUse" x1="1.717" y1="1004.4228" x2="2.717" y2="1004.4228" gradientTransform="matrix(-13.7586 1119.948 1119.948 13.7586 -1127963.375 -14961.333)">
+				<stop  offset="0" style="stop-color:#FFFFFF"/>
+				<stop  offset="1" style="stop-color:#000000"/>
+			</linearGradient>
+			<polygon class="st2" points="-3039.41,757.5 -3065.01,2841 -3156.95,2839.87 -3131.36,756.37 			"/>
+		</g>
+		<polygon class="st3" points="-3096.74,757.18 -3083.27,1798.68 -3065,2840.18 -3096.74,2840.18 -3131.37,2840.18 
+			-3113.09,1798.68 		"/>
+	</g>
+</g>
+</svg>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>폼실습</title>
+     <style>
+          * {
+               margin:0 auto;
+               padding:0 auto;
+          }
+          ul{
+               font-size: 24px;
+          }
+          li {
+               list-style: none;
+               font-size: 16px;
+          }
+          #wrap {
+               width: 800px;
+          }
+     </style>
+</head>
+<body>
+     <header>
+          <h1 text align="center">프론트엔드 개발자 지원서</h1>
+          <p text align="center">HTML,CSS,javaScript에 대한 기술적 이해와 경험이 있는 분을 찾습니다.</p>
+          <br>
+     </header>
+     <main role="main">
+          <div id="wrap">
+          <hr>
+          <br>
+          <section>
+               <form action="#" method="post">
+                    <fieldset>
+                         <legend></legend>
+                              <nav>
+                                   <ul>개인정보
+                                        <li>
+                                             <label for="name">이름</label>
+                                             <input type="text" id="name" autofocus placeholder="공백없이 이름을 입력하세요.">
+                                        </li>
+                                        <li>
+                                             <label for="a_tel">연락처</label>
+                                             <input type="tel" id="a_tel">
+                                        </li>
+                                   </ul>
+                              </nav>
+                              <br>
+                              <nav>
+                                   <ul>지원분야
+                                        <li>
+                                             <input type="radio" id="wep1" name="volunteer" value="wep1">
+                                             <label for="wep1">웹퍼블리싱</label>
+                                        </li>
+                                        <li>
+                                             <input type="radio" id="wep2" name="volunteer" value="wep2">
+                                             <label for="wep2">웹애플리케이션</label>
+                                        </li>
+                                        <li>
+                                             
+                                             <input type="radio" id="wep3" name="volunteer" value="wep3">
+                                             <label for="wep3">웹디자인</label>
+                                        </li>
+                                   </ul>
+                              </nav>
+                              <br>
+                              <nav>
+                                   <ul>웹퍼블리싱
+                                        <li>
+                                             <label for="memo"></label>
+                                             <textarea name="a_memo" id="memo" placeholder="본사 지원동기를 간략히 써 주세요" style="width:90%;height:100px;font-size:24px;"></textarea>
+                                        </li>
+                                   </ul>
+                              </nav>
+                         <p text align="center">
+                              <input type="submit" value="접수하기">
+                              <input type="reset" value="다시쓰기">
+                         </p>
+                    </fieldset>
+               </form>
+          </section>
+          </div>
+     </main>
+     <footer>
+
+     </footer>
+</body>
+</html>

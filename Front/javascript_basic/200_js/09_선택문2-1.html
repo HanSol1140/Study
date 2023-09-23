@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS + JS</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        body {
+            background-color: #0c3268;
+            color:silver;
+        }
+        p {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            text-shadow: 1px 2px 1px #000;
+        }
+        p strong {
+            font-size: 2.4rem;
+            color: yellow;
+        }
+    </style>
+    <script>
+        var part = prompt("1-웹디자인, 2-웹개발, 3-웹기획 중 숫자 하나 선택", "1");
+        switch(part) {
+            case "1":
+                document.write("<p>웹디자인 섹션은 <strong>401호</strong>에서 진행</p>");
+                break;
+            case "2":
+                document.write("<p>웹개발 섹션은 <strong>402호</strong>에서 진행</p>");
+                break;
+            case "3":
+                document.write("<p>웹개발 섹션은 <strong>403호</strong>에서 진행</p>");
+                break;
+            default:
+                alert("다시입력해주세요");
+                location.reload();
+
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

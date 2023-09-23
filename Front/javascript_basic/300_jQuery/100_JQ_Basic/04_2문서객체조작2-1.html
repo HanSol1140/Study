@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./css/reset.css"> -->
+    <!-- <link rel="stylesheet" href="./css/font">  -->
+    <!-- 부트스트랩 -->    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- 버전 안정화 4 -->
+    <!-- css를 클래스화 해놓음 -->
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 2. 제이쿼리 CDN 방식이용 -->
+    <script src="http:code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="http:code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <style>
+        .change_01 {
+            color:blue;
+        }
+        .change_02 {
+            background-color: yellow;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            // alert('알람');
+            $('h5').eq(0).css('fontWeight','bold');
+            /* 1. addClass() : 선택 DOM객체에 지정된 클래스 추가 */
+            $('h5').eq(0).addClass('change_01');
+            $('h5').eq(1).addClass('change_02');
+            
+            /* 2. removeClass() : 선택 DOM객체에 지정된 클래스 삭제 */
+            $('h5').eq(1).removeClass('change_02');
+            
+            /* 3. attr() : DOM객체의 속성값을 확인하거나 속성을 추가
+                            단, 매개변수가 2개일 경우 값을 변경하는것(속성명:속성값;)*/
+            $('img').attr('width','200px');
+            $('img').attr('height','300px');
+
+            /* 실습. 마지막 이미지에 너비 200 높이 200 대체텍스트 사진1로 변경 코딩 */
+            $('img').eq(2).attr('width','200px');
+            $('img').eq(2).attr('height','200px');
+            $('img').eq(2).attr('alt','사진1');
+            $('img').eq(2).attr({width:200,height:'200',alt:'사진1'});
+            
+
+        });
+    </script>
+</head>
+<body>
+    <h5>
+        변명 중에서도 가장 어리석고 못난 변명은
+    </h5>
+    <h5>
+        &quot;시간이 없어서&quot; 라고 하는 변명입니다.
+    </h5>
+    <h6>
+        By Edison
+    </h6>
+    <img src="./images/img1.jpg" alt="img1">
+    <img src="./images/img2.jpg" alt="img2">
+    <img src="./images/img3.jpg" alt="img3">
+</body>
+</html>

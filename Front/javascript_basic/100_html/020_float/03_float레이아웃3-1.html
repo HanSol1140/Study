@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기초 float 레이아웃3 + 플롯해제방법, 가상클래스 after</title>
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        #content {
+            width:900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        /* 플롯해제 content:after */
+        #content:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        #content div {
+            height: 240px;
+            line-height: 240px;
+        }
+        .sec_part1 {
+            background-color: #a173bf;
+            width:300px;
+            float:left;
+        }
+        .sec_part2 {
+            background-color: #04b6f8;
+            width:300px;
+            float:left;
+        }
+        .sec_part3 {
+            background-color: #f27105;
+            width: 300px;
+            float:left;
+        }
+    </style>
+</head>
+<body>
+    <section id="content">
+        <div class="sec_part1">
+            <p>섹션 왼쪽</p>
+        </div>
+        <div class="sec_part2">
+            <p>섹션 가운데</p>
+        </div>
+        <div class="sec_part3">
+            <p>섹션 오른쪽</p>
+        </div>
+    </section>
+</body>
+</html>

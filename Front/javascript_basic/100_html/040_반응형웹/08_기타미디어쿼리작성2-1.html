@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기타미디어쿼리작성, 너비 높이</title>
+    <!-- 가로 크기가 넓은지 세로 크기가 넓은지에 따라 바뀜 -->
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+    /* 가로 */
+        @media screen and (orientation: landscape){
+            body {
+                background: url(./images/boy.png) no-repeat fixed;
+                background-size: cover;
+            }
+        }
+    /* 세로 */
+        @media screen and (orientation: portrait){
+            body {
+                background: url(./images/girl.png) no-repeat fixed;
+                background-size: cover;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    
+</body>
+</html>

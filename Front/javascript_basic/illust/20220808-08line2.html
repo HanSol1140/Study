@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .wrap {
+
+        width: 1366px;
+        height: 768px;
+        margin: 0 auto;
+        border: 1px solid #000;
+    }
+    .st1 {
+        fill:none;
+        stroke:black;
+        stroke-width: 10px;
+        stroke-miterlimit: 10px;
+        stroke-dasharray: 2200;
+            /* stroke-dasharray:SVG 모양의 획에 대시를 만드는 데 사용됩니다. 숫자가 클수록 획의 대시 사이에 넓은 공간을 만듭니다.*/
+        stroke-dashoffset: 2000;
+            /* stroke-dashoffset : stroke가 시작되는 위치를 변경하는데 사용됩니다. 숫자가 클수록 시작점으로부터 더 많이 띄워준 다음 시작을 합니다. */
+    }
+    .wrap:hover .st1 {
+        stroke-dashoffset: 0;
+        transition: all 2s;
+    }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <svg viewBox="0 0 1366 768" style="enable-background:new 0 0 1366 768;" xml:space="preserve">
+         <path class="st1" d="M310,347c0,180.597,146.403,327,327,327s327-146.403,327-327c0-177.698-141.741-322.291-318.33-326.887"/>
+         <!-- <svg class="st1" viewBox="0 0 1366 768" xml:space="preserve"> -->
+            <!-- <path class="0" d="M82.5,273.5C86.5,270.5,213,143,213,143l129.5,129.5l129-129l131,131"/> -->
+   </svg>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>return문</title>
+    <script>
+        // 선언적 함수명 plusnum
+        // (기능)호출시 입력한 숫자의 +10을  리턴해줌(경고창)
+        var num = "111";
+        function plusNum(num) {
+            return num+10;
+        }
+        // document.write(plusNum(110)+"<br>");   
+        // ()안에 무슨숫자를 넣어도 +10으로 됨  
+        
+        // return문 2 = return false; = 여기까지 실행
+        var int = 20;
+        var sum = 0;
+        var mul = 0;
+        function cal(int1){
+            sum = int1;
+            mul = int1 * int;
+            min = int1 - int;
+            return mul;
+            return sum;
+            return min;            
+        }
+        cal(10);
+
+        document.write(sum+"<br>"); // 1
+        document.write(mul+"<br>"); // 20
+        document.write(min+"<br>"); // -19
+
+             
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

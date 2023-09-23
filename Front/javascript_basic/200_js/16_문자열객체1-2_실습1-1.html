@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 객체 실습</title>
+    <style>
+        span {
+            font-size: 24px;
+            color: red;
+        }
+    </style>
+    <script>
+        /* 실습1.(프롬프트)비밀번호를 입력받아,
+            (경고창)8자 미만이면"8자 이상으로 다시 입력하시오"
+            (브라우저)8자 이상이면 "비밀번호 ???자가 입력되었습니다." */
+
+        // var password = prompt("비밀번호를 입력해주세요",123456789)
+        // console.log(password.length); // 9
+        // if(password.length>=8){
+        //     document.write("비밀번호"+password.length+"자가 입력되었습니다.");
+        // }else if(password.length<8){
+        //     alert("8자 이상으로 입력하시오");
+        //     location.reload();
+        // }
+
+
+        /*실습2. (프롬프트) 이름을 영문소문자로 입력받아, 대문자로 치환
+            (브라우저)"입력한 이름은 ??? 입니다."*/            
+            // var str = prompt("이름은 무엇입니까?", "songhansol");
+            // document.write("입력한 이름은 "+str.toUpperCase()+"입니다.","<br>");
+        // // 견본
+            // var upper = str.toUpperCase();
+            // document.write("입력한 이름은 "+upper+"입니다.","<br>")
+
+        /*실습3. (프롬프트)영문 이름 입력받아, 소문자입력시 대문자로 치환
+            (도큐먼트) 입력받은 이름은 ??? 입니다.
+            (프롬프트) 전화번호 입력받아, 끝 네자리를 "****"로 치환 = substr(),replace(),length
+            (도큐먼트) 전화번호는 0101234**** 입니다.*/
+
+        // var name = prompt("이름은 무엇입니까?", "songhansol");
+        // var upper = name.toUpperCase();
+        // document.write("입력받은 이름은 "+upper+"입니다.","<br>")
+        // var tel = prompt("전화번호를 입력해 주세요", "01031277711");
+        // console.log(tel.length);
+        // var tel74 = tel.substr(tel.length-4,4);
+        // document.write("입력받은 번호는 "+tel.replace(tel74,"****")+"입니다");
+    // // 견본
+        var name1 = prompt('영문이름 입력', 'MCssam');
+        var lower = name1.toLowerCase();
+        document.write("입력받은 이름은 "+lower+"입니다.","<br>");
+        var phone = prompt('전화번호입력','01031277711');
+        var result = phone.replace(phone.substr(7,4),"<span>****</span>");
+        console.log(result);
+        document.write(result);
+            
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

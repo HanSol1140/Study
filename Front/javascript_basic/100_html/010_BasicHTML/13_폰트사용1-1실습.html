@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <!-- 구글웹폰트 -->
+        <!-- Sans = 고딕체 -->
+        <!-- Serif = 궁서체 -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Mouse+Memoirs&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./css/reset.css">
+        <!-- h1,p에 적용 -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+        /* 도큐먼트 전체에 노토산스KR서체 적용 */
+        body {
+            font-family: 'noto sans kr', sans-serif;
+        }
+        #wrap {
+            width: 960px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-family: 'oswald', sans-serif;
+            font-size: 32px;
+            font-weight:700;
+            color: rgba(160,0,255,0.7);
+            /* rgb = 색상 */
+            /* a(alpha) = 투명도 */
+            /* 투명도의 범위는 0~1 */
+            /* 0이명 완전투명 */
+            /* 0.5면 투명도50% */
+            /* 1이면 투명0 */
+            font-style:italic;
+            margin-bottom: 24px;
+        }
+        h2 {
+            font-family: 'Nanum Pen Script', cursive;
+            font-size: 18px;
+            color: #f00;
+            margin-bottom: 24px;
+        }
+        p {
+            font-family: 'oswald', sans-serif;
+            /* 30/16 = em = (em*100) = %*/
+            font-size: 30px;
+            font-size: 1.875em;
+            font-size: 187.5%;
+            /* 14/16 = em = (em*100) = % */
+            font-size: 14px;
+            font-size: 0.875em;
+            font-size: 87.5%;
+            /* rem 적용 */
+            font-size: 32px;
+            font-size: 2rem;
+            /* 웹에 적용되어있는 글꼴크기에따라 배수로 설정가능*/
+            /* 주로 모바일에서 사용 */
+        }
+        .font {
+            font-family: 'roboto', sans-serif;
+            font-size: 1.25rem;
+            font-size: 30px;
+            font-weight: 700;
+            font-style: italic;
+            color: purple;
+            /* 행간 */
+            line-height: 1.5em;
+            /* 폰트 한줄쓰기 */
+            font: bold italic 30px/1.5 'roboto', sans-serif;
+            color:skyblue;
+            }
+        .font2 {
+            font-size: 32px;
+            line-height: 2rem;
+        }
+
+           
+        .small {
+            color: #0000ff;
+            color: #00f;
+            color: blue;
+            color: rgb(0,0,255;);
+            color: rgba(0,0,255,1);
+            font-variant: small-caps;
+        }
+
+        /* 가변 폰트 단위 */
+        /* px의 가변단위 = em,rem */
+        /* 16px = 웹의 기본폰트 단위 */
+        /* <!-- 이것이 중요한이유, 16px계산의 기준이 되기때문 --> */
+        /* 16px = 1em */
+        /* http://pxtoem.com/ */
+        /* 기준값 확인 사이트 */
+
+
+
+
+        /* * {
+            margin: 0px;
+            padding: 0px;
+        }
+        h1,h2,h3,h4,h5,h6 {
+            font-size: 16px;
+            font-weight: normal;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        li {
+            list-style: none;
+        }
+        img {
+            vertical-align: top;
+        }
+        h1 {
+            font-family: 'Roboto', sans-serif;
+        }
+        h2 {
+            font-family: 'Nanum Pen Script', cursive;
+        }
+        p {
+            font-family: 'Mouse Memoirs', sans-serif;
+        } */
+    </style>
+</head>
+    <div id="wrap">
+        <body>
+            <h1>Web Standard Publishing</h1>
+            <h2>웹표준 방식 코딩</h2>
+            <p>
+            웹표준 방식 코딩
+            </p>
+
+                <!-- lorem 탭하면 나오는 문구 -->
+
+            <p class="font">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, dolor vel aliquid
+                culpa non repellendus laudantium, magni repudiandae minus amet ut ipsam neque
+            autem provident officiis maiores, odio nostrum nisi?
+            </p>
+            <h2>LOREM</h2>
+            <p class="font2">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, dolor vel aliquid
+                culpa non repellendus laudantium, magni repudiandae minus amet ut ipsam neque
+            autem provident officiis maiores, odio nostrum nisi?
+            </p>
+            <p>
+                서울(Seoul),대한민국
+            </p>
+            <p>
+                서울<span class="small">(seoul)</span>
+            </p>
+        </body>
+    </div>
+</html>

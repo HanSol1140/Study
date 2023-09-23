@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여러가지 선택자 - 모바일 코딩시 많이 사용</title>
+    <link rel="stylesheet" href="./css/font.css">
+    <!-- <link rel="stylesheet" href="./css/reset.css"> -->
+    <style>
+        /* 1. 자손선택자(하위선택자) */
+        #wrap ul {
+            border: 3px dotted #000099;
+        }
+        /* 2. 자식선택자 */
+        #wrap>ul {
+            border: 3px dashed red;
+        }
+        /* 3. 인접형제선택자(첫번째 형제만 선택) */
+        header+p {
+            font-size: 2rem;
+            color:skyblue;
+            font-weight:700;
+        }
+        /* 4. 형제선택자(모든 형제 선택) */
+        header~p {
+            color: orangered;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+        <h1>웹퍼블리싱 수업</h1>
+        </header>
+        <p>
+            웹 퍼블리싱을 잘하려면?
+        </p>
+        <p>
+            원리를 이해하고, 웹표준에 따라 구글링등을 통해 많은 공부후 코딩에 임하면 됩니다.
+        </p>
+        <ul>
+            <li>공부방법1
+                <ul>
+                    <li>원리이해</li>
+                    <li>수업내용정리</li>
+                </ul>
+            </li>
+            <li>공부방법2
+                <ul>
+                    <li>구조기획</li>
+                    <li>HTML 구조코딩</li>
+                    <li>CSS 적용</li>
+                    <li>브라우저 확인 마무리</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

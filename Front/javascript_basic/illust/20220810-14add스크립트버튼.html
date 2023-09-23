@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap{
+            width:300px;
+            height:200px;
+            border: 1px solid red;
+        }
+        .wrap .txt {
+            background: orange;
+        }
+        .wrap .size {
+            font-size: 32px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <p class="txt">Lorem, ipsum.</p>
+    </div>
+    <input type="button" value="추가" id="btn">
+    <input type="button" value="삭제" id="del">
+    <script>
+        document.querySelector('#btn').addEventListener('click',function(){
+            // alert('click');
+            document.querySelector('.wrap .txt').classList.add('size');
+        });
+        document.querySelector('#del').addEventListener('click',function(){
+            document.querySelector('.wrap .txt').classList.remove('size');
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrap {
+            width: 960px;
+            height:500px;
+            margin:0 auto;
+            background-color: #000;
+        }
+        #wrap div {
+            height: 100%;
+        }
+        #wrap {
+            display: flex;
+            flex-flow: row nowrap;
+        }
+        #wrap>div {
+            margin: 0% 6.25%;
+        }
+        #wrap div:nth-child(1) {
+            width: 200px;
+            width:20.83333333333333%;
+            background-color: red;
+        }
+        #wrap div:nth-child(2) {
+            width: 200px;
+            width:20.83333333333333%;
+            background-color: blue;
+        }
+        #wrap div:nth-child(3) {
+            width: 200px;
+            width:20.83333333333333%;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</body>
+</html>

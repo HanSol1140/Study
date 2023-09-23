@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기타 미디어쿼리 작성, PC 퍼스트</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <style>
+        /* 공통 CSS */
+        body {
+            background: url(./images/coffee-one.jpg) no-repeat fixed;
+            background-size: cover;
+        }
+        /* 미디어쿼리 */
+        /* 500이하 768이하 1024이하 */
+        /* 캡쳐 넘버링 */
+        @media screen and (max-width:1024px){
+            body {
+                background: url(./images/coffee-two.jpg) no-repeat fixed;
+                background-size: cover;
+            }
+        }
+        @media screen and (max-width:768px){
+            body {
+                background: url(./images/coffee-three.jpg) no-repeat fixed;
+                background-size: cover;
+            }
+
+        }
+        @media screen and (max-width:500px){
+            body {
+                background: url(./images/boy.png) no-repeat fixed;
+                background-size: cover;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+</html>

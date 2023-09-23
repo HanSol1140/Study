@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리, 아코디언 메뉴 실습2</title>
+    <!-- <link rel="stylesheet" href="./css/reset.css"> -->
+    <!-- <link rel="stylesheet" href="./css/font"> -->
+
+    <!-- 부트스트랩 -->    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- 버전 안정화 4 -->
+    <!-- css를 클래스화 해놓음 -->
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 2. 제이쿼리 CDN 방식이용 -->
+    <!-- <script src="http:code.jquery.com/jquery-1.12.4.min.js"></script> -->
+    <!-- <script src="http:code.jquery.com/jquery-3.3.1.min.js"></script> -->
+
+    <!-- 반드시 jQuery 코어파일 밑에 스크립트를 적어야함 -->
+    <style>
+     
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('p').hide();
+        // 실습1. 버튼 각각 눌럿을때 this를사용해서 내용 toggle
+            // $('h2').on('click',function(){
+            //     $(this).next('p').toggle();
+            // });
+        // 실습2. 버튼 각각 눌렀을때 this를 사용하여 내용 toggle
+        //        단, 버튼1을 눌럿을때 버튼2는 다시 없어져야함
+            // $('h2').eq(0).on('click',function(){
+            //     $(this).next('p').toggle();
+            //     $('p').eq(1).hide();
+            // });
+            // $('h2').eq(1).on('click',function(){
+            //     $(this).next('p').toggle();
+            //     $('p').eq(0).hide();
+            // });
+        
+        // 버튼 1,2 <a>를 클릭했을때 이벤트 작동
+            $('#wrap>h2>a').on('click',function(){
+                $('#wrap>p').hide();
+                $(this).parent().next().stop().show();
+                });
+        // 견본
+        // 버튼1,2 a를 클릭했을때 이벤트 작동
+            // $('#wrap>h2>a').on('click',function(){
+                // $('#wrap>p').hide();
+                // $(this).parent().next().stop().show();
+            
+            // });
+            });
+
+
+    </script>
+    
+</head>
+<body>
+    <div id="wrap">
+        <h2>
+            <a href="#">버튼1</a>
+        </h2>
+        <p>
+            내용1
+        </p>
+
+        <h2>
+            <a href="#">버튼2</a>
+        </h2>
+        <p>
+            내용2
+        </p>
+    </div>
+   
+</body>
+</html>

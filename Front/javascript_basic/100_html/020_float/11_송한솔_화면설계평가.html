@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화면 설계평가</title>
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        body {
+            background-color: black;
+        }
+        #wrap {
+            width: 1000px;
+            margin: 0 auto;
+            margin-top: 100px;
+            background-color: #30b6d8;
+        }
+        /* 헤더영역 */
+        header h1 {
+            background: brown;
+            font:italic 64px 'noto sans kr', serif;
+            padding: 30px;
+            color:white;
+            text-align: center;
+            font-family: 'nanummyunjo', serif;
+            font-weight: bold;
+        }
+        header h1 span {
+            font-size: 32px;
+            color:green;
+        }
+        header h1 span1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 48px;
+        }
+        /* /헤더영역 끝 */
+        /* 메인영역 시작 */
+        main article{
+            width: 250px;
+            font:600 22px 'nanum gothic coding', monospace;
+            padding:20px;
+            line-height: 50px;
+            float:left;
+        }
+        main article ul li:nth-child(1) {
+            margin-top: 10px;
+        }
+        main section {
+            width: 750px;
+            float:right;
+        }
+        main section p, main section h2{
+            font-size: 18px;
+            padding:20px;
+            font-family: 'nanumgothic', sans seirf;
+            line-height: 36px;
+            padding: 20px;
+            text-align: justify;
+        }
+
+        main section h2:nth-child(1) {
+            background-color: rgb(8, 143, 87);
+            font-weight: 600;
+            font-size: 32px;
+        }
+        main section p:nth-child(2) {
+            background-color: rgb(163, 79, 0);
+            padding-bottom: 40px;
+        }
+        main section h2:nth-child(3) {
+            font-weight: 600;
+            background-color: white;
+            font-size: 32px;
+        }
+        main section p:nth-child(4) {
+            background-color: green;
+            padding-bottom: 40px;
+
+        }
+        /* /메인영역 끝 */
+        /* 푸터영역 시작 */
+        footer p {
+            background-color: white;
+            text-align: center;
+            padding:10px;
+        }
+        footer p span {
+         font-size: 20px;
+         font-family: 'Nanum Brush Script', cursive;
+         font-weight: bold;
+        }
+        footer p span1 {
+            font:24px 'Nanum Pen Script', cursive;
+            font-weight: bold;
+            color: red;
+        } 
+        /* /푸터영역 끝 */
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <h1>호랑이<span>를 <font style="font-size:40px">주제</font>로한</span><span1>민화</span1></h1>
+        </header>
+        <main role="main" class="cf">
+            <article>
+                <div class="left_box">
+                    <nav>
+                        <ul>
+                            <li><a href="#">그림의 작가</a></li>
+                            <li><a href="#">그림의 시대</a></li>
+                            <li><a href="#">그림의 재료</a></li>
+                            <li><a href="#">그림의 주인공</a></li>
+                            <li><a href="#">그림의 활용</a></li>
+                        </ul>
+                   </nav>
+                </div>
+            </article>
+            <section>
+                <div class="right_box">
+                    <h2>
+                        길상백호
+                    </h2>
+                    <p>
+                        길상/벽사 사신(四神)은 동서남북의 방위를 나타내고 우주의 질서를 유지하는 상징적인 동물을 말한다.
+                        동쪽의 청룡, 서쪽의 백호, 남쪽의 주작, 북쪽의 현무가 있으며 이러한 개념이 언제부터 발생한 것인가 정확하지 않지만 오행사상과 깊은 관련이 있는 것으로 추정된다.
+                        우리나라에서 사신이 미술품에 표현되기 시작한 것은 삼국시대로 고구려 고분벽화에서 그 예를 찾을 수 있으며 각종 공예품, 건축물, 민화 등에 다양하게 사용되었다.
+                        음양오행이 순리에 어긋나지 않고 제대로 지켜지는 것을 최고의  길상으로 여겼던 동양적 가치관에 의하면 오행의 천문, 방위, 색채관이 녹아 들어간 사신도 역시 최고의 길상적 표현으로 볼 수 있을 것이다.
+                        그외에도 사신은 사방의 수호신으로서 부대의 깃발 포진에도 응용되었으며, 좌청룡, 우백호, 전주작, 후현무 로 풍수지리에 적용되었다.
+                    </p>
+                    <h2>
+                        승훈용호도
+                    </h2>
+                    <p>
+                        대게 용의 배경은 구름으로 표현한 탓으로 운룡도(雲龍圖)의 형태로 나타나고, 호랑이는 송하작호도(松下鵲虎圖),
+                        즉 까치호랑이로 그려지는 것이 상례로 되어 있다. 이 밖에 용호상박도(龍虎相搏圖)라는 것이 있는데,
+                        이것은 두 강자가 서로 힘다툼을 하는 얏앙을 표현한 것으로서 일반 용호도와는 엄격히 구별되어야 한다.
+                    </p>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>
+                <font style="font-size:28px">&copy;</font><span>COPYRIGHT <span1>길상백호</span1> ALL RIGHTS RESERVED. <span1>MCSSAM</span1></span>
+            </p>
+        </footer>
+    </div>    
+</body>
+</html>

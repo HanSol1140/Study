@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=플렉스아, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <title>
+        플렉스 아이템 방향설정(flex-direction) => [부모박스]에 설정
+        : 플렉스 아이템의 배치 방향을 설정 => [자식박스]에 적용
+        # 속성명 : flex-direction
+        # 속성값 : row(기본값), row-reverse(구조에서 거꾸로붙음?), column(세로), column-reverse
+        <!-- div의 혈액형 = 블록요소 = 스태틱(초기화) 상태 -->
+    </title>
+
+    <style>
+        #wrap {
+            width:100%;
+            height:500px;
+            border: 1px solid #000;
+            display:flex;
+            flex-direction: row; /* 좌측 정렬 */
+            flex-direction: row-reverse; /* 우측 정렬 */
+            flex-direction: column; /* 세로 정렬 */
+            flex-direction: column-reverse; /* 세로 하단정렬 */
+            /* background-color: red; */
+        }
+        #wrap div {
+            width:20%;
+            height: 20%;
+        }
+        #wrap div:nth-child(1) {
+            background-color: black;
+        }
+        #wrap div:nth-child(2) {background-color: red;}
+        #wrap div:nth-child(3) {background-color: yellow;}
+        #wrap div:nth-child(4) {background-color: green;}
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>

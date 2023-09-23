@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>플렉스 기초 레이아웃 실습</title>
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        #wrap {
+            width:90%;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            
+        }
+        
+        header section div {
+            width:100%;
+            padding:20px;
+            background-color: red;
+            
+        }
+        header article div {
+            width:100%;
+            padding:20px;
+            background-color: orange;
+        }
+        main section {
+            display: flex;
+            flex-direction: row;
+        }
+        main section div:nth-child(1) {
+            width: 50%;
+            height:100px;
+            background: yellowgreen;
+            
+        }
+        main section div:nth-child(2) {
+            width: 50%;
+            height:100px;
+            background: yellow;
+        }
+
+        main article {
+            display: flex;
+            flex-direction: row;
+        }
+        main article div {
+            height:100px;
+        }
+        main article div:nth-child(1){
+            width:33%;
+            background-color: green;
+        }
+        main article div:nth-child(2){
+            width:34%;
+            background-color: cyan;
+        }
+        main article div:nth-child(3){
+            width:33%;
+            background-color: blue;
+        }
+        footer p{
+            padding:20px;
+            background-color: purple;
+        }
+        aside {
+            width:40px;
+            height:100px;
+            background-color: aquamarine;
+            position: fixed;
+            left: 95%;
+            top: 10%;
+            z-index: 5;            
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <section>
+                <div>
+                    <h2>SNB메뉴</h2>
+                </div>
+            </section>
+            <article>
+                <div>
+                    <h1>GNB 메뉴</h1>
+                </div>
+            </article>
+        </header>
+        <main role="main">
+            <section>
+                <div>슬라이드영역1</div>
+                <div>슬라이드영역2</div>
+            </section>
+            <article>
+                <div>콘텐츠영역1</div>       
+                <div>콘텐츠영역2</div>       
+                <div>콘텐츠영역3</div>
+            </article>
+        </main>
+        <footer>
+            <p>푸터영역</p>
+        </footer>
+        <aside>
+            <p>
+            별도영역
+            </p>
+        </aside>
+    </div>
+    
+</body>
+</html>

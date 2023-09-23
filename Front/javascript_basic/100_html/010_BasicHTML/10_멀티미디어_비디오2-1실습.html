@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>비디오 실습</title>
+     <style>
+          
+          video {
+               width:800px;
+          }
+          figcaption {
+               width:800px;
+               margin: 0 auto;
+               background-color: silver;
+          }
+#silsup { 
+               text-align: center;
+               margin: 0 auto;
+          }
+          
+     </style>
+</head>
+<body>
+     <div id="silsup">
+          <figure>
+               <figcaption text-align="center">first mp4.</figcaption>
+                    <video muted autoplay controls>
+                         <source src="./media/video_sil1.mp4" type="video/mp4">
+                    </video>
+               <figcaption>second mp4</figcaption>
+                    <video controls>
+                         <source src="./media/video_sil2.mp4" type="video/mp4">
+                    </video>
+          </figure> 
+     </div> 
+</body>
+</html>
+<!-- <figcaption>first mp4</figcaption>  
+<video autoplay poster="./images/a.jpg"></video>
+     <source src="./media/video_sil2.mp4" type="video/mp4"> -->

@@ -1,0 +1,123 @@
+@charset "utf-8";
+/* rem 단위 기준 10px로 맞추기 */
+html {
+    font-size: 62.5%;
+}
+/*특정 부분 스크롤바 없애기*/ 
+body {
+    -ms-overflow-style: none;
+}
+body::-webkit-scrollbar { 
+     display:none;
+}
+/* System Fonts as used by Apple */
+body {
+    font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+footer {
+    padding: 20px 16px 0;
+}
+
+/* Bread Crumbs */
+.bread_crumbs {
+    display: flex;
+    height: 72px;
+    line-height: 72px;
+    border-bottom: 1px solid #dbdbdb;
+}
+.bread_crumbs dt {
+    color: #313131;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-right: 16px;
+}
+
+.bread_crumbs dt:after {
+    content: "\f054";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+.bread_crumbs dd {
+    font-size: 1.1rem;
+    margin-right: 16px;
+}
+.bread_crumbs dd:nth-last-child(2)::after {
+    content: "\f054";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    padding-left: 8px;
+}
+
+.footer_menu dt {
+    font-size: 1.1rem;
+    color: #000;
+    font-weight: 600;
+    padding: 13px 0 12px;
+    border-bottom: 1px solid #d2d2d7;
+}
+
+.footer_menu dt {
+    background-image: url('../images/mark_plus.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 32px 32px;
+    cursor: pointer;
+}
+
+
+.footer_text {
+    font-size: 1.1rem;
+    line-height: 1.3;
+    color: #83868b;
+    padding: 20px 0;
+}
+.footer_text .conciege {
+    margin-bottom: 24px;
+}
+.footer_text .conciege span {
+    color: #2a64c6;
+}
+.footer_text .copyright {
+    margin-bottom: 12px;
+}
+.footer_text nav {
+    font-size: 1.2rem;
+    color: #515154;
+    margin-bottom: 12px;
+}
+.footer_text nav ul {
+    display: flex;
+    flex-flow: row wrap;
+    /* 포지션 위치값*/
+    position: relative;
+}
+.footer_text nav ul li {
+    padding: 0 8px 0 0;
+}
+.footer_text nav ul li::after {
+    content: "|";
+    display: inline-block;
+    /* 포지션 */
+    position: absolute;
+}
+
+
+/* 스크립트 CSS */
+.footer_sub {
+    padding: 16px 0;
+    display: none;
+}
+
+.clicked {
+    display: block !important;
+    border-bottom: 1px solid #d2d2d7;
+}
+.clicked dd {
+    padding: 8px;
+}
+.mark {
+    background-image: url('../images/mark_minus.png') !important;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+}

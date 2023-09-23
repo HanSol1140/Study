@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기초 함수 이벤트 실습</title>
+    <style>
+        #bgc {
+            width:100%
+            height: 200px;
+        }
+        button{
+            width:200px;
+            height:100px;
+            background-color: #ccc;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: blue;
+        }
+    </style>
+    <script>
+    // 실습1. 버튼을 누르면 (경고창) 클릭되었습니다!! 호출
+        function click1(){
+            alert("클릭되엇습니다");
+        }
+    </script>
+</head>
+<body>
+    <div id="bgc">
+        <!-- 실습1. -->
+        <button onclick="click1();">실습1 버튼</button>
+    </div>    
+</body>
+</html>

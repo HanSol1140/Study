@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반복문, for문</title>
+    <!-- for문을 쓰는 이유? -->
+    <!-- 1. 반복 -->
+    <!-- 2. ※연속된 수를 사용하기 위해서 -->
+    <!-- 3. 배열요소 -->
+    <script>
+    // [형식]
+        // for(초기값;조건식;증감식) {
+        //    실행문; 
+        // }
+        // for(var i=1;i<=5;i++){
+            // document.write("for문 반복횟수 : "+i+"번 <br>");
+        // }
+    // 실습. 초기값0
+        // [도큐먼트] for 문자 5번 나오도록 코딩
+        // for(var i = 0;i<5;i++){
+        //     document.write("<br>for"+(i+1))
+        // }
+    /*실습1. (초기값)0, 반복횟수 10번
+        (브라우저) 자바스크립트 반복횟수 ???번 출력*/
+        // var i;
+        // for(i=0;i<10;i++){
+        //     document.write("자바스크립트 반복횟수 "+(i+1)+"번<br>");
+        // }
+    /*실습2 . 1부터 10까지의 합(힌트:복합대입연산자+=, i, 총합변수)
+        [도큐먼트] 1부터 10까지의 합은 ???입니다. */
+        // var i = 0;
+        // var num = 0;
+
+        // for(i=1; i<=10; i++){
+        //     num += i;        
+        // }
+        // document.write("1부터 10까지의 합은 "+num+"입니다.<br>");
+    
+    /* 실습3. <h1>~<h6>순으로
+       [도큐먼트] 각각 태그별로 풀스택개발자가 나오도록 코딩*/
+    //    var i = 1;
+    //    for(i=1; i<=6; i++) {
+    //    document.write("<h"+i+">"+"풀스택개발자"+"<h"+i+">")
+    //    }
+    
+    /* 실습4. <h6>~<h1>순으로
+        [도큐먼트] 각각 태그별로 풀스택개발자가 나오도록 코딩*/
+        // var num = 0;
+        // for(i=6; i>=1; i--) {
+
+        // document.write("<h"+i+">"+"풀스택개발자"+"<h"+i+">")
+        // }
+    /*실습5. [도큐먼트] <h3> 풀스택개발자 </h3>만 출력 */
+        // for(var i=1; i<=6; i++){
+            
+        //     if(i===3){
+        //         document.write("<h"+i+">풀스택개발자</h"+i+">");
+        //     }
+        // }    
+    /*실습6. [도큐먼트] 구구단 2단 출력하기 */
+        // var i, dan, result;
+        // dan = 2;
+        // for(i=1; i<=10 ; i++){
+        //     result = dan*i;        
+        //     document.write("<h1>"+dan+"단</h1><br>"+dan+" x "+i+" = "+result);
+        // }
+    /*실습7. (프롬프트) 구구단 단수를 기입햇을때
+        해당 단수 곱하기 결과물 출력*/
+    // 본인실습
+        // var i = prompt("단수는 얼마입니까?")
+        // var dan = 1;
+        // document.write("<h1>"+i+"단</h1>");
+        // for(dan=1; dan<=10; dan++){
+        //     result = dan*i;        
+        //     document.write("<br>"+i+" x "+dan+" = "+result);
+        // }
+    // 올바른 예시
+        var dan = prompt('단수입력',2);
+        dan = Number(dan);
+        // 데이터형을 반드시 정의해줄것, 기본형인 문자형은 자바 외 모든곳에서 에러가남
+        var i, result;
+        document.write("<h1>" + dan + "단</h1>");
+        for(i=1; i<=9; i++){
+            result = dan * i;
+            document.write(dan + "x" + i + " = " + result + "<br>");
+        }
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

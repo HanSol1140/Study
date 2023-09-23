@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+    당신의 하루 걷는양은 몇보인가요?
+    </p>
+    <p>
+    <input type="text" id="bo">
+    <input type="button" value="저장" id="dap">
+    </p>
+    <div class="res"></div>
+    <script>
+        function bobo(bo){
+
+     
+        document.querySelector(".res").innerHTML = bobo+"평균";
+        }
+        
+        document.querySelector("#dap").addEventListener('click', function(){
+            var bo = Number (document.querySelector('#bo').value);
+            bobo(bo);
+        });
+        
+        
+    </script>    
+</body>
+</html>

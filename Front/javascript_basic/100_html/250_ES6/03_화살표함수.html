@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio, Float, Montblanc Template">
+    <title>
+        ES6 =>
+        화살표 함수 (Arrow Function)
+        : ES6에 추가된 표현식을 사용하는 함수
+          화살표기 =>로 함수 선언
+          기본적을 익명 함수로 선언, 변수에 할당하여 사용하는 방법과 유의사항
+          function 키워드 생략
+          인자블록(), 코드블록{} 사이에 =>를 표기
+          기본 표기법 (인자)=>{실행문;}
+    </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        body {
+            line-height: 2;
+        }
+    </style>
+    <script>
+    // 1. ES5 Script
+        // 1-a. 선언적 함수
+        // fucntion add(first, second){
+            // return first+second;
+        // }
+        // 1-b. 익명 함수
+        // var add = function (first,second){
+                // return first+second;
+        // }
+        // 1-c, 함수 호출
+        // add(3,2); // add = 5
+
+
+    // 2. ES6 Script
+        // 2-a. 화살표 함수 = 기본 사용법(매개변수가 있는 경우)
+            // const add = (first,second)=>{
+                // return first+second;
+            // }
+            // alert(add(3,2));
+        // 2-b. 화살표 함수 = 기본 사용법(매개변수가 없는 경우)
+            // const add = ()=>{
+                // let first = 1;
+                // let second = 2;
+                // return first + second;
+            // }
+            // alert(add());
+        // 2-c. 화살표 함수 = 코드블록에 결괏값을 바로 반환하는 경우 중괄호 생략가능
+            // const add= (first,second)=>first+second;
+        // 2-d. 화살표 함수 = 반환값이 객체면 ()로 감싸서 간결하게 표현 가능
+            // const add = (first,second)=>({add: first+second, multiply: first * second});
+
+
+            // 함수호출
+            // alert(add(3,2));
+        // 콘솔에 객체의 add키명을 사용하여 함수호출시 결괏값 3이 나오도록 코딩
+            const add = (first,second)=>({add: first+second, multiply: first * second});
+            console.log(add(1,2).add); //3
+            console.log(add(1,2).multiply); //2
+            console.log(add(3,2)); // add = 5 mutiply = 6
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

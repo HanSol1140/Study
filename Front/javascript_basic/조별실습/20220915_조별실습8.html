@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/jo8.css">
+    <!-- 파비콘 -->
+    <link rel="shortcut icon" href="./images/favicon/montblanc_fav32.png">
+    <!-- 박스 슬라이더 CSS -->
+    <link rel="stylesheet" href="./css/jquery.bxslider.css">
+
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 박스 슬라이더 js -->
+    <script src="./js/jquery.bxslider.js"></script>
+    <!-- 박스슬라이더 -->
+    <script>
+        $(function(){
+            $('.slider').bxSlider({
+                auto: true,
+                // autoControls: true,
+                autoHover:true,
+                pager: true,
+                pagerCustom: '.slider_pager',
+                slideWidth: 1440,
+            });
+        });
+    </script>
+<style>
+    #wrap {
+        max-width:1132px;
+        width:100%;
+        /* border: 2px solid red; */
+        margin:0 auto;
+    }
+    h1, h2 {
+        color:rgb(10, 10, 110);
+        font-family: 'Didact Gothic', sans-serif;
+    }
+/* HEADER - 헤더영역 시작 */
+/* GNB영역 */
+    header {
+        margin-top:3.5%;
+        font-size: 1rem;
+        
+    }
+    #gnb h1{
+        /* border: 1px solid red; */
+        font-size: 2rem;
+        margin: 3.5% 3.5%;
+    
+    }
+    header h1 {
+        width:20%;
+        float:left;
+        font-weight: bold;
+    }
+    header nav ul {
+        width:80%;
+        float:right;
+    }
+    header nav ul li {
+        float:right;
+        margin-top: 7%;
+        padding-left: 3.5%;
+    }
+    nav {
+        padding-right:4%;
+        width:70%;
+        float:right;
+    }
+/* /GNB영역 */
+/* 슬라이더 */
+    .slide_box {
+        width:100%;
+    }
+    .slider img {
+        width:100%
+    }
+    .slider_pager {
+        text-align: center;
+        margin:1%;
+        margin-bottom: 40px;
+    }
+    .slider_pager li{
+        display: inline-block;
+    }
+/* /슬라이더 끝 */
+/* /HEADER - 헤더영역 끝 */
+/* MAIN - 메인영역 시작   */
+/* WE_ARE! */
+#we_are {
+    padding-left:5%;
+    width:100%;
+}
+.we_are_text ul li:last-child {
+    color:gray;
+    font-weight: 600;
+}
+.we_are_text li:first-child {
+    width:50%;
+    float:left;
+}
+.we_are_text h2 {
+    font-size: 2.5rem;
+}
+.we_are_text li:last-child {
+    width:50%;
+    border-left: 2px solid gray;
+    float:right;
+    text-align: center;
+}
+.we_are_img {
+    margin-top:50px;
+}
+.we_are_img li {
+    width:25%;
+    text-align: center;
+    float:left;
+    font-size: 1.5rem;
+    color:rgb(20,25,120);
+    font-weight: bold;
+    text-shadow: 0px 0px 1px blue;
+}
+.we_are_img li p{
+    color:darkgray;
+    font-size: 0.8rem;
+    font-weight: 400;
+    font-family: 'oswald', sans-serif;
+    text-shadow: none;
+    
+}
+.we_are_img li img {
+    width:30%
+}
+/* /WE_ARE! */
+/* LINE1 - 라인 */
+.line1 {
+    width:100%;
+    border-bottom: 1px solid gray;
+    opacity: 0.5;
+    margin:40px 0px;
+}
+/* /LINE1 - 라인 */
+/* WORK */
+#work h2{
+    padding-left:5%;
+    font-size: 2.5rem;
+}
+#work ul li {
+    width:25%;
+    float:left;
+}
+#work ul li img {
+    width:100%;
+}
+/* /WORK */
+/* LINE2 - 라인 */
+.line2 {
+    width:5%;
+    border-bottom: 1px solid yellow;
+    margin:40px auto;
+}
+/* /LINE2 - 라인 */
+/* BLOG */
+#blog h2 {
+    padding-left:5%;
+    width:25%;
+    font-size: 2.5rem;
+    float:left;
+}
+#blog ul li {
+    width:22%;
+    margin:1%;
+    float:left;
+}
+#blog ul li p {
+    font-size: 0.8rem;
+    color:silver;
+}
+#blog ul li p:last-child {
+    font-size: 1rem;
+    color:black;
+}
+#blog ul li img {
+    width:100%;
+}
+/* /BLOG */
+/* CONTACT */
+#contact{
+    width:100%;
+    color:gray;
+    margin-top:100px;
+}
+#contact h2 {
+    width:30%;
+    padding-left:5%;
+    font-size: 2.5rem;
+    float:left;
+}
+#contact nav {
+    width:35%;
+    float:left;
+    
+}
+#contact nav li {
+    padding-top:3px;
+} 
+#contact nav input {
+    width:100%;
+    border: none;
+    border-bottom: 2px solid gray;;
+    color:silver;
+}
+#contact div {
+    width:35%;
+    float:left;
+}
+/* /CONTACT */
+/* SEND_MASSAGE */
+#send_massage {
+    width:100%;
+    margin-top: 40px;
+    position: relative;
+}
+.send_massage_box {
+    font-size: 1.5rem;
+    font-weight: bold;
+    width:200px;
+    height: 50px;
+    text-align: center;
+    line-height: 2;
+    color:white;
+    background: darkcyan;
+    position: absolute;
+    right:0;
+    top:0;
+    z-index: 1;
+}
+.send_massage_map {
+    width:100%;
+}
+.send_massage_map iframe{
+    width:100%;
+    margin-top:80px;
+}
+/* /SEND_MASSAGE */
+/* /MAIN - 메인영역 끝   */
+/* FOOTER - 푸터영역 시작 */
+footer {
+    font-size: 0.8rem;
+    padding:20px 0px;
+    color:silver;
+    text-align: center;
+}
+
+@media all and (min-width:300px) and (max-width:719px){
+    header nav ul li {
+        font-size: 0.5vw;
+    }
+    #work ul li {
+        width:100%;
+    }
+}
+@media all and (min-width:720px) and (max-width:1024px){
+    #work ul li {
+        width:50%;
+    }
+}
+
+
+    
+
+/* /FOOTER - 푸터영역 끝 */
+</style>
+</head>
+<body>
+    <div id="wrap">
+        <!-- HEADER -->
+        <header>
+            <article id="gnb" class="cf">
+            <h1>WEBADO</h1>
+                <nav>
+                    <ul class="cf">
+                        <li><a href="#">CONTACT&nbsp;US</a></li>
+                        <li><a href="#">BLOG</a></li>
+                        <li><a href="#">WORK</a></li>
+                        <li><a href="#">WE&nbsp;ARE</a></li>
+                        <li><a href="#">HOME</a></li>
+                    </ul>
+                </nav>
+            </article>
+            <article>
+                <div id="slide_box">
+                    <ul class="slider">
+                        <li><img src="./images/img_bxSlider/slider1.png" alt="슬라이더1"></li>
+                        <li><img src="./images/img_bxSlider/slider2.png" alt="슬라이더2"></li>
+                        <li><img src="./images/img_bxSlider/slider3.png" alt="슬라이더3"></li>
+                    </ul>
+                    <ul class="slider_pager">
+                        <li><a href="#" data-slide-index="0"><img src="./images/img_bxSlider/photo1.png" alt="슬라이더페이지1"></a></li>
+                        <li><a href="#" data-slide-index="1"><img src="./images/img_bxSlider/photo2.png" alt="슬라이더페이지2"></a></li>
+                        <li><a href="#" data-slide-index="2"><img src="./images/img_bxSlider/photo3.png" alt="슬라이더페이지3"></a></li>
+                    </ul>
+                </div>
+            </article>
+        </header>
+        <!-- /HEADER -->
+        <!-- MAIN -->
+        <main role="main">
+            <!-- WE_ARE! -->
+            <section id="we_are">
+                <article class="we_are_text">
+                    <ul class="cf">
+                        <li><h2>WE ARE</h2></li>
+                        <li>
+                            Contrary to popular belief,<br>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        </li>
+                    </ul>
+                </article>
+                <article class="we_are_img">
+                    <ul class="cf">
+                        <li>
+                            <a href="#"><img src="./images/promo01.png" alt="프로모1"></a><br>
+                            HOME
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </li>
+                        <li>
+                            <a href="#"><img src="./images/promo02.png" alt="프로모2"></a><br>
+                            WE&nbsp;ARE
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </li>
+                        <li>
+                            <a href="#"><img src="./images/promo03.png" alt="프로모3"></a><br>
+                            WORK
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </li>
+                        <li>
+                            <a href="#"><img src="./images/promo04.png" alt="프로모4"></a><br>
+                            CONTACT&nbsp;US
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </li>
+                    </ul>
+                </article>
+            </section>
+            <!-- /WE_ARE! -->
+            <!-- LINE1 -->
+            <div class="line1"></div>
+            <!-- /LINE1 -->
+            <!-- WORK -->
+            <section id="work">
+                    <h2>WORK</h2> 
+                    <ul class="cf">
+                        <li><a href="#"><img src="./images/work01.jpg" alt="워크1"></a></li>
+                        <li><a href="#"><img src="./images/work02.jpg" alt="워크2"></a></li>
+                        <li><a href="#"><img src="./images/work03.jpg" alt="워크3"></a></li>
+                        <li><a href="#"><img src="./images/work04.jpg" alt="워크4"></a></li>
+                        <li><a href="#"><img src="./images/work05.jpg" alt="워크5"></a></li>
+                        <li><a href="#"><img src="./images/work06.jpg" alt="워크6"></a></li>
+                        <li><a href="#"><img src="./images/work07.jpg" alt="워크7"></a></li>
+                        <li><a href="#"><img src="./images/work08.jpg" alt="워크8"></a></li>
+                    </ul>               
+            </section>
+            <!-- /WORK -->
+            <!-- LINE2 -->
+            <div class="line2"></div>
+            <!-- /LINE2 -->
+            <!-- BLOG -->
+            <section id="blog" class="cf">
+                <h2>BLOG</h2>
+                <ul>
+                    <li>
+                        <a href="#"><img src="./images//blog01.jpg" alt="블로그1"></a><br>
+                        <p>
+                            July 06. 2021
+                        </p>
+                        <p>
+                            there are many variations of passages of Lorem Ipsum
+                        </p>
+                    </li>
+                    <li>
+                        <a href="#"><img src="./images//blog02.jpg" alt="블로그2"></a><br>
+                        <p>
+                            July 04. 2021
+                        </p>
+                        <p>
+                            there are many variations of passages of Lorem Ipsum
+                        </p>
+                    </li>
+                    <li>
+                        <a href="#"><img src="./images//blog03.jpg" alt="블로그3"></a><br>
+                        <p>
+                            July 01. 2021
+                        </p>
+                        <p>
+                            there are many variations of passages of Lorem Ipsum
+                        </p>
+                    </li>
+                </ul>
+            </section>
+            <!-- /BLOG -->
+            <!-- CONTACT -->
+            <section id="contact" class="cf">
+                <h2>CONTACT</h2>
+                <nav>
+                    <ul>
+                        <li>
+                            Name<br>
+                            <input type="text" id="name" value="이름">
+                        </li>
+                        <li>
+                            Phone<br>
+                            <input type="tel" id="tel" value="번호">
+                        </li>
+                        <li>
+                            email<br>
+                            <input type="email" id="tel" value="이메일">
+                        </li>
+                    </ul>
+                </nav>
+                <div>
+                    <label for="memo">Memo</label>
+                    <!-- cols 글자개수, rows 줄수 -->
+                    <textarea id="memo" cols="50" rows="8"></textarea>
+                </div>
+            </section>
+            <!-- /CONTACT -->
+            <!-- SEND_MASSAGE -->
+            <section id="send_massage">
+                <div class="send_massage_box">SEND&nbsp;MASSAGE</div>
+                <div class="send_massage_map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25315.62783408762!2d126.98769687910159!3d37.52080620000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca3eb6da7589b%3A0x12a0299d6b91faf1!2zQXBwbGUg6rCA66Gc7IiY6ri4!5e0!3m2!1sko!2skr!4v1663221984940!5m2!1sko!2skr" width="1132" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </section>
+            <!-- /SEND_MASSAGE -->
+        </main>
+        <!-- /MAIN -->
+        <!-- FOOTER -->
+        <footer>
+            COPY RIGHT ALL RIGHTS RESERVED WEBADD
+        </footer>
+        <!-- /FOOTER -->
+    </div>
+</body>
+</html>

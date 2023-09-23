@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>플롯 기초 최종실습</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <style>
+        body {
+            background: #000;
+            font-size: 14px;
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 20px;
+        }
+        #wrap {
+            width: 1000px;
+            margin: 0 auto;
+        }
+        /* Header */
+        header {
+            margin-bottom: 20px;
+        }
+        /* 플롯해제 */
+        header:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        header h1 {
+            width: 95px;
+            /* 플롯 */
+            float: left;
+        }
+        header nav {
+            /* 플롯 */
+            float: right;
+            padding-top: 5px;
+        }
+        header nav ul li {
+            /* 플롯 */
+            float: left;
+            margin-right: 20px;
+        }
+        header nav ul li:last-child {
+            margin-right: 0;
+        }
+        header nav ul li a {
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            background-color: #c00;
+            color: #fff;
+            text-align: center;
+        }
+        header nav ul li a:hover {
+            background-color: blue;
+        }
+        /* Slider */
+        article {
+            margin-bottom: 24px;
+        }
+        /* Contents */
+        /* 플롯해제 */
+        section:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        section div {
+            width: 300px;
+            height: 200px;
+            background-color: #fff;
+            /* 플롯 */
+            float: left;
+        }
+        section div:first-child {
+            background-color: rgb(227,19,57);
+        }
+        section div:last-child {
+            width: 400px;
+            background-color: rgb(5,65,155);
+        }
+        /* Footer */
+        footer {
+            font-size: 18px;
+            color: #fff;
+            text-align: center;
+            padding: 24px;
+        }
+        footer span {
+            font-family: oswald,sans-serif;
+            color: rgb(227,19,57);
+            font-weight: 500;
+            padding-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <!-- Header -->
+        <header>
+            <!-- <h1><img src="http://place-hold.it/95x40" alt="로고"></h1> -->
+            <h1><img src="https://via.placeholder.com/95x40" alt="로고"></h1>
+            <nav>
+                <ul>
+                    <li><a href="#">COMMUNITY</a></li>
+                    <li><a href="#">SERVICE</a></li>
+                    <li><a href="#">PRODUCT</a></li>
+                    <li><a href="#">COMPANY</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- /Header -->
+        <main role="main">
+        <!-- Slider -->        
+            <article>
+                <h2><img src="https://via.placeholder.com/1000x600" alt="슬라이드이미지"></h2>
+            </article>
+        <!-- /Slider -->
+        <!-- Contents -->
+            <section>
+                <div class="sec_part1"></div>
+                <div class="sec_part2"></div>
+                <div class="sec_part3"></div>
+            </section>
+        <!-- /Contents -->
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>
+                Copyright All Rights Reserved., <span>MCSSAM</span>
+            </p>
+        </footer>
+        <!-- /Footer -->
+    </div>
+</body>
+</html>

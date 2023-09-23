@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gallery</title>
+    <style>
+        * {
+            margin: 0 auto;
+            padding: 0 auto;
+        }
+        ul {
+            list-style: none;
+        }
+        .wrap1 {
+            width:390px;
+            height:auto;
+            border: 1px solid #000;
+        }
+        p {
+            /* border: 1px solid #000; */
+
+        }
+        .wrap1 > ul {
+            /* background-color: red; */
+        }
+        .wrap1, ul {
+            /* background-color: blue; */
+            /* wrap1 > ul이 우선순위가 높음 */
+        }
+        ul {
+            /* background-color: green; */
+        }
+        .wrap1 li p {
+            width:195px;
+            height:160px;
+            folat:left;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrap1">
+        <ul>
+            <li>
+                <p><img src="./img/images/img1 (1).gif"></p>
+                <p><img src="./img/images/img1 (2).gif"></p>
+            </li>
+            <li>
+                <p><img src="./img/images/img1 (3).gif"></p>
+                <p><img src="./img/images/img1 (4).gif"></p>
+            </li>
+            <li>
+                <p><img src="./img/images/img1 (5).gif"></p>
+                <p><img src="./img/images/img1 (6).gif"></p>
+            </li>
+            <li>
+                <p><img src="./img/images/img1 (7).gif"></p>
+                <p><img src="./img/images/img1 (8).gif"></p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="wrap2">
+    
+    </div>
+</div>    
+</body>
+</html>

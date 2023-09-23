@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>변수 문자열 결합 실습 | 변수의 재사용성</title>
+     <!-- 변수 5개를 이용해서 웹퍼블리싱 과정을 표현-->
+     <!-- 변수의 사용목적은 재사용성이 좋아야함 -->
+     <script>
+          var web = "웹";
+          var pub = "퍼블리싱";
+          var process = "과정"
+          var hap1 = (web + pub);          
+          var hap2 = (" "+process);          
+          document.write("<h1>"+hap1+hap2+"</h1>");
+
+          var aa = "<";
+          var bb = "h";
+          var cc = "1";
+          var dd = ">";
+          var result;
+          result = aa + bb + cc + dd + "웹퍼블리싱 과정" + aa+bb+cc+dd
+          console.log(result);
+          document.write(result);
+          // <h1>웹퍼블리싱 과정<h1>
+     </script>
+     
+     
+</head>
+<body>
+     
+</body>
+</html>

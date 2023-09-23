@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .box {
+        width: 100px;
+        height: 100px;
+        background: red;
+        transition : width 1s;
+        transition : height 2s;
+        /* transition : all/width/height ns; */
+    }
+    .box:hover {
+        width:200px;
+        height:200px;
+    }
+    .st0{fill:#286EFF;}
+    .box2 {
+        width:300px;
+        height:300px;
+        position: relative;
+    }
+    .box2 .bars {
+        position: absolute;
+        top:0;
+        left:0;
+        cursor:pointer;
+    }
+    .box2 .ani {
+        animation: ani 2s infinite;
+    }
+
+    @keyframes ani {
+        0%{left:0;top:0;}
+        50%{left:-300px;top:0;}
+        100%{left:-300px;top:300px;}
+    }
+    </style>
+
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box2">
+        <svg viewBox="0 0 448 512" class="bars">
+            <path
+                class="st0"
+                d="M30,96c0-17.7,14.3-32,32-32h324c17.7,0,32,14.3,32,32c0,17.7-14.3,32-32,32H62C44.3,128,30,113.7,30,96z
+	                M30,256c0-17.7,14.3-32,32-32h324c17.7,0,32,14.3,32,32s-14.3,32-32,32H62C44.3,288,30,273.7,30,256z M386,448H62
+	                c-17.7,0-32-14.3-32-32s14.3-32,32-32h324c17.7,0,32,14.3,32,32S403.7,448,386,448z"/>
+        </svg>
+    </div>
+
+    <script>
+        document.querySelector('.box2').addEventListener('click',function(){
+            document.querySelector('.box2 .bars').classList.add('ani');
+        });
+    </script>
+</body>
+</html>

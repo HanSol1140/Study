@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>브라우저 객체 실습</title>
+    <script>
+        var client = navigator.userAgent.toLowerCase();
+        console.log(client);
+        var result = client.indexOf("windows");
+    // indexOf("문자")
+    // 해당 문자가 있는지 없는지 체크해줌
+        console.log(result);
+        console.log(result+"result");
+    // 실습1. if문 이용 윈도우 사용자면 (도큐먼트) MS Windows OS 사용자
+    // 아니면, (도큐먼트) Windows 이외의 OS 사용자
+        var win10 = client.substr(13,7);
+        console.log(win10);
+        if("windows"==win10){
+            document.write("MS Windows OS 사용자<br>");
+        }else {
+            document.write("Windows 이외의 OS 사용자<br>");
+        }
+    // 견본
+        if (result){
+            document.write("MS Windows OS 사용자<br>");
+        }else {
+            document.write("Windows 이외의 OS 사용자<br>");
+        }
+        
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

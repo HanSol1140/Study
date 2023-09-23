@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리 위치 필터선택자, 기호는;</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- 부트스트랩 -->    
+    <!-- 버전 안정화 4 -->
+    <!-- css를 클래스화 해놓음 -->
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 2. 제이쿼리 CDN 방식이용 -->
+    <!-- <script src="http:code.jquery.com/jquery-1.12.4.min.js"></script> -->
+    <!-- <script src="http:code.jquery.com/jquery-3.3.1.min.js"></script> -->
+
+    <!-- 반드시 jQuery 코어파일 밑에 스크립트를 적어야함 -->
+    <script>
+        $(document).ready(function(){
+            // 인덱스 번호 0부터 시작
+            $('table>tbody>tr:nth-child(even)').css({'backgroundColor':'gray'});
+            $('table>tbody>tr:nth-child(odd)').css({backgroundColor:'lightgray'});
+            // $('table>tbody>tr:odd').css({backgroundColor:'red'});
+            // 첫번째, 미지막
+            $('#foods tr:first').css('background-color','black').css('color','white');
+            $('#foods tr:last').css({'background-color':'black','color':'white'});
+            $('#foods tr:eq(2)').css({backgroundColor:'orange'})
+            // tr:eq(테이블 배열선택 메서드, 배열은 0부터시작)
+
+            // lest than : ~미만
+                // lt
+            // greater than : ~초과
+                // gt
+            $('#foods_two tr:lt(3)').css('backgroundColor','red');
+            $('#foods_two tr:gt(3)').css('backgroundColor','blue');
+            // eq = equa1
+            $('#foods_two tr:eq(3)').css({backgroundColor:'orange'})
+        });
+
+
+
+    </script>
+</head>
+<body>
+    <div class="card-ody">
+        <h3 class="card-title">좋아하는 음식들</h3>
+    <table class="table" id="foods">
+        <tr>
+            <th>Id</th>
+            <th>먹을거리</th>
+            <th>분류</th>            
+        </tr>
+        <tr>
+            <th>F001</th>
+            <th>짜장면</th>
+            <th>중식</th>            
+        </tr>
+        <tr>
+            <th>F002</th>
+            <th>라면</th>
+            <th>분식,한식</th>            
+        </tr>
+        <tr>
+            <th>F003</th>
+            <th>김치찌개</th>
+            <th>한식</th>            
+        </tr>
+        <tr>
+            <th>F004</th>
+            <th>돈까스</th>
+            <th>일식</th>            
+        </tr>
+        <tr>
+            <th>F005</th>
+            <th>초밥</th>
+            <th>일식</th>            
+        </tr>
+        <tr>
+            <th>F006</th>
+            <th>안심스테이크</th>
+            <th>양식</th>            
+        </tr>
+    </table>
+
+
+    <br><hr><br>
+
+
+    <table class="table" id="foods_two">
+        <tr>
+            <th>Id</th>
+            <th>먹을거리</th>
+            <th>분류</th>            
+        </tr>
+        <tr>
+            <th>F001</th>
+            <th>짜장면</th>
+            <th>중식</th>            
+        </tr>
+        <tr>
+            <th>F002</th>
+            <th>라면</th>
+            <th>분식,한식</th>            
+        </tr>
+        <tr>
+            <th>F003</th>
+            <th>김치찌개</th>
+            <th>한식</th>            
+        </tr>
+        <tr>
+            <th>F004</th>
+            <th>돈까스</th>
+            <th>일식</th>            
+        </tr>
+        <tr>
+            <th>F005</th>
+            <th>초밥</th>
+            <th>일식</th>            
+        </tr>
+        <tr>
+            <th>F006</th>
+            <th>안심스테이크</th>
+            <th>양식</th>            
+        </tr>
+    </table>
+    
+</body>
+</html>

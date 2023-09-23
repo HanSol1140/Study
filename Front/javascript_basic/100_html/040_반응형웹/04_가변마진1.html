@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가변 마진</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        #wrap {
+            width: 960px;
+            height:500px;
+            margin:0 auto;
+            background-color: #000;
+        }
+        #wrap div {
+            height: 100%;
+        }
+        #wrap div:nth-child(1) {
+            width: 200px;
+            background-color: red;
+        }
+        #wrap div:nth-child(2) {
+            width: 200px;
+            background-color: blue;
+        }
+        #wrap div:nth-child(3) {
+            width: 200px;
+            background-color: green;
+        }
+        
+        @media screen and (min-width: 800px){
+            #wrap {
+                width:100%;
+                display: flex;
+                flex-flow: row nowrap;
+                order:1;
+            }
+            #wrap div:nth-child(1){
+            /* (200/960)*100 */
+                width:20.83333333333333%;
+                order:4;
+            }
+            #wrap div:nth-child(2){
+            /* (200/960)*100 */
+                width:20.83333333333333%;
+                order:2;
+            }
+            #wrap div:nth-child(3){
+            /* 100-[(200/960)*100*3] */
+                margin-left:37.50000000000001%;
+                /* 마진또한 %로 바꿔줘야함 */
+            /* (200/960)*100 */
+                width:20.83333333333333%;
+                order:3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</body>
+</html>

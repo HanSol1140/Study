@@ -1,0 +1,89 @@
+@charset "utf-8";
+
+body {
+    font-size: 32px;
+    font-family: 'noto sans kr', sans-serif;
+}
+#container {
+    width:100%;
+}
+header {
+    width: 100%;
+}
+header h1 {
+    font:600 2rem 'roboto', sans-serif;
+    text-align: center;
+    padding:12px 0;
+    text-shadow: 0 0 3px #666;
+}
+#menus {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+}
+#menus>div {
+    width:500px;
+    height:300px;
+    border: 1px solid #000;
+    margin-bottom: 16px;
+    position: relative;
+}
+#menus h2{
+    /* 포지션 */
+    position: absolute;
+    right:3%;
+    bottom:10px;
+    z-inex:1;
+    padding:10px;
+    font-size: 1.6rem;
+    color:#fff;
+    text-shadow: 3px 3px 5px black;
+    
+    
+}
+#menus1 {
+    width:100%;
+    background: url(../images/flex_01.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    
+}
+
+#menus2 {
+    width:100%;
+    background: url(../images/flex_02.jpg) no-repeat center;
+    background-size: cover;
+    background-size: 100% 100%;
+}
+#menus3 {
+    width:100%;
+    background: url(../images/flex_03.jpg) no-repeat center;
+    background-size: cover;
+}
+#menus4 {
+    width:100%;
+    background: url(../images/flex_04.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+#menus5 {
+    width:33%;
+    background: url(../images/flex_05.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    /* flex: 2 2 0; */
+    /* 2 2 0 : 기본크기 2배 */
+}
+footer {
+    width:100%;
+    background-color: #373737;
+    height: 80px;
+}
+footer p {
+    font-size: 1.2rem;
+    color:#fff;
+    text-align: center;
+}

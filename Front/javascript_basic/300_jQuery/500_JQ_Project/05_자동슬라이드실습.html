@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jquery => 500_JQ_Project -->
+    <title>PJ 자동 슬라이드</title>
+    <!-- 하단 jQuery부분에 중점 -->
+    
+<!-- CSS -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <!-- 외부CSS -->
+    <link rel="stylesheet" href="./css/pjfullmenu.css">
+    <link rel="stylesheet" href="./css/auto_carousel.css">
+    <!-- 폰트어썸CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- js -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 외부js -->
+    <script src="./js/pjfullmenu.js"></script>
+    
+</head>
+<body>
+<div id="wrap">
+    <!-- Header -->
+    <header>
+        <h1 class="logo">
+            AUTO Carousel
+        </h1>
+    </header>
+    <!-- /Header -->
+    <!-- Nav -->
+    <nav>
+        <!-- 1depth GNB메뉴 시작 -->
+        <div id="menu">
+            <ul class="gnb">
+                <li><a href="#">MENU_01</a></li>
+                <li><a href="#">MENU_02</a></li>
+                <li><a href="#">MENU_03</a></li>
+                <li><a href="#">MENU_04</a></li>
+                <li><a href="#">MENU_05</a></li>
+            </ul>
+        </div>
+        <!-- /1depth GNB메뉴 끝 -->
+        <!-- 2depth GNB메뉴 시작 -->
+        <div id="menu_dept">
+            <ul class="gnb_sub cf">
+                <li>
+                    <ul class="sub_menu">
+                        <li><a href="#">SUBMENU_01</a></li>
+                        <li><a href="#">SUBMENU_02</a></li>
+                        <li><a href="#">SUBMENU_03</a></li>
+                        <li><a href="#">SUBMENU_04</a></li>
+                        <li><a href="#">SUBMENU_05</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <ul class="sub_menu">
+                        <li><a href="#">SUBMENU_01</a></li>
+                        <li><a href="#">SUBMENU_02</a></li>
+                        <li><a href="#">SUBMENU_03</a></li>
+                        <li><a href="#">SUBMENU_04</a></li>
+                        <li><a href="#">SUBMENU_05</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <ul class="sub_menu">
+                        <li><a href="#">SUBMENU_01</a></li>
+                        <li><a href="#">SUBMENU_02</a></li>
+                        <li><a href="#">SUBMENU_03</a></li>
+                        <li><a href="#">SUBMENU_04</a></li>
+                        <li><a href="#">SUBMENU_05</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <ul class="sub_menu">
+                        <li><a href="#">SUBMENU_01</a></li>
+                        <li><a href="#">SUBMENU_02</a></li>
+                        <li><a href="#">SUBMENU_03</a></li>
+                        <li><a href="#">SUBMENU_04</a></li>
+                        <li><a href="#">SUBMENU_05</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <ul class="sub_menu no_bd">
+                        <li><a href="#">SUBMENU_01</a></li>
+                        <li><a href="#">SUBMENU_02</a></li>
+                        <li><a href="#">SUBMENU_03</a></li>
+                        <li><a href="#">SUBMENU_04</a></li>
+                        <li><a href="#">SUBMENU_05</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- 닫기 버튼 시작 -->
+            <span class="close"><a href="#">닫기[x]</a></span>
+            <!-- 닫기 버튼 끝 -->
+        </div>
+        <!-- /2depth GNB메뉴 끝 -->
+    </nav>
+    <!-- /Nav -->
+
+    <!-- 이미지 슬라이드 영역 -->
+    <article class="slideshow_container">
+        <!-- Slide Image 1 -->
+        <h2 class="slide fade">
+            <dic class="txt">Frozen Elsa</dic>
+            <img src="./images/img_bxSlider/slider1.png" alt="이미지1">
+            <div class="number_text">1 / 3</div>
+        </h2>
+        <!-- Slide Image 1 -->
+        <!-- Slide Image 2 -->
+        <h2 class="slide">
+            <dic class="txt">Frozen Elsa</dic>
+            <img src="./images/img_bxSlider/slider2.png" alt="이미지1">
+            <div class="number_text">2 / 3</div>
+        </h2>
+        <!-- Slide Image 2 -->
+        <!-- Slide Image 3 -->
+        <h2 class="slide">
+            <dic class="txt">Frozen Elsa</dic>
+            <a href="#"><img src="./images/img_bxSlider/slider3.png" alt="이미지1"></a>
+            <div class="number_text">3 / 3</div>
+        </h2>
+        <!-- Slide Image 3 -->
+        <!-- Button Prev, Next -->
+            <!-- 폰트어썸 -->
+        <a href="#" onclick="plusSlides(-1)"><i class="fa fa-angle-double-left prev"></i></a>
+        <a href="#" onclick="plusSlides(1)"><i class="fa fa-angle-double-right next"></i></a>
+            <!-- /폰트어썸 -->
+        <!-- /Button Prev, Next -->
+    </article>
+    <!-- /이미지 슬라이드 영역 -->
+    <!-- Aside Dot Dot Dot -->
+    <aside class="circle">
+        <span class="dot" onclick="currentSlides(1)"></span>
+        <span class="dot" onclick="currentSlides(2)"></span>
+        <span class="dot" onclick="currentSlides(3)"></span>
+    </aside>
+    <!-- /Aside Dot Dot Dot -->
+
+    <!-- Contents -->
+    <section>
+        <h2>Contents Area</h2>
+    </section>
+    <!-- /Contents -->
+    <!-- Footer -->
+    <footer>
+        <p>
+            COPYRIGHT &copy;MSSAM ALL RIGHTS RESERVED
+        </p>
+    </footer>
+    <!-- /Footer -->
+</div>
+<!-- <script src="./js/auto_carousel.js"></script> -->
+<script>
+    // 1. 초깃값 설정
+var slideIndex = 0;
+
+// 3. 자동 슬라이드 실행함수 호출(호이스팅 때문에 위에있어도 실행됨 | 선언적 함수)
+autoSlide();
+
+// 2.자동슬라이드 실행함수 설정
+function autoSlide(){
+    // a. 변수 선언
+    var i;
+    var slide = $('.slide');
+    var dot = $('.dot');
+    // b. 로딩시 슬라이드 이미지 모두 가리기
+    for(i=0; i<slide.length; i++){
+        slide.eq(i).css({display:'none'});
+    }
+    // c. slideIndex값 동적으로 세팅
+    slideIndex++;
+    // d. 데이터 유효성 코딩 : 슬라이드 이미지 갯수보다 slide Index값이 초과되면 1로 세팅
+    if(slideIndex > slide.length) {
+        slideIndex = 1;
+    }
+    // e. 첫번째 슬라이드 이미지 보이도록 코딩
+    slide.eq(slideIndex-1).show();
+    // f. 첫번째 도트에 컬러 보이도록 코딩
+    dot.eq(slideIndex-1).css({backgroundColor:'red'});
+    dot.eq(slideIndex-2).css({backgroundColor:'#ccc'});
+    // g. 2초마다 새로고침(재귀호출)
+    setTimeout(autoSlide,1500);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model : 구글 웹폰트 박스 실습</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <style>
+        #wrap {
+            width: 960px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: cyan;
+        }
+        #wrap div {
+            width:320px;
+            heigth: 320px;
+            line-height: 160px;
+            border: 1px solid #000;
+        }
+        #wrap .box1{
+            background-color: royalblue;
+        }
+        #wrap .box2{
+            background-color: peachpuff;
+        }
+        
+    </style>
+</head>
+    
+<body>
+    <div id="wrap">
+        <div class="box1">
+            <div class="text1">123</div>
+            <div class="text2">123</div>
+        </div>
+        <div class="box2">
+            <div class="text3">123</div>
+            <div class="text4">123</div>
+        </div>
+    </div>
+</body>
+</html>

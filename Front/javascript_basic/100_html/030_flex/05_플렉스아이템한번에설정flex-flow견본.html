@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        플렉스 아이템 한번에 설정(flex-flow) => [부모박스]에 설정
+        : flex-direction + flex-wrap
+        # 속성명 : flex-flow
+        # 속성값 : row nowrap [기본값]
+    </title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <style>
+        #wrap {
+            width: 90%;
+            height: 500px;
+            margin: 0 auto;
+            /* 플렉스 */
+            display: flex;
+            flex-flow: row wrap;
+        }
+        #wrap>div {
+            width: 50%;
+            height: 50%;
+            color: #fff;
+            text-align: center;
+            font-size: 24px;
+        }
+        #wrap > div:nth-child(1) {
+            background-color: black;
+        }
+        #wrap > div:nth-child(2) {
+            background-color: red;
+        }
+        #wrap > div:nth-child(3) {
+            background-color: orange;
+        }
+        #wrap > div:nth-child(4) {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</body>
+</html>

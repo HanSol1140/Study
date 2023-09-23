@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>변수실습</title>
+     <!--  -->
+     <script>
+     
+     var tall, num, result;
+     // 실습 - 적정체중 수식만들기 : 키-100*0.9
+     tall = 174; //변수(동적데이터) = 사람마다 키는 다르므로 상시 입력값이 다름
+     num = 100; //상수(정적데이터) = 적정체중수식에서 키-100으로 고정되는 100
+     result = (tall-num)*0.9;
+     // 실습
+     document.write("<h1>"+"해당 사용자의 키는 "+tall+"cm 입니다."+"</h1><br>");
+     document.write("해당 사용자의 적정몸무게는 "+((tall-num)*0.9)+"kg 입니다.");
+     
+     // 예시견본     
+     document.write("<h1>해당 사용자의 키는 " + tall + "cm입니다.</h1>")
+     document.write("<p>해당 사용자의 적정 몸무게는 " + result + "kg입니다.</p>")
+     </script>
+     
+     
+
+     
+</head>
+<body>
+     
+</body>
+</html>

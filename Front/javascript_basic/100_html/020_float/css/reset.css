@@ -1,0 +1,27 @@
+/* Reset */
+* {
+     margin: 0 auto;
+     padding: 0px;
+     box-sizing: border-box;
+}
+h1,h2,h3,h4,h5,h6 {
+     font-size: 16px;
+     font-weight: normal;
+}
+li {
+     list-style: none;
+}
+a {
+     color: inherit;
+     text-decoration: none;
+}
+img { vertical-align: top;
+}
+
+/* 클리어픽스 플롯해제 */
+/*┌선택자명은 본인이 설정(선택)한 선택자명, cf일필요 없음   */
+.cf:after {
+     content: "";
+     display: block;
+     clear: both;
+}

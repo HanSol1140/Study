@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리, 이벤트1</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+
+    <!-- 부트스트랩 -->    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- 버전 안정화 4 -->
+    <!-- css를 클래스화 해놓음 -->
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 2. 제이쿼리 CDN 방식이용 -->
+    <!-- <script src="http:code.jquery.com/jquery-1.12.4.min.js"></script> -->
+    <!-- <script src="http:code.jquery.com/jquery-3.3.1.min.js"></script> -->
+
+    <!-- 반드시 jQuery 코어파일 밑에 스크립트를 적어야함 -->
+    <style>
+        h5 {
+            cursor:pointer;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+        // 1. 단일 이벤트
+            // $('h5').click(function(){
+                // alert('단일이벤트호출');
+            // });
+        // 2. one() 이벤트 메서드 : 이벤트 한번만 실행
+            // $('h5').one('click',function(){
+                // alert('one이벤트 실행');
+            // });
+        // 3. on() 이벤트 메서드 : 하나의 DOM요소에 여러개 이벤트 등록 가능
+            // $('h5').on('click',function(){
+                // alert('on이벤트 실행');
+            // });
+        // 3-1. on() 이벤트 메서드 : 여러개 이벤트 등록
+        // $('h5').on({'mouseover':function(){실행문},'mouseout':function(){실행문}})
+            // $('h5').on({'mouseover':function(){
+                // alert('마우스오버');
+            // },'mouseout':function(){
+                // alert('마우스아웃');
+            // }});
+
+            // mouseover | mouseout : DOM형태의 padding을 인식하지않음 (범위가 좁음)
+            // 따라서 mouseenter와 mouseleave를 주로 사용 (훨씬많이사용함)
+            // $('h5').on({'mouseenter':function(){
+                // alert('마우스엔터');
+            // },'mouseleave':function(){
+                // alert('마우스리브');
+            // }});
+
+        // 4. hover() : mouseenter() + mouseleaver()
+            // $('h5').hover(function(){},function(){})
+            // $('h5').hover(function(){
+                // mouseenter()시 이벤트 리스너
+                // alert("마우스 엔터시");
+            // },function(){
+                // mouseleave()시 이벤트 리스너
+                // alert('마우스 리브시');
+            // });
+        // 실습1. 버튼을 클릭했을때, h6에 "이벤트 작동완료!!" 텍스트노드 삽입해주세요
+                $('button').on('click',function(){
+                    $('h6').text("이벤트작동완료!!");
+                });
+            });
+        
+        
+
+    </script>
+</head>
+<body>
+    <h5>제이쿼리 이벤트 사용방법</h5>
+    <h6>123</h6>
+    <button>버튼</button>
+</body>
+</html>

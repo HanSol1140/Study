@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가상선택자</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <style>
+        .container {
+            width: 960px;
+            margin: 10px auto;
+        }
+        /* GNB Area */
+        .container nav {
+            height: 60px;
+            padding-bottom: 10px;
+            border-top: 1px dashed #ccc;
+            border-bottom: 1px dashed #ccc;
+            text-align: center;
+        }
+        .container nav ul {
+            line-height: 60px;
+        }
+        .container nav ul li {
+            width: 150px;
+            display: inline-block;
+        }
+        .container nav ul li a:hover {
+            background-color: #222;
+            color: #fff;
+        }
+        /* Section Area */
+        .contents {
+            width: 400px;
+            padding: 20px;
+            border: 1px solid #222;
+            border-radius: 5px;
+            margin: 30px auto;
+        }
+        .contents h2 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        .contents p {
+            line-height: 1.75;
+        }
+        /* 가상 클래스 => target : 앵커 대상에 스타일 적용 */
+        #intro:target {
+            background-color: #0069e0;
+            color: #fff;
+        }
+        #room:target {
+            background-color: #ff9844;
+        }
+        #price:target {
+            background-color: #fff8dc;
+        }
+        #reservation:target {
+            background-color: #4172a2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- GNB Area -->
+        <nav>
+            <ul>
+                <li><a href="#intro">이용 안내</a></li>
+                <li><a href="#room">객실 소개</a></li>
+                <li><a href="#price">예약방법 및 요금</a></li>
+                <li><a href="#reservation">예약하기</a></li>
+            </ul>
+        </nav>
+        <!-- /GNB Area -->
+        <!-- Section Area -->
+        <section id="intro" class="contents">
+            <h2>이용 안내</h2>
+            <p>
+                Excepteur do est eiusmod nulla et veniam. Labore officia officia ex aliqua
+                exercitation aliqua laborum Lorem deserunt ut ullamco labore anim. Officia eu
+                duis aliquip incididunt. Do laborum et consequat aliqua sint consectetur.               
+            </p>
+        </section>
+        <section id="room" class="contents">
+            <h2>객실 소개</h2>
+            <p>
+                Excepteur do est eiusmod nulla et veniam. Labore officia officia ex aliqua
+                exercitation aliqua laborum Lorem deserunt ut ullamco labore anim. Officia eu
+                duis aliquip incididunt. Do laborum et consequat aliqua sint consectetur.               
+            </p>
+        </section>
+        <section id="price" class="contents">
+            <h2>예약방법 및 요금</h2>
+            <p>
+                Excepteur do est eiusmod nulla et veniam. Labore officia officia ex aliqua
+                exercitation aliqua laborum Lorem deserunt ut ullamco labore anim. Officia eu
+                duis aliquip incididunt. Do laborum et consequat aliqua sint consectetur.               
+            </p>
+        </section>
+        <section id="reservation" class="contents">
+            <h2>예약하기</h2>
+            <p>
+                Excepteur do est eiusmod nulla et veniam. Labore officia officia ex aliqua
+                exercitation aliqua laborum Lorem deserunt ut ullamco labore anim. Officia eu
+                duis aliquip incididunt. Do laborum et consequat aliqua sint consectetur.               
+            </p>
+        </section>                        
+        <!-- /Section Area -->
+    </div>
+</body>
+</html>

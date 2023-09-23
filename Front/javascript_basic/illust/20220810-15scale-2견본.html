@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .button{
+            width:150px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgb(255, 255, 5);
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .button p{
+            width:10px;
+            height: 10px;
+            border-radius: 50%;
+            transform: scale(0);
+            background-color: red;
+            position: absolute;
+            z-index: 2;
+            top:0;
+            left:75px;
+            animation: ani 1s forwards;
+        }
+        @keyframes ani{
+            0%{
+                transform: scale(0);
+                opacity: 1;
+            }
+            100%{
+                transform: scale(17);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="button">click
+        <p></p>
+    </div>
+</body>
+</html>

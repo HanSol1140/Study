@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position : absolute 시습</title>
+    <link rel="stylesheet" href="./css/reset.css">
+</head>
+<style>
+#wrap {
+    width:300px;
+    height:300px;
+    margin:0;
+    border: 1px solid #000;
+    position:relative;
+}
+
+#box {
+    width:50px;
+    height:50px;
+
+}
+
+.box1 {
+    background-color: aqua;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    transform: translate(-125px,125px);
+    
+}
+.box2 {
+    background-color: yellow;
+    position: absolute;
+    left: 250px;
+    top: 0px;
+    z-index: 1;
+}
+.box3 {
+    background-color: black;
+    position: absolute;
+    left: 125px;
+    top: 125px;
+    z-index: 1;
+}
+.box4 {
+    background-color: green;
+    position: absolute;
+    left: 0px;
+    top: 250px;
+    z-index: 1;
+}
+.box5 {
+    background-color: red;
+    position: absolute;
+    left: 250px;
+    top: 250px;
+    z-index: 1;
+    transform: translate(-125px,-125px);
+}
+</style>
+
+<body>
+    <div id="wrap">
+        <div id="box" class="box1"></div>
+        <div id="box" class="box2"></div>
+        <div id="box" class="box3"></div>
+        <div id="box" class="box4"></div>
+        <div id="box" class="box5"></div>
+        <div id="box" class="box6"></div>
+    </div>
+</body>
+</html>

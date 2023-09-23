@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS DOM 실습</title>
+    <style>
+        #container{
+            width: 400px;
+            height:400px;
+            margin:0 auto;
+            text-align: center;
+            padding-top: 20px;
+            cursor: pointer;
+        }
+        #girlpic:hover {
+            text-align: center;
+            margin:0 auto;
+        }
+    </style>
+    
+    <script>
+        // 실습1. 브라우저 로딩시에 자동으로 (경고창)이 뜨도록 코딩
+        // 조건 => DOM객체 로드 후에 (경고창)이 나오도록
+        window.onload = function(){
+            
+        // 1.DOM 객체 할당
+            var girlpic = document.querySelector('#girlpic');
+            console.log(girlpic);
+        // 2. EventListener 작성
+            function changePic(){
+                // alert('aa');
+                girlpic.src = "./images/boy.png";
+            }
+            function originPic(){
+                // alert('bb');
+                girlpic.src = "./images/girl.png";
+            }
+            // 3. Event DOM에 EventListener 연결
+            
+            girlpic.addEventListener('mouseover',changePic);
+            girlpic.addEventListener('mouseout',originPic);
+        }
+        //     function changePic(){
+        //         girlpic.src ="./images/boy.png";
+        //     }
+        //     function originPic(){
+        //         girlpic.src = "./images/girl.png";
+        //     }
+            document.querySelector('#girlpic').addEventListener('mouseover',changePic);
+            document.querySelector('#girlpic').addEventListener('mouseout',originPic);
+        
+
+
+        // }
+    </script>
+</head>
+<body>
+    <div id="container">
+        <img src="./images/girl.png" alt="소녀이미지" id="girlpic">
+    </div>
+    
+</body>
+</html>

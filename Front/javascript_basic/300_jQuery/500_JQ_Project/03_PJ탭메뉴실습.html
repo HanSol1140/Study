@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[중요]PJ 탭메뉴</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 외부CSS -->
+    <!-- <link rel="stylesheet" href="./css/tap_jq.css"> -->
+    <style>
+        #wrap {
+            max-width:960px;
+            margin:0 auto;
+        }
+        header {
+            height:60px;
+            text-align: center;
+            background-color: #333;
+            line-height: 60px;
+        }
+        header .logo {
+            color:#fff;
+            font-size:1.5rem;
+        }
+        /* TAB MENU */
+        nav {
+            background-color: #555;
+            color:#fff;
+        }
+        .gnb{
+            height: 45px;
+            line-height: 45px; 
+        }
+        nav .gnb {
+            display: table;
+            margin:0 auto;
+            text-align: center;
+        }
+        nav .gnb li {
+            display: table-cell;
+            background-color: red;
+        }
+        nav .gnb li a {
+            display: table-cell;
+            width:192px;
+            transition: all 0.5s;
+        }
+        /* (중요)처음 로딩시 해당 영역에만 스타일 적용을 위한 클래스 */
+        nav .gnb li.active a {
+            background-color: #ccc;
+            color:darkred;
+            display:block;
+        }
+        /* 탭 메뉴 클릭시 나오게 될 컨텐츠들 */
+        section div {
+            width:100%;
+            display: none;
+        }
+        section div img {
+            max-width:100%;
+            width:100%;
+        }
+        .tab_content_00 {
+            display: block;
+        }
+        /* FOOTER */
+        footer {
+            width:100%;
+            text-align: center;
+            background-color: cyan;
+            color:#333;
+            font-weight: bold;
+            line-height: 80px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <h1 class="logo">EACHTAB AFFECT</h1>
+        </header>
+        <!-- TAB MENU -->
+        <nav>
+            <div id="menu_gnb">
+                <ul class="gnb">
+                    <li class="active"><a href="#" onclick="tab_menu(0)">MENU1</a></li>
+                    <li><a href="#" onclick="tab_menu(1)">MENU1</a></li>
+                    <li><a href="#" onclick="tab_menu(2)">MENU1</a></li>
+                    <li><a href="#" onclick="tab_menu(3)">MENU1</a></li>
+                    <li><a href="#" onclick="tab_menu(4)">MENU1</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- /TAB MENU -->
+        <!-- TAB CONTENT -->
+        <!-- 탭메뉴 클릭시 나오게 될 컨텐츠들 -->
+        <section>
+            <!-- 콘텐츠 영역01 -->
+            <div class="tab_content_00">
+                <h2><img src="./images/img_bxSlider/slider1.png" alt="슬라이더1"></h2>
+            </div>
+            <!-- /콘텐츠 영역01 -->
+            <!-- 콘텐츠 영역02 -->
+            <div class="tab_content_01">
+                <h2><img src="./images/img_bxSlider/slider2.png" alt="슬라이더1"></h2>
+            </div>
+            <!-- /콘텐츠 영역02 -->
+            <!-- 콘텐츠 영역03 -->
+            <div class="tab_content_02">
+                <h2><img src="./images/img_bxSlider/slider3.png" alt="슬라이더1"></h2>
+            </div>
+            <!-- /콘텐츠 영역03 -->
+            <!-- 콘텐츠 영역04 -->
+            <div class="tab_content_03">
+                <h2><img src="./images/img_bxSlider/slider1.png" alt="슬라이더1"></h2>
+            </div>
+            <!-- /콘텐츠 영역04 -->
+            <!-- 콘텐츠 영역05 -->
+            <div class="tab_content_04">
+                <h2><img src="./images/img_bxSlider/slider2.png" alt="슬라이더1"></h2>
+            </div>
+            <!-- /콘텐츠 영역05 -->
+        </section>
+        <!-- /탭메뉴 클릭시 나오게 될 컨텐츠들 -->
+        <!-- /TAB CONTENT -->
+        <!-- FOOTER -->
+        <footer>
+            <p>
+                COPYRIGHT &copy;MSSSAM ALL RIGHTS RESERVED.,
+            </p>
+        </footer>
+        <!-- /FOOTER -->
+    </div>
+<!-- 외부JS -->
+<!-- <script src="./js/tap_jq.js"></script> -->
+<script>
+    // DOM 객체 탭메뉴명 변수로 할당
+var tab = $('#menu_gnb').find('li');
+console.log("탭메뉴 li갯수는 "+tab.length);
+// Event Listene
+// tab_menu(0)<= 매개체 = 매개함수
+var i;
+function tab_menu(num) {
+    // 구조의 tab_menu = 0~4 / i = 0~4 => 같음
+    for(i=0; i<tab.length; i++){
+        if(num == i){
+            // a-1. active 클래스 적용
+            tab.eq(i).addClass('active');
+            $('.tab_content_0'+i).show();
+        } else{
+            // a-1. active 클래스 제거
+            tab.eq(i).removeClass('active');
+            $('.tab_content_0'+i).hide();
+        }
+    }
+}
+</script>
+</body>
+</html>

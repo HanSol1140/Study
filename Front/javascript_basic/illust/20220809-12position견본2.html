@@ -1,0 +1,109 @@
+pos2.html
+액세스 권한이 있는 사용자
+W
+시스템 속성
+유형
+HTML
+크기
+2KB
+사용한 용량
+2KB
+위치
+풀스택
+소유자
+Wind Windway
+수정 날짜
+오후 4:38에 Wind Windway님이 수정
+생성 날짜
+오후 4:39
+설명 없음
+뷰어가 다운로드할 수 있음
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin:0; padding: 0;}
+        .wrap{
+            width:414px;
+            height:896px;
+            position: relative;
+            border:1px solid red;
+            margin: auto;
+        }
+        .wrap .mount{
+            width:inherit;
+            height: inherit;
+            position: absolute;
+            left:0;
+            top:0;
+            z-index:1;
+        }
+        .mount img{
+            width:100%;
+            height: 100%;
+        }
+        .wrap .cloud1{
+            position: absolute;
+            z-index: 2;
+            left: -272px;
+             top: 193px;
+            width:300px;
+            height: 242px;
+            animation:  ani1 1s forwards;
+        }
+/* 
+    left: -52px;
+    top: 280px; */
+        .wrap .cloud2{
+            position: absolute;
+            z-index: 2;
+            left: 388px;
+            top: 193px;
+            width:300px;
+            height: 242px;
+            animation:  ani2 1s forwards;
+        }
+        /* left: 68px;
+    top: 363px; */
+
+    @keyframes ani1{
+        0%{
+            left: -272px;
+             top: 193px;
+        }
+        100%{
+            left: -52px;
+            top: 280px;
+        }
+    }
+    @keyframes ani2{
+        0%{
+            left: 388px;
+            top: 193px;
+        }
+        100%{
+            left: 68px;
+            top: 363px; 
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="mount">
+            <img src="parallax/mountain.jpg" alt="배경" >
+        </div>
+        <div class="cloud1">
+            <img src="parallax/cloud1.png" alt="구름1">
+        </div>
+        <div class="cloud2">
+            <img src="parallax/cloud2.png" alt="구름2">
+        </div>
+        <p>DISCOVER</p>
+    </div>
+</body>
+</html>

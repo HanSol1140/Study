@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        플렉스 아이템 여러줄 배치(flex-wrap) => [부모박스]에 설정
+        : 플렉스 박스안에 플렉스 아이템이 배치될 때 기본적으로 한줄로만 배치
+          플렉스 아이템을 여러줄로 배치하고 싶으면 flex-wrap 사용
+        # 속성명 : flex-direction
+        # 속성값 : nowrap(기본값), wrap
+    </title>
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        h3 {
+            margin: 24px 0;
+            font-size: 24px;
+            font-family:'noto sans kr', serif;
+        }
+        .red{
+            background-color: red;
+        }
+        .green{
+            background-color: green;
+        }
+        .blue{
+            background-color: blue;
+        }
+        .purple{
+            background-color: purple;
+        }
+        /* flex-wrap:nowrap 예시 */
+        .content1{
+            height:150px;
+            color: #fff;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+        /* flex-wrap:wrap 예시 */
+        .content1>div{
+            width:50%;
+            height:50%;
+        }
+        .content2{
+            height:150px;
+            color: #fff;
+            display: flex;
+            flex-direction: row;
+            flex-wrap:wrap;
+        }
+        .content2>div {
+            width:50%;
+            height:50%;
+        }
+    </style>
+</head>
+    <h3>flex-wrap:nowrap 예시</h3>
+    <div class="content1">
+        <div class="red">1</div>
+        <div class="green">2</div>
+        <div class="blue">3</div>
+        <div class="purple">4</div>
+    </div>
+    <h3>flex-wrap:wrap 예시</h3>
+    <div class="content2">
+        <div class="red">1</div>
+        <div class="green">2</div>
+        <div class="blue">3</div>
+        <div class="purple">4</div>
+    </div>
+<body>
+</body>
+</html>

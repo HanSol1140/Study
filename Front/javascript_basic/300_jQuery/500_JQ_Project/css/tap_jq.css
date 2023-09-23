@@ -1,0 +1,66 @@
+@charset "utf-8";
+#wrap {
+    max-width:960px;
+    margin:0 auto;
+}
+header {
+    height:60px;
+    text-align: center;
+    background-color: #333;
+    line-height: 60px;
+}
+header .logo {
+    color:#fff;
+    font-size:1.5rem;
+}
+/* TAB MENU */
+nav {
+    background-color: #555;
+    color:#fff;
+}
+.gnb{
+    height: 45px;
+    line-height: 45px; 
+}
+nav .gnb {
+    display: table;
+    margin:0 auto;
+    text-align: center;
+}
+nav .gnb li {
+    display: table-cell;
+    background-color: red;
+}
+nav .gnb li a {
+    display: table-cell;
+    width:192px;
+    transition: all 0.5s;
+}
+/* (중요)처음 로딩시 해당 영역에만 스타일 적용을 위한 클래스 */
+nav .gnb li.active a {
+    background-color: #ccc;
+    color:darkred;
+    display:block;
+}
+/* 탭 메뉴 클릭시 나오게 될 컨텐츠들 */
+section div {
+    width:100%;
+    display: none;
+}
+section div img {
+    max-width:100%;
+    width:100%;
+}
+.tab_content_00 {
+    display: block;
+}
+/* FOOTER */
+footer {
+    width:100%;
+    text-align: center;
+    background-color: cyan;
+    color:#333;
+    font-weight: bold;
+    line-height: 80px;
+    font-size: 14px;
+}

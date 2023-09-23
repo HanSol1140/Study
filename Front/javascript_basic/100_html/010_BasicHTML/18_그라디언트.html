@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3 그라디언트</title>
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        div {
+            width: 500px;
+            height: 300px;
+            display: inline-block;
+        }
+        .grad1 {
+            /* CSS 미지원 브라우저 대비책 */
+            background: blue;
+            /* 접두(prefix)사용 */
+            background: -webkit-linear-gradient(left bottom, #a173bf, white 50%, #eaf205);
+            background: -moz-linear-gradient(top bottom, #a173bf, #eaf205);
+            background: -o-linear-gradient(90deg bottom, #a173bf, #eaf205);
+            background: -ms-linear-gradient(#a173bf, #eaf205);
+            background: linear-gradient(left bottom, #a173bf, #eaf205);
+            /* 제일아래것이 우선적으로 뜸 */
+        }
+        .grad2{
+            background:red;
+            background: -webkit-linear-gradient(top, red, white 50%, blue);
+            background: -moz-linear-gradient(top, red, white 50%, blue);
+            background: -o-linear-gradient(top, red, white 50%, blue);
+            background: -ms-linear-gradient(top, red, white 50%, blue);
+            background: linear-gradient(top, red, white 50%, blue);
+        }
+        .grad3{
+            background:black;
+            background: -webkit-linear-gradient(90deg, red, white 50%, blue);
+            background: -moz-linear-gradient(90deg top, red, white 50%, blue);
+            background: -o-linear-gradient(90deg, red, white 50%, blue);
+            background: -ms-linear-gradient(90deg, red, white 50%, blue);
+            background: linear-gradient(90deg, red, white 50%, blue);
+        }
+        .grad4 {
+            background-color: yellow;
+            background: -webkit-linear-gradient(white,yellow,red);
+            background: -moz-linear-gradient(white,yellow,red);
+            background: -o-linear-gradient(white,yellow,red);
+            background: -ms-linear-gradient(white,yellow,red);
+            background: linear-gradient(white,yellow,red);
+        }
+        .grad5 {
+            background-color: red;
+            background: -webkit-radial-gradient(circle, purple, yellow, green);
+            background: -moz-radial-gradient(circle, purple, yellow, green);
+            background: -o-radial-gradient(circle, purple, yellow, green);
+            background: -ms-radial-gradient(circle, purple, yellow, green);
+            background: radial-gradient(circle, purple, yellow, green);
+        }
+    </style>
+</head>
+<body>
+    <div class="grad1"></div>
+    <div class="grad2"></div>
+    <div class="grad3"></div>
+    <div class="grad4"></div>
+    <div class="grad5"></div>
+    
+</body>
+</html>

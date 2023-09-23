@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transform, 트랜스폼</title>
+    <!-- 트랜스폼은 전부 암기해야함 -->
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        img {
+        width:200px;
+        height:200px;
+        }
+        .origin {
+            width:200px;
+            height:200px;
+            border: 1px solid #000;
+            margin: 40px;
+            cursor:pointer;
+        }
+        .origin_sk {
+            width: 160px;
+            height: 240px;
+            border: 1px solid #000;
+            margin: 100px;
+            cursor:pointer;
+        }
+
+        /* 접두어(prefix) 사용 */
+        /* 1. x축, y축 이동 */
+        .movexy:hover {
+            transform: -webkt-translate(10px,20px);
+            transform: -moz-translate(10px,20px);
+            transform: -o-translate(10px,20px);
+            transform: -ms-translate(10px,20px);
+            transform: translate(10px,20px);
+        }
+        .movex:hover {
+            transform: translateX(30px);
+        }
+        .movey:hover {
+            transform: translateY(-30px);
+        }
+
+
+        /* 크기변환 */
+        .scale:hover {
+            transform: scale(0.8);
+        }
+        .scale_x:hover {
+            transform: scaleX(1.4);
+        }
+        .scale_y:hover {
+            transform: scaleY(1.4);
+        }
+        /* 3. 회전 */
+        .rotate1:hover {
+            transform: rotate(20deg);
+        }
+        .rotate2:hover {
+            transform: rotate(-20deg);
+
+        }
+        /* /3. 회전 */
+        /* 4. 기울이기(왜곡) */
+        .skew:hover {
+            transform: skew(30deg,20deg);
+        }
+        .skew_x:hover {
+            transform: skewX(-25deg);
+        }
+        .skew_y:hover {
+            transform: skewy(-20deg);
+        }
+        </style>
+
+
+</head>
+<body>
+    <!-- 1. x축, y축 이동-->
+    <div class="origin">
+        <div class="movexy">
+            <img src="./images/a.jpg" alt="dog">
+        </div>
+    </div>
+    <div class="origin">
+        <div class="movex">
+            <img src="./images/a.jpg" alt="dog">
+        </div>
+    </div>
+    <div class="origin">
+        <div class="movey">
+            <img src="./images/a.jpg" alt="dog">
+        </div>
+    </div>
+    <!-- /1. x축, y축 이동-->
+    <!-- 2. 크기변환 -->
+    <div class="origin">
+        <div class="scale">
+            <img src="./images/b.jpg" alt="baby">
+        </div>
+    </div>
+    <div class="origin">
+        <div class="scale_x">
+            <img src="./images/b.jpg" alt="baby">
+        </div>
+    </div>
+    <div class="origin">
+        <div class="scale_y">
+            <img src="./images/b.jpg" alt="baby">
+        </div>
+    </div>
+    <!-- /2. 크기변환 -->
+    <!-- 3. 회전 -->
+    <div class="origin">
+        <div class="rotate1">
+            <img src="./images/c.jpg" alt="babydog">
+        </div>
+    </div>
+    <div class="origin">
+        <div class="rotate2">
+            <img src="./images/c.jpg" alt="babydog">
+        </div>
+    </div>
+    <!-- /3. 회전 -->
+    <!-- 4. 기울이기(왜곡) -->
+    <div class="origin_sk">
+        <div class="skew">
+            <img src="./images/d.jpg" alt="people">
+        </div>
+    </div>
+    <div class="origin_sk">
+        <div class="skew_x">
+            <img src="./images/d.jpg" alt="people">
+        </div>
+    </div>
+    <div class="origin_sk">
+        <div class="skew_y">
+            <img src="./images/d.jpg" alt="people">
+        </div>
+    </div>
+    <!-- /4. 기울이기(왜곡) -->
+</body>
+</html>

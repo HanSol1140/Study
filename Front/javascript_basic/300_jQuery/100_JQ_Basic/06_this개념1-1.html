@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[중요]제이쿼리, this 개념</title>
+        <!-- on메서드 -->
+
+    <!-- 부트스트랩 -->    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- 버전 안정화 4 -->
+    <!-- css를 클래스화 해놓음 -->
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 2. 제이쿼리 CDN 방식이용 -->
+    <!-- <script src="http:code.jquery.com/jquery-1.12.4.min.js"></script> -->
+    <!-- <script src="http:code.jquery.com/jquery-3.3.1.min.js"></script> -->
+
+    <style>
+        #div {
+            width:100%;
+            margin-bottom:10px;
+        }
+        .clickTest {
+            border: 1px solid #000;
+            background-color: yellowgreen;
+            border-radius: 5px;
+            padding:10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <!-- 반드시 jQuery 코어파일 밑에 스크립트를 적어야함 -->
+    <script>
+        $(document).ready(function(){
+            // DOM 객체 변수 할당
+            var elm = $('.clickTest');
+            // $(elm).click(function(){
+            //     alert("경고창");
+            // });
+            // elm.on("click",function(){
+            //     alert('aa');
+            //     elm.text('클릭되었습니다.');
+            // });
+
+        // 전부 개별로 알람등록하세요!
+            // var div1 = $("#div1");
+            // div1.on("click",function(){
+            //     div1.text("클릭되었습니다1");
+            // });
+            // var div2 = $("#div2");
+            // div2.on("click",function(){
+            //     div2.text("클릭되었습니다2");
+            // var div3 = $("#div3");
+            // div3.on("click",function(){
+            //     div3.text("클릭되었습니다3");
+            // });
+            // var div4 = $("#div4");
+            // div4.on("click",function(){
+            //     div4.text("클릭되었습니다4");
+            // });
+            // var div5 = $("#div5");
+            // div5.on("click",function(){
+            //     div5.text("클릭되었습니다5");
+            // });
+    // 위의 불편함을 해결한 방법이 this
+    // : DOM 요소 $(this)
+    // this는 상황에 따라 들어있는 변수가 바뀌는 '특수변수'임
+    // 이벤트 리스너에서의 this 이벤트 발생한 DOM요소가 들어감
+    // 즉, 위의 소스에 경우 '클릭한 요소' 가 this에 할당
+        // this사용
+            $('.clickTest').on("click",function(){
+                $(this).text("클릭되었습니다!");
+            });
+        });
+    </script>
+    
+
+    
+    
+</head>
+<body>
+    <button id ="div1" class="clickTest">div!!</button><br>
+    <button id ="div2" class="clickTest">div!!</button><br>
+    <button id ="div3" class="clickTest">div!!</button><br>
+    <button id ="div4" class="clickTest">div!!</button><br>
+    <button id ="div5" class="clickTest">div!!</button><br>    
+</body>
+</html>

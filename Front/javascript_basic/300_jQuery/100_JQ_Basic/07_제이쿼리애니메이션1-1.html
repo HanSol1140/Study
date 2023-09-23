@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리, 애니메이션 animate()</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+
+    <!-- 부트스트랩 -->    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- 버전 안정화 4 -->
+    <!-- css를 클래스화 해놓음 -->
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 2. 제이쿼리 CDN 방식이용 -->
+    <!-- <script src="http:code.jquery.com/jquery-1.12.4.min.js"></script> -->
+    <!-- <script src="http:code.jquery.com/jquery-3.3.1.min.js"></script> -->
+    <style>
+        div {
+            width:50px;
+            height:50px;
+            margin:20px;
+            background-color: skyblue;
+            cursor: pointer;
+            position: absolute;
+            left:50px;
+            top:50px;
+            z-index: 1;
+        }
+        .delay {
+            width:300px;
+            height:100px;
+            background-color: purple;
+            cursor:pointer;
+            position: absolute;
+            left:50px;
+            top:150px;
+            z-index:1;
+            display: none;
+        }
+    </style>
+    <!-- 반드시 jQuery 코어파일 밑에 스크립트를 적어야함 -->
+    <script>
+        $(document).ready(function(){
+            // 1. animate({속성명:속성값(숫자),시간,속도,콜백함수});
+                // a. 속성 : 반드시 매개변수값으로 입력)속성값이 숫자값으로 사용되는 속성들만 사용가능)
+                    // =>제이쿼리 코어 플러그인을 설치할 경우 문자값도 사용가능
+                // b. 시간 : 'slow', 'normal', 'fast'
+                // c. 속도 : swing(기본값:처음에 느려지고 마지막에 느려짐), linear(동일속도)
+                // d. 콜백함수 : 해당 메서드가 실행이 된 이후 호출하여 사용하는 함수
+            $('div').mouseover(function(){
+                $(this).stop().animate({width:100,height:100},'slow','linear');
+            });
+            $('div').mouseout(function(){
+                $(this).stop().animate({width:50,height:50},'slow','linear');
+            });
+            // ※ animate앞에 stop()을 써줘야 over와 out을 반복했을때 대기열이 쌓이지 않는다
+
+            // 실습1. 버튼1을 클릭할때마다 50px씩 오른쪽으로 애니메이션 동작이 되도록 코딩
+            $('#btn1').on("click",function(){
+                $('.div1').stop().animate({width:'+=50'},'slow','linear');
+            });
+            // 실습2 버튼2을 클릭할때마다 50px씩 왼쪽으로애니메이션 동작이 되도록 코딩
+            $('#btn2').click(function(){
+                $('.div1').stop().animate({width:'-=50'},'slow','swing');
+            //  실습3 버튼3을 클릭할때 처음 위치로 애니메이션 동작이 되도록 코딩
+            });
+            $('#btn3').on("click",function(){
+                $('.div1').stop().animate({width:50},'slow','linear');
+            });
+            // delay() : 설정 밀리초후에 애니메이션 실행
+            // $('button').eq(-1).click(function(){
+            //     $('.delay').stop().delay(1000).animate({left:500},'slow','linear');
+            // })
+            // 별도실습. DELAY 버튼 클릭시 delay박스 나오도록 코딩
+            $('button').eq(-1).on("click",function(){
+                $('.delay').show();
+            })
+
+        });
+    </script>    
+</head>
+<body>
+    <div class="div1"></div>
+    <button id="btn1">버튼1</button>
+    <button id="btn2">버튼2</button>
+    <button id="btn3">버튼3</button>
+    <button id="dealy">DELAY</button>
+    <div class="delay"></button>
+    
+</body>
+</html>

@@ -1,0 +1,19 @@
+/* System Fonts */
+@font-face {
+    font-family: system;
+    font-style: normal;
+    font-weight: 300;
+    src : local("../font/SFNSText-Light.ttf"),
+    local("../font/HelveticaNeueDeskInterface-Light.ttf"),
+    local("../font/LucidaGrandeUI.ttf"),
+    local("../font/Ubuntu-Light.ttf"),
+    local("../font/SegoeUILight.ttf"),
+    local("../font/Roboto-Light.ttf"),
+    local("../font/DroidSans.ttf"),
+    local("../font/Tahoma.ttf"),
+}
+
+/* System Fonts 적용 */
+body {
+    font-family: "system";
+}

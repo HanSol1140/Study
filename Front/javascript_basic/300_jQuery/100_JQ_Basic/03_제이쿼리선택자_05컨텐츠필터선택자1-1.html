@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리, 콘텐츠 필터 선택자</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 2. 제이쿼리 CDN 방식이용 -->
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        // 태그 내부의 텍스트 요소에 지정한 값 포함 여부 선택 contains("내용")
+            $('#nations tbody td:contains("국")').css('backgroundColor','orange');
+        // 태그 내부의 텍스트 요소에 지정한 태그 포함 여부 선택 has("내용")
+            $('#nations tbody td:has(b)').css('backgroundColor','red');
+        // 태그 내부에 아무런 요소도 없는 경우 선택(비어있는 텍스트 노드)
+            $('#nations tbody td:empty()').css('backgroundColor','black');
+            
+            
+        // 실습1. 키보드 이벤트
+            $('#keyword').keyup(function(){
+            // 1. 키보드 이벤트
+                $('#nations tbody tr').css('display','none');
+                    // display:none;구조에서는 사리지지 않지만 브라우저에서는 인식을 못하게 바뀜
+            // 2. input내용 변수 할당
+                var text = $(this).val();
+                            // └여기에서 this의  대상은 #keyword
+            // 3. 포함된 내용 보여주기
+                $('#nations tbody td:contains("' + text + '")').parent().show();
+            });
+
+            
+        });
+        
+    </script>
+</head>
+<body>
+    <div class="card-body">
+        <div>
+            국가명 : <input type="text" id="keyword" class="form-contrl">
+        </div>
+        <table class="table" id="nations">
+            <thead>
+                <th>번호</th>
+                <th>국가명</th>
+                <th>수도</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><b>미국</b></td>
+                    <td>워싱턴</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>한국</td>
+                    <td>서울</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>러시아</td>
+                    <td>모스크바</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>자메이카</td>
+                    <td>킹스턴</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>모로코</td>
+                    <td>라바트</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>중국</td>
+                    <td>베이징</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>영국</td>
+                    <td>런던</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>프랑스</td>
+                    <td>파리</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>멕시코</td>
+                    <td>멕시코시티</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>베트남</td>
+                    <td>하노이</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>브라질</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>    
+</body>
+</html>

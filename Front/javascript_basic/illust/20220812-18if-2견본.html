@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>당신의 하루 걷는양은 몇 보인가요?</p>
+    <p><input type="text" id="walk"><input type="button" value="저장" id="btn"></p>
+    <div class="res"></div>
+    <script>
+        function fnWalk(walk, .res){
+            var txt = "";
+            if(walk >= 10000){
+                txt = "좋은 습관을 가지고 계시는 군요.";
+            }else{
+                txt ="운동을 하세요.";
+            }
+            document.querySelector(str).innerHTML = txt;
+        }
+       document.querySelector('#btn') .addEventListener('click', function(){
+        
+            var walk = Number(document.querySelector('#walk').value);
+            fnWalk(walk,'.res');
+        });
+            // if(walk >= 10000){
+            //     document.querySelector('.res').innerHTML = "좋은습관을 가지고 계시는군요.";
+            // }else{
+            //     document.querySelector('.res').innerHTML = "운동을 하세요.";
+            // }
+            
+
+    </script>
+    
+</body>
+</html>

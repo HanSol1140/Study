@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모바일 퍼스트, 미디어쿼리 실습ㄴ</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <!-- 공통 CSS = 모바일 퍼스트 -->
+    <!-- 768px 이상 958px 이하 -->
+    <!-- 1024px 이상 -->
+    <style>
+        body {
+            background-color:blue;
+        }
+        #wrap {
+            margin:0 auto;
+            width:100%;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: bold;
+            text-align: center;
+            color:#fff;
+            line-height: 96px;
+        }
+        #img_section {
+            width:100%;
+            height:800px;
+            margin-bottom: 50px;
+        }
+        img {
+            width:50%;
+            height:100%;
+            float:left;
+        }
+        p {
+            padding:2%;
+            color:#fff;
+        }
+        p:nth-child(1) {
+                margin-bottom:20px
+            }
+        @media screen and (min-width:768px) and (max-width:958px){
+            body {
+                background-color: aqua;
+            }
+            img {
+                width:100%;
+            }
+            p {
+                color:black;
+            }
+        }
+        @media screen and (min-width:1024px){
+            body {
+                background-color: purple;
+            }
+            img {
+                width:40%;
+                margin:0 5%;
+            }
+            p {
+                border: 2px solid #fff;
+                margin: 2%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <h1>동전 하나로 행복했던 날들</h1>
+        </header>
+        <main role="main">
+            <section id="img_section" class="cf">
+                <img src="./images/img1.jpg" alt="img1">
+                <img src="./images/img2.jpg" alt="img2">
+            </section>
+            <section id="text_section">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque est culpa explicabo eos quibusdam incidunt neque magni quasi doloribus libero numquam officia beatae, soluta consequuntur ad unde pariatur qui distinctio!
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque est culpa explicabo eos quibusdam incidunt neque magni quasi doloribus libero numquam officia beatae, soluta consequuntur ad unde pariatur qui distinctio!
+                </p>
+            </section>
+        </main>
+    </div>
+    
+</body>
+</html>

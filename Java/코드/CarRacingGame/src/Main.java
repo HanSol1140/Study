@@ -1,26 +1,22 @@
 import java.io.IOException;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        while (true) {
-            Message.getCarsMessage();
-            String[] carNames = Input.getCarNames();
 
-            Message.getRoundMessage();
-            int rounds = Input.getRounds();
+        String[] carNames = Input.getCarNames();
+        int rounds = Input.getRounds();
 
-            Game aaa = new Game(carNames);
-            aaa.CarMoving(rounds);
-
-            Message.getWinners(aaa);
-
-            Message.askMessage();
-            String answer = Input.ask();
-
-            if(answer.equals("Y") && answer.equals("y")){
-                break;
-            }
+        Game aaa = new Game(carNames);
+        for(var i = 0; i <= rounds; i++){
+            aaa.CarMoving();
         }
-        System.out.println("게임종료");
+        System.out.println("우승자 : " + aaa.getWinner());
+
+
+
+
+
+
     }
 }

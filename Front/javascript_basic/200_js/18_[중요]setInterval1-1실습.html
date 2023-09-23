@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval() 메서드</title>
+    <!-- [중요] -->
+    <!-- 스크립트는 스크립트 파일을 저장하고 반드시 브라우저에서 새로고침을 해줘서 메모리에 할당해줘야함 -->
+    <!-- 그거없이 할수잇는게set interval? -->
+    <!-- 자동으로 F5(새로고침)을 해주는것?) -->
+    <script>
+        var addNum = 0;
+        var subNum = 1000;
+    // 실습1. 3초마다 addNum이 1씩 증가
+        var plusNum = setInterval(function(){
+        addNum++;
+            console.log("addNum : " + addNum);
+        },3000);
+        
+    // 실습2. 2초마다 SubNum이 1씩 감소
+        var minusNum = setInterval(function(){
+            subNum--;
+            console.log("subNum : "+ subNum);
+        },3000);
+        
+        function click1(){
+            alert("경고");
+        }
+    </script>
+</head>
+<body>
+    <h1>setInterval() 메서드</h1>
+    <!-- clearInterval(함수명) -->
+    <!-- 인터벌을 종료시킴 -->
+    <button onclick="clearInterval(plusNum);">setInterval_Stop1</button>
+    <button onclick="clearInterval(minusNum);">setInterval_Stop2</button>
+</body>
+</html>

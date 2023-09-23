@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js Event, DOM2</title>
+    <!-- DOM = 안되는게 많았음 -->
+    <!-- 지정을 하나하면 똑같은 이벤트 리스너를 사용할 수 없었음 -->
+    <!-- DOM2 = 그런부분들이 개선되어 나옴 -->
+    <style>
+        button, h3 {
+            cursor: pointer;
+        }
+    </style>
+    
+    <script>
+// 1. 조건 : 스크립트 영역이 헤드 안에 잇을때
+// window.onload
+// 헤드안에 스크립트 영역이 있지만, DOM객체(body)를 먼저 메모리에 올리고 스크립트를 실행해라
+        window.onload = function(){
+            // 1. 문서객체 변수에 할당
+            var btn = document.getElementById('button')
+            var contents = heading;
+            console.log(btn);
+            console.log(contents);
+            // 2. Event Listener 작성
+            // 2-a [기능]경고창
+            // DOM 이벤트 버튼 클릭시 JS Event 방식 글자색 블루
+            function whenClick1() {
+                alert("경고");
+                contents.style.color = "blue";
+            }
+        //     // 2-b [기능]새로운 내용으로 바꾸기
+        //     function whenClick2() {
+        //         alert("경고");
+        //         document.getElementById('heading')
+        //         contents.innerHTML = "새로운 내용"
+        //         // innerHTML => 문자열을 덮어 씌우는 명령어
+        //     }
+        //     // 3. Event DOM에 EventListener 연결
+        //     btn.addEventListener('click',whenClick1);
+        //     heading.addEventListener('click',whenClick2);
+        }
+        function click123(){
+
+        }
+
+    </script>
+</head>
+<body>
+<button id="button">DOM 이벤트</button>
+<h3 id="heading">JS Event 방식</h3>
+<script></script>
+</body>
+</html>

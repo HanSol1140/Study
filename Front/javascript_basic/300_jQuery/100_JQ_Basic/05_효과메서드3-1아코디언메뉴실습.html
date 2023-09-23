@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리, 아코디언 메뉴 실습</title>
+    <!-- <link rel="stylesheet" href="./css/reset.css"> -->
+    <!-- <link rel="stylesheet" href="./css/font.css"> -->
+
+    <!-- 부트스트랩 -->    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- 버전 안정화 4 -->
+    <!-- css를 클래스화 해놓음 -->
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 2. 제이쿼리 CDN 방식이용 -->
+    <!-- <script src="http:code.jquery.com/jquery-1.12.4.min.js"></script> -->
+    <!-- <script src="http:code.jquery.com/jquery-3.3.1.min.js"></script> -->
+
+    <!-- 반드시 jQuery 코어파일 밑에 스크립트를 적어야함 -->
+    <style>
+        h2 {
+            font-size: 1rem;
+            font-weight: normal;
+        }
+        .accordion {
+            width:500px;
+            font-size: 14px;
+        }
+        .header {
+            border: 1px solid #000;
+            text-align:center;
+            padding: 2px;
+            margin-bottom: 2px;
+            background-color: darkgray;
+            color:#000;
+            cursor:pointer;
+        }
+        .content {
+            padding:5px;
+            height:100px;
+            border: 1px solid #000;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('#acc>.content').hide();
+
+
+        // 실습1. 제목을 눌러서 내용 부분이 나타날 수 있도록 토글하시오
+            // $('.header').eq(0).click(function(){
+            //     $('.content').eq(0).toggle();
+            // });
+            // $('.header').eq(1).click(function(){
+            //     $('.content').eq(1).toggle();
+            // });
+            // $('.header').eq(2).click(function(){
+            //     $(this).next('p').toggle();
+            // });
+            // $('.header').eq(3).click(function(){
+            //     $(this).next('.content').toggle();
+            // });
+            // $('.header').eq(4).click(function(){
+            //     $(this).next('.content').toggle();
+            // });
+    // 위의 코드를 한번에 압축하면
+            $('.header').click(function(){
+                $(this).next('.content').toggle();
+            });
+        });
+    </script>
+    
+</head>
+<body>
+    <div id="acc" class="card-body accordion">
+        <h1>아코디언 UI</h1>
+        <h2 class="header">제목1</h2>
+        <p class="content">내용1</p>
+
+        <h2 class="header">제목2</h2>
+        <p class="content">내용2</p>
+
+        <h2 class="header">제목3</h2>
+        <p class="content">내용3</p>
+
+        <h2 class="header">제목4</h2>
+        <p class="content">내용4</p>
+
+        <h2 class="header">제목5</h2>
+        <p class="content">내용5</p>
+    </div>
+    <br>
+    <div class="card-body content">
+        아코디언 UI는 생각보다 만들기 어렵지 않음 <br>
+        jQuery를 이용하면 간단하게 개발 가능
+    </div>
+</body>
+</html>

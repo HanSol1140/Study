@@ -1,0 +1,78 @@
+
+05_리스트
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List : 목록을 만드는 태그</title>
+
+</head>
+<body>
+    <!-- List는 전부 암기해야함 -->
+    <h1>List 요소</h1>    
+    <h2>순서없는 목록(ul)</h2>
+    <!-- 중요하지 않은 목록을 정리할때 사용 => 순서가 없다는점이 중요 =>  -->   
+    
+    <p>
+        각 항목앞에 작은원이나 사각형 블릿이 붙음
+    </p>
+    <h3>풀스택개발자 기본 공부할 과목</h3>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>javaScript</li>
+        <li>JAVA</Li>
+        <li>SQL</li>
+        <li>JSP</li>
+    </ul>
+    <h3>기타 사용 프로그램들</h3>
+    <ul>
+        <li>VS CODE</li>
+        <li>eclipse</li>
+        <li>Oracle Developer</li>
+    </ul>
+    <h2>순서있는 목록(ol)</h2>
+    <p>
+        각 항목 앞에 숫자, 영문, 로마자가 붙음
+    </p>
+    <ol>
+        <li>물을 넣는다.</li>
+        <li>면을 넣는다.</li>
+        <li>스프를 넣는다</li>
+        <li>기호에 따라 파나 달걀을 넣는다.</li>
+    </ol>
+    <h3>언박싱 순서</h3>
+    <ol type="i"><!-- type 미선택시 기본적으로123순, a는 abcd, i는 로마자순으로 정리 -->
+        <li>택배상자를 뜯는다</li>
+        <li>상품의 비닐을 벗긴다</li>
+        <li>도구를 이용하여 스티커를 잘라낸다</li>
+        <li>상품을 꺼낸다</li>
+        <li>자랑용 사진촬영을 한다</li>
+    </ol>
+    <h3>목록중첩 - 제주여행일정</h3>
+    <ol><!-- 1depth -->
+        <li>1일차
+            <ul><!-- 2depth -->
+                <li>해녀체험</li>
+                <li>낚시체험</li>
+            </ul>
+        </li>
+        <li>2일차
+            <ul>
+                <li>용눈이오름</li>
+                <li>마장구</li>
+                <li>카약체험</li>
+            </ul>
+        </li>
+        <li>3일차
+            <ul>
+                <li>협재해수욕장</li>
+                <li>감귤체험</li>
+            </ul>
+        </li>
+        </ol>
+</body>
+</html>

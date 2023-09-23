@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function, 함수</title>
+    <script>
+// 1. 함수만들기
+    // 1.1 익명 함수 만들기
+        // [형식]
+        // var 참조변수명 = funtion(){
+        // 실행문;
+        // }
+        // 예시
+        // var count = 0;
+        // var noName = function(){
+            // count++;
+            // document.write("익명함수 : " + count + "<br>");
+        // }
+        // 이렇게 해도 함수는 메모리 공간에 올라가만 있고 사용되지않음, 사용하려면 [호출]을 해야함
+        // console.log(noName);
+        // 메모리공간에 삽입된 함수값을 확인가능
+
+
+
+    // 1.2 선언적 함수 만들기
+        // [형식]    
+        // function 선언적함수명(){
+            // 실행문;
+        // }
+        // 예시
+        // function pub(){
+        //     count++;
+        //     document.write("선언적함수 : "+count+"<br>");
+        // }
+
+        // console.log(pub);
+
+        // 1-1-1. 익명함수 호출
+        // noName();
+        // noName();
+        // 1-2-1. 선언적함수 호출
+        // pub();
+        // pub();
+
+        /* 실습1. (익명함수)
+        (기능) (프롬프트) 숫자를 입력받아,
+        (경고창) 입력받은 숫자에 +10을 한 결괏값을 반환하는 함수 제작*/
+        
+        // var create = function (){
+            // var num = Number(prompt("숫자입력", "100"));
+            // alert(num+10);
+            
+        // }
+        // create();
+
+        /* 실습2 (선언적함수) 함수명 print
+        (기능) (경고창) "자바스크립트 선언적 함수 호출" 반환하는 함수 제작 */
+        function print(){
+            alert("자바스크립트 선언적 함수 호출");
+        }
+        print();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

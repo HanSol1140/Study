@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        미디어 쿼리
+        : 화면의 크기 (=너비)와 기타 환경을 감지하여 웹 사이트를 변경하는 기술
+          웹 반응형을 적용하려면 <디바이스 기기의 종류>를 알아야,
+          그 기기에 맞게 웹사이트 구조를 바꿀 수 있기 때문에 반드시 필요.
+          CSS3 속성중 하나 => (코딩시 유의사항) 변화를 주고 싶은 박스 영역만 코딩
+          [형식(암기)] @media [only 또는 not] 미디어유형 and 또는, (조건문){실행문 = css코드 작성}
+    </title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        /* 공통 CSS */
+        body {
+            background-color: yellowgreen;
+        }
+        img {
+            width:30%;
+        }
+        section {
+            text-align: left;
+        }
+    /* 모바일 퍼스트 코딩 순서는 무조건 범위가 작은애들부터 */
+    /* [형식(암기)]
+    @media [only 또는 not] 미디어유형 and 또는, (조건문){실행문 = css코드 작성} */
+    /* => @media all and (min-width: 360px){
+            css1 {
+                ~~~~;
+            }
+            css2 {
+                ~~~~;
+            }
+        }
+    */
+    /* and = 모두 참일때 실행 */
+    /* or = or 중 하나라도 참일때 실행 */
+        /* 모바일 미디어쿼리 360px 이상 */    
+        @media all and (min-width: 360px){
+            body {
+                background-color: yellowgreen;
+            }
+            img {
+                width:30%;
+            }
+            section {
+                text-align: left;
+            }
+        }
+        /* 태블릿 미디어쿼리 768px 이상 */
+        @media all and (min-width: 768px){
+            body {
+                background-color: green;
+            }
+            img {
+                width:60%;
+            }
+            section {
+                text-align: center;
+            }
+        }
+        /* PC미디어쿼리 1024이상 */
+        @media all and (min-width: 1024px){
+            body {
+                background-color: blue;
+            }
+            img {
+                width:90%;
+            }
+            section {
+                text-align: right;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <img src="./images/img7.jpg" alt="목화">
+    </section>
+    
+</body>
+</html>

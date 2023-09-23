@@ -1,0 +1,267 @@
+@charset "utf-8";
+/* 백그라운드 시작 */
+body {
+    /* position:relative; */
+}
+#wrap {
+    width: 1920px;
+    height:100%;
+    margin:0 auto;
+    position:relative;
+    z-index: 1;
+}
+#wrap1 {
+    width: 1920px;
+    height:700px;
+    background: url("../images/montblanc_images/slide_back_img.png") no-repeat;
+    z-index: 1;
+
+}
+#wrap2 {
+    width: 100%;
+    height:580px;
+    background-color: #b5b5b5;
+}
+#wrap3 {
+    width: 100%;
+    height:1000px;
+}
+#wrap4 {
+    width: 100%;
+    height: 560px;
+    background: url(../images/montblanc_images/mov_back.jpg);
+}
+#wrap5 {
+    width: 100%;
+    height: 914px;
+    background-color: #fff;
+}
+#wrap6 {
+    width: 100%;
+    height: 550px;
+    background-color: #dddddd;
+}
+#wrap7 {
+    width: 100%;
+    height: 240px;
+    background-color: #ffcd36;
+}
+
+/* /백그라운드 끝 */
+/* 메인영역 시작 */
+main {
+    margin-top: 70px;
+}
+#main {
+    margin:0 auto;
+    width:1280px;
+    /* height:100%; */
+    border: 1px solid red;
+    position: absolute;
+    left:50%;
+    top:0%;
+    transform: translate(-50%, -0%);
+    z-index: 1;
+}
+/* 헤더영역 시작 */
+    /* 헤더상단 시작*/
+header {
+    margin:0 auto;
+}
+.header_top {
+    margin-top: 20px;
+}
+.header_top img:nth-child(1) {
+    float:left;
+}
+.header_top img:nth-child(2) {
+    float:right;
+    margin-top:20px;
+}
+
+header nav {
+    margin-left: 420px;
+    font-weight: bold;
+}
+header ul li:nth-child(8) {
+    margin-right:60px;
+}
+header ul li {
+    color: silver;
+    float:left;
+    margin-left:20px;
+}
+header ul li:nth-child(1) {
+    color: #fff;
+}
+    /* /헤더상단 끝 */
+    /* /헤더하단 시작 */
+.header_bottom>p:nth-child(1) {
+        padding-top: 200px;
+        color:white;
+        font-size: 64px;
+        font-weight: bold;
+        line-height: 64px;
+    }
+.header_bottom>p:nth-child(2) {
+    color: darkgray;
+    margin-top: 40px;
+}
+.header_bottom>p:nth-child(3) {
+    color: darkgray;
+    margin-top: 10px;
+}
+.header_bottom p {
+    margin-left: 40px;
+}
+    /* /헤더하단 끝 */
+/* /헤더영역 끝 */
+/* 메인센터영역 시작 */
+/*  */
+main {
+    background-color: #fff;
+}
+    /*  메인 탑 슬라이더 시작*/
+main{
+    background: none;
+    margin-top:40px;
+}
+
+#main_top_slider{
+    width:1280px;
+    
+
+
+    }
+    #main_top_slider1{
+        width:1270px;
+        position: relative;
+        left:50%;
+        top:0%;
+        transform: translate(-50%,0%);
+    }
+        .top_slider1 {
+            width:400px;
+            height:500px;
+            background: url(../images/montblanc_images/card_box01.jpg); 
+            float:left;
+            margin-right:35px;
+ 
+        }
+        .top_slider2 {
+            width:400px;
+            height:500px;
+            background: url(../images/montblanc_images/card_box02.jpg); 
+            float:left;
+            
+
+        }
+        .top_slider3 {
+            width:400px;
+            height:500px;
+            background: url(../images/montblanc_images/card_box03.jpg); 
+            float:right;
+            margin-left:35px;
+        }
+#main_top_slider2{
+    width:100%;
+    height:180px;
+    font-size: 20px;
+}
+    #main_top_slider article .main_p1 {
+        float:left;
+        line-height:150px;
+        color:beige;
+        padding-left: 10px;
+    }
+        #main_top_slider article p span{
+            color:#2b2b2b;
+            font-weight: bold;
+        }
+    #main_top_slider article .main_p2 {
+        float:right;
+        line-height:150px;
+        color: beige;
+        font-weight: bold;
+        padding-right: 10px;
+    }
+    /*  /메인 탑 슬라이더 끝 */
+    /* 메인 탑 상단부 시작 */
+#main_center{
+    width:100%;
+    background-color: none;
+    color: silver;
+    font-size: 24px;
+    text-align: center;
+    line-height: 48px;
+    padding-bottom: 220px;
+}
+#main_center_top1 p{
+    
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 80px;
+    margin:40px 0 0px 0; ;
+
+}
+#main_center_top2 {
+    width:100%;
+    height:500px;
+}
+    /* 메인 탑 상단부 끝 */
+    /* 메인 가운데영역 시작 */
+#mov_back img:nth-child(1){
+    margin-top :320px;
+}
+#mov_back img:nth-child(2){
+    margin-top:100px;
+    width:100%;
+}
+    /* /메인 가운데영역 끝 */
+    /* 메인 하단 시작*/
+#main_bottom {
+    width:100%;
+    margin-top:50px;
+    overflow:hidden;
+}
+    /* /메인 하단 끝 */
+    /* 메인 푸터 시작 */
+#main_footer {
+    color:white;
+    line-height: 32px;
+}
+.main_footer1 {
+    padding-top: 100px;
+    width:100%;
+    height:420px;
+    border-bottom: 1px solid white;
+
+}
+#main_footer .main_footer1 p:nth-child(2) {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+.main_footer1 div:nth-child(1){
+    margin-right: 100px;
+    margin-left: 0px;
+}
+
+.main_footer1 div{
+    float:left;
+    margin-left: 130px;
+}
+.main_footer2 {
+    width:100%;
+    height:130px;
+    padding:30px;
+    text-align: center;
+    font:bold 18px 'noto sans kr', san-serif;
+}
+    /* 메인 푸터 끝 */
+/* /메인영역 끝 */
+/* 푸터영역 시작 */
+footer{
+width:100%;
+height:550px;
+background-color: #000;
+}

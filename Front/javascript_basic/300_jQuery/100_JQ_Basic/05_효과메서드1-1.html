@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리, 효과 메서드 + 기본이벤트</title>
+    <!-- <link rel="stylesheet" href="./css/reset.css"> -->
+    <!-- <link rel="stylesheet" href="./css/font"> -->
+
+    <!-- 부트스트랩 -->    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- 버전 안정화 4 -->
+    <!-- css를 클래스화 해놓음 -->
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 2. 제이쿼리 CDN 방식이용 -->
+    <!-- <script src="http:code.jquery.com/jquery-1.12.4.min.js"></script> -->
+    <!-- <script src="http:code.jquery.com/jquery-3.3.1.min.js"></script> -->
+
+    <!-- 반드시 jQuery 코어파일 밑에 스크립트를 적어야함 -->
+    <style>
+        body {
+            margin:10px;
+        }
+        h2 {
+            margin-top:20px;
+        }
+        #btn1,#btn2,#btn3,#btn4,#btn5,#btn6,#btn7,#btn8,#btn9 {
+            cursor:pointer;
+        }
+        .box1 {
+            display: none;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+        // 1. show 나타남
+            // 1.show(), hide(), toggle()
+            $('#btn1').click(function(){
+                $('.box1').hide();
+            });
+            $('#btn2').click(function(){
+                $('.box1').show();
+            });
+            $('#btn3').click(function(){
+                $('.box1').toggle();
+
+            });
+
+        // 2. slide
+            // slideDown() / slideUp() / slideToggle()
+            $('#btn4').click(function(){
+                $(this).parent().next().slideUp();
+            });
+            $('#btn5').click(function(){
+                $(this).parent().next().slideDown();
+            });
+            $('#btn6').click(function(){
+                $(this).parent().next().slideToggle();
+            });
+
+
+            
+        // 3.fade 점점사라짐
+            // fadeIn / fadeOut / fadeToggle
+            $('#btn7').click(function(){
+                $('.box3').fadeOut();
+            });
+            $('#btn8').click(function(){
+                $('.box3').fadeIn();
+            });
+            $('#btn9').click(function(){
+                $(this).parent().next().fadeToggle();
+            });
+        });
+    
+    </script>
+    
+    
+</head>
+<body>
+    <h1>제이쿼리 효과</h1>
+    <p>
+        제이쿼리에서 화면전환, 슬라이드 다운과 업효과 등 <br>
+        다양한 효과 메서드를 제공 <br>
+        제이쿼리 코어파일 버전에 따라 동작이 안될 경우도 있음
+    </p>
+
+
+    <h2>show / hide / toggle 효과</h2>
+    <p>
+        <button id="btn1">HIDE</button>
+        <button id="btn2">SHOW</button>
+        <button id="btn3">TOGGLE</button>
+    </p>
+    <p class="box1">
+        DOM선택요소를 숨기거나 노출하고 싶을 경우에 사용 <br>
+        형식 : hide('시간') | show('시간') | toggle('시간') <br>
+        매개변수 '시간' = 'fast' 200, 'normal' 400, 'slow' 600, 밀리세컨 입력 가능
+    </p>
+
+
+    <h2>slideDown / slideUP / slideToggle 효과</h2>
+    <p>
+        <button id="btn4">slideUP</button>
+        <button id="btn5">slideDown</button>
+        <button id="btn6">slideToggle</button>
+    </p>
+    <p class="box2">
+        slideUp은 DOM 선택요소를 위로 미끄러지듯 말아 올리면서 숨김 <br>
+        slideDown은 DOM 선택요소를 아래로 미끄러지듯 말아 내리면서 노출시킴 <br>
+        형식 : slideDown('시간') | slideUP('시간') | SlideToggle('시간') <br>
+        매개변수 '시간' = 'fast' 200, 'normal' 400, 'slow' 600, 밀리세컨 입력 가능
+    </p>
+
+
+    <h2>fadeIn / fadeOut / fadeToggle 효과</h2>
+    <p>
+        <button id="btn7">fadeOut</button>
+        <button id="btn8">fadeIn</button>
+        <button id="btn9">fadeToggle</button>
+    </p>
+    <p class="box3">
+        fadeOut은 DOM 선택요소를 천천히 사라지게 함 <br>
+        fadeIn은 DOM 선택요소를 천천히 나타나게 함 <br>
+        식 : fadeOut('시간') | fadeIn('시간') | fadeToggle('시간') <br>
+        매개변수 '시간' = 'fast' 200, 'normal' 400, 'slow' 600, 밀리세컨 입력 가능
+    </p>
+</body>
+</html>

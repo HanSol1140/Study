@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>비교연산자</title>
+     <script>
+          var a = 10;              // + 연산한정
+          var b = 20;              // 문자열이 하나라도 있으면
+          var c = 10;              // 무조건 무조건 문자결합으로 취급됨
+          var d = "20";            // console.log(a+b+c+d);
+          var result = null;       // ex)10+20+10+"20" 은 4020이아니라 10201020으로 표기됨
+
+          // 비교연산자 : 논리값으로 결과 반환 =>결과는 true/false로 출력된다
+          result = a > b; //false
+          console.log("1."+result);
+          result = a < b; //true
+          console.log("2."+result);
+          result = a >= c; //true
+          console.log("3."+result);
+
+          // == : 데이터 형과 상관없이 숫자일 경우 true반환
+          result = b == d;
+          console.log("4."+result); //true
+
+          // === : 데이터 형까지 일치해야 true반환
+          result = b === d;
+          console.log("5."+result); //false
+
+          // (논리부정) 데이터 형과 상관없이 숫자일 경우 false반환
+          result = b != d; //(!=)b와 d가 같은가?'
+          console.log("6."+result); //false
+
+          // (논리부정) 데이터 형까지 일치해야 false반환
+          result = b !== d;
+          console.log("7."+result); //true
+          // alert(result);
+     </script>
+</head>
+<body>
+     
+</body>
+</html>

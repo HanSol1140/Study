@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>플렉스박스기본레이아웃</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        #wrap{
+            width:1080px;
+            margin:0 auto;
+            position: relative;
+        }        
+
+        /* 헤더영역 시작 */
+        header {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content:flex-end
+        }
+        #GNB {
+            width:1080px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            background-color: red;
+        }
+        #flexible {
+            width:150px;
+            height:100px;
+            text-align: center;
+            line-height: 100px;
+            background-color: red;
+            position: absolute;
+            left:0px;
+            top:0px;
+            z-index: 1;
+        }
+        /* 헤더영역 끝 */
+        /* 메인상단 시작 */
+        main #main_top{
+            width:1080px;
+            height:300px;
+            display: flex;
+            flex-flow: row nowrap;
+        }
+        main .top_slider {
+            width:480px;            
+            text-align: center;
+            background: #44f;
+
+        }
+        main .gallary {
+            width:300px;
+            text-align: center;
+            background-color: bisque;
+        }
+        main .serach_rank {
+            width:300px;
+            background-color: rgb(15, 151, 117);
+        }
+        /* 메인상단 끝 */
+        /* 메인하단 시작 */
+        main #main_bottom {
+            width:1080px;
+            height:200px;
+
+            text-align: center;
+            display: flex;
+            flex-flow: row;
+        }
+        main .bottom1 {
+            width:300px;
+            height:200px;
+            background-color: rgb(18, 78, 207);
+        }
+        main .bottom2 {
+            width:300px;
+            height:200px;
+            background-color: rgb(221, 109, 4);
+        }
+        #main_bottom #banner {
+            width:200px;
+            height:200px;
+            background-color: red;
+            display: flex;
+            flex-direction: column;
+            line-height: 100px;
+        }
+            #banner1 {
+                width:200px;
+                height:100px;
+                background-color: #aaf;
+                
+            }
+            #banner2 {
+                width:200px;
+                height:100px;
+                background-color: #00f;
+            }
+        #social {
+            width:280px;
+            height:200px;
+            background-color: #faa;
+        }
+        /* 메인하단 끝 */
+        /* 푸터영역 시작 */
+        footer {
+            width: 1080px;
+            padding: 20px;
+            text-align: center;
+            background-color: gray;
+        }
+        /* 푸터영역 끝 */
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+
+        <header>
+            <aside>
+                <div id="flexible">
+                    Flexible BOX
+                </div>
+            </aside>
+            <div id="GNB">
+                GNB메뉴
+            </div>
+        </header>
+        <main role="main">
+            <section id="main_top">
+                <div class="top_slider">
+                    슬라이드영역
+                    
+                </div>
+                <div class="gallary">
+                    갤러리
+                </div>
+                <div class="serach_rank">
+                    인기검색어
+                </div>
+            </section>
+            <section id="main_bottom">
+                <div class="bottom1">
+                    최근글
+                </div>
+                <div class="bottom2">
+                    123
+                </div>
+                <div id="banner">
+                    <div id="banner1">
+                        배너1
+                    </div>
+                    <div id="banner2">
+                        배너2
+                    </div>
+                </div>
+                <div id="social">
+                    소셜네트워크
+                </div>
+            </section>
+
+        </main>
+        <footer>
+            <p>
+                푸터
+            </p>
+        </footer>
+    </div>    
+</body>
+</html>

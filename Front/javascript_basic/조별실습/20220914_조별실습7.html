@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가변형 기초 미디어 쿼리</title>
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+
+        #wrap {
+            width:360px;
+            margin:0 auto;
+        }
+        /* Header */
+        header {
+            background-color: #faa;
+            border-top-right-radius:20px 20px;
+            border-top-left-radius:20px 20px;
+            overflow: hidden;
+        }
+        header h1 {
+            width:19.16666666666667%;
+            float:left;
+            font-size: 32px;
+
+
+        }
+        header h1 img {
+            max-width: 100%;
+            width:100%;
+        }
+        header section nav img {
+            max-width: 100%;
+            width:100%;
+        }
+        .ham {
+            font-size: 1.875rem;
+        }
+        header section nav:nth-child(2){   
+            width:78%;    
+            margin-left:2%;
+            float:left;
+        }
+        header section nav:nth-child(3){
+            width:78%;    
+            margin-left:2%;
+            width:60%;
+            float:left;
+            display: none;
+        }
+    
+        header nav ul li {
+            width:7%;
+            float:left;
+            position: relative;
+            margin-right:3%;
+        }
+        header h2 {
+            width:100%;
+            background-color: darkgray;
+            clear:both;
+            text-align: center;
+            font:bold 3rem 'oswald', sans-serif;
+            line-height: 2;
+        }
+        /* /Header */
+        /* Main */
+        #gallery {
+            width:100%;
+            background-color: rgb(156, 207, 122);
+        }
+        #gallery ul li {
+            width: 30%;
+            margin:1.66666666666666%;
+            float:left;
+        }
+        #gallery img {
+            max-width:100%;
+            width:100%;
+            border-radius: 0.75rem;
+        }
+        /* /Main */
+        /* Footer */
+        footer {
+            width:100%;
+            font-size: 0.875rem;
+            background-color: darkcyan;
+            line-height: 3;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 2px solid #000;
+            border-bottom-right-radius:20px 20px;
+            border-bottom-left-radius:20px 20px;
+           
+        }
+        /* /Footer */
+        /* 768 */
+        @media screen and (min-width:768px){
+            #wrap {
+                width:100%;
+            }
+            
+            #gallery {
+                width:100%;
+                background-color: rgb(24, 53, 5);
+            }
+            #gallery ul li {
+                width: 20%;
+                margin:2.5%;
+            }
+            .ham {
+            font-size: 2rem;
+        }
+        }
+        @media screen and (min-width:1024px){
+            #gallery {
+                background-color: rgb(19, 12, 109);
+            }            
+            #gallery ul li {
+                width: 45%;
+                margin:2.5%;
+            }
+            .ham {
+            font-size: 3rem;
+        }
+
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <!-- Header -->
+        <header>
+            <section class="cf">
+                <h1>
+                    <a href="#"><img src="./images/filezillalogo.png" alt="로고"></a>
+                </h1>
+                <nav>
+                    <a href="#" class="ham"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                </nav>
+                <nav>
+                    <ul class="cf">
+                        <li><a href="#"><img src="./images/info_icon_04.png" alt="search"></a></li>
+                        <li><a href="#"><img src="./images/info_icon_03.png" alt="info"></a></li>
+                        <li><a href="#"><img src="./images/info_icon_02.png" alt="rock"></a></li>
+                        <li><a href="#"><img src="./images/info_icon_01.png" alt="home"></a></li>
+                    </ul>
+                </nav>
+                <!-- 토글 메뉴 스크립트 -->
+                <script>
+                    var headerbar1 = 0;
+                    document.querySelector(".ham").addEventListener('click',function(){                    
+                        if(headerbar1 == 0){
+                        document.querySelector("header nav:nth-child(3)").style.display = "block";
+                        headerbar1=1;
+                        }
+                        else {
+                        document.querySelector("header nav:nth-child(3)").style.display = "none";
+                        headerbar1=0;
+                        }
+                    });
+                </script>
+                <!-- /토글 메뉴 스크립트-->
+                <h2>Gallery</h2>
+            </section>
+        </header>
+        <!-- /Header -->
+        <!-- Main -->
+        <main role="main">
+            <section id="gallery">
+                <nav>
+                    <ul class="cf">
+                        <li><a href="#"><img src="./images/401x401_01.jpg" alt="구멍가게01"></a></li>
+                        <li><a href="#"><img src="./images/401x401_02.jpg" alt="구멍가게02"></a></li>
+                        <li><a href="#"><img src="./images/401x401_03.jpg" alt="구멍가게03"></a></li>
+                        <li><a href="#"><img src="./images/401x401_04.jpg" alt="구멍가게04"></a></li>
+                        <li><a href="#"><img src="./images/401x401_05.jpg" alt="구멍가게05"></a></li>
+                        <li><a href="#"><img src="./images/401x401_06.jpg" alt="구멍가게06"></a></li>
+                        <li><a href="#"><img src="./images/401x401_07.jpg" alt="구멍가게07"></a></li>
+                        <li><a href="#"><img src="./images/401x401_08.jpg" alt="구멍가게08"></a></li>
+                        <li><a href="#"><img src="./images/401x401_09.jpg" alt="구멍가게09"></a></li>
+                        <li><a href="#"><img src="./images/401x401_10.jpg" alt="구멍가게10"></a></li>
+                        <li><a href="#"><img src="./images/401x401_11.jpg" alt="구멍가게11"></a></li>
+                        <li><a href="#"><img src="./images/401x401_12.jpg" alt="구멍가게12"></a></li>
+                    </ul>
+                </nav>
+            </section>
+        </main>
+        <!-- /Main -->
+        <!-- Footer -->
+        <footer>
+            <p>Copyright &copy; MCSSAM ALL Right Reserved.,</p>
+        </footer>
+        <!-- /Footer -->
+    </div>
+    
+</body>
+</html>

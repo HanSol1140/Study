@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배경이미지</title>
+    <!-- 이미지가 작을경우 패턴(바둑판)식으로 배열됨 -->
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        div {
+            width: 500px;
+            height: 500px;
+            border: 2px double #000;
+            margin: 0 0 20px 20px;
+        }
+        .bg1 {
+/* bgi */   background-image: url(./images/bg4.jpg);
+/* bgz */   background-size: auto; /* auto가 기본설정 */
+        }
+        .bg2 {
+            background-image: url(./images/bg4.jpg);
+            background-size: contain; /* 원본의 너비값만큼 높이값이 잡힘*/
+        }
+        .bg3 {
+            background-image: url(./images/bg4.jpg);
+            background-size: cover; /* 반응형과 관련 있는 속성 */
+            /* 브라우저가 박스 크기에 맞게 위에서 덮어씌움 */
+        }
+        .bg4 {
+            background-image: url(./images/bg4.jpg);
+            background-size: 200px 100px;
+            background-repeat: no-repeat; /* 이미지 반복: 반복안함 */
+            background-repeat: repeat-x; /* x축으로 반복 */
+            background-repeat: repeat-y; /* y축으로 반복 */
+            
+        }
+        .bg5 {
+            background-image: url(./images/bg4.jpg);
+            background-size: 50% 50%;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        .bg6 {
+            background-image: url(./images/bg4.jpg);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg1"></div>
+    <div class="bg2"></div>
+    <div class="bg3"></div>
+    <div class="bg4"></div>
+    <div class="bg5"></div>
+    <div class="bg6"></div>
+</body>
+</html>

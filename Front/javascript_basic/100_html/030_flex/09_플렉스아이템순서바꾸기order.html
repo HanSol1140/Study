@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        플렉스 아이템 순서바꾸기(order) => [플렉스 아이템]에 설정
+        : HTML 코딩이나 캡 순서와 상관없이 화면에 보이는 순서에만 영향을 줌
+            => 구조에는 영향 X
+        # 속성명 : order
+        # 속성값 : nth , n=숫자
+    </title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <style>
+        #wrap {
+            width:90%;
+            height: auto;
+            margin: 0 auto;
+            border: 2px solid #000;
+            /* 플렉스 */
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between
+        }
+        #wrap>div {
+            width:20%;
+            height:100px;
+            font-size: 2rem;
+            color: #fff;
+        }
+        #wrap > div:nth-child(1) {
+            background-color: orange;
+            min-height: 30px;
+            align-self: flex-start;
+            order: 3;
+        }
+        #wrap > div:nth-child(2) {
+            background-color: cyan;
+            min-height: 30px;
+            order:4;
+        }
+        #wrap > div:nth-child(3) {
+            background-color: pink;
+            min-height: 30px;
+            order:1;
+        }
+        #wrap > div:nth-child(4) {
+            background-color: skyblue;
+            min-height: 30px;
+            align-self: flex-end;
+            order:2;
+        }
+     
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div>Item #1</div>
+        <div>Item #2</div>
+        <div>Item #3</div>
+        <div>Item #4</div>
+    </div>
+</body>
+</html>

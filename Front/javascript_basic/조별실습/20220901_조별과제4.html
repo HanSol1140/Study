@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <body>
+        <style>
+            body {
+                background-color: #ccc;
+            }
+            /* 헤더 */
+            header {
+                width:100%;
+                background-color: white;
+                padding: 40px 30px 0px 40px;
+            }
+            header h1 {
+                font-size: 32px;
+                font-weight: bold;
+                float:left;
+            }
+            header ul li {
+                font-size: 24px;
+                font-weight: 600;
+                float:right;
+            }  
+            header ul {
+                float:right;
+            }
+            /* 헤더끝 */
+            /* 메인시작 */
+            #wrap {
+                width:1279px;
+                height:606px;
+                margin: 40px 30px 60px 40px;
+                margin:0 auto;
+                /* border: 1px solid #000; */
+            }
+            main {
+                /* padding: 40px 30px 60px 40px; */
+                /* border: 1px solid #000; */
+            }
+            main section {
+                width:100%;
+            }
+            #main_left {
+                width:50%;
+                background: white;
+                float:left;
+            }
+            
+            #main_right {
+                width:50%;
+                height:500px;
+                background: green;
+                float:right;
+            }
+            #main_right .right_top {
+                margin-bottom: 60px;
+            }
+
+            #main_right .right_top h2{
+                font-size: 28px;
+                font-weight: bold;
+                width:100%;
+                padding: 40px 30px 60px 40px;
+            }
+            #main_right .right_top p {
+                font-size: 24px;
+                font-weight: bold;
+                padding: 0px 30px 0px 40px;
+            }
+            #telmail{
+                width:500px;
+                padding: 0px 30px 0px 40px;
+            }
+            
+            article .telmail1 {
+                color:#888;
+                padding-left:40px;
+                float:left;
+            }
+            article .telmail2 {
+                font-size: 18px;
+                padding-right:300px;
+                text-align: left;
+                float:right;
+                margin-bottom:20px;
+            }
+
+            #logo {
+                clear:both;
+            }
+            #logo :nth-child(1) {
+                padding-left:40px;
+                
+            }
+            #right_bottom {
+                padding:40px 50px;     
+            }
+            #right_bottom p {
+                font-size: 12px;
+                color:#888;
+                
+            }
+            /* 메인끝 */
+            /* 푸터 */
+            footer p{
+                text-align: center;
+                width:100%;
+                background: #fff;
+            }
+            /* 푸터끝 */
+        </style>
+    </body>
+</head>
+<body>
+    <div id="wrap">
+        <main role="main">
+            <header class="cf">
+                <h1>MCKIM</h1>
+                <ul class="cf">
+                    <li>
+                        <img src="./images/icon_xbox.png" alt="X박스">
+                    </li>
+                    <li>
+                        indopop
+                    </li>
+                </ul>
+            </header>
+            <section>
+                <div id="main_left">
+                    <img src="./images/icon_rolex.PNG" alt="시계">
+                </div>
+            </section>
+            <section id="main_right">
+                    <div class="right_top cf">
+                        <h2>SONG HANSOL</h2>           
+                        <p>webadd</p>
+                        <p>http://www.webadd.kr</p>
+                    </div>
+                <article id="telmail cf">
+                    <div class="telmail1">
+                        <p>TEL</p>
+                        <p>MAIL</p>
+                    </div>
+                    <div class="telmail2">
+                        <p>010.3127.7711</p>
+                        <p>skycriper@naver.com</p>
+                    </div>
+                </article>
+                <section id="logo">
+                    <img src="./images/icon_facebook.png" alt="페이스북">
+                    <img src="./images/icon_twitter.png" alt="트위터">
+                    <img src="./images/icon_instagram.png" alt="인스타그램">
+                    <img src="./images/icon_naver.png" alt="네이버">
+                </section>
+                <section>
+                    <div id="right_bottom">
+                        <p>WEB DESIGN:ADOBE PHOTOSHOP | ABDOBE ILLUSTRATOR | ADOBE_XD</p>
+                        <p>WEB PUBLISHING : HTML | CSS | JAVASCRIPT | JQUERY</p>
+                    </div>
+                </section>
+            </section>
+        </main>
+            <footer>
+                <p>COPYRIGHT 2022WEBADD ALL RIGHTS RESEVED.,</p>
+            </footer>
+
+
+    </div>
+</body>
+</html>

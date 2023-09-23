@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- 구버전 IE일때 호환성을 위해 입력했음 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ↑중요 -->
+    <!-- 반응형에 관련한 설정, 추후에 설명해주실 예정 -->
+    <title>이미지 사용</title>
+    <style>
+        body
+            {background-color:white;
+            }
+
+
+        img {
+            width: 320px;
+            height: 320px;
+            }
+
+    </style>
+
+</head>
+<body>
+<!-- 이미지를 불러오는 방법 -->
+     <!-- 경로 ./ 현재의~ -->
+    <!-- 경로 ../부모의~ -->
+    <!-- 절대경로와 상대경로가 있음 -->
+    <!-- 이 과정에선 상대경로만 사용할 것 -->
+    <!-- 상대경로에선 무조건 기준점이 있게됨 -->
+    <!-- 현재 코딩하고 있는 html문서가 상대경로의 기준점 -->
+    <!-- 절대 경로? -->
+    
+    
+    
+    <!-- 1.로컬 컴퓨터 이미지 사용하기 -->    
+        <img src="./images/a.jpg" alt="강아지">
+        <img src="./images/b.jpg" alt="아이">
+        <img src="./images/c.jpg" alt="강아지">
+    
+    <!-- 2. CDN 방식으로 이미지 불러오기 -->
+    <!-- CDN(Contents Delivery Network) -->    
+        <img src="https://cdn.pixabay.com/photo/2021/06/20/09/56/lionfish-6350449__340.png" alt="물고기">
+        <a href="http://www.daum.net" target="_blank">
+            <img src="https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png" alt="다음로고">
+        </a>
+    <!-- 3. 가상 이미지 불러오기 -->
+        <img src="http://place-hold.it/640x480" alt="가상이미지">
+
+    <!-- 4. 투명배경사용 .png파일 -->
+    
+        <img src="./images/applee.png" alt="투명이미지애플로고">
+
+    <!-- 5. 벡터방식 .svg -->
+    <img src="./images/appleblack.svg" alt="애플svg">
+
+<!-- alt는 인터넷 표준규격으로 무조건 입력해야함 -->
+<!-- 이미지가 안보일경우 alt의 텍스트로 대체 -->
+</body>
+</html>

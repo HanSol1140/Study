@@ -1,0 +1,99 @@
+
+<!-- 웹 문서의 유형을 지정하는 선언문 => DOCTYPE -->
+<!-- 주석문 : 참고문구 = 개발자만 볼 수 있음  -->
+<!-- 주석문 단축키 => Ctrl+/ -->
+<!DOCTYPE HTML>
+웹 문서의 유형을 지정하는 선언문 => DOCTYPE<br>
+<!-- 문서의 타입을 HTML로 선언 -->
+
+
+<!-- <html lang="ko"> -->
+<!-- html 시작태그에는 속성을 설정할 수 있다 -->
+<!-- 이 경우에는 lang="ko"(언어="한국어")로 설정 -->
+    lang="ko" 문서에서 사용할 언어를 지정<br>
+    검색사이트에서 특정 언어로 제한하여 검색할때 필요하기 때문<br>
+    ex) [화면낭독기] 해당 언어에 맞는 억양, 발음, 목소리등을 다르게 읽어줌<br>
+<!-- [화면낭독기] → 웹 접근성, 웹 표준 -->
+<!-- 웹 접근성 : 몸이 불편한 사람도 일반인과 똑같이 사용할 수 있게 만드는 것 -->
+
+<html lang="ko">
+
+    <head>  
+        <title>텍스트관련요소(블록요소)</title>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="쇼핑몰,악세사리,여성의류">
+        <meta name="description" content="블록요소 페이지">
+        <meta name="author" content="웹문서 개발자, 소유자">
+<!-- 인코딩 설정 => 'UTF-8'은 한글을 사용하기 위한 값 -->
+<!-- 영어가 아닌 언어를 사용하기 위해서 정해둔 값-->
+    </head>
+
+
+    <body>
+
+        <a href src="http://www.daum.net">
+    
+            <img src="./images/applee.png" alt="투명이미지애플로고">
+        
+        </a>
+        블록요소 대표적인 6개 태그
+<!-- hn태그 : heading => 제목표시하기 -->
+        <h1>이젠컴퓨터 아카데미 노원</h1><br><!-- h1 태그는 단 하나만 사용가능함 -->
+        <h2>이젠컴퓨터 아카데미 노원</h2><br>
+        <h3>이젠컴퓨터 아카데미 노원</h3><br>
+        <h4>이젠컴퓨터 아카데미 노원</h4><br>
+        <h5>이젠컴퓨터 아카데미 노원</h5><br>
+        <h6>이젠컴퓨터 아카데미 노원</h6><br>
+        <!-- h1~6까지 있음 -->
+        <!-- ※블록요소란 브라우저의 너비감을 조절하는것 -->
+        <!-- ※브라우저 디자인시 각 박스모양, 레이아웃 -->
+
+
+<!-- p태그 : paragraph => 단락만들기 => 글 내용 -->
+<!-- 따로 조정을 하지않는한 기본적인 웹의 폰트사이즈는 16px -->
+
+        <p><font size="16px">풀스택 과정 = 프론트엔드 + 백엔드</font></p>
+
+
+    <!-- hr태그 : 분위기 전환을 위한 수평줄 넣기 -->
+        <hr>
+
+    <!-- blockquote태그 => 인용문, 들여쓰기 자동으로 적용 -->
+        <blockquote>
+            성이시돌 목장은 제주시에 있는 목장이다. (출처:향릉문화전자대전)
+        </blockquote>
+
+        <h2>
+            입력하는 그대로 화면에 표시하는 요소 pre
+        </h2>
+
+    <!--pre태그 => 입력하는 그대로 화면에 표시하는 요소 -->
+        <pre>
+            예시
+            function ezen() {
+                document.getElementById("p");
+
+            }
+        </pre>
+        
+        <h3>
+            엔티티코드 : <a href="https://entitycode.com/">https://entitycode.com/</a>
+    <!-- 엔티티코드 => 서버가 특수문자를 인식하지 못하기 때문에
+    특수문자를 입력하기 위해 사용하는 코드-->
+        </h3>
+
+        <p>
+            YOU & ME <br>
+            YOU &amp; ME
+        </p>
+
+        <p>
+            YOU &amp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ME
+        </p>
+
+        <p>
+            &copy; Copyright All Rights Reserved
+        </p>
+    </body>
+    
+</html>

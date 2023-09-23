@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3 Animation</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            /* 접두어(prefix) 필요 */
+            /* 1. 애니메이션 이름 */
+            -webkit-animation-name: chg_bg;
+            -moz-animation-name: chg_bg;
+            -o-animation-name: chg_bg;
+            -ms-animation-name: chg_bg;
+            animation-name: chg_bg;
+            /* 2. 애니메이션 실행시간 */
+            -webkit-animation-duration: 3s;
+            -moz-animation-duration: 3s;
+            -o-animation-duration: 3s;
+            -ms-animation-duration: 3s;
+            animation-duration: 3s;
+        }
+        /* 3. 키프레임 설정 */
+        @-webkit-keyframes chg_bg {
+            from {
+                background-color: blue;
+                border: 1px solid #000;
+            }
+            to {
+                background-color: red;
+                border-radius: 50%;
+            }
+        }
+        @-moz-keyframes chg_bg {
+            from {
+                background-color: blue;
+                border: 1px solid #000;
+            }
+            to {
+                background-color: red;
+                border-radius: 50%;
+            }
+        }
+        @-o-keyframes chg_bg {
+            from {
+                background-color: blue;
+                border: 1px solid #000;
+            }
+            to {
+                background-color: red;
+                border-radius: 50%;
+            }
+        }
+        @-ms-keyframes chg_bg {
+            from {
+                background-color: blue;
+                border: 1px solid #000;
+            }
+            to {
+                background-color: red;
+                border-radius: 50%;
+            }
+        }
+        @keyframes chg_bg {
+            from {
+                background-color: blue;
+                border: 1px solid #000;
+            }
+            to {
+                background-color: red;
+                border-radius: 50%;
+            }
+        }
+
+        #box1 {
+            margin: 50px;
+            background-color: greenyellow;
+            /* 4. 애니메이션 실행후, 처음부터 시작할지 역방향으로 실행할지 여부 */
+            animation-direction: alternate;
+            /* 5. 애니메이션 반복 실행횟수 */
+            animation-iteration-count: infinite;
+        }
+
+        #box2 {
+            margin: 30px;
+            background-color: purple;
+            animation-name: ani;
+            animation-duration: 1.5s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+        }
+        @keyframes ani {
+            /* 0% {}
+            25% {}
+            50% {}
+            100% {} */
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(45deg);
+                background-color: orange;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+</html>

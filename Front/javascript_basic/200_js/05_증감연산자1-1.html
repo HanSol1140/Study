@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>증감연산자</title>
+     <!-- 초기값을 한번은 사용하기 위해 세팅 -->
+     <script>
+          var num1 = 10;
+          var num2 = 20;
+          var result = null;
+          console.log(num1,num2,result);
+
+          // 1. 증감연산자 전위(前位) : 초기값을 처음에 무조건 사용할때 사용
+          // 변수가 앞에 위치함
+          
+          
+          result = num2++;
+          
+          document.write("증감연산자 전위(前位)"+result+"<br>") // result : 20
+          document.write("증감연산자 전위(前位)"+num2+"<br>") // num2 : 21
+          console.log(result);
+          
+          // 2. 증감연산자 후위(後位) : 일반적인 증감연산자
+          result = ++num2;
+          document.write("증감연산자 전위(前位)"+result+"<br>") // result : 22
+          document.write("증감연산자 전위(前位)"+num2+"<br>") // num2 : 22
+          
+          
+
+          
+     </script>
+</head>
+<body>
+     
+</body>
+</html>

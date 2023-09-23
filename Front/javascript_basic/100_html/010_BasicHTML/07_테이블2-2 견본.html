@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>colgroup</title>
+     <style>
+       table, th, tr, td{
+          border: 1px solid;
+          border-collapse: collapse;
+     }
+
+     </style>
+</head>
+<body>
+     <caption>colgroup은 반드시 caption 다음에 코딩</caption>
+     <table>
+          <col style="width:100px;">
+          <col style="width:300px;">
+          <col style="width:200px;">
+          <col style="width:300px;">          
+          <tr>
+               <th width="100px";height="100px">이름</th>
+               <td>김명철</td>
+               <th>연락처</th>
+               <td>010-1234-5678</td>
+          </tr>
+          <tr>
+               <th>주소</th>
+               <td colspan="3";>서울시</td>
+          </tr>
+          <tr>
+               <th>자기소개</th>
+               <td colspan="3">직훈교사</td>
+          
+          </tr>
+     </table>
+</body>
+</html>

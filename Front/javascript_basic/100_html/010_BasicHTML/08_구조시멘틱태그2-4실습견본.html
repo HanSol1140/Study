@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>구조 시멘틱 실습</title>
+     <link rel="stylesheet" href="./css/reset.css">
+     <style>
+          body {
+               background-color: #000;;
+          }
+          #wrap {
+               width: 960px;
+               margin: 0 auto;
+               background-color: green;
+          }
+     /* 헤더영역 */
+          header {
+               background-color: red;
+          }
+     /* 콘텐츠영역 */
+          nav {
+               background-color: aqua;
+          }
+          section {
+               background-color: yellow;
+          }
+          article{
+               background-color: brown;               
+          }
+          footer{
+               background-color: blue;
+          }
+     </style>
+</head>
+<body>
+     <div id="wrap">
+          <!--1. 헤더영역 시작 -->
+          <header>
+               <h1>LOGO</h1>
+               <nav>
+                    <ul>
+                         <li><a href="#">1 DEPTH MENU1</a>
+                              <ul>
+                                   <li>2 DEPTH MENU1</li>
+                                   <li>2 DEPTH MENU2</li>
+                              </ul>
+                         </li>
+                         <li><a href="#">1 DEPTH MENU2</a></li>
+                         <li><a href="#">1 DEPTH MENU3</a></li>
+                         <li><a href="#">1 DEPTH MENU4</a></li>
+                    </ul>
+               </nav>
+           </header>
+           <!-- 1. 헤더영역 끝 -->
+          <!-- 2. 콘텐츠영역 시작 -->
+          <main role="main">
+               <section>
+                    <section>
+                         <h2>왼쪽 콘텐츠</h2>
+                         <p>왼쪽 내용</p>
+                    </section>
+                    <article>
+                         <h2>가운데 콘텐츠</h2>
+                         <p>
+                              가운데 내용
+                         </p>
+                    </article>
+                    <div>
+                         <h2>오른쪽 콘텐츠</h2>
+                         <p>오른쪽 내용</p>
+                    </div>
+               </section>
+               
+          </main>
+          <!--2. 콘텐츠영역 끝 -->
+          <!--3. 푸터영역 시작 -->
+          <footer>
+               <p>사이트정보</p>
+          </footer>
+          <!--3. 푸터영역 끝 -->
+     </div>
+     
+</body>
+</html>

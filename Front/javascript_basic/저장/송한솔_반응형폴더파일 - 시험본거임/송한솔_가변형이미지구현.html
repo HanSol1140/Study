@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/20229023test.css">
+    <!-- 제이쿼리 코어파일 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+
+</head>
+<body>
+    <div id="wrap">
+        <!-- HEADER -->
+        <header class="cf">
+            <div class="gnb">
+                <h1><img src="./images/logo_img.png" alt="로고"></h1>
+                <h2>LOGO</h2>
+                <ul>
+                    <li><a href="#">CONTACT US</a></li>
+                    <li><a href="#">BLOG</a></li>
+                    <li><a href="#">WORK</a></li>
+                    <li><a href="#">WE&amp;ARE</a></li>
+                    <li><a href="#">HOME</a></li>
+                </ul>
+            </div>
+            <div class="slider">
+                <img src="./images/slider01.png" alt="로고">
+            </div>
+            <div class="slider">
+                <img src="./images/slider02.png" alt="로고">
+            </div>
+            <div class="slider">
+                <img src="./images/slider03.png" alt="로고">
+            </div>
+        </header>
+        <!-- /HEADER -->
+        <!-- MAIN -->
+        <main role="main">
+            <div class="we_are cf">
+                <h2>WE&amp;ARE</h2>
+                <p>
+                    Contray to popular belief, Lorem Ipsum is not simply random text,
+                    it has roots in a piece of classical Latin literature from 45 BC,
+                </p>
+                <nav>
+                    <ul class="cf">
+                        <li>
+                            <img src="./images/promo01.png" alt="we_are1">
+                            <h3>HOME</h3>
+                            <p>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                Quaerat, perspiciatis aliquid inventore laborum
+                            </p>
+                        </li>
+                        <li>
+                            <img src="./images/promo02.png" alt="we_are2">
+                            <h3>WE&amp;ARE</h3>
+                            <p>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                Quaerat, perspiciatis aliquid inventore laborum
+                            </p>
+                        </li>
+                        <li>
+                            <img src="./images/promo03.png" alt="we_are3">
+                            <h3>WORK</h3>
+                            <p>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                Quaerat, perspiciatis aliquid inventore laborum
+                            </p>
+                        </li>
+                        <li>
+                            <img src="./images/promo04.png" alt="we_are4">
+                            <h3>CONTACT US</h3>
+                            <p>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                Quaerat, perspiciatis aliquid inventore laborum
+                            </p>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="work cf">
+                <h2>WORK</h2>
+                <ul>
+                    <li><img src="./images/work01.jpg" alt="work1"></li>
+                    <li><img src="./images/work02.jpg" alt="work2"></li>
+                    <li><img src="./images/work03.jpg" alt="work3"></li>
+                    <li><img src="./images/work04.jpg" alt="work4"></li>
+                    <li><img src="./images/work05.jpg" alt="work5"></li>
+                    <li><img src="./images/work06.jpg" alt="work6"></li>
+                    <li><img src="./images/work07.jpg" alt="work7"></li>
+                    <li><img src="./images/work08.jpg" alt="work8"></li>
+                </ul>
+            </div>
+        </main>    
+        <!-- /MAIN -->
+        <footer>
+            <div class="footer">
+                COPYRIGHT ALL RIGHTS RESERVED, WEBADD
+            </div>
+        </footer>
+    </div>
+<script>
+var sliderIndex = 0;
+// console.log($('.slider').length);
+// ('.slider').length) = 3
+autoSlider();
+function autoSlider(){
+    var i;
+    var slider = $('.slider');
+    for(i=0; i<slider.length; i++){
+        slider.eq(i).css({display:'none'});
+    }
+    sliderIndex++;
+    if(sliderIndex > slider.length) {
+        sliderIndex = 1;
+    }
+    slider.eq(sliderIndex-1).show();
+    setTimeout(autoSlider,2000);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포지션, 배경이미지 실습</title>
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/reset.css">
+
+    <style>
+        body {
+            /* background: red; */
+            position:relative
+        }
+        #wrap {
+            width:600px;
+            height:800px;
+            border: 1px solid #000;
+            border-radius: 8px;
+            background-repeat: no-repeat;
+            margin: 30px auto;
+            background-image: url(./images/avengers.jpg);
+            background-size: 550px 750px;
+            background-position: center center;
+            position: relative;
+            left:0;
+            top:0;
+            z-index: 1;
+        }
+        p {
+            text-align: center;
+            font:bold 64px 'noto sans kr', serif;
+            text-shadow: 0px 0px 10px black;
+            color: silver;
+            position:relative;
+            left:0;
+            top:40%;
+            z-index:2;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <p>AVENGERS</p>
+    </div>
+</body>
+
+</html>

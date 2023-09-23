@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리, 스크롤 이벤트</title>
+    <!-- <link rel="stylesheet" href="./css/reset.css"> -->
+    <!-- <link rel="stylesheet" href="./css/font.css"> -->
+
+    <!-- 부트스트랩 -->    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- 버전 안정화 4 -->
+    <!-- css를 클래스화 해놓음 -->
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 2. 제이쿼리 CDN 방식이용 -->
+    <!-- <script src="http:code.jquery.com/jquery-1.12.4.min.js"></script> -->
+    <!-- <script src="http:code.jquery.com/jquery-3.3.1.min.js"></script> -->
+
+    <!-- 반드시 jQuery 코어파일 밑에 스크립트를 적어야함 -->
+    <style>
+        body {
+            width:3000px;
+            height:5000px;
+        }
+        #wrap {
+            position: fixed;
+            left:10px;
+            top:10px;
+            z-index: 1;
+            background-color: red;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            // scroll Event
+            $(window).on('scroll',function(){
+                var sctT = $(this).scrollTop();
+                var sctL = $(this).scrollLeft();
+                console.log("스크롤탑(높이) 값" + sctT); 
+                console.log("스크롤레프트(좌우) 값" + sctL);
+            });
+           
+        });
+    </script>
+    
+    
+</head>
+<body>
+    <div id="wrap">
+        <h2>SCROLL</h2>
+        <p>
+            scrollTop : <span class="top">0</span>px
+            <br><br><br>
+            scrollLeft : <span class="left">0</span>px
+        </p>
+    </div>
+</body>
+</html>

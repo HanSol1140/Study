@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리준비</title>
+    <!-- <link rel="stylesheet" href="./css/reset.css"> -->
+    <!-- <link rel="stylesheet" href="./css/font"> -->
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 2. 제이쿼리 CDN 방식이용 -->
+    <!-- <script src="http:code.jquery.com/jquery-1.12.4.min.js"></script> -->
+    <!-- <script src="http:code.jquery.com/jquery-3.3.1.min.js"></script> -->
+
+    <!-- 반드시 jQuery 코어파일 밑에 스크립트를 적어야함 -->
+    <style>
+        h1 {
+            
+        }
+    </style>
+    <script>
+
+        $(document).ready(function(){
+            $("*").css('color','gray');
+            // 맨 처음 선택자에만 선택
+            $('#a').css({'color':'red', backgroundColor:'black'});
+        
+            // div 태그에 #a인 요소만 선택
+            $('div#a').css('color','orange')
+            $('div.test').css({'color':'orange', backgroundColor:'silver'})
+
+            // 하위 선택자
+            $('div h2').css({'font-size':'italic', backgroundColor:'black'});
+
+        // 그룹 선택자 아이디 a, 요소명 h2, 클래스명 main => 밑줄, 글자색 레드, 글자크기36
+        // 캡쳐 넘버링
+            var aa = document.querySelectorAll('#a');
+            console.log(aa);
+            $(aa).css({'border-bottom':'1px solid #000', color:'red', fontSize:'36px'});
+            $('h2').css({'border-bottom':'1px solid #000', color:'red', fontSize:'36px', fontWeight:'400'});
+            $('.main').css({'border-bottom':'1px solid #000', color:'red', fontSize:'36px'});
+            $("#a, h2, .main").css({'border-bottom':'1px solid #000', color:'red', fontSize:'36px'});
+        })
+    </script>
+</head>
+<body>
+    <h1>여러가지 제이쿼리 선택자</h1>
+    <div class="content">
+        <div id="a">
+            제이쿼리
+        </div>
+        <div>
+            여러가지 선택자
+        </div>
+        <div class="test_main">
+            맥프로
+        </div>
+        <div>
+            <span>맥북프로</span>
+            <h2 id="a">맥북에어</h2>
+        </div>
+        <div id="b">
+            아이패드
+        </div>
+        <div class="test">
+            아이패드 프로
+        </div>
+        <div class="main">
+            아이패드 에어
+        </div>
+        <div>
+            에어팟
+        </div>
+    </div>
+    
+</body>
+</html>

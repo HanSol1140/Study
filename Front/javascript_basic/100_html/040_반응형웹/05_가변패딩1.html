@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가변 패딩</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        #wrap {
+            width:960px;
+            width:90%;
+            margin:0 auto;
+            background-color: yellowgreen;
+        }
+        #wrap>p {
+            padding:50px;
+        /* (50/960)*100 */
+            padding: 5.208333333333333%;
+        /* 상하50px 좌우 50px */
+        /* 가변형은 너비값이 중요하므로 상하50px을 고정으로줘도 크게 문제가 없음 */
+            padding: 50px 5.208333333333333%;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem ea nobis illo, illum sint omnis minus voluptatibus pariatur repellendus ratione, veniam aliquid. Debitis, laudantium? Fugiat accusantium maxime ut soluta adipisci.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque dolorem debitis et vero harum earum quisquam quasi rerum? Molestiae, asperiores. Fugiat reprehenderit numquam adipisci animi dignissimos ad aliquam vero eligendi.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam perspiciatis magni, tempora aliquam commodi laudantium ut possimus illum fuga, accusamus ipsam? Possimus praesentium fugit doloribus in harum recusandae ipsum rem?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati culpa libero rerum in natus aut porro cupiditate reiciendis quam. Maxime obcaecati consequatur molestiae dignissimos beatae. Sint adipisci cum labore dolores!
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex numquam tempore, odit nostrum omnis quod repudiandae culpa illum corporis sapiente id sint adipisci mollitia enim et, aliquid voluptates modi voluptatem?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio voluptatem suscipit incidunt esse. Necessitatibus, dolore debitis? Quia libero et ratione fuga, earum explicabo saepe ut, est a facilis iure dicta.
+        </p>
+    </div>
+    
+</body>
+</html>

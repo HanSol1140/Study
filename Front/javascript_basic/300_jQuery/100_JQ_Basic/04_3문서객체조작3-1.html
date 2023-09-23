@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리, 문서객체조작</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- 2. 제이쿼리 CDN 방식이용 -->
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <style>
+
+    </style>
+    <script>
+        $(document).ready(function(){
+           /* 1. html() : 선택 DOM 객체의 첫번째 요소 문자열만 반환, html 태그인식 */
+            var out = $('h3').html();
+            alert('html 메서드 : '+ out);
+            
+            /* 2. text() : 선택 DOM 객체의 모든 문자열을 묶어서 반환, html 태그인식못함 */
+            var out2 = $('h3').text();
+            alert('out 메서드 : '+ out2);
+
+            // 실습. html()로 div에 속성 추가하기
+            $('div').eq(0).html('<p style="color:red;">추가된 HTML</p>');
+            // 실습. text()로 div에 속성 추가하기
+            $('div').eq(0).text('<p style="color:red;">추가된 HTML</p>');
+            // 실습. p태그의 자식으로 p태그 사용하여 텍스트노드 By Kitting이 나오도록 코딩하세요.
+            $('p').html('<p>By Kitting</p>')
+        });
+    </script>
+</head>
+<body>
+   <h1>Carpe Diem!!</h1>
+   <p></p>
+   <h2>현재를 즐겨라</h2>
+   <h3>나의 금기어</h3>
+   <h3>
+    &quot;언젠가&quot; &quot;아마도&quot; &quot;만약에&quot;
+    </h3>
+    <h4>
+        written BY 파울로 코엘로
+    </h4>
+   <div></div>
+   <div></div>
+   <p></p>
+</body>
+</html>

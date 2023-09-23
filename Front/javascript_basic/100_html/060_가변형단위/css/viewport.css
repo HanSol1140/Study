@@ -1,0 +1,151 @@
+@charset "utf-8";
+/* Viewport 가변단위 */
+/* 내 마음속의 기준값 */
+/* 1920(vw 내 마음속의 너비 기준값) x 936(vh 내 마음속의 높이 기준값) */
+* {
+    background-color: transparent !important;
+}
+
+.maxw1440 {
+    max-width:1440px;
+    /* (1440/1920)*100 = 75*/
+    max-width: 75vw;
+    margin:0 auto;
+}
+body,html {
+    font-size: 16px;
+    /* (16/936)*100 = 1.709401709401709*/
+    font-size: 1.709401709401709vh; /* vh = 높이 비례 크기가변 */
+    font-family: 'noto sans kr', sans-serif;
+}
+#wrap {
+    width:100vw;
+    height:100vh;
+    position: fixed;
+    left:0;
+    top:0;
+    z-index: 1;
+}
+/* VIDEO BACKGROUND */
+.video_wrapper {
+    width:100vw;
+    height:100vh;
+    position: fixed;
+    left:0;
+    top:0;
+    z-index: -1;
+}
+
+.video_wrapper video {
+    width:100vw;
+    height:100vh;
+    object-fit: fill;
+}
+/* VIDEO CONTROL BUTTON */
+#car_btn {
+    position: absolute;
+    left:48px;
+    /* (48/1920)*100 = 2.5 */
+    left:2.5vw;
+    bottom:56px;
+    /* (56/936)*100 = 5.982905982905983 */
+    bottom:5.982905982905983vh;
+    z-index: 100;
+    background-color: red;
+}
+#car_btn i {
+    font-size: 2.564102564102564vh;
+    color:#fff;
+    cursor: pointer;
+}
+#car_sound {
+    position: fixed;
+    left:96px;
+    left:5vw;
+    bottom:56px;
+    bottom:5.982905982905983vh;
+    z-index: 100;
+}
+#car_sound  i {
+    font-size: 2.564102564102564vh;
+    color:#fff;
+    cursor: pointer;
+}
+/* /VIDEO CONTROL BUTTON */
+/* IMAGE TEXT */
+.video_text {
+    position: fixed;
+    /* left:48px; */
+    left:2.5vw;
+    /* bottom:100px; */
+    bottom:10.68376068376068vh;
+    z-index: 200;
+}
+.video_text h2 {
+    /* font-size: 72px; */
+    font-size: 7.692307692307692vh;
+    font-weight: 700;
+    line-height: 1;
+    color:#fff;
+    letter-spacing: -2px;
+}
+.video_text p {
+    /* font-size: 21px; */
+    font-size: 2.243589743589744vh;
+    color:#fff;
+    font-weight: 300;
+    /* margin-top: 16px; */
+    margin-top: 10.68376068376068vh;
+    text-indent: 0.2em;
+}
+/* /IMAGE TEXT */
+/* /VIDEO BACKGROUND */
+
+/* HEADER */
+.header {
+    color:#fff;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding-top: 30px;
+    padding-top: 3.8vh;
+    text-align: center;
+}
+.header h1 {
+    width:160px;
+    width:8vw;
+}
+.header .gnb_wrap {
+    font-size: 20px;
+    font-size: 2.1vh;
+    font-weight: 500;
+}
+.header .gnb {
+    display: flex;
+}
+.header .gnb li {
+    padding: 0 4.273504273504274vw;
+}
+.header .sub_wrap {
+    font-size: 14px;
+    font-size: 1.495726495726496vh;
+}
+.header .snb {
+    display:flex;
+}
+.header .snb li {
+    padding: 0 8px;
+}
+
+.header .snb li:last-child {
+    border: 1px solid #fff;
+    font-size: 12px;
+    font-size: 1.282051282051282vh;
+    padding:4px 12px;
+    margin-top: -4px;
+}
+/* /HEADER */
+
+#car_btn i:nth-child(2) {
+    display: none;
+}

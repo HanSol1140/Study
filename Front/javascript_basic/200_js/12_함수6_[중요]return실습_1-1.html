@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>return문 실습, Gallery</title>
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        #galleryzone {
+            text-align: center;
+        }
+        button {
+            display: inline-block;
+            width:50px;
+            height:24px;
+            border: none;
+            background-color: #222;
+            color:#fff;
+        }
+    </style>
+    <script>
+        // 이벤트 리스너
+        num = 1;
+        function gallery(imgNum){
+            // alert(imgnum);
+
+            // 제어문(Control statement)
+            if(imgNum) {                    //  
+                if(num==7){return;}         //
+                // num이 7이 되면 리턴       //
+                num++;                      //  data 유효성을 만드는 단계 (1~7)
+            }else {                         //
+                if(num==1) {return;}        //
+                // num이 1이되면 리턴        //
+                num--;                      //
+            }
+            // 적용시킬 DOM 객체 선택
+            // => document.getElementById("아이디명");
+            var imgTag = document.getElementById("phone");
+            // console.log(imgTag);
+            imgTag.setAttribute("src", "./images/img" + num + ".jpg");
+            // setAttribute("","") = 값을 변경하거나 재설정할때 씀
+            // 첫번째 인자값 = src 속성명을 선택
+            // 두번째 인자값 = 변경할 값
+        }
+    </script>
+</head>
+<body>
+    <div id="galleryzone">
+        <p>
+            <img src="./images/img1.jpg" alt="갤러리이미지" width="300" height="300" id="phone">
+            <!-- ./images/ 까지 정적데이터 -->
+        </p>
+        <p>
+            <button onclick="gallery(0);">이전</button>
+            <button onclick="gallery(1);">다음</button>
+            <!-- 0,1 => imgnum(매개변수) -->
+        </p>
+    </div>
+</body>
+</html>

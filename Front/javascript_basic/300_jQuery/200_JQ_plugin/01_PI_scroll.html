@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PI스크롤</title>
+<!-- css리셋 -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font.css">
+<!-- css 외부스타일 사용 -->
+    <link rel="stylesheet" href="./css/scroll.css">
+
+<!-- 부트스트랩 -->    
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
+    <!-- 버전 안정화 4 -->
+    <!-- css를 클래스화 해놓음 -->
+<!-- 1. 제이쿼리 코어파일 사용 -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    
+<!-- 2. 제이쿼리 CDN 방식이용 -->
+    <script src="http:code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="http:code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<!-- 3. 제이쿼리 scroll플러그인 추가 -->
+    <script src="./js/jquery.scrollTo.min.js"></script>
+
+<!-- 4. 문서 스크립트 -->
+    <script src="./js/scroll.js"></script>
+    
+    <script>
+    $(document).ready(function(){
+        $('.gnb a').click(function(e){
+        // 기본 기능 제거
+        e.preventDefault();
+        // alert("!!");
+        // scrollTo 플러그인 사용    
+        // scrollTo(링크될 # || y축픽셀값, 애니메이션 시간)
+        $(window).scrollTo(this.hash || 0,1000); 
+    });
+    // 스크롤 100px 이상 되었을때 TOP 버튼이 나오도록 코딩
+    // if~else, scrollTop(), 이벤트 scroll
+    $(window).scroll(function(){
+        var scrT = $(this).scrollTop();
+        if(scrT<=100){
+            $('aside div').stop().slideUp();
+        } else{
+            $('aside div').stop().slideDown();
+        }
+    });
+    // animate 부드러운 스크롤탑 이동
+    $('.top').click(function(e){
+        e.preventDefault();
+        e.preventDefault();
+        $('html,body').stop().animate({scrollTop:0},2000,'swing');
+        });
+    });
+    </script>
+</head>
+<body>
+    <div id="container">
+        <!-- Header -->
+        <header>
+            <h1>ONE-PAGE-SITE</h1>
+            <nav class="gnb">
+                <ul>
+                    <li><a href="#aoa" class="nav_btn">AOA</a></li>
+                    <li><a href="#frozen" class="nav_btn">FROZEN</a></li>
+                    <li><a href="#spider" class="nav_btn">SPIDER</a></li>
+                    <li><a href="#suji" class="nav_btn">SUJI</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- /Header -->
+        <!-- Contents -->
+        <section id="aoa" class="page1">
+            <h2>AOA</h2>
+        </section>
+        <section id="frozen" class="page2">
+            <h2>FROZEN</h2>
+        </section>
+        <section id="spider" class="page3">
+            <h2>SPIDER</h2>
+        </section>
+        <section id="suji" class="page4">
+            <h2>SUJI</h2>
+        </section>
+        <!-- /Contents -->
+
+        <!-- GOTO TOP버튼 -->
+        <aside>
+            <div>
+                <a href="#" class="top">TOP</a>
+            </div>
+        </aside>
+    </div>
+    
+</body>
+</html>

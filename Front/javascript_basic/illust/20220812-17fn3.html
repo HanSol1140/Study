@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>국어점수<input type="text" id="kor"></p>
+    <p>영어점수<input type="text" id="eng"></p>
+    <p>수학점수<input type="text" id="math"></p>
+    <p><input type="button" value="실행" id="result"></p>
+    <div class="res">
+        <script>
+            function fnGrade(kor, eng, math){
+                var sum = kor+eng+math;
+                var avg = (sum)/3;
+                document.querySelector(".res").innerHTML = "총점"+sum+"평균"+avg;
+            }
+      
+
+
+
+            document.querySelector("#result").addEventListener('click' , function(){
+                // alert("실행");
+                var kor = Number  (document.querySelector("#kor").value);
+                var eng = Number (document.querySelector("#eng").value);
+                var math = Number (document.querySelector("#math").value);
+                fnGrade(kor, eng, math)
+                //alert(kor+eng+math);
+                //alert(kor+", "+eng+", "+math);
+                });
+        </script>
+
+    </div>
+</body>
+</html>

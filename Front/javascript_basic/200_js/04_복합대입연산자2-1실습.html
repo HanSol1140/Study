@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>복합 대입연산자 테이블만들기 실습</title>
+     <script>
+          var table = '<table width="600" border="1">';
+               table += '<tr><td>1</td><td>2</td><td>3</td><td>4</td>';
+               table += '<tr><td>1</td><td>2</td><td>3</td><td>4</td>';
+               table += '<tr><td>1</td><td>2</td><td>3</td><td>4</td>';
+               table += '</table>'
+          document.write(table);
+
+          var img = '<div>';
+               img += '<img src="./images/e.jpg" alt="책상">'
+               img += '</div>';
+          document.write(img)
+     </script>
+
+</head>
+<body>
+     <!-- table[width=600 border=1]>(tr>td{$}*4)*3 -->
+    <table width="600" border="1">
+     <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+     </tr>
+     <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+     </tr>
+     <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+     </tr>
+    </table>
+    <div>
+    <img src="./images/e.jpg" alt="책상">
+     </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+</head>
+<body>
+     <h1>비디오 파일 재생하기</h1>
+     <figure>
+          <figcaption>비디오 영상 불러오기</figcaption>
+          <!-- figcaption = 제목,정렬안됨, 멀티미디어 컨텐츠 제목으로 사용 -->
+          <video muted autoplay loop controls poster="./images/a.jpg">
+               <!-- muted = 음소거 -->
+               <!-- autoplay = 자동재생 -->
+               <!-- loop = 자동반복 -->
+               <!-- controls = 조작바 생성-->
+               <!-- poster="주소" 영상다운로드가 안될시 대신 띄우는 이미지를 설정함 -->
+               <!-- 이미지의 alt <img src="주소" alt="이미지설명"> 과 똑같음-->
+               <source src="./media/Painting.mp4" type="video/mp4">
+               <source src="./media/Painting.webm" type="video/webm">
+               이 영상이 보고 싶으시면 최신 브라우저를 설치하여 보세요
+          </video>
+     </figure>
+     <iframe width="560" height="315" src="https://www.youtube.com/embed/4CLImQk6D_E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+     </iframe>
+     <!-- iframe은 사이트내의 독립적인 frame(액자)를 뜻함 -->
+     <!-- 접근성이 좋지 않으므로 이벤트페이지(일시적사용)으로만 사용할것? -->
+</body>
+</html>

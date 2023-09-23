@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        플렉스(flex)박스
+        : CSS3에서 처음 소개된 속성 => 가변적 박스를 만드는 기술과 자유로운 박스 배치 기술임
+
+        # 용어
+        개념1. 플렉스 박스 = <부모박스>에 CSS 속성 코딩
+                          => display:-webkit-flex; display:flex;
+        개념2. 플렉스 아이템 = <부모박스>에 display:flex;가 선언되면,
+                              그 <자식박스>는 플렉스 아이템으로 변경
+                              플렉스 아이템이 레이아웃 됨.
+        개념3. 플렉스 박스의 축 = 주축, 교차축 | 레이아웃 방향
+        <!-- 플렉스 박스 구조의 핵심 = 부모자식 -->
+    </title>
+    <style>
+        /* 1. flex 성격 주입 = 부모값에 설정 */
+        #wrap {
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -o-flex;
+            display: -msflex;
+            display: flex;
+
+        }
+        header {
+            background-color: red;
+        }
+        article {
+            background-color: green;
+        }
+        section {
+            background-color: yellow;
+        }
+        aside {
+            background-color: blue;
+        }
+        footer {
+            background-color: darkcyan;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <h1>SNB메뉴</h1>
+            <nav>GNB메뉴</nav>
+        </header>
+        <article>
+            <h2>슬라이드영억1</h2>
+            <p>슬라이드영역2</p>
+        </article>
+        <section>
+            <h2>콘텐츠영역1</h2>
+            <p>콘텐츠영역2</p>
+            <p>콘텐츠영역3</p>
+        </section>
+        <aside>
+            <div>별도영역</div>
+        </aside>
+        <footer>
+            <p>푸터영역</p>
+        </footer>
+    </div>    
+</body>
+</html>
