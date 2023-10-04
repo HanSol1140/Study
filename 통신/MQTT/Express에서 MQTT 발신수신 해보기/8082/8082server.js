@@ -21,11 +21,9 @@ client.on('reconnect', function () {
 });
 
 
-var message1 = {
-    servingAPI: "moveCoordinates",
-    robotName: "robot1",
-    coordinatesX : "1.96",
-    coordinatesY : "-0.12",
-    coordinatesTheta : "88.97",
+var message = {
+    planName: "advert001",
+    cMarksNames : "nnx1",
+    marqueName : "test1, test2"
 };
-client.publish('servingserver', JSON.stringify(message1));
+client.publish('did_in', JSON.stringify(message));
