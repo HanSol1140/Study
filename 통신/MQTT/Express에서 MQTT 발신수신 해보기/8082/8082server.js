@@ -20,10 +20,9 @@ client.on('reconnect', function () {
     console.log('MQTT client is trying to reconnect');
 });
 
-
+ 
 var message = {
-    planName: "advert001",
+    ledOnOff: 0,
     cMarksNames : "nnx1",
-    marqueName : "test1, test2"
 };
 client.publish('did_in', JSON.stringify(message));
