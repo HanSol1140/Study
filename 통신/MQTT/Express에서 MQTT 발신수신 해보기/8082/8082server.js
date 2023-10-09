@@ -22,7 +22,13 @@ client.on('reconnect', function () {
 
  
 var message = {
-    ledOnOff: 0,
     cMarksNames : "nnx1",
+    screenOnOff: 0,
 };
+ 
+// var message = {
+    // planName : "nnx1",
+//     cMarksNames : "nnx1",
+//     marqueName : "123"
+// };
 client.publish('did_in', JSON.stringify(message));

@@ -1,0 +1,318 @@
+<핀연결>
+먼저 가장 우측에 있는 PIN은 3.3v나 5v에 연결
+우측끝에서 두번째는 GND핀으로 연결
+
+<특별한 핀은 필요없고, GPIO핀이기만하면 된다고함>
+DIN핀 (좌측에서 세번째) - I2S 데이터를 받는 핀
+    16번핀
+BCLK핀 (좌측에서 두번째) - I2S비트 클럭 핀
+    26번핀
+LRCLK핀 (좌측 끝)
+    25번핀에 연결
+
+<SPIFFS공간에 output.wav파일이 있을 시 재생해보기>
+
+#include <FS.h>
+#include <SPIFFS.h>
+#include "driver/i2s.h"
+
+#define READ_BUF_LEN (64*1024)
+
+// Pins for I2S
+#define I2S_BCLK_PIN 26
+#define I2S_LRCLK_PIN 25
+#define I2S_DATA_PIN 16
+
+void setup() {
+// Begin Serial for debugging
+Serial.begin(115200);
+
+// Setup I2S
+i2s_config_t i2s_config = {
+    .mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_TX),
+    .sample_rate = 24000, // Changed sample rate to 24KHz
+    .bits_per_sample = I2S_BITS_PER_SAMPLE_16BIT,
+    .channel_format = I2S_CHANNEL_FMT_ONLY_RIGHT, // Using ONLY_RIGHT because the input is mono
+    .communication_format = (i2s_comm_format_t)(I2S_COMM_FORMAT_I2S | I2S_COMM_FORMAT_I2S_MSB),
+    .intr_alloc_flags = 0,
+    .dma_buf_count = 8,
+    .dma_buf_len = 64,
+    .use_apll = false,
+    .tx_desc_auto_clear = true,
+    .fixed_mclk = 0
+};
+
+i2s_pin_config_t pin_config = {
+    .bck_io_num = I2S_BCLK_PIN,
+    .ws_io_num = I2S_LRCLK_PIN,
+    .data_out_num = I2S_DATA_PIN,
+    .data_in_num = I2S_PIN_NO_CHANGE
+};
+
+i2s_driver_install(I2S_NUM_0, &i2s_config, 0, NULL);
+i2s_set_pin(I2S_NUM_0, &pin_config);
+i2s_set_clk(I2S_NUM_0, 24000, I2S_BITS_PER_SAMPLE_16BIT, I2S_CHANNEL_MONO); // Changed to MONO
+
+// Initialize SPIFFS
+if(!SPIFFS.begin()){
+    Serial.println("Failed to mount file system");
+    return;
+}
+
+// Open file
+File file = SPIFFS.open("/output.wav");
+if(!file){
+    Serial.println("Failed to open file for reading");
+    return;
+}
+
+// Skip header
+file.seek(44);
+
+// Buffer for data
+uint8_t* buffer = (uint8_t*) malloc(READ_BUF_LEN);
+
+// Read data and write to I2S
+while(file.available()){
+    int read = file.read(buffer, READ_BUF_LEN);
+    if (read > 0) {
+    size_t written = 0;
+    i2s_write(I2S_NUM_0, buffer, read, &written, portMAX_DELAY);
+    }
+}
+
+// Close file
+file.close();
+
+// Free buffer
+free(buffer);
+}
+
+void loop() {
+// Put your main code here, to run repeatedly:
+}
+
+
+<자동으로 음원파일의 header를 읽어서 재생하기>
+#include <FS.h>
+#include <SPIFFS.h>
+#include "driver/i2s.h"
+
+#define READ_BUF_LEN (64*1024)
+
+// Pins for I2S
+#define I2S_BCLK_PIN 26
+#define I2S_LRCLK_PIN 25
+#define I2S_DATA_PIN 16
+
+struct WAVHeader {
+    uint32_t sampleRate;
+    uint16_t numChannels;
+    uint16_t bitsPerSample;
+};
+
+bool readWAVHeader(File &file, WAVHeader &header) {
+    file.seek(22);
+    if (file.read((uint8_t *)&header.numChannels, sizeof(header.numChannels)) != sizeof(header.numChannels))
+    return false;
+    
+    if (file.read((uint8_t *)&header.sampleRate, sizeof(header.sampleRate)) != sizeof(header.sampleRate))
+    return false;
+
+    file.seek(34);
+    if (file.read((uint8_t *)&header.bitsPerSample, sizeof(header.bitsPerSample)) != sizeof(header.bitsPerSample))
+    return false;
+
+    file.seek(44);
+    return true;
+}
+
+void setup() {
+    // Begin Serial for debugging
+    Serial.begin(115200);
+
+    // Initialize SPIFFS
+    if(!SPIFFS.begin()){
+    Serial.println("Failed to mount file system");
+    return;
+    }
+
+    // Open file
+    File file = SPIFFS.open("/output.wav");
+    if(!file){
+    Serial.println("Failed to open file for reading");
+    return;
+    }
+
+    // Read WAV header
+    WAVHeader header;
+    if (!readWAVHeader(file, header)) {
+    Serial.println("Failed to read WAV header");
+    return;
+    }
+
+    // Setup I2S
+    i2s_config_t i2s_config = {
+    .mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_TX),
+    .sample_rate = header.sampleRate,
+    .bits_per_sample = header.bitsPerSample == 16 ? I2S_BITS_PER_SAMPLE_16BIT : I2S_BITS_PER_SAMPLE_32BIT,
+    .channel_format = header.numChannels == 1 ? I2S_CHANNEL_FMT_ONLY_RIGHT : I2S_CHANNEL_FMT_RIGHT_LEFT,
+    .communication_format = (i2s_comm_format_t)(I2S_COMM_FORMAT_I2S | I2S_COMM_FORMAT_I2S_MSB),
+    .intr_alloc_flags = 0,
+    .dma_buf_count = 8,
+    .dma_buf_len = 64,
+    .use_apll = false,
+    .tx_desc_auto_clear = true,
+    .fixed_mclk = 0
+    };
+
+    i2s_pin_config_t pin_config = {
+    .bck_io_num = I2S_BCLK_PIN,
+    .ws_io_num = I2S_LRCLK_PIN,
+    .data_out_num = I2S_DATA_PIN,
+    .data_in_num = I2S_PIN_NO_CHANGE
+    };
+
+    i2s_driver_install(I2S_NUM_0, &i2s_config, 0, NULL);
+    i2s_set_pin(I2S_NUM_0, &pin_config);
+    i2s_set_clk(I2S_NUM_0, header.sampleRate, (i2s_bits_per_sample_t)header.bitsPerSample, (i2s_channel_t)header.numChannels);
+
+    // Buffer for data
+    uint8_t* buffer = (uint8_t*) malloc(READ_BUF_LEN);
+
+    // Read data and write to I2S
+    while(file.available()){
+    int read = file.read(buffer, READ_BUF_LEN);
+    if (read > 0) {
+        size_t written = 0;
+        i2s_write(I2S_NUM_0, buffer, read, &written, portMAX_DELAY);
+    }
+    }
+
+    // Close file
+    file.close();
+
+    // Free buffer
+    free(buffer);
+}
+
+void loop() {
+    // Put your main code here, to run repeatedly:
+}
+<playWav("파일명"); 으로 재생하는 방법 -> 음원이 재생하는동안 모든동작이 정지됩니다.>
+
+#include <FS.h>
+#include <SPIFFS.h>
+#include "driver/i2s.h"
+
+#define READ_BUF_LEN (64*1024)
+
+// Pins for I2S
+#define I2S_BCLK_PIN 26
+#define I2S_LRCLK_PIN 25
+#define I2S_DATA_PIN 16
+
+struct WAVHeader {
+    uint32_t sampleRate;
+    uint16_t numChannels;
+    uint16_t bitsPerSample;
+};
+
+bool readWAVHeader(File &file, WAVHeader &header) {
+    file.seek(22);
+    if (file.read((uint8_t *)&header.numChannels, sizeof(header.numChannels)) != sizeof(header.numChannels))
+    return false;
+    
+    if (file.read((uint8_t *)&header.sampleRate, sizeof(header.sampleRate)) != sizeof(header.sampleRate))
+    return false;
+
+    file.seek(34);
+    if (file.read((uint8_t *)&header.bitsPerSample, sizeof(header.bitsPerSample)) != sizeof(header.bitsPerSample))
+    return false;
+
+    file.seek(44);
+    return true;
+}
+
+void setup() {
+    // Begin Serial for debugging
+    Serial.begin(9600);
+
+    // Initialize SPIFFS
+    if(!SPIFFS.begin()){
+        Serial.println("Failed to mount file system");
+        return;
+    }
+    playWav("callcleaningbot");
+}
+
+void loop() {
+    // Put your main code here, to run repeatedly:
+}
+
+void playWav(const char* fileName) {
+    String filePath = "/" + String(fileName) + ".wav";
+
+    // Open file
+    File file = SPIFFS.open(filePath);
+    if(!file){
+    Serial.println("Failed to open file for reading");
+    return;
+    }
+
+    // Read WAV header
+    WAVHeader header;
+    if (!readWAVHeader(file, header)) {
+    Serial.println("Failed to read WAV header");
+    return;
+    }
+
+    // Setup I2S
+    i2s_config_t i2s_config = {
+    .mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_TX),
+    .sample_rate = header.sampleRate,
+    .bits_per_sample = header.bitsPerSample == 16 ? I2S_BITS_PER_SAMPLE_16BIT : I2S_BITS_PER_SAMPLE_8BIT,
+    .channel_format = header.numChannels == 1 ? I2S_CHANNEL_FMT_ONLY_RIGHT : I2S_CHANNEL_FMT_RIGHT_LEFT,
+    .communication_format = (i2s_comm_format_t)(I2S_COMM_FORMAT_I2S | I2S_COMM_FORMAT_I2S_MSB),
+    .intr_alloc_flags = 0,
+    .dma_buf_count = 8,
+    .dma_buf_len = 64,
+    .use_apll = false,
+    .tx_desc_auto_clear = true,
+    .fixed_mclk = 0
+    };
+
+    i2s_pin_config_t pin_config = {
+    .bck_io_num = I2S_BCLK_PIN,
+    .ws_io_num = I2S_LRCLK_PIN,
+    .data_out_num = I2S_DATA_PIN,
+    .data_in_num = I2S_PIN_NO_CHANGE
+    };
+
+    i2s_driver_install(I2S_NUM_0, &i2s_config, 0, NULL);
+    i2s_set_pin(I2S_NUM_0, &pin_config);
+    i2s_set_clk(I2S_NUM_0, header.sampleRate, (i2s_bits_per_sample_t)header.bitsPerSample, (i2s_channel_t)header.numChannels);
+
+    // Buffer for data
+    uint8_t* buffer = (uint8_t*) malloc(READ_BUF_LEN);
+
+    // Read data and write to I2S
+    while(file.available()){
+    int read = file.read(buffer, READ_BUF_LEN);
+    if (read > 0) {
+        size_t written = 0;
+        i2s_write(I2S_NUM_0, buffer, read, &written, portMAX_DELAY);
+    }
+    }
+
+    // Close file
+    file.close();
+
+    // Free buffer
+    free(buffer);
+
+    // Uninstall I2S driver after playing sound
+    i2s_driver_uninstall(I2S_NUM_0);
+}
+        
+        
