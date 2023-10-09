@@ -1,0 +1,34 @@
+<Arduino IDE에 STM32Duino 라이브러리 설치>
+파일 - 기본 설정 - 추가 보드 관리자 URL
+http://dan.drown.org/stm32duino/package_STM32duino_index.json
+
+라이브러리 설치
+
+보드선택 - STM Nucleo F103RB(STLink)
+
+현재 테스트 기종
+NUCLEO-F103RB
+
+<STM32Duino가 제대로 작동하는지 확인>
+    const int ledPin = 13; // NUCLEO-F103RB의 LD2 LED는 D13 핀에 연결되어 있습니다.
+
+    void setup() {
+    pinMode(ledPin, OUTPUT); // LED 핀을 출력 모드로 설정합니다.
+    }
+
+    void loop() {
+    digitalWrite(ledPin, HIGH);   // LED를 켭니다.
+    delay(1000);                  // 1초 동안 대기합니다.
+    digitalWrite(ledPin, LOW);    // LED를 끕니다.
+    delay(1000);                  // 1초 동안 대기합니다.
+    }
+    
+<콘솔에 println출력하기>
+    void setup() {
+        Serial2.begin(115200); <!-- 원래는 Serial로 썻는데 여기에는 Serial2로 해야함 -->
+    }
+    void loop() {
+        Serial2.println("!!!!!");
+        delay(1000);
+    }
+이렇게 코드를 업로드해보면, LD2 LED가 1초간격으로 감빡이는것을 볼 수 있습니다.
