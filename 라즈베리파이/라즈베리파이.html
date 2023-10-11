@@ -406,3 +406,33 @@ http://wiki.sunfounder.cc/index.php?title=PN532_NFC_Module_for_Raspberry_Pi
     sudo apt-get install xrdp <!-- 설치 -->
     sudo systemctl status xrdp <!-- 설치확인 -->
     sudo ufw allow 3389 <!-- 라즈베리파이의 방화벽으로 인한 접속실패시 포트 방화벽해제 -->
+
+    sudo nano /boot/config.txt
+
+        hdmi_force_hotplug=1
+        위와 같은 코드를 주석해제 => 모니터가 연결이 안되어있으면 꺼지는 문제해결
+
+    <!-- 계정생성의 이유 => 라즈베리파이가 켜지는순간 기본계정으로 접속하는데, 중복접속이 불가능하여 접속할 userID를 하나 더 생성해야함 -->
+    sudo adduser remote 
+        새 암호 : remote
+        암호 재입력 :remote
+        나머지 무시하고 Enter => Y
+
+    생성한 아이디에 권한 부여
+
+        sudo usermod –a –G sudo remote
+
+
+    ifconfig을 통해 ip확인
+
+    이제 PC의 원격 데스크탑 접속 실행
+    ifconfig으로 확인한 IP입력
+
+        xorg
+        remote
+        remote
+        로 접속
+
+    원격 접속 완료
+
+    
