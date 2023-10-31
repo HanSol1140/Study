@@ -1,53 +1,65 @@
 #include <WiFi.h>      // 와이파이를 사용하기 위해
 #include <WebServer.h> // 웹서버를 사용하기 위해
-#include <PubSubClient.h>
-const char *mqtt_server = "라즈베리파이의 IP를 입력 하세요";
 
 // SSID & Password
-const char *ssid = "NNX-2.4G";
+const char *ssid = "NNX2-2.4G";
 const char *password = "$@43skshslrtm";
-const char* mqttServer = "192.168.0.2";
-const int mqttPort = 1883;
+bool autoMode = false;
+String receivedData = "";
 
+unsigned long startTime = 0;
 WebServer server(80); // Object of WebServer(HTTP port, 80 is defult)
-
-WiFiClient espClient;
-PubSubClient client(espClient);
-
+//---------------------------------------------------------------
+//---------------------------------------------------------------
 void handle_root();
-
 // HTML 페이지
 #if 1
 const char index_html[] PROGMEM = R"rawliteral(
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- 한글 깨짐방지 -->
+    <meta charset="UTF-8">
   </head>
   <body>
+    20초마다 문자열을 출력할 수 있을까
   </body>
 </html>
 )rawliteral";
 #endif
 
-// 페이지 요청이 들어 오면 처리 하는 함수
-void handle_root()
-{
+void handle_root(){
     server.send(200, "text/html", index_html);
+//---------------------------------------------------------------
+//---------------------------------------------------------------
+}
+// 자동 모드
+void onAuto(){
+  autoMode = true;
+  server.send(200, "text/plain", "AutoMode ON");
 }
 
-void InitWebServer()
-{
-    // 페이지 요청 처리 함수 등록
+// 수동 모드
+void offAuto(){
+  autoMode = false;
+  startTime = millis();
+  server.send(200, "text/plain", "AutoMode OFF");
+}
+
+void InitWebServer(){
+    // 요청 처리 함수 등록
     server.on("/", handle_root);
+    server.on("/onauto", onAuto);
+    server.on("/offauto", offAuto);
     server.begin();
 }
 
+
 //---------------------------------------------------------------
 //---------------------------------------------------------------
 
-void setup()
-{                       // 실행시
-    Serial.begin(9600); // 시리얼 통신 초기화(실행), 전송속도 설정
+void setup(){                       // 실행시
+    Serial.begin(115200); // 시리얼 통신 초기화(실행), 전송속도 설정
     Serial.println("ESP32 WEB Start");
     Serial.println(ssid);
 
@@ -63,45 +75,89 @@ void setup()
     Serial.print("Wifi IP: ");
     Serial.println(WiFi.localIP());
 
-    // MQTT 브로커 접속
-    client.setServer(mqttServer, mqttPort);
-    client.setCallback(callback);
-    while (!client.connected())
-    {
-        if (client.connect("ESP32 MQTT Broker Client"))
-        {
-            Serial.println("MQTT 브로커에 연결됨");
-        }
-        else
-        {
-            Serial.print("MQTT 브로커 연결 실패, 상태코드: ");
-            Serial.print(client.state());
-            Serial.println(" 5초 후 재시도...");
-            delay(5000);
-        }
-    }
-
     InitWebServer();
 
     Serial.println("HTTP server started");
-    delay(100);
+    delay(3000);
+
+
+
+  // UART1 초기화(RX: GPIO 16, TX: GPIO 17)
+  Serial1.begin(115200, SERIAL_8N1, 16, 17);
+
+  // UART2 초기화(RX: GPIO 18, TX: GPIO 19)
+  Serial2.begin(115200, SERIAL_8N1, 18, 19);
 }
 
-// unsigned long previousTime = 0;  // 이전 시간을 저장하는 변수a
-// unsigned long interval = 3000;   // 출력 간격(3초)
-// unsigned long currentTime = millis();  // 현재 시간
-
-void loop()
-{
-
-    server.handleClient();
+//---------------------------------------------------------------
+// 바퀴에 속도 데이터 전송
+void sendBytes(const byte* sequence, size_t size) {
+  for (size_t i = 0; i < size; ++i) {
+    Serial2.write(sequence[i]);
+  }
 }
+//---------------------------------------------------------------
 
+void loop(){
+  server.handleClient();
+// --------------------------------------------
+  if(autoMode){
+    // UART1(본체)에서 데이터를 읽어서 모터로 전송
+    while (Serial1.available()) {
+      char data = Serial1.read();
+      Serial2.write(data);
+      if (data == 0xD5) {
+        receivedData.toUpperCase();
+        Serial.println(receivedData);
+        receivedData = "";
+      }
+      receivedData += String(data, HEX);
+      receivedData += " ";
+    }
 
-// ─────────────────────────────────────────────────────────
-void setup_wifi() {
-
+    
+    // UART2(모터)에서 데이터를 읽어서 본체로 전송
+    while (Serial2.available()) {
+      char data = Serial2.read();
+      Serial1.write(data);
+      if (data == 0xD5) {
+        receivedData.toUpperCase();
+        Serial.println(receivedData);
+        receivedData = "";
+      }
+      receivedData += String(data, HEX);
+      receivedData += " ";
+    }
+  
+// --------------------------------------------
+  }else{
+// --------------------------------------------
+    // 수동 회피
+    byte Speed[] = {0xD5, 0x5D, 0xFE, 0x0A, 0x83, 0x20, 0x02, 0x0A, 0x49, 0x80, 0x0B, 0x49, 0x00, 0xD4};
+    sendBytes(Speed, sizeof(Speed));
     delay(10);
+
+    // UART1(본체)에서 데이터를 읽어서 모터로 전송
+    while (Serial1.available()) {
+      char data = Serial1.read();
+
+      if (data == 0xD5) {
+        receivedData.toUpperCase();
+        Serial.println(receivedData);
+        receivedData = "";
+        
+      }
+      receivedData += String(data, HEX);
+    }    
+  }
+// --------------------------------------------
+}
+
+
+
+//---------------------------------------------------------------
+//---------------------------------------------------------------
+void setup_wifi() {
     // 먼저 WiFi 네트워크에 연결합니다.
     Serial.println();
     Serial.print("Connecting to ");
@@ -110,7 +166,7 @@ void setup_wifi() {
     WiFi.begin(ssid, password);
 
     while (WiFi.status() != WL_CONNECTED) {
-        delay(500);
+        delay(1000);
         Serial.print("연결 시도중!");
     }
 
@@ -118,15 +174,4 @@ void setup_wifi() {
     Serial.println("WiFi connected");
     Serial.println("IP address: ");
     Serial.println(WiFi.localIP());
-}
-
-// MQTT 수신 콜백 함수
-void callback(char* topic, byte* payload, unsigned int length) {
-  Serial.print("메시지 도착 [");
-  Serial.print(topic);
-  Serial.print("] ");
-  for (int i = 0; i < length; i++) {
-    Serial.print((char)payload[i]);
-  }
-  Serial.println();
 }
