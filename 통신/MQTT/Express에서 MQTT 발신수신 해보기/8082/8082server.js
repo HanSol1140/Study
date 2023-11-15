@@ -22,8 +22,10 @@ client.on('reconnect', function () {
 
  
 var message = {
-robotname : "cleaningbot_01",
-robotstate : false
+    robotname : "cleaningbot_01",
+    robotstate : true
 }
 client.publish('cleaningbot_in', JSON.stringify(message));
+
+
 // client.publish('cleaningbot_in', "123");
