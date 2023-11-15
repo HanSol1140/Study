@@ -7,7 +7,7 @@ var client = mqtt.connect('mqtt://192.168.0.137:1883');
 
 client.on('connect', function () {
 
-    client.subscribe('mqttserver', function (err) {
+    client.subscribe('mainserver', function (err) {
         if (!err) {
         console.log('Connected to MQTT broker');
         }
