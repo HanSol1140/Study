@@ -1,0 +1,328 @@
+<Uno>
+A0~A6포트는 아날로그 통신
+0~12포트는 디지털통신용이지만 ~(물결)표시가 된 포트들은 아날로그 통신도 가능합니다.
+그러나 일반적인 상황에서 0,1번 포트는 사용하지 않는것을 권장합니다. 
+
+0(RX) 포트 : 다른 장치로부터 데이터를 받는 역할
+1(TX) 포트 : 다른 장치로 데이터를 받는 역할
+
+0(RX), 1(TX) 포트는 사용하지 않는 이유
+
+
+아두이노에서 0번 포트와 1번 포트는 일반적으로 시리얼 통신에 사용되는 RX와 TX 포트입니다.
+이 포트들은 아두이노와 컴퓨터 간의 시리얼 통신, 즉 프로그램 업로드와 같은 작업을 위해 사용됩니다.
+따라서, 이 포트들을 다른 용도로 사용하면 아두이노와 컴퓨터 간의 통신에 문제가 발생할 수 있습니다.
+
+예를 들어, 이 포트들에 연결된 장치가 시리얼 통신을 방해하거나
+이 포트들을 사용하는 코드가 실행되면서 시리얼 통신이 방해받을 수 있습니다.
+
+그러므로, 특히 프로그래밍 중이거나 디버깅이 필요할 때 이 포트들을 다른 용도로 사용하는 것을 피하는 것이 좋습니다.
+그러나 코드가 완성되고 디버깅이 더 이상 필요하지 않을 때는 이 포트들을 사용할 수도 있습니다.
+
+───────────────────────────────────────────────────────────────────────────────────────────────
+
+<pinMode / digitalWrite / digitalRead 함수>
+
+    <pinMode(pin, mode)>
+
+        ※ pin : 디지털 핀 숫자, 아날로그 핀 숫자
+        ※ mode : INPUT, OUTPUT, INPUT_PULLUP
+
+        아두이노 우노(UNO)에는 14개의 디지털(Digital) 핀을 가지고 있다.
+        해당 핀을 사용에 따라 입력과 출력으로 사용 할 수 있다.
+        핀을 사용하기 전에 핀을 입력으로 쓸지 출력으로 쓸지 설정을 해줘야 한다.
+
+        따라서, pinMode는 사용 핀에 대한 입력과 출력을 설정하기 위한 함수이다
+
+
+    <digitalWrite(디지털 출력)>
+
+        아두이노 우노(UNO)의 디지털 핀을 출력으로 사용 할 시에 (pinMode(.. , OUTPUT)) 0 or 1이라는 값을 출력 할 수 있다.
+        즉, 5[V] or 0[V], HIGH or LOW 등을 출력 한다.
+
+        따라서, digitalWrite는 디지털 0 또는 1을 출력하는 함수 이다.
+
+        digitalWrite(pin, value)
+        ※ pin : 디지털 핀 숫자
+        ※ value : HIGH, LOW
+        10번의 디지털 핀에 5[V]를 인가하고 싶다면 digitalWrite(10, HIGH); 로 설정하면 된다.
+
+
+    <digitalRead(디지털 입력)>
+
+        아두이노의 디지털 핀에서 INPUT(입력)으로 사용하는 핀에 대한 정보를 얻기 위한 함수이다.
+        1 or 0이라는 값을 읽을 수 있다. (HIGH or LOW)
+        따라서, digitalRead는 디지털 0 or 1값을 입력 받는 함수 이다.
+
+        digitalRead(pin)
+        ※ pin : 디지털 핀 숫자, 아날로그 핀 숫자
+
+        예를 들어, 7번의 디지털 값을 입력 받고 싶다면
+        digitalRead(7) 이라고 지칭 하면 됩니다.
+
+
+    <analogRead(핀번호)>
+
+        아날로그 신호를 읽기위한 함수입니다.
+        핀번호 - 아날로그 신호를 읽어들일 아두이노 핀번호 (A0~A5)를 설정합니다. 
+
+    <analogWrite(핀번호, 0 ~ 255);
+        
+        LED의 밝기를 조절하는 함수입니다.
+        analogWrite(핀번호, 밝기조절정도)로 설정하여 사용합니다.
+
+
+───────────────────────────────────────────────────────────────────────────────────────────────
+
+<아두이노에 코드넣기>
+
+    <LED 켜기>
+        void setup(){
+            pinMode(10, OUTPUT); // 출력 모드 10 설정
+        }
+        void loop(){
+            digitalWrite(10, HIGH); // LED ON
+        }
+
+    <LED 끄기>
+        void setup(){
+            pinMode(10, OUTPUT); // 출력 모드 10 설정
+        }
+        void loop(){
+            digitalWrite(10, LOW); // LED OFF
+        }
+
+    <버튼 눌렀을때 코드>
+    void setup(){
+        pinMode(7, INPUT); // 입력 모드 7 설정
+        pinMode(10, OUTPUT); // 출력 모드 10 설정
+    }
+                
+    void loop(){
+        if(digitalRead(7) == LOW){ // 버튼을 눌렸을 때,
+            digitalWrite(10, HIGH); // LED ON
+        }else{
+            digitalWrite(10, LOW); // LED OFF
+        }   
+    }
+    <!--
+        이 코드를 이해하려면 먼저 INPUT에 대해서 이해해야합니다.
+        아두이노의 INPUT모드가 설정되면 기본적으로 전압이 HIGH로 설정됩니다.
+
+        이때, 버튼을 눌렀을때(누르고 있을 때) 전압은 LOW로 내려가게 됩니다.
+        (저같은 경우 기본이 LOW고 눌러야 HIGH라고 이해를 잘못하고 있어서 한동안 이해를 못함)
+
+        따라서 버튼이 눌렸을때, LOW가 되는 전압을 감지해서 LED를 키고,
+        버튼에서 손을 떼면 LED가 꺼지는 기능을 구현합니다.
+
+        그러나 LOW / HIGH가 반대로 된 경우도 있기 때문에, 기기마다 체크해야 합니다.
+        => 이는 풀 업, 풀 다운 저항의 개념입니다. 아래에서 체크하세요.
+
+    -->
+    
+<풀 다운 / 풀 업 저항>
+
+    <풀 다운 저항을 이용한 디지털 입력>
+        * 디지털 신호 입력핀 : 2
+        * 디지털 신호 출력핀 : 12
+
+        스위치와 저항이 직렬 연결되어 있다.
+        저항이 GND와 연결되어 있다. 이런식으로 연결된 저항을 풀다운 저항이라고 한다.
+        <!-- 중요 -->
+        스위치가 눌러지지 않은 Normal한 경우 0이 입력된다. 스위치가 눌러지지 않은 상태는 스위치의 저항은 무한대이다.
+
+        따라서 2번 핀에 입력되는 전압은  전압 분배에 의해 5V이다.
+        스위치가 눌러지면, 스위치의 저항은 0이다. 따라서 2번 핀에 입력되는 전압은 전압분배에 의해 0V이다. 
+
+        스위치를 누르고 있는 동안 LED가 점등되고,
+        스위치를 놓으면 1초간만 LED 점등이 유지된 후 꺼지는 프로그램을 작성하시오.
+
+
+    
+        #define LED 12
+        #define SWITCH  2
+    
+        void setup() {
+            pinMode(LED, OUTPUT);
+            pinMode(SWITCH, INPUT);
+        }
+    
+        void loop() {
+            int sw_in;
+            sw_in = digitalRead(SWITCH);    // 2번핀으로 디지털 신호 읽음
+            if(sw_in == HIGH){              // 스위치 누르면 HIGH => HIGH라면 LED키기
+                digitalWrite(LED, HIGH);
+                delay(1000);
+            }else{
+            digitalWrite(LED, LOW);
+            }
+        }
+
+        <풀 업 저항을 이용한 디지털 입력>
+        * 디지털 신호 입력핀 : 2
+        * 디지털 신호 출력핀 : 12
+
+        저항이 Vcc와 연결되어 있다. 이런식으로 연결된 저항을 풀업 저항이라고 한다.
+        <!-- 중요 -->
+        스위치가 눌러지지 않은 Normal한 경우 1이 입력된다. 스위치가 눌러지지 않은 상태는 스위치의 저항은 무한대이다.
+
+        따라서 2번 핀에 입력되는 전압은  전압 분배에 의해 0V이다.
+        스위치가 눌러지면, 스위치의 저항은 0이다. 따라서 2번 핀에 입력되는 전압은 전압분배에 의해 5V이다.
+
+
+
+        #define LED 12
+        #define SWITCH  2
+        
+        void setup() {
+            pinMode(LED, OUTPUT);
+            pinMode(SWITCH, INPUT);
+        }
+        void loop() {
+            int sw_in;
+            sw_in = digitalRead(SWITCH);    //2번핀으로 디지털 신호 읽음
+            if(sw_in == LOW){           //스위치를 누르면 LOW
+                digitalWrite(LED, HIGH);
+                delay(1000);
+            }else{
+                digitalWrite(LED, LOW);
+            }
+        }
+
+        <!-- 요약 -->
+        <!--
+            풀 다운 저항은 버튼을 입력하고 있지 않을 시 전압값이 LOW(0)
+            버튼을 눌러서 전압값을 HIGH(1)로 변경
+        -->
+        <!--
+            풀 업 저항은 버튼을 입력하고 있지 않을 시 전압값은 HIGH(1)
+            버튼을 눌러서 전압값을 LOW(0)로  변경
+        -->
+
+    <아날로그 신호 입력받기>
+
+        아두이노는 A0~A5 총 6개의 핀을 통해 아날로그 신호를 입력받을 수 있습니다.
+        아날로그 센서를 통해 직접 신호를 입력받아 보도록 하겠습니다.
+
+        int cds = A0; // 변수 cds를 선언하고, A0을 대입 
+
+        void setup() {                     
+            Serial.begin(9600); // 시리얼 통신을 시작하며, 속도는 9600으로 설정.
+        }
+
+        void loop() {                                
+            int val= analogRead(cds);   // 변수 val을 선언, cds(A0) 아날로그 값을 저장
+            Serial.println(val);        // 변수 val에 저장된 값을 시리얼 통신을 통해 출력.
+            delay(1000);                // 1초 동안 딜레이.
+        }
+
+    <직접 LED 깜빡이게 만들기>
+    #define LED 0 // ESP32의 내장 LED 핀. 모듈에 따라 다를 수 있음.
+
+    void setup() {
+        pinMode(LED, OUTPUT);
+    }
+
+    void loop() {
+        digitalWrite(LED, LOW); // LED 켜기
+        delay(3000);                     // 1초 동안 대기
+        digitalWrite(LED, HIGH);  // LED 끄기
+        delay(500);                     // 1초 동안 대기
+    }
+
+    <!-- 지금 무슨 쓰지말라는 이유대로 0번 포트 LED를 키면 1번포트 LED가 켜지고 -->
+    <!-- 1번 포트 LED를 키면 0번포트 LED가 켜짐 -->
+    <!-- 어쨌든 LED가 켜지는걸 확인 -->
+
+    <LED 밝기 조절>
+    #define LED 0
+
+    void setup() {
+        pinMode(LED, OUTPUT);
+    }
+
+    void loop() {
+        // digitalWrite(LED, LOW); // LED 켜기
+        analogWrite(LED, 127); // 0 ~ 255(밝기조절)
+    }
+
+───────────────────────────────────────────────────────────────────────────────────────────────
+
+<버튼 디바운싱>
+
+버튼 디바운싱은 버튼이 눌리거나 떼어질 때 발생하는 바운싱 현상을 방지하는 기법입니다.
+즉, 버튼을 누를때 의도적으로 다시 누르기까지 딜레이를 주어 여러번 버튼이 눌리는 현상을 방지하는 것입니다.
+
+    <예제1>
+    // 버튼의 핀 번호
+    const int buttonPin = 2;
+
+    // 버튼의 이전 상태
+    int previousButtonState = LOW;
+
+    // 버튼의 현재 상태
+    int currentButtonState = LOW;
+
+    // 버튼의 디바운싱 시간
+    const int debounceTime = 50;
+
+    void setup() {
+    // 버튼 핀을 입력으로 설정합니다.
+    pinMode(buttonPin, INPUT);
+    }
+
+    void loop() {
+    // 버튼의 현재 상태를 읽습니다.
+    currentButtonState = digitalRead(buttonPin);
+
+    // 버튼의 상태가 변경되었으면
+    if (currentButtonState != previousButtonState) {
+        // 버튼의 상태를 디바운싱합니다.
+        delay(debounceTime);
+
+        // 버튼의 현재 상태를 저장합니다.
+        previousButtonState = currentButtonState;
+
+        // 버튼의 상태에 따라 동작을 수행합니다.
+        if (currentButtonState == HIGH) {
+        // 버튼이 눌렸습니다.
+        } else {
+        // 버튼이 떼어졌습니다.
+        }
+    }
+    }
+
+
+
+    <예제2>
+    const int BUTTON_PIN = 7; // the number of the pushbutton pin
+    const int DEBOUNCE_DELAY = 50; // the debounce time
+
+    int lastSteadyState = LOW; 
+    int lastFlickerableState = LOW;
+    int currentState;
+
+    unsigned long lastDebounceTime = 0;
+
+    void setup() {
+    Serial.begin(9600);
+    pinMode(BUTTON_PIN, INPUT_PULLUP);
+    }
+
+    void loop() {
+    currentState = digitalRead(BUTTON_PIN);
+    
+    if (currentState != lastFlickerableState) {
+        lastDebounceTime = millis();
+        lastFlickerableState = currentState;
+    }
+
+    if ((millis() - lastDebounceTime) > DEBOUNCE_DELAY) {
+        if (lastSteadyState == HIGH && currentState == LOW)
+        Serial.println("The button is pressed");
+        else if (lastSteadyState == LOW && currentState == HIGH)
+        Serial.println("The button is released");
+
+        lastSteadyState = currentState;
+    }
+    }

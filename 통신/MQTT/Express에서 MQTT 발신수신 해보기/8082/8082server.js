@@ -22,13 +22,8 @@ client.on('reconnect', function () {
 
  
 var message = {
-    cMarksNames : "nnx1",
-    screenOnOff: 0,
-};
- 
-// var message = {
-    // planName : "nnx1",
-//     cMarksNames : "nnx1",
-//     marqueName : "123"
-// };
-client.publish('did_in', JSON.stringify(message));
+robotname : "cleaningbot_01",
+robotstate : false
+}
+client.publish('cleaningbot_in', JSON.stringify(message));
+// client.publish('cleaningbot_in', "123");
