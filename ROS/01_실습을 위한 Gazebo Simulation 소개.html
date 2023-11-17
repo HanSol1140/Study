@@ -1,0 +1,27 @@
+<01_실습을 위한 Gazebo Simulation 소개>
+
+<환경 구성>
+    터미널을 실행시키고 다음 커멘드 입력
+    <!-- 폴더 이름을 직접 타이핑하지 마시고 Tab키를 적극 사용하시기를 권장합니다. -->
+    cd gcamp_ros2_ws/src
+    git clone https://github.com/Road-Balance/gcamp_ros2_basic.git
+
+    cd ~/gcamp_ros2_ws/
+    <!-- 프로젝트 패키지 빌드 -->
+    colcon build --symlink-install --packages-select gcamp_gazebo
+
+<Gazebo 설정 파일에 사용 모델 경로 추가>
+    gedit ~/.gazebo/gui.ini
+
+    다음 부분 수정
+    [model_paths]
+    filenames=/home/<user_name>/gcamp_ws/src/gcamp_ros_basic/GazeboFiles/models
+    <!-- user_name은 윈도우 계정명 -->
+
+    ex) /home/swimming/gcamp_ros2_ws/src/gcamp_ros2_basic/gcamp_gazebo/GazeboFiles/models
+    <gui가 없어서 직접 생성하기>
+    C:\gcamp_ros2_ws\.gazebo경로로 이동 후 gui.ini 생성
+
+
+    <윈도우에서 실행>
+    ros2 launch gcamp_gazebo gcamp_world_windows.launch.py

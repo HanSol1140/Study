@@ -1,0 +1,92 @@
+<참고할 사이트>
+    <ROS1>
+        공식문서
+        https://wiki.ros.org/
+        ROS-WINDOW 10 환경에서 설치하기
+        https://jungreeyoung.tistory.com/entry/ROS-WINDOW-10-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0
+
+    <ROS2>
+        공식문서
+        https://docs.ros.org/en/foxy/
+        <!-- https://docs.ros.org/en/rolling/index.html --> <!-- => foxy가 더 많이쓰임 -->
+        유튜브 ROS2 Foxy 강의
+        https://www.youtube.com/watch?v=X9uYIumhU8E&list=PLieE0qnqO2kTNCznjLX_AaXe2hNJ-IpVQ&index=1
+        AI로봇랩 1강 Windows WSL2에 ROS2 설치하기
+        https://keep-steady.tistory.com/45
+
+
+
+<ROS용어>
+    Node
+        ROS에서 최소 단위의 실행 가능한 프로세서
+        ROS에서는 최소한의 실행단위로 프로그램을 나누어서 작업하게 된다.
+        각 Node는 메세지 통신으로 데이터를 주고 받는다.
+    
+    Package
+        하나 이상의 노드, 노드 실행을 위한 정보 등을 묶어 놓은 것
+        또한 패키지의 묶음을 메타 패키지라고 하여 따로 분리한다.
+
+
+    Message
+        메세지를 통해 Node간의 데이터를 주고받게 된다.
+        메세지는 integer, floating, point, boolean과 같은 변수 형태
+        메세지 안에 메세지를 품고 있는 간단한 데이터 구조 및 메세지들의 배열과 같은 형태도 사용가능.
+
+<메세지 통신 개념잡기>
+
+    <토픽>
+    단방향, 연속성을 가진 통신방법
+    => ex) 센서 데이터
+    => ex) 라이다 데이터를 지속적으로 보낼 때
+    1:1, 1:N, N:1, N:N도 가능
+
+    1. Master 구동
+        $ roscore
+        XMLRPC(XML-Remote Procedure Call) : 서버
+        http://ROS_MASTER_URL:11311
+        노드 정보 관리 => Pub/Sub 정보를 관리
+        
+    
+    2. Subscriber Node 구동
+        $rosrun 패키지이름 or 노드이름
+        XMLRPC: 클라이언트
+        http://ROS_HOSTNAME:1111(포트)
+        정보 구독
+        Subscriber 노드 정보
+            /subscriber_node_name
+            /topic_name
+            message_type
+            http://ROS_HOSTNAME:1111
+
+    3. Publisher Node 구동
+        $rosrun 패키지이름 or 노드이름
+        MLRPC: 클라이언트
+        정보 발행
+        Publisher 노드 정보
+            /subscriber_node_name
+            /topic_name
+            message_type
+            http://ROS_HOSTNAME:2222
+    
+    4. Publisher 정보 알림(Master)
+        Master는 Subscriber Node에 새로운 퍼블리셔 정보를 알림
+        
+    5. Publisher Node에 접속 요청(Subscriber)
+        마스터로부터 받은 Publisher 정보를 이용하여 TCPROS접속을 요청
+
+    6. Subscriber Node에 접속 응답(Publisher)
+        접속 응답에 해당하는 자신의 TCP URL 주소와 포트번호를 전송
+        TCPROS 접속 응답
+        http://ROS_HOSTNAME:3333
+    
+    7. TCPROS를 이용하여 퍼블리셔 노드와 직접 연결(Subscriber)
+        TCPROS 접속
+    
+    8. 메시지 전송(Publisher)
+        Publisher는 Subscriber에게 메세지를 전송
+
+    <서비스>
+    서비스는 토픽과 같은 방식으로 동작하지만
+    토픽과 다르게 서비스 요청 / 서비스 응답이 수행된 후 서로간의 접속을 끊는다
+    즉, 1회성 + 응답이 존재하는 통신(양방향 통신)
+    => 서비스 클라이언트(요청) => 서비스 서버(요청받은 동작 수행, 수행한 후 응답)
