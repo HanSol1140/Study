@@ -2,3 +2,80 @@
 https://ubuntu.com/download/raspberry-pi?ref=blog.may-i.io
 
 아래에 22.04.3LTS 버전 다운로드
+
+해당파일을 알아서 라즈베리파이에 업로드
+실행
+
+<Terminator 다운로드>
+    <terminator 설치>
+    인터넷 연결 확인 후
+    sudo apt update
+    sudo apt install terminator -y
+    
+    설치 후 'terminator'로 실행
+
+    화면 분할 예시
+
+    - Ctrl + Shift + E : 가로 분할
+    - Ctrl + Shift + O : 세로 분할
+    - Ctrl + Shift + W : 창 닫기
+    - Alt + 화살표 : 창 간 이동
+
+<VS Code 설치>
+    VS코드 홈페이지로가서 .deb ARM64버전을 다운로드
+    터미널에서 다운로드한 경로로 이동
+    sudo dpkg -i code_1.84.2-1699527205_arm64.deb
+    이후 code로 실행할 수 있음
+
+<추가 설정>
+    sudo apt purge modemmanager
+    sudo adduser [사용자 계정 이름]
+    sudo usermod -aG sudo [사용자 계정 이름]
+
+
+
+<ROS 2 Foxy 설치>
+    https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
+
+    <!-- 로케일 설정 -->
+    locale <!-- # check for UTF-8 -->
+
+    sudo apt update && sudo apt install locales
+    sudo locale-gen en_US en_US.UTF-8
+    sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+    export LANG=en_US.UTF-8
+
+    locale  # verify settings
+
+    <!-- ROS2 저장소를 시스템에 추가 -->
+    sudo apt install software-properties-common
+    sudo add-apt-repository universe
+
+    <!-- 다운로드 -->
+    sudo apt update && sudo apt install curl gnupg2 lsb-release -y
+    sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+
+    sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2-latest.list'
+    sudo apt update
+    <!-- 이때, sudo apt update할 시
+        아래와 같은 에러가 발생할 수 있음
+        W: GPG error: http://packages.ros.org/ros2/ubuntu focal InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY F42ED6FBAB17C654
+        E: The repository 'http://packages.ros.org/ros2/ubuntu focal InRelease' is not signed.
+        N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+        N: See apt-secure(8) manpage for repository creation and user configuration details.
+        
+        ROS GPG Key 변경으로 인해 내용이 업데이트 되었습니다. 
+        위와 같이 NO_PUBKEY에러가 발생하는 경우 아래 명령어를 입력해줍니다.
+        sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F42ED6FBAB17C654
+        
+        이후에 다시
+        sudo apt update
+    -->
+
+
+    <!-- # Desktop Install (Recommended): ROS, RViz, demos, tutorials. -->
+    sudo apt install ros-foxy-desktop -y
+
+    Install argcomplete (optional)
+    sudo apt install -y python3-pip
+    pip3 install -U argcomplete
