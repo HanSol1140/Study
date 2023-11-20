@@ -40,15 +40,7 @@ https://ubuntu.com/download/raspberry-pi?ref=blog.may-i.io
 
 
 <Gazebo11 설치>
-    Gazebo는 실습이 진행될 시뮬레이션이자 공식적으로 ROS를 지원하는 시뮬레이션
-    sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
-    wget https://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
-    sudo apt update
-
-    sudo apt install gazebo11 libgazebo11-dev -y
-
-    Gazebo ROS 패키지들도 설치해줍니다.
-    sudo apt install ros-foxy-gazebo-ros-pkgs -y
-
-    설치 이후 실행을 통해 확인해 보세요!
+    https://classic.gazebosim.org/tutorials?tut=install_ubuntu&cat=install
+    해당 페이지를 참조하여 설치
+    curl -sSL http://get.gazebosim.org | sh
     gazebo
