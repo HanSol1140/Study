@@ -1,14 +1,4 @@
-<gazebo harmonic>
-    https://gazebosim.org/docs/harmonic/install_ubuntu
-    sudo apt-get update
-    sudo apt-get install lsb-release wget gnupg
-    sudo wget https://packages.osrfoundation.org/gazebo.gpg -O /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
-    sudo apt-get update
-    sudo apt-get install gz-harmonic
 
-    기존 설치 제거
-    sudo apt remove gz-harmonic && sudo apt autoremove
 <!-- 문제 생겨서 Ubuntu Mate로 대체 -->
 <라즈베리파이용 Ubuntu Mate다운로드>
 https://ubuntu.com/download/raspberry-pi?ref=blog.may-i.io
@@ -51,56 +41,31 @@ https://ubuntu.com/download/raspberry-pi?ref=blog.may-i.io
     sudo adduser [사용자 계정 이름]
     sudo usermod -aG sudo [사용자 계정 이름]
 
-
-
+<ROS2 Foxy 설치>
+    <!-- 공식사이트 -->
+    https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
+    <!-- 참조 -->
+    https://puzzling-cashew-c4c.notion.site/ROS-2-Foxy-Linux20-04-58f0c6f2537e498eb8fe163ad1f13ce5
+<!-- ============================================================================================== -->
+<!-- ============================================================================================== -->
+<!-- ============================================================================================== -->
 <ROS 2 Iron 설치>
     https://docs.ros.org/en/iron/Installation/Ubuntu-Install-Debians.html
     Ubuntu 설치가이드를 따라서 진행
 
 
-<Gazebo11 설치>
-    https://classic.gazebosim.org/tutorials?tut=install_ubuntu&cat=install
-    해당 페이지를 참조하여 설치
-    <E: pakage 'gazebo11' has no installation candidate>
-        
-    <기본 설치>
-    curl -sSL http://get.gazebosim.org | sh
-    gazebo
-
-    <대체 설치><!-- 현재 이방법 -->
-    packages.osrfoundation.org의 소프트웨어를 허용하도록 컴퓨터를 설정하세요.
-
-    sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
-    파일이 올바르게 작성되었는지 확인할 수 있습니다. 예를 들어 Ubuntu Bionic(18.04)에서는 다음을 입력할 수 있습니다.
-
-    cat /etc/apt/sources.list.d/gazebo-stable.list
-    그리고 모든 것이 정확하다면 다음과 같은 내용이 표시됩니다.
-
-    deb http://packages.osrfoundation.org/gazebo/ubuntu-stable bionic main
-    설정 키
-
-    wget https://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
-    가제보를 설치합니다.
-
-    먼저 데비안 데이터베이스를 업데이트하세요:
+<Gazebo Harmonic 설치>
+    https://gazebosim.org/docs/harmonic/install
+    해당 사이트 참조하여 설치
+    Ubuntu 20.04 Jammy(Ubuntu Mate 설치시 나오는 버전)권장 프로그램
+    Gazebo Harmonic
 
     sudo apt-get update
-    힌트: apt-get 업데이트 프로세스가 오류 없이 종료되는지 확인하세요. 콘솔 출력은 Done아래와 유사하게 종료됩니다.
+    sudo apt-get install lsb-release wget gnupg
+    sudo wget https://packages.osrfoundation.org/gazebo.gpg -O /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
+    sudo apt-get update
+    sudo apt-get install gz-harmonic
 
-    $ sudo apt-get update
-    ...
-    Hit http://ppa.launchpad.net bionic/main Translation-en
-    Ign http://us.archive.ubuntu.com bionic/main Translation-en_US
-    Ign http://us.archive.ubuntu.com bionic/multiverse Translation-en_US
-    Ign http://us.archive.ubuntu.com bionic/restricted Translation-en_US
-    Ign http://us.archive.ubuntu.com bionic/universe Translation-en_US
-    Reading package lists... Done
-    다음으로 전망대-11을 설치하십시오:
-
-    sudo apt-get install gazebo11
-    # For developers that work on top of Gazebo, one extra package
-    sudo apt-get install libgazebo11-dev
-    설치를 확인하세요
-
-
-https://puzzling-cashew-c4c.notion.site/ROS-2-Foxy-Linux20-04-58f0c6f2537e498eb8fe163ad1f13ce5
+    기존 설치 제거
+    sudo apt remove gz-harmonic && sudo apt autoremove
