@@ -1,4 +1,6 @@
-<라즈베리파이용 Ubuntu 다운로드>
+
+<!-- 문제 생겨서 Ubuntu Mate로 대체 -->
+<라즈베리파이용 Ubuntu Mate다운로드>
 https://ubuntu.com/download/raspberry-pi?ref=blog.may-i.io
 
 아래에 22.04.3LTS 버전 다운로드
@@ -9,6 +11,7 @@ https://ubuntu.com/download/raspberry-pi?ref=blog.may-i.io
 <Terminator 다운로드>
     <terminator 설치>
     인터넷 연결 확인 후
+    CTRL + ALT + T (터미널 실행)
     sudo apt update
     sudo apt install terminator -y
     
@@ -26,6 +29,12 @@ https://ubuntu.com/download/raspberry-pi?ref=blog.may-i.io
     터미널에서 다운로드한 경로로 이동
     sudo dpkg -i code_1.84.2-1699527205_arm64.deb
     이후 code로 실행할 수 있음
+    
+<깃허브 설치>
+    sudo apt install git
+
+    git config --global user.name "songhansol"
+    git config --global user.email "skycriperd@gmail.com"
 
 <추가 설정>
     sudo apt purge modemmanager
