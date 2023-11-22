@@ -1,0 +1,186 @@
+https://docs.ros.org/en/iron/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html
+
+<topic>
+
+    ROS 2는 복잡한 시스템을 여러 모듈식 노드로 나눕니다.
+    topic는 노드가 메시지를 교환하는 버스 역할을 하는 ROS 그래프의 필수 요소입니다.
+    노드는 원하는 수의 주제에 데이터를 게시할 수 있으며 동시에 원하는 수의 topic를 구독할 수 있습니다.
+    <!-- 여러개의 토픽을 Pub,Sub할 수 있다 -->
+    
+
+    <turtlesim 실행>
+        이제 Turtlesim을 시작하는 데 익숙해졌을 것입니다.
+
+        새 터미널을 열고 다음을 실행합니다.
+        source /opt/ros/iron/setup.bash
+        ros2 run turtlesim turtlesim_node
+        turtlesim을 실행한 뒤 다른 터미널을 열고 다음을 실행합니다.
+
+        ros2 run turtlesim turtle_teleop_key
+
+    <rqt_graph>
+        이 튜토리얼 전체에서 우리는 변화하는 노드와 주제
+        그리고 이들 사이의 연결을 시각화하는 데 rqt_graph를 사용할 것입니다 .
+        Turtlesim 튜토리얼에서는 rqt와 rqt_graph.
+        rqt_graph를 실행하려면 새 터미널을 열고 다음 명령을 입력하십시오.
+        
+        rqt_graph
+        
+        <!--
+            rqt_graph를 실행할 때 새로고침 옆의 Nodes/Topic (active)를 선택
+            ㅈ
+            실행한 노드들을 껏다키면서 rqt_graph를 새로고침해봅시다.
+            node간의 연결이 시각적으로 표현된것을 확인할 수 있습니다.
+        -->
+
+        혹은 rqt를 실행하여 Plugins - Introspection - Node Graph를 선택해 실행할 수도 있습니다.
+        
+        rqt_graph를 실행할 때 새로고침 옆의 Nodes/Topic (active)를 선택하는것을 잊지마세요.
+
+    <ros2 topic list>
+        새 터미널에서 해당 명령(ros2 topic lis)을 실행하면 현재 활성화된 모든 topic의 목록이 반환됩니다.
+
+        ros2 topic list -t로 명령을 실행시 대괄호 안에 주제 유형이 추가된 목록을 반환합니다.
+        이러한 유형은 node가 topic을 넘어갈 때 동일한 정보에 대해 이야기하고 있음을 아는 방법입니다.
+
+        rqt_graph에서 이러한 모든 주제가 어디에 있는지 궁금하다면
+        grq_graph에서 Hide 우측의 모든 상자를 선택 취소하세요.
+
+    <ros2 topic echo>
+        topic에 게시되는(해당 토픽으로 전송되는 데이터) 데이터를 보려면 다음과 같이 사용하세요.
+        ros2 topic echo /<topic_name>
+        ex)
+        ros2 topic echo /turtle1/cmd_vel
+        이렇게 echo를 실행한 뒤
+        ros2 run turtlesim turtle_teleop_key를 실행한 터미널에서 화살표를 통해 거북이에게 명령을 주면
+            linear:
+            x: 2.0
+            y: 0.0
+            z: 0.0
+            angular:
+            x: 0.0
+            y: 0.0
+            z: 0.0
+            ---
+        이와 같이 해당 topic으로 전송되는 데이터를 알 수 잇습니다.
+
+
+    <rqt_graph Debug 체크해제>
+        이제 rqt_graph로 돌아가서 Hide 옆 Debug의 선택을 취소하세요.
+        /_ros_2_cil_~~~ 노드는 방금 실행한 ros2 topic echo /turtle1/cmd_vel명령에 의해 생성된 echo노드입니다.
+        시각화된 이미지에 의해 /cmd_vel topic을 두명의 구독자(/_ros2cil_~~~, /turtlesim)가 구독하고 있는것을 볼 수 있습니다.
+
+    <ros2 topic info>
+        topic은 반드시 일대일 의사소통일 필요는 없습니다. 일대다, 다대일 또는 다대다일 수 있습니다.
+
+        이를 보는 또 다른 방법은 다음과 같습니다.
+        <!-- 토픽 정보 확인 -->
+        ros2 topic info /turtle1/cmd_vel
+        그러면 다음이 반환됩니다.
+
+        <!-- 결과 -->
+            Type: geometry_msgs/msg/Twist
+            Publisher count: 1
+            Subscription count: 2
+
+        rqt_graph의 시각화된 이미지와 ros2 topic info에 의해
+        /turtle1/cmd_vel에 1개의 Publisher가 데이터를 보내고 있고,
+        2개의 Subscription이 존재함을 알 수 잇습니다.
+
+    <ros interface show>
+        node는 msg를 사용하여 topic을 통해 데이터를 보냅니다.
+        게시자(Pub)와 구독자(Sub)는 동일한 유형의 메세지를 보내고 받아야 통신할 수 있습니다.
+
+        앞서 실행해본 'ros2 topic list -tcmd_vel'를 통해 각 topic에 어떤 메세지 유형이 사용되는지 볼 수 있습니다.
+
+        cmd_vel의 메세지 유형은 다음과 같습니다.
+        /turtle1/cmd_vel [geometry_msgs/msg/Twist] <!-- geometry_msgs/msg/Twist  => 메세지 유형 -->
+
+        이는 geometry_msgs패키지안에 Twist라는 msg가 있음을 의미합니다.
+
+        이제 이 유형에
+        ros2 interface show /<메시지 유형>을 실행하여 그 세부사항을 알 수 있습니다.
+        구체적으로, 메시지가 기대하는 데이터 구조가 무엇인지를 알 수 있습니다.
+        
+        <!-- 메세지 유형 확인 -->
+        ros2 interface show geometry_msgs/msg/Twist
+        
+        위의 명령에 다음과 같은 값이 반환됩니다.
+        <!-- 결과 -->
+            # This expresses velocity in free space broken into its linear and angular parts.
+            <!-- # 이것은 자유 공간에서의 속도를 선형 및 각 부분으로 나누어 표현합니다. -->
+            Vector3  linear
+                    float64 x
+                    float64 y
+                    float64 z
+            Vector3  angular
+                    float64 x
+                    float64 y
+                    float64 z
+
+        이것은 /turtlesim 노드가 각각 세 요소를 가진 두 벡터, 선형 및 각을 가진 메시지를 기대하고 있다는 것을 알려줍니다.
+        echo 명령어로 /teleop_turtle이 /turtlesim에 전달한 데이터를 기억한다면,
+        그것은 동일한 구조로 되어 있습니다.
+        <!-- 
+            ros2 topic echo /turtle1/cmd_vel
+            이렇게 echo를 실행한 뒤
+            ros2 run turtlesim turtle_teleop_key를 실행한 터미널에서 화살표를 통해 거북이에게 명령을 주면
+                linear:
+                x: 2.0
+                y: 0.0
+                z: 0.0
+                angular:
+                x: 0.0
+                y: 0.0
+                z: 0.0
+                ---
+         -->
+    
+    <ros2 topic pub>
+        이제 메세지의 구조를 알았으니,
+        다음 명령어를 사용하여 직접 커맨드라인에서 topic에 데이터를 발행할 수 있습니다.
+        ros2 topic pub <topic_name> <msg_type> '<args>'
+        
+        '<인자>' 인수는 이전 섹션에서 발견한 구조대로 주제에 전달할 실제 데이터입니다.
+        이 인수는 YAML 문법으로 입력해야 한다는 점을 주의해야 합니다. 전체 명령어를 다음과 같이 입력하세요:
+        
+        <!-- 명령 보내기 -->
+            ros2 topic pub --once /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 1.8}}"
+            <!-- '--once'는 "한 번 메시지를 발행한 후 종료"를 의미하는 선택적 인수입니다. -->
+
+            <!--
+                주의
+                {x: 2.0, y: 0.0, z: 0.0} => 공백에 유의!
+                {x:2.0, y:0.0, z:0.0} => 이렇게 보내니 해당 속성이 없다는 오류출력하면서 안보내짐!
+            -->
+
+        잘보내졌다면
+        <!-- 결과 -->
+            publisher: beginning loop
+            publishing #1: geometry_msgs.msg.Twist(linear=geometry_msgs.msg.Vector3(x=2.0, y=0.0, z=0.0), angular=geometry_msgs.msg.Vector3(x=0.0, y=0.0, z=1.8))
+        해당 구문이 출력됨
+
+    <topic 반복적으로 보내기>
+        거북이(그리고 일반적으로 에뮬레이션하려는 실제 로봇)가 지속적으로 작동하려면 꾸준한 명령 흐름이 필요합니다.
+        따라서 거북이가 계속 움직이도록 하려면 다음을 실행하세요.
+        ros2 topic pub --rate 1 /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 1.8}}"
+        <!--
+            여기서 --rate와 --once의 차이점은 한번만 실행하는 --once와
+            --rate는 1Hz의 꾸준한 스트림으로 명령을 게시하도록 지시합니다.
+        -->
+        rqt_graph를 새로고침해보면 현재 상황을 그래프로 확인할 수 있습니다.
+        ros2 topic pub ... 노드 (/_ros2cli_~~~)가 /turtle1/cmd_vel 주제를 발행하고 있고,
+        이것이 ros2 topic echo ... 노드 (/_ros2cli_~~~)와 /turtlesim 노드에 의해 수신되고 있음을 볼 수 있습니다.
+
+    <ros2 topic hz>
+        이 프로세스에 대한 마지막 검토를 위해 다음을 사용하여 데이터가 게시되는 속도를 볼 수 있습니다.
+        <!-- 속도확인 -->
+            ros2 topic hz /turtle1/pose
+
+        <!-- 결과 -->
+            average rate: 59.354
+            min: 0.005s max: 0.027s std dev: 0.00284s window: 58
+
+        ros2 topic pub --rate 1을 사용하여 turtle1/cmd_vel의 속도를 꾸준히 1Hz로 설정했음을 기억하세요.
+        turtle1/pose 대신 turtle1/cmd_vel로 위의 명령어를 실행하면, 그 속도를 반영하는 평균을 볼 수 있을 것입니다.
+

@@ -41,31 +41,31 @@ https://ubuntu.com/download/raspberry-pi
     sudo adduser [사용자 계정 이름]
     sudo usermod -aG sudo [사용자 계정 이름]
 
-<ROS2 Foxy 설치>
-    <!-- 공식사이트 -->
-    https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
-    <!-- 참조 -->
-    https://puzzling-cashew-c4c.notion.site/ROS-2-Foxy-Linux20-04-58f0c6f2537e498eb8fe163ad1f13ce5
-<!-- ============================================================================================== -->
-<!-- ============================================================================================== -->
-<!-- ============================================================================================== -->
-<ROS 2 Iron 설치>
+
+<ROS2 Iron 설치>
     https://docs.ros.org/en/iron/Installation/Ubuntu-Install-Debians.html
     Ubuntu 설치가이드를 따라서 진행
 
+<ROS2 환경설정>
+    https://docs.ros.org/en/iron/Tutorials/Beginner-CLI-Tools/Configuring-ROS2-Environment.html
 
-<Gazebo Harmonic 설치>
-    https://gazebosim.org/docs/harmonic/install
-    해당 사이트 참조하여 설치
-    Ubuntu 20.04 Jammy(Ubuntu Mate 설치시 나오는 버전)권장 프로그램
-    Gazebo Harmonic
+    쉘스크립트(터미널) 시작시 ROS2 소스 자동설정
+        echo "source /opt/ros/iron/setup.bash" >> ~/.bashrc
+        이 작업을 취소하려면 시스템의 셸 시작 스크립트를 찾아 추가된 소스 명령을 제거하세요.
 
-    sudo apt-get update
-    sudo apt-get install lsb-release wget gnupg
-    sudo wget https://packages.osrfoundation.org/gazebo.gpg -O /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
-    sudo apt-get update
-    sudo apt-get install gz-harmonic
+    환경변수 확인
+        printenv | grep -i ROS
+        
+        ROS_DISTRO및 같은 변수가 ROS_VERSION설정되어 있는지 확인하세요.
+        ROS_VERSION=2
+        ROS_PYTHON_VERSION=3
+        ROS_DISTRO=iron
 
-    기존 설치 제거
-    sudo apt remove gz-harmonic && sudo apt autoremove
+    도메인 ID 설정
+    export ROS_DOMAIN_ID=<your_domain_id>
+
+    ex
+    export ROS_DOMAIN_ID=0
+    셸 세션 간에 이 설정을 유지하려면 셸 시작 스크립트에 다음 명령을 추가하면 됩니다.
+    echo "export ROS_DOMAIN_ID=0" >> ~/.bashrc
+        

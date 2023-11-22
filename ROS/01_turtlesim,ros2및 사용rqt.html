@@ -1,0 +1,78 @@
+<01_turtlesim,ros2및 사용rqt>
+https://docs.ros.org/en/iron/Tutorials/Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html
+
+<turtlesim설치, 확인>
+    sudo apt update
+    sudo apt install ros-iron-turtlesim
+
+    패키지 설치 확인
+    ros2 pkg executables turtlesim
+
+    위 명령은 Turtlesim의 실행 파일 목록을 반환해야 합니다.
+    <!-- ex -->
+    turtlesim draw_square
+    turtlesim mimic
+    turtlesim turtle_teleop_key
+    turtlesim turtlesim_node
+
+<turtlesim 시뮬레이션 시작>
+    ros2 run turtlesim turtlesim_node
+
+    중앙에 임의의 거북이가 있는 시뮬레이터 창이 나타나야 합니다.
+    터미널의 명령 아래에 노드의 메시지가 표시됩니다.
+
+    [INFO] [turtlesim]: Starting turtlesim with node name /turtlesim
+    [INFO] [turtlesim]: Spawning turtle [turtle1] at x=[5.544445], y=[5.544445], theta=[0.000000]
+
+
+<거북이 시뮬레이션을 컨트롤>
+    새 터미널을 열고
+    ros2 run turtlesim turtle_teleop_key
+    거북이를 제어하려면 키보드의 화살표 키를 사용하세요.
+    연결된 "펜"을 사용하여 지금까지 따라온 경로를 그리면서 화면 주위를 이동합니다.
+
+<list각 명령의 하위 명령을 사용하여 노드와 관련 항목, 서비스 및 작업을 볼 수 있습니다.>
+    ros2 node list
+    ros2 topic list
+    ros2 service list
+    ros2 action list
+
+<rqt 설치>
+    설치할 새 터미널 rqt과 해당 플러그인을 엽니다.
+    sudo apt update
+    sudo apt install ~nros-iron-rqt*
+    실행
+    rqt
+
+<rqt사용하기>
+    rqt를 처음 실행하면 창이 비어 있게 됩니다.
+    상단 메뉴 바에서 플러그인 > 서비스 > 서비스 호출자를 선택하세요.
+
+    새로 고침 버튼을 사용하여 Turtlesim 노드의 모든 서비스를 사용할 수 있는지 확인하세요.
+    새로 고침 옆 Service 우측의 항목을 선택하면 사용할 수 있는 서비스 목록이 나옵니다.
+    <set_pen 서비스 사용해 보기>
+        서비스를 눌러 /turtle1/set_pen
+        r : 255
+        g : 0
+        b : 0
+        width : 5
+        off : 0
+        거북이 이동경로에따라 그려지는 선이 rgb에 따라 변하는것을 볼 수 있습니다.
+
+    <spawn 서비스를 사용해 보기>
+    /spawn을 선택하여 또 다른 거북이를 생성합니다.
+        x : 1.0
+        y : 1.0
+        theta : 0.0
+        name : "turtle2"
+    이제 call 버튼을 눌러서 새로운 거북이를 생성해주세요.
+
+
+    
+    <리매핑>
+        새로 생성한 turtle2를 움직일 수 없을것 입니다.
+        turtle2에 대한  teleop node가 없기 때문입니다.
+        turtle2를 제어하려면 두 번째 텔레오프 노드가 필요합니다.
+        새로운 터미널을 열고
+        ros2 run turtlesim turtle_teleop_key --ros-args --remap turtle1/cmd_vel:=turtle2/cmd_vel
+        이제 해당 터미널에서 화살표키로 turtle2를 조작할 수 있을것입니다.
