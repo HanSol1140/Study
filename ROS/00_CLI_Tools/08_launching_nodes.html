@@ -1,0 +1,35 @@
+https://docs.ros.org/en/iron/Tutorials/Beginner-CLI-Tools/Launching-Multiple-Nodes/Launching-Multiple-Nodes.html
+
+<Launching nodes>
+
+    대부분의 입문 튜토리얼에서는 실행하는 모든 새 노드에 대해 새 터미널을 열었습니다.
+    
+    점점 더 많은 노드가 동시에 실행되는 더 복잡한 시스템을 만들면
+    
+    터미널을 열고 구성 세부 정보를 다시 입력하는 것이 지루해집니다.
+
+    실행 파일을 사용하면 ROS 2 노드가 포함된 여러 실행 파일을 동시에 시작하고 구성할 수 있습니다.
+
+    명령 으로 단일 시작 파일을 실행하면 전체 시스템(모든 노드와 해당 구성)이 한 번에 시작됩니다.
+
+<시작 파일 실행>
+
+    새 터미널을 열고 다음을 실행합니다.
+
+    <!-- 터미널 입력 -->
+        ros2 launch turtlesim multisim.launch.py
+    <!-- 결과 -->
+        turtlesim_node가 두 개 실행됩니다.
+
+    이제 이러한 노드가 실행되고 있으므로 다른 ROS 2 노드처럼 제어할 수 있습니다. 예를 들어, 두 개의 추가 터미널을 열고 다음 명령을 실행하여 거북이가 반대 방향으로 운전하도록 할 수 있습니다.
+
+    <!-- 각각 새 터미널에서 입력 -->
+    ros2 topic pub  /turtlesim1/turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 1.8}}"
+    ros2 topic pub  /turtlesim2/turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: -2.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: -1.8}}"
+    
+        <!-- 서로 지속적으로 원을 그리고있는것을 볼 수 있습니다. -->
+
+<요약>
+지금까지 수행한 작업의 중요한 점은 하나의 명령으로 두 개의 Turtlesim 노드를 실행했다는 것입니다.
+자신만의 시작 파일을 작성하는 방법을 배우면 명령을 사용하여
+비슷한 방식으로 여러 노드를 실행하고 해당 구성을 설정할 수 있습니다

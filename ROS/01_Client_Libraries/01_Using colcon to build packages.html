@@ -1,0 +1,48 @@
+https://docs.ros.org/en/iron/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html
+
+
+NET으로 ROS 2 작업 공간을 생성하고 구축하는 방법에 대한 간략한 튜토리얼입니다.
+
+<colcon 패키지를 빌드에 사용>
+    colcon은 ROS 빌드 도구인 catkin_make, catkin_make_isolated, catkin_tools 및ament_tools에 대한 개선입니다.
+    colcon의 설계에 대한 자세한 정보는 이 문서를 참조하세요.
+    <!--
+        colcon
+        https://design.ros2.org/articles/build_tool.html
+        colcon source code
+        https://github.com/colcon
+    -->
+
+<colcon 설치>
+    <!-- 터미널에 입력 -->
+        sudo apt install python3-colcon-common-extensions
+
+<설명>
+
+    ROS 작업 공간은 특정 구조를 가진 디렉터리입니다.
+    일반적으로 src 하위 디렉터리가 있습니다
+    해당 하위 디렉터리에는 ROS 패키지의 소스 코드가 위치합니다.
+    일반적으로 디렉토리는 비어 있는 상태로 시작됩니다.
+
+    colcon은 소스 외부 빌드를 수행합니다.
+    기본적으로 src 디렉토리의 동료로 다음 디렉토리들을 생성합니다.
+
+    빌드 디렉토리에는 중간 파일이 저장됩니다.
+    각 패키지에 대해 하위 폴더가 생성되며 예를 들어 CMake가 호출됩니다.
+
+    설치 디렉토리는 각 패키지가 설치될 곳입니다.
+    기본적으로 각 패키지는 별도의 하위 디렉토리에 설치됩니다.
+
+    로그 디렉토리에는 각 colcon 호출에 대한 다양한 로그 정보가 포함됩니다.
+
+    catkin과 비교하여 devel 디렉토리가 없습니다
+    <!-- catkin과 비교하여 devel 디렉토리가 없습니다. => ? -->
+
+    
+<작업 공간 만들기>
+    먼저 작업 공간을 포함할 디렉터리'ros2_ws'를 만듭니다.
+    mkdir -p ~/ros2_ws/src
+    cd ~/ros2_ws
+
+    예제 소스를 git을 통해 src폴더에 복사합니다.
+    git clone https://github.com/ros2/examples src/examples -b iron

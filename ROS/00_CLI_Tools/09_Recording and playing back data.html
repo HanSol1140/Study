@@ -1,0 +1,132 @@
+https://docs.ros.org/en/iron/Tutorials/Beginner-CLI-Tools/Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.html#
+<ros2 bag>
+    ros2 bag은 시스템의 토픽에서 발행된 데이터를 기록하는 명령줄 도구입니다.
+    이 도구는 여러 토픽에서 전달된 데이터를 수집하여 데이터베이스에 저장합니다.
+    그런 다음 데이터를 다시 재생하여 테스트 및 실험 결과를 재현할 수 있습니다.
+    토픽을 기록하는 것은 작업을 공유하고 다른 사람들이 재현할 수 있도록 하는 훌륭한 방법입니다.
+
+
+<실행준비>
+    새 터미널을 열고 다음을 실행합니다.
+    또한 저장된 녹음을 저장할 새 디렉터리를 만들어 보겠습니다.
+    <!-- 터미널 입력 -->
+        ros2 run turtlesim turtlesim_node
+        ros2 run turtlesim turtle_teleop_key
+
+        mkdir bag_files
+        cd bag_files
+    
+
+<topic 선택>
+    ros2 bag은 토픽에서 발행된 메시지에서만 데이터를 기록할 수 있습니다.
+    시스템의 토픽 목록을 보려면 새 터미널을 열고 다음 명령을 실행합니다.
+
+    <!-- 터미널 입력 -->
+        ros2 topic list
+    <!-- 결과 -->
+        /parameter_events
+        /rosout
+        /turtle1/cmd_vel
+        /turtle1/color_sensor
+        /turtle1/pose
+
+        토픽 튜토리얼에서 /turtle_teleop 노드가 /turtle1/cmd_vel 토픽에 명령을 발행하여
+        turtlesim에서 거북이를 움직인다는 것을 배웠습니다.
+
+        /turtle1/cmd_vel이 발행하는 데이터를 보려면 다음 echo명령을 실행합니다.
+
+        <!-- 터미널 입력 -->
+            ros2 topic echo /turtle1/cmd_vel
+        <!-- 결과 -->
+            처음에는 아무것도 표시되지 않습니다.
+
+            teleop에서 데이터를 발행하지 않기 때문입니다.
+            teleop을 실행한 터미널로 돌아가서 활성화하십시오.
+            화살표 키를 사용하여 거북이를 움직이면 ros2 topic echo를 실행하는 터미널에 데이터가 발행되는 것을 볼 수 있습니다.
+                linear:
+                    x: 2.0
+                    y: 0.0
+                    z: 0.0
+                angular:
+                    x: 0.0
+                    y: 0.0
+                    z: 0.0
+                    ---
+
+<ros2 bag record>
+
+    주제에 게시된 데이터를 기록하려면 명령 구문을 사용하십시오.
+
+    ros2 bag record <topic_name>
+
+        선택한 주제에 대해 이 명령을 실행하기 전에 새 터미널을 열고 bag_files이전에 생성한 디렉터리로 이동하세요.
+        rosbag 파일은 실행한 디렉터리에 저장되기 때문입니다.
+        다음 명령을 실행하십시오.
+
+    <!-- 터미널 입력 -->
+        ros2 bag record /turtle1/cmd_vel
+
+    <!-- 결과 -->
+        <!--
+            터미널에 다음 메시지가 표시됩니다(날짜와 시간은 다를 수 있음).
+        -->
+        [INFO] [rosbag2_storage]: Opened database 'rosbag2_2019_10_11-05_18_45'.
+        [INFO] [rosbag2_transport]: Listening for topics...
+        [INFO] [rosbag2_transport]: Subscribed to topic '/turtle1/cmd_vel'
+        [INFO] [rosbag2_transport]: All requested topics are subscribed. Stopping discovery...
+
+        이제부터 토픽에 게시된 데이터를 기록하기 시작합니다.
+        기록을 중지하려면 Ctrl+C를 누릅니다.
+
+        저장된 데이터는 rosbag2_year_month_day-hour_minute_second. metadata.yaml 형식으로 저장됩니다.
+        <!-- ex)rosbag2_2023_11_23-17_57_59 폴더 -->
+
+<여러 topic 녹음>
+    또한 여러 토픽을 기록하고 ros2 bag이 저장하는 파일의 이름을 변경할 수 있습니다.
+
+    다음 명령을 실행합니다.
+
+    <!-- 터미널 입력 -->
+        ros2 bag record -o subset /turtle1/cmd_vel /turtle1/pose
+        <!--
+            이 -o옵션을 사용하면 가방 파일의 고유한 이름을 선택할 수 있습니다.
+            다음 문자열(이 경우 subset)은 파일 이름입니다.
+        -->
+        한 번에 두 개 이상의 주제를 녹음하려면 각 주제를 공백으로 구분하여 나열하면 됩니다.
+
+        두 주제가 모두 녹음되고 있음을 확인하는 다음 메시지가 표시됩니다.
+
+<ros2 bag info>
+
+    다음을 실행하여 녹음에 대한 세부 정보를 볼 수 있습니다.
+    ros2 bag info <bag_file_name>
+
+
+    위에서 생성한 subset 파일(폴더)을 읽어봅시다
+    <!-- 터미널 입력  -->
+        ros2 bag info subset
+    <!-- 결과 -->
+        Files:             subset.mcap
+        Bag size:          228.5 KiB
+        Storage id:        mcap
+        Duration:          48.47s
+        Start:             Oct 11 2019 06:09:09.12 (1570799349.12)
+        End                Oct 11 2019 06:09:57.60 (1570799397.60)
+        Messages:          3013
+        Topic information: Topic: /turtle1/cmd_vel | Type: geometry_msgs/msg/Twist | Count: 9 | Serialization Format: cdr
+                        Topic: /turtle1/pose | Type: turtlesim/msg/Pose | Count: 3004 | Serialization Format: cdr
+        <!-- 형식만 참조할것, 저장한 값에 따라 데이터가 달라짐 -->
+<ros2 bag play>
+    bag 파일을 재생하기 전, Ctrl+C텔레오프가 실행 중인 터미널에 입력하세요.
+    그런 다음 bag 파일이 작동하는 모습을 볼 수 있도록 Turtlesim 창이 표시되는지 확인하세요.
+
+    이제 다음 명령을 입력하세요.
+    <!-- 터미널 입력 -->
+        ros2 bag play subset
+    <!-- 결과 -->
+        이제 화면에 보이는 거북이는 기록된 것과 동일한 시간, 경로를 따라갑니다.
+
+<요약>
+    bag명령을 사용하여 ROS2 시스템의 topic에 전달된 데이터를 기록할 수 있습니다.
+    자신의 작업을 다른 사람과 공유하든,
+    자신의 실험을 분석하든 관계없이 알아두면 좋은 도구입니다.
