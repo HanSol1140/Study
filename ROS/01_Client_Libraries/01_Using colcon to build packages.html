@@ -59,3 +59,94 @@ NET으로 ROS 2 작업 공간을 생성하고 구축하는 방법에 대한 간�
 
         4 directories, 3 files
      -->
+<작업 공간 빌드하기>
+    Windows에서 패키지를 빌드하려면 Visual Studio 환경에 있어야 합니다.
+    자세한 내용은 ROS 2 코드 빌드를 참조하세요. <!-- https://docs.ros.org/en/iron/Installation/Alternatives/Windows-Development-Setup.html#windows-dev-build-ros2 -->
+
+    작업 공간의 루트에서 colcon build를 실행합니다. ament_cmake과 같은 빌드 유형은 devel 공간 개념을 지원하지 않고 패키지가 설치되어야 하기 때문에, colcon은 --symlink-install 옵션을 지원합니다. 이렇게 하면 설치된 파일들을 소스 공간의 파일(예: 파이썬 파일 또는 기타 비컴파일 리소스)을 변경함으로써 더 빠른 반복을 위해 변경할 수 있습니다.
+    <!-- 터미널 입력 -->
+        colcon build --symlink-install
+    <!-- 결과 -->
+        빌드가 완료되면 build, install, log 디렉토리를 볼 수 있습니다.
+        ros2_ws
+            ├── build
+            ├── install
+            ├── log
+            └── src
+
+        4 directories, 0 files
+
+<Run test>
+    <!-- 터미널에 입력 -->
+        colcon test
+
+<Source the environment>
+    colcon이 성공적으로 빌드를 완료하면 출력은 install 디렉토리에 있을 것입니다.
+    설치된 실행 파일이나 라이브러리를 사용하기 전에, 이들을 경로와 라이브러리 경로에 추가해야 합니다.
+    colcon은 설치 디렉토리에 bash/bat 파일을 생성하여 환경을 설정하는 데 도움을 줄 것입니다.
+    이 파일들은 필요한 모든 요소들을 경로와 라이브러리 경로에 추가할 뿐만 아니라
+    패키지에서 내보낸 bash 또는 셸 명령을 제공합니다.
+    
+    <!-- 터미널에 입력 -->
+        source install/setup.bash
+
+<데모 사용해보기>
+    환경 설정하기
+    환경을 소스한 후, colcon으로 빌드한 실행 파일을 실행할 수 있습니다.
+    예제의 구독자 노드를 실행해봅시다.
+    <!-- 터미널 입력 -->
+        ros2 run examples_rclcpp_minimal_subscriber subscriber_member_function
+        다른 터미널에서, 발행자 노드를 실행해봅시다 (설정 스크립트를 소스하는 것을 잊지 마세요):
+    <!-- 터미널 입력 -->
+        ros2 run examples_rclcpp_minimal_publisher publisher_member_function
+    <!-- 결과 -->
+        숫자가 증가하는 발행자와 구독자의 메시지를 볼 수 있습니다.
+
+<자신만의 패키지 만들기>
+    colcon은 REP 149에서 정의된 package.xml 사양을 사용합니다 (포맷 2도 지원됩니다).
+    <!-- https://www.ros.org/reps/rep-0149.html -->
+
+    colcon은 여러 빌드 유형을 지원합니다.
+    
+    권장되는 빌드 유형은 ament_cmake와 ament_python입니다. 순수 cmake 패키지도 지원됩니다.
+
+    ament_python 빌드의 예는 setup.py가 빌드의 주요 진입점인 ament_index_python 패키지입니다.
+
+    demo_nodes_cpp와 같은 패키지는 ament_cmake 빌드 유형을 사용하고, 빌드 도구로 CMake를 사용합니다.
+
+    편의를 위해, 템플릿을 기반으로 새 패키지를 생성하기 위해 ros2 pkg create 도구를 사용할 수 있습니다.
+    <!-- catkin 사용자의 경우, 이것은 catkin_create_package와 동일합니다. -->
+
+<colcon_cd 설치>
+
+    colcon_cd 명령은 패키지의 디렉토리로 쉘의 현재 작업 디렉토리를 빠르게 변경할 수 있습니다.
+    예를 들어 colcon_cd some_ros_package는 빠르게 ~/ros2_ws/src/some_ros_package 디렉토리로 이동합니다.
+
+    <!-- 터미널 입력 -->
+        echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
+        echo "export _colcon_cd_root=/opt/ros/iron/" >> ~/.bashrc
+
+        설치 방법과 작업 공간 위치에 따라 위의 지침이 다를 수 있습니다.
+        자세한 내용은 설명서를colcon_cd 참조하세요.
+        Linux 및 macOS에서 이 작업을 실행 취소하려면 시스템의 셸 시작 스크립트를 찾아 추가된 소스 및 내보내기 명령을 제거하세요.
+        <!-- sudo nano ~./bashrc입력해서 구문제거 -->
+
+<colcon 탭 완성 설정하기>
+    colcon-argcomplete 패키지가 설치된 경우, colcon 명령은 bash 및 bash와 유사한 셸에서 명령 완성을 지원합니다.
+    
+    <!-- 터미널 입력 -->
+        echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc
+    
+    colcon을 설치한 방법과 작업 공간이 어디에 있는지에 따라 위의 지침이 달라질 수 있으므로,
+    자세한 내용은 문서를 참조하세요. <!-- https://colcon.readthedocs.io/en/released/user/installation.html -->
+    Linux 및 macOS에서 이를 취소하려면 시스템의 셸 시작 스크립트를 찾아 추가된 소스 명령을 제거하세요.
+    <!-- sudo nano ~./bashrc입력해서 구문제거 -->
+
+<팁>
+    특정 패키지를 빌드하지 않으려는 경우 COLCON_IGNORE디렉터리에 이름이 빈 파일을 넣으면 색인이 생성되지 않습니다.
+
+    CMake 패키지에서 테스트를 구성하고 구축하지 않으려면 다음을 통과할 수 있습니다 .--cmake-args -DBUILD_TESTING=0
+
+    패키지에서 단일 특정 테스트를 실행하려면 다음을 수행하십시오.
+    <!-- 터미널 입력 -->
+        colcon test --packages-select YOUR_PKG_NAME --ctest-args -R YOUR_TEST_IN_PKG
