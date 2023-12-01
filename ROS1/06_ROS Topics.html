@@ -1,0 +1,256 @@
+https://wiki.ros.org/ROS/Tutorials/UnderstandingTopics
+<ROS 토픽 이해하기>
+    
+    이 튜토리얼에서는 ROS 토픽을 소개하고, rostopic 및 rqt_plot 명령어 도구 사용 방법을 다룹니다.
+
+
+<설치 및 준비>
+    roscore: 새 터미널에서 roscore를 실행합니다. 이전 튜토리얼에서 이미 실행한 경우 오류 메시지가 표시될 수 있습니다.
+    turtlesim: 새 터미널에서 rosrun turtlesim turtlesim_node를 실행합니다.
+    turtle 키보드 조종: 터틀을 조종하기 위해 새 터미널에서 rosrun turtlesim turtle_teleop_key를 실행합니다.
+    키보드의 화살표 키를 사용하여 터틀을 조종할 수 있습니다.
+
+    <!-- 터미널을 각각 실행 -->
+        cd ~/catkin_ws
+        source devel/setup.bash
+        <!-- 터미널 1 -->
+        roscore
+        <!-- 터미널 2 -->
+        rosrun turtlesim turtlesim_node
+        <!-- 터미널3 -->
+        rosrun turtlesim turtle_teleop_key
+
+
+<rqt_graph 사용>
+    
+    rqt_graph를 사용하여 현재 실행 중인 노드와 토픽을 동적으로 표시합니다.
+    
+    rqt_graph는 rqt 패키지의 일부입니다. 설치 방법은 다음과 같습니다.
+
+    <!-- 터미널 입력 -->
+        source devel/setup.bash <!-- 새 터미널을 킬때마다 입력해줘야함-->
+        sudo apt-get install ros-<distro>-rqt
+        sudo apt-get install ros-<distro>-rqt-common-plugins
+        설치가 끝난 뒤 실행
+        rosrun rqt_graph rqt_graph
+    
+    실행된 창에서 /turtle1/cmd_vel 위에 마우스를 놓으면
+
+    ROS 노드(여기서는 파란색과 녹색)와 항목(여기서는 빨간색)이 강조 표시됩니다.
+    보시다시피, /turtlesim node와 /teleop_turtle node는 /turtle1/cmd_vel 라는 주제로 통신하고 있습니다.
+
+<rostopic 소개>
+
+    도움말 옵션을 사용하여 rostopic 에 사용 가능한 하위 명령을 얻을 수 있습니다
+    도움말
+    rostopic -h
+    <!-- 터미널 입력 -->
+        rostopic -h
+    <!-- 결과 -->
+        rostopic is a command-line tool for printing information about ROS Topics.
+
+        Commands:
+            rostopic bw	    display bandwidth used by topic
+            rostopic delay	display delay of topic from timestamp in header
+            rostopic echo	print messages to screen
+            rostopic find	find topics by type
+            rostopic hz	    display publishing rate of topic    
+            rostopic info	print information about active topic
+            rostopic list	list active topics
+            rostopic pub	publish data to topic
+            rostopic type	print topic or field type
+
+    <ROS 메시지>
+    topic간 통신은 ROS message를 통해 이루어집니다.
+    rostopic type을 사용하여 토픽의 메시지 타입을 확인할 수 있습니다.
+    
+    <!-- 예시 -->
+        <!-- 터미널 입력 -->
+            rostopic list
+        <!-- 결과 -->
+            /rosout
+            /rosout_agg
+            /statistics
+            /turtle1/cmd_vel
+            /turtle1/color_sensor
+            /turtle1/pose
+
+        <!-- 터미널 입력 -->
+            rostopic echo /turtle1/pose
+        <!-- 결과 -->
+            x: 5.544444561004639
+            y: 5.544444561004639
+            theta: 0.0
+            linear_velocity: 0.0
+            angular_velocity: 0.0
+            ---
+            ... 반복
+
+    <!-- 예시 2 -->
+        <!-- 터미널 입력 -->
+            rostopic echo /turtle1/cmd_vel
+        <!-- 결과 -->
+            아무것도 뜨지 않을 것입니다.
+            이는 turtle1/cmd_vel node가 구독중인 토픽에 아무런 값이 들어오지 않기 때문입니다
+            turtle_teleop_key 노드를 실행한 터미널로 돌아가서 화살표로 거북이를 움직여보세요
+            <!-- rostopic echo /turtle1/cmd_vel -->
+                linear: 
+                x: 2.0
+                y: 0.0
+                z: 0.0
+                angular: 
+                x: 0.0
+                y: 0.0
+                z: 0.0
+                ---
+                linear: 
+                x: 2.0
+                y: 0.0
+                z: 0.0
+                angular: 
+                x: 0.0
+                y: 0.0
+                z: 0.0
+                ---
+                ...
+                이와 같은 값이 움직일때마다 추가됩니다.
+                
+    <rostopic list>
+        rostopic list는 현재 실행중인 모든 topic의 목록을 반환합니다.
+        <!-- 터미널 입력 -->
+            rostopic list
+        <!-- 결과 -->
+            ros/rosout
+            /rosout_agg
+            /statistics
+            /turtle1/cmd_vel
+            /turtle1/color_sensor
+            /turtle1/pose
+            
+        rostopic list -v를 사용해보세요.
+        <!-- 터미널 입력 -->
+            rostopic list -v
+        <!-- 결과 -->
+            Published topics:
+            * /rosout_agg [rosgraph_msgs/Log] 1 publisher
+            * /rosout [rosgraph_msgs/Log] 3 publishers
+            * /turtle1/pose [turtlesim/Pose] 1 publisher
+            * /turtle1/color_sensor [turtlesim/Color] 1 publisher
+            * /turtle1/cmd_vel [geometry_msgs/Twist] 1 publisher
+
+            Subscribed topics:
+            * /rosout [rosgraph_msgs/Log] 1 subscriber
+            * /statistics [rosgraph_msgs/TopicStatistics] 1 subscriber
+            * /turtle1/cmd_vel [geometry_msgs/Twist] 1 subscriber
+        
+        구독 / 게시하는 주제와 해당 주제의 타입이 표시 됩니다.
+        
+        <ros message>
+            topic에 대한 통신은 node간의 ros message를 전송하여 이루어집니다.
+            게시자(publisher)와 구독자(subscriber)가 통신하려면
+            게시자와 구독자가 동일한 type의 메세지를 보내고 받아야 합니다.
+            
+            rostopic type topic_name은 게시되는 주제의 메세지 유형을 반환합니다.
+            <!-- 터미널 입력 -->
+                rostopic type /turtle1/cmd_vel
+                
+            <!-- 결과 -->
+                geometry_msgs/Twist
+                
+                
+            /turtle1/cmd_vel의 type은 geometry_msgs/Twist며
+            rosmsg show geometry_msgs/Twist를 사용하여 메세지의 세부정보를 볼 수 있습니다.
+            <!-- 터미널 입력 -->
+                rosmsg show geometry_msgs/Twist
+                
+            <!-- 결과 -->
+                geometry_msgs/Vector3 linear
+                    float64 x
+                    float64 y
+                    float64 z
+                geometry_msgs/Vector3 angular
+                    float64 x
+                    float64 y
+                    float64 z
+            
+            메세지유형과 메세지가 기다리고 있는(원하는) 데이터를 한번에 볼 수 있습니다.
+            <!-- 터미널 입력 -->
+                rostopic type /turtle1/cmd_vel | rosmsg show
+            <!-- 결과 -->
+                geometry_msgs/Vector3 linear
+                    float64 x
+                    float64 y
+                    float64 z
+                geometry_msgs/Vector3 angular
+                    float64 x
+                    float64 y
+                    float64 z
+
+            이제 Turtlesim이 기대하는 메시지 유형을 알았으므로 거북이에 명령을 게시할 수 있습니다.
+
+            
+    <rostopic pub>
+        rostopic pub을 사용하여 토픽에 데이터를 발행할 수 있습니다.
+        예를 들어, turtle1/cmd_vel 토픽에 Twist 메시지를 발행하여 터틀을 움직일 수 있습니다.
+
+        사용법
+        rostopic pub [topic] [msg_type] [args]
+        <!-- 터미널 입력 -->
+            rostopic pub -1 /turtle1/cmd_vel geometry_msgs/Twist -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, 1.8]'
+
+        이 명령은 Turtlesim에 선형 속도 2.0 및 각속도 1.8로 이동하라는 단일 메시지를 보냅니다.
+
+        이 명령에는 한가지 문제점이 있습니다.
+
+        문제점은 명령이 지속적으로 보내지지않고 단 한번만 반복된다는 점입니다.
+
+        rostopic pub -r 명령을 사용하여 꾸준히 명령 스트림을 게시할 수 있습니다.
+        
+        <!-- 터미널 입력 -->
+            초당 1번씩(1hz) 명령을 반복한다.
+            rostopic pub -1 /turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, 1.8]'
+        <!-- 결과 -->
+            turtle1 거북이가 계속 반복적으로 움직입니다.
+            
+        <!-- 비교 -->
+        한번만 보내기
+        rostopic pub -1 /turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, 1.8]'
+        반복해서 보내기
+        rostopic pub /turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, -1.8]'
+        
+        이제 rqt_graph를 확인해보면 통신상황을 그래프로 한눈에 볼 수 있습니다.
+    
+    
+    <rostopic hz>
+        rostopic hz는 데이터가 게시되는 속도를 보고합니다.
+
+        rostopic hz /turtle1/pose
+         <!-- 터미널 입력 -->
+            rostopic hz /turtle1/pose
+         <!-- 결과 -->
+            subscribed to [/turtle1/pose]
+            average rate: 59.354
+                    min: 0.005s max: 0.027s std dev: 0.00284s window: 58
+            average rate: 59.459
+                    min: 0.005s max: 0.027s std dev: 0.00271s window: 118
+            average rate: 59.539
+                    min: 0.004s max: 0.030s std dev: 0.00339s window: 177
+            average rate: 59.492
+                    min: 0.004s max: 0.030s std dev: 0.00380s window: 237
+            average rate: 59.463
+                    min: 0.004s max: 0.030s std dev: 0.00380s window: 290
+ 
+         이를 통해 turtlesim이 60hz(59.x)의 속도로 데이터를 게시하고 있음을 알 수 있습니다.
+ 
+         
+
+    <rqt_plot 사용>
+        rqt_plot은 토픽에서 발행된 데이터의 스크롤링 타임 플롯을 표시합니다.
+        예를 들어, /turtle1/pose topic의 데이터를 플롯할 수 있습니다.
+        새 터미널에서 rosrun rqt_plot rqt_plot를 실행하고, 플롯할 토픽을 추가합니다.
+       
+        <!-- 터미널 입력 -->
+            rosrun rqt_plot rqt_plot
+
+            좌측 상단의 Topic input에 /turtle/pose(확인할 topic) 입력 후 +
+            혹은 /turtle/pose/x, /turtle/pose/y 입력 후 +

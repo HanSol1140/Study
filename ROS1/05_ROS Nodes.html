@@ -1,0 +1,105 @@
+https://wiki.ros.org/ROS/Tutorials/UnderstandingNodes
+
+<ROS node 이해>
+
+    이 튜토리얼은 ROS 그래프 개념을 소개하고, roscore, rosnode, rosrun 명령어 도구 사용에 대해 설명합니다.
+
+    필수 조건
+    이 튜토리얼을 위해, 가벼운 시뮬레이터를 사용할 것입니다. 다음 명령어로 설치하세요.
+    <!-- 터미널 입력 -->
+    sudo apt-get install ros-<distro>-ros-tutorials
+    <distro>'를 ROS 배포판 이름(예: indigo, jade, kinetic, noetic)으로 바꾸세요.
+
+
+<그래프 개념 개요>
+    노드(Nodes): 다른 노드와 통신하기 위해 ROS를 사용하는 실행 파일입니다.
+    메시지(Messages): 토픽을 구독하거나 발행할 때 사용되는 ROS 데이터 타입입니다.
+    토픽(Topics): 노드는 메시지를 토픽에 발행하거나 토픽을 구독해 메시지를 받을 수 있습니다.
+    마스터(Master): ROS의 이름 서비스입니다(즉, 노드들이 서로를 찾을 수 있게 도와줍니다).
+    rosout: stdout/stderr의 ROS 버전입니다.
+    roscore: 마스터 + rosout + 파라미터 서버(파라미터 서버는 나중에 소개됩니다).
+
+    <노드>
+    노드는 ROS 패키지 내의 실행 파일에 불과합니다.
+    ROS 노드는 ROS 클라이언트 라이브러리를 사용하여 다른 노드와 통신합니다.
+    노드는 토픽을 발행하거나 구독할 수 있습니다. 또한 서비스를 제공하거나 사용할 수도 있습니다.
+
+    <클라이언트 라이브러리>
+    다양한 프로그래밍 언어로 작성된 노드가 통신할 수 있도록 ROS 클라이언트 라이브러리를 제공합니다.
+
+    rospy: 파이썬 클라이언트 라이브러리
+    roscpp: C++ 클라이언트 라이브러리
+
+
+    roscore
+    ROS를 사용할 때 먼저 실행해야 하는 것은 roscore입니다.
+    새 터미널을 실행한 후 다음 명령어를 실행하세요.
+    <!-- 터미널 입력 -->
+        cd ~/catkin_ws
+        source devel/setup.bash
+        roscore
+    <!-- roscore
+
+        ... logging to ~/.ros/log/9cf88ce4-b14d-11df-8a75-00251148e8cf/roslaunch-machine_name-13039.log
+        Checking log directory for disk usage. This may take awhile.
+        Press Ctrl-C to interrupt
+        Done checking log file disk usage. Usage is <1GB.
+
+        started roslaunch server http://machine_name:33919/
+        ros_comm version 1.4.7
+
+        SUMMARY
+        ======
+
+        PARAMETERS
+        * /rosversion
+        * /rosdistro
+
+        NODES
+
+        auto-starting new master
+        process[master]: started with pid [13054]
+        ROS_MASTER_URI=http://machine_name:11311/
+
+        setting /run_id to 9cf88ce4-b14d-11df-8a75-00251148e8cf
+        process[rosout-1]: started with pid [13067]
+        started core service [/rosout]
+
+        roscore가 실행중인 해당 창을 종료하면 안됩니다.
+    -->
+
+    <rosnode 사용>
+    
+        새 터미널을 열고 rosnode로 roscore 실행이 무엇을 했는지 살펴보세요.
+        rosnode는 현재 실행 중인 ROS 노드에 대한 정보를 표시합니다.
+        rosnode list 명령어는 활성 노드를 나열합니다
+
+        <!-- 터미널 입력 -->
+            rosnode list
+        <!-- 결과 -->
+            /rosout
+
+    <rosrun 사용>
+
+        rosrun을 사용하면 패키지 경로를 알 필요 없이
+        패키지 이름을 사용해 패키지 내의 노드를 직접 실행할 수 있습니다.
+        사용 방법은 다음과 같습니다.
+
+        사용법
+        rosrun [package_name] [node_name]
+ 
+        예를 들어, 새 터미널에서 turtlesim_node를 실행해보세요:
+
+        <!-- 터미널 입력 -->
+            rosrun turtlesim turtlesim_node
+
+        turtlesim 창이 나타납니다. 새 창에서 rosnode list를 다시 실행하면 /rosout과 /turtlesim이 보입니다.
+        노드의 이름을 변경하려면 Remapping Argument를 사용할 수 있습니다.
+
+
+    <정리>
+        roscore = ros+core : 마스터(ROS 이름 서비스) + rosout(디버깅 출력) + 파라미터 서버
+        rosnode = ros+node : 노드에 대한 정보를 얻는 ROS 도구.
+        rosrun  = ros+run  : 주어진 패키지에서 노드를 실행하는 도구.
+
+        이제 ROS 노드 작동 방식을 이해했으니, ROS 토픽에 대해 알아봅시다.

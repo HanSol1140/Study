@@ -1,0 +1,18 @@
+<Ubuntu 20.04에 ROS1 Noetic 설치>
+    https://wiki.ros.org/noetic/Installation/Ubuntu
+
+    설치대로 따라간뒤
+    sudo apt install catkin
+
+    마지막에 source /opt/ros/noetic/setup.bash
+    한뒤에 생성한 catkin_ws(워크스페이스) 경로로 이동해서
+    catkin_cmake
+    source devel/setup.bash
+    
+
+<작업을 시작하기전에>
+
+    ros1은 roscore를 반드시 실행시켜야함
+    source devel/setup.bash
+    roscore
+    rosrun rqt_graph rqt_graph

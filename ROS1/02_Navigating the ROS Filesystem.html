@@ -1,0 +1,119 @@
+https://wiki.ros.org/ROS/Tutorials/NavigatingTheFilesystem
+
+<작업공간 만들기>
+    ros설치가 끝낫다면 
+    <!-- 터미널에 입력 -->
+    source /opt/ros/noetic/setup.bash
+    mkdir -p ~/catkin_ws/src
+    cd ~/catkin_ws/
+    catkin_make
+    source devel.setup.bash
+    <!-- 체크 -->
+    echo $ROS_PACKAGE_PATH
+    /home/<YOUR_UBUNTU_ID>/catkin_ws/src:/opt/ros/<YOUR_DISTRO>/share
+
+<튜토리얼 설치>
+    <!-- 터미널에 입력 -->
+        sudo apt-get install ros-noetic-ros-tutorials
+
+<파일 시스템 설명>
+파일 시스템 개념의 빠른 개요
+    패키지
+        패키지는 ROS 코드의 소프트웨어 구성 단위입니다.
+        각 패키지에는 라이브러리, 실행 파일, 스크립트 또는 기타 아티팩트가 포함될 수 있습니다.
+
+    매니페스트( package.xml )
+        매니페스트는 패키지에 대한 설명입니다. 패키지간의 종속성을 정의하고
+        버전, 관리자, 라이센스 등과 같은 패키지 에 대한 메타 정보를 캡처하는 역할을 합니다.
+
+<rospack>
+    rospack 사용
+    rospack을 사용하면 패키지에 대한 정보를 얻을 수 있습니다. 이 튜토리얼에서는 패키지 경로를 반환하는 찾기 옵션 만 다룰 것입니다 .
+
+    사용법
+    $ rospack find [package_name]
+    
+    예시
+    <!-- 터미널 입력 -->
+        rospack find roscpp
+    <!-- 결과 -->
+        YOUR_INSTALL_PATH/share/roscpp
+
+<roscd>
+    "roscd"는 rosbash의 일부로, 패키지 또는 스택으로 직접 디렉토리(cd)를 변경할 수 있게 해주는 도구입니다.
+    
+    사용법
+    $ roscd <package-or-stack>[/subdir]
+
+    "roscpp" 패키지 디렉토리로 변경되었는지 확인하기 위해 이 예제를 실행해 보겠습니다.
+
+    예시
+    <!-- 터미널 입력 -->
+        roscd roscpp
+        그런 다음 Unix 명령어 "pwd"를 사용하여 작업 디렉토리를 출력해 봅니다.
+        pwd
+    <!-- 결과 -->
+        YOUR_INSTALL_PATH/share/roscpp
+
+    YOUR_INSTALL_PATH/share/roscpp가 이전 예에서 rospack find가 제공한 경로와 동일한 것을 볼 수 있습니다.
+    다른 ROS 도구와 마찬가지로 roscd 는 ROS_PACKAGE_PATH 에 나열된 디렉터리 내에 있는 ROS 패키지 만 찾습니다.
+    ROS_PACKAGE_PATH 에 무엇이 있는지 보려면 다음을 입력하세요.
+    <!-- 터미널 입력 -->
+        echo $ROS_PACKAGE_PATH
+    <!-- 결과 -->
+        /opt/ros/noetic/share
+    
+    ROS_PACKAGE_PATH에는 콜론 으로 구분된 ROS 패키지가 있는 디렉터리 목록이 포함되어야 합니다.
+    
+    일반적인 ROS_PACKAGE_PATH는 다음과 같습니다.
+
+        /opt/ros/kinetic/base/install/share
+
+    다른 환경 경로와 마찬가지로 ROS_PACKAGE_PATH 에 추가 디렉터리를 추가할 수 있습니다.
+    각 경로는 콜론 ':'으로 구분됩니다.
+
+<roscd log>
+    roscd log는 ROS가 로그 파일을 저장하는 폴더로 이동합니다.
+    아직 ROS 프로그램을 실행하지 않은 경우 해당 프로그램이 아직 존재하지 않는다는 오류가 발생합니다.
+
+    이전에 ROS 프로그램을 실행한 적이 있다면 다음을 시도해 보세요.
+    <!-- 터미널 입력 -->
+        roscd log
+    <!-- 결과 -->
+        log파일이 저장된 폴더로 터미널 경로가 이동됩니다.
+<rosls>
+    "rosls"는 로스배시 스위트의 일부로, 절대 경로가 아닌 패키지 이름으로
+    바로 ls(목록 표시)를 할 수 있게 해주는 도구입니다.
+
+    사용법
+        $ rosls <package-or-stack>[/subdir]
+    에시
+    <!-- 터미널 입력 -->
+        source /opt/ros/noetic/setup.bash
+        rosls roscpp_tutorials
+    <!-- 결과 -->
+        cmake launch package.xml  srv
+
+            
+    
+    실제 사용예시
+    이미 catkin_ws를 생성해서 패키지를 src에 clone한 상황
+
+    패키지명 = ltme_node
+    <!-- 터미널입력 -->
+        cd catkin_ws
+        source devel/setup.bash
+        rosls ltme_node
+    <!-- 결과 -->
+        catkin_ws/src에 있는 ltme_node 패키지안의 모든 파일/디렉터리가 표시됨(ls명령어와 같음)
+
+
+<Tab Completion>
+    전체 패키지 이름을 입력하는 것은 지루할 수 있습니다.
+    이전 예에서 roscpp_tutorials는 상당히 긴 이름입니다. 다행히 일부 ROS 도구는 TAB 완성을 지원합니다.
+    <!-- 터미널 입력 -->
+        roscd roscpp_tut <!-- 이제 TAB키를 누르세요 -->
+        Tab 키를 누르면 명령줄이 나머지를 채워야 합니다.
+        roscd roscpp_tutorials/
+        자동으로 채워주는데 뭔가 에러 알림도 뜨고 자동완성이 좋은지 잘 모르겠음.
+    

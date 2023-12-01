@@ -1,0 +1,117 @@
+
+
+<1. ltme_node 다운로드>
+    source /opt/ros/noetic/setup.bash
+    git clone https://github.com/LitraTech/ltme_node.git
+    catkin_make
+    source devel/setup.bash
+    rosparam set /ltme_node/device_model "LTME-02A"
+    rosparam set /ltme_node/device_address "192.168.10.160"
+
+
+
+<2. Gmapping 패키지 설치>
+    Ubuntu에서 ROS Noetic을 사용 중이라면
+    다음 명령어를 터미널에 입력하여 gmapping을 설치할 수 있습니다.
+    sudo apt-get install ros-noetic-gmapping
+
+
+<3. 맵 시각화 및 저장툴 설치>
+    sudo apt-get install ros-noetic-gmapping
+    
+    roscore
+    rosparam set /ltme_node/device_model "LTME-02A"
+    rosparam set /ltme_node/device_address "192.168.10.160"
+    <!-- rosrun ltme_node ltme_node -->
+    rosrun ltme_node ltme_node _frame_id:=base_link
+    <!-- rosrun gmapping slam_gmapping scan:=/scan -->
+    rosrun gmapping slam_gmapping scan:=/scan _odom_frame:=/base_link
+    rosrun map_server map_saver -f my_map
+    rosrun rviz rviz
+<!--실패
+    오도메트리 정보를 달라고함
+    오도메트리란 로봇의 이동경로(바퀴회전수와 같은) 정보라고 함
+    오도메트리 정보없이 gamapping이 사용이 불가능함
+    구글의 카토그래퍼(Cartographer)를 사용해보기로함
+-->
+<카토그래퍼>
+    설치
+        sudo apt-get update
+        sudo apt-get install ros-<ros-distro>-cartographer-ros
+    종속성 설치
+        sudo apt-get install ros-<ros-distro>-cartographer-ros-msgs
+        sudo apt-get install ros-<ros-distro>-cartographer-rviz
+
+
+
+
+라이다 정보만을 사용하여 맵핑을 시도하는 것은 가능하지만, 일반적인 SLAM 알고리즘의 경우 오도메트리 데이터를 중요한 정보로 사용합니다. 오도메트리는 로봇의 이동 경로를 추적하여 위치 추정의 정확도를 높이는 데 도움이 됩니다.
+
+그러나 특정 SLAM 알고리즘들은 오도메트리 없이도 라이다 데이터만으로 맵을 생성할 수 있습니다. 예를 들어, Hector SLAM은 오로지 라이다 데이터만을 사용하여 환경 맵핑을 수행할 수 있으며, 로봇의 이동 경로나 위치 추정에 라이다 스캔을 직접 사용합니다.
+
+따라서 오도메트리 데이터 없이 맵핑을 원하신다면, Hector SLAM과 같은 오도메트리에 의존하지 않는 SLAM 알고리즘을 사용하는 것이 좋을 것입니다.
+
+라이다만으로 맵핑하는 Hector SLAM 사용
+
+roscore
+rosparam set /ltme_node/device_model "LTME-02A"
+rosparam set /ltme_node/device_address "192.168.10.160"
+rosrun ltme_node ltme_node
+rosrun hector_mapping hector_mapping _scan_topic:=/scan
+rosrun map_server map_saver -f my_map
+rosrun rviz rviz
+
+<테스트>
+<!-- 토픽타입 확인 -->
+nanonix@ubuntu:~/catkin_ws$ rostopic type /scan
+sensor_msgs/LaserScan
+
+<!-- sensor_msgs/LaserScan형식 확인 -->
+nanonix@ubuntu:~/catkin_ws$ rosmsg show sensor_msgs/LaserScan
+std_msgs/Header header
+  uint32 seq
+  time stamp
+  string frame_id
+float32 angle_min
+float32 angle_max
+float32 angle_increment
+float32 time_increment
+float32 scan_time
+float32 range_min
+float32 range_max
+float32[] ranges
+float32[] intensities
+
+
+
+
+<4.>
+hector_slam에서
+[ INFO] [1701396178.648979516]: lookupTransform base_link to laser timed out. Could not transform laser scan into base_frame.
+오류가 계속뜸
+
+찾아보니 base_link라는 로봇 frame에서 laser라는 라이다 frame정보가 오길원한다고함
+laser라는 frame정보는 이미 설정되어있는데 로봇 frame이 frame_id로 설정되어있음
+<!-- 사실 못알아들음 -->
+
+ltme_node의 src/ltme_node.cpp를 frame_id로 조회해보면 
+
+    nh_private_.param<std::string>("frame_id", frame_id_, DEFAULT_FRAME_ID);
+    라는 구문이잇는데
+    "frame_id" 부분을 "원하는_id"로 변경하거나
+    
+    노드를 실행할때
+    
+    rosrun ltme_node ltme_node _frame_id:=base_link
+    
+    ltme_node를 실행할때 위와 같이 _frame_id:=base_linkf를 추가하여 frame_id를 base_link로 변경함
+    <문제 발생>
+    [ INFO] [1701396178.648979516]: lookupTransform base_link to laser timed out. Could not transform laser scan into base_frame.
+    이렇게 나오던 오류가 base_link를 설정하니
+
+    [ERROR] [1701396179.717752943]: Transform failed during publishing of map_odom transform: "odom" passed to lookupTransform argument target_frame does not exist. 
+    이렇게 오도메트리(이동경로) 값이 없다고 ERROR메세지를 출력함
+    다른 문제가 발생햇다기 보다 먼저 나온 문제를 해결하니 남아 잇던 다른 문제가 이제 출력된걸로 보임
+
+    우리는 현재 라이다밖에 없으므로 라이다 오도메트리를 시도함(라이다정보만 가지고 오도메트리를 하도록)
+

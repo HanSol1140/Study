@@ -1,0 +1,74 @@
+https://wiki.ros.org/ROS/Tutorials/BuildingPackages
+
+<ROS 패키지 빌드하기>
+    <!-- 참고: 이 튜토리얼은 이전 튜토리얼인 ROS 패키지 생성을 완료했다고 가정합니다. -->
+
+
+        패키지의 모든 시스템 의존성이 설치되어 있다면, 이제 새로운 패키지를 빌드할 수 있습니다.
+
+        참고: ROS를 apt나 다른 패키지 관리자를 사용해 설치했다면 이미 모든 의존성이 설치되어 있어야 합니다.
+
+        계속하기 전에 아직 소싱하지 않았다면 환경 설정 파일을 소싱해야 합니다. 우분투에서는 다음과 같습니다.
+        <!-- source /opt/ros/%YOUR_ROS_DISTRO%/setup.bash -->
+        $ source /opt/ros/noetic/setup.bash <!-- 예를 들어 noetic 경우 -->
+
+    <catkin_make 사용하기>
+
+        catkin_make는 표준 catkin 워크플로우에 편의성을 추가하는 명령줄 도구입니다.
+        catkin_make는 표준 CMake 워크플로우에서 cmake와 make 호출을 결합하는 것으로 생각할 수 있습니다.
+
+        사용법
+        <!-- catkin 작업 공간에서 -->
+            catkin_make [make_targets] [-DCMAKE_VARIABLES=...]
+
+        catkin 프로젝트는 작업 공간에서 함께 빌드될 수 있습니다.
+        하나 이상의 catkin 패키지를 작업 공간에서 빌드하는 과정은 다음과 같습니다:
+
+        <!-- catkin 작업 공간에서 -->
+            catkin_make
+            catkin_make install  # (선택적으로)
+
+        위 명령은 src 폴더에 있는 모든 catkin 프로젝트를 빌드합니다.
+        이것은 REP128에 의해 권장되는 방식입니다.
+        소스 코드가 다른 위치에 있다면, 예를 들어 my_src라면 다음과 같이 catkin_make를 호출합니다:
+        
+        <!-- 예시 -->
+            catkin 작업 공간에서
+            catkin_make --source my_src
+            catkin_make install --source my_src  # (선택적으로)
+            <!-- 예시이기 때문에 작동하지 않습니다, (현재 my_src폴더를 생성하지 않음) -->
+        
+        보다 많은 cmake의 사용법
+        https://wiki.ros.org/catkin/commands/catkin_make
+
+    <패키지 빌드하기>
+    이 페이지를 사용하여 자신의 코드를 빌드하는 경우, 나중에 나오는 튜토리얼(C++/Python)도 살펴봐야 합니다.
+
+    CMakeLists.txt를 수정해야 할 수 있습니다.
+
+    이전 튜토리얼에서 만든 catkin 작업 공간과 새로운 catkin 패키지 beginner_tutorials가 이미 있어야 합니다.
+    작업 공간으로 이동하고 src 폴더를 확인하세요.
+    <!-- 터미널 입력 -->
+        cd ~/catkin_ws
+        ls src
+    <!-- 결과 -->
+        beginner_tutorials/  CMakeLists.txt@
+
+
+    정상적으로 생성된 beginner_tutorials 패키지가 확인됬다면 이제 패키지를 빌드할 수 있습니다.
+
+    <!-- 터미널 입력(catkin_ws에서) -->
+        catkin_make
+        <!-- 빌드(catkin_make)가 문제 없이 실행되었다면 -->
+        ls
+    <!-- 결과 -->
+        build  devel  src
+        build와 devel 폴더가 생긴것을 확인할 수 있습니다.
+
+
+
+build 폴더는 빌드 공간의 기본 위치이며 cmake와 make가 패키지를 구성하고 빌드하는 위치입니다.
+devel 폴더는 devel 공간의 기본 위치이며, 패키지를 설치하기 전에 실행 파일과 라이브러리가 위치하는 곳입니다.
+
+이제 ROS 패키지를 빌드했으니, ROS 노드에 대해 더 이야기해봅시다.
+

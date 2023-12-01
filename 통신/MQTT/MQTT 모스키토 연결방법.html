@@ -1,0 +1,20 @@
+<모스키토 다운로드 & 설치>
+https://mosquitto.org/download/
+해당 페이지에서 모스키토 다운로드 후 설치
+
+
+<모스키토 .conf 설정>
+<!-- listener 수정 -->
+    # listener port-number [ip address/host name/unix socket path]
+    #listener
+    위와 같이 되어있는것을
+
+    <!-- # listener port로 검색해서 아래 수정하면됨 -->
+    # listener port-number [ip address/host name/unix socket path]
+    listener 1883
+    으로 수정 <!-- 아랫부분 주석만 해제하고 1883을 추가하면됨 -->
+
+    
+<!-- allow_anoymous 수정 -->
+    allow_anonymous false
+    allow_anonymous false를 true로 수정 (모든 접속 허용)

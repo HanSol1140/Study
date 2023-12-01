@@ -1,0 +1,122 @@
+라즈베리파이 이미저에서 other OS => ubunto server 20.04 설치
+
+<인터넷 연결>
+
+    방법 1.
+        설치후에
+        cd /etc/netplan
+        sudo nano 50-cloud-init-yaml
+
+        이미저에서 설정한 비밀번호가 파손된채로 기록되어있을거임
+        해당 비밀번호를 원래 비밀번호로 수정
+
+    방법 2.
+        설치 후에
+        설치된 SD카드를 윈도우로 USB를 통해 열어보면
+        network-config파일이 있음
+        해당 파일을 열어서 아이디 비밀번호 입력
+        ※ 주의 사항
+        WIFI ID / WIFI PASSWORD 둘다 "아이디", "비밀번호" 식으로 넣지말것
+        즉, ""를 기입하지말고 그냥 아이디 비밀번호를 입력
+
+    <!-- 예시 -->
+    version: 2
+    wifis:
+        renderer: networkd
+        wlan0:
+            dhcp4: true
+            optional: true
+            access-points:
+            NNX2-2.4G:
+                password: $@43skshslrtm
+
+<GUI 설치>
+    sudo apt update
+    GNOME GUI 설치
+    sudo apt install ubuntu-desktop
+    설치 후 재부팅
+    sudo reboot
+
+<ROS1 설치>
+
+    https://wiki.ros.org/noetic/Installation/Ubuntu
+
+<!-- 테스트 -->
+    $ mkdir -p ~/catkin_ws/src
+    $ cd ~/catkin_ws/
+    $ source /opt/ros/noetic/setup.bash
+    $ catkin_make
+
+    또한 현재 디렉터리를 보면 이제 'build' 및 'devel' 폴더가 있을 것입니다.
+    'devel' 폴더 안에는 이제 여러 개의 setup.*sh 파일이 있는 것을 볼 수 있습니다.
+    이러한 파일을 소싱하면 환경 위에 이 작업공간이 오버레이됩니다.
+    이에 대해 더 자세히 이해하려면 일반 catkin 문서 catkin 을 참조하세요.
+    계속하기 전에 새 setup.*sh 파일을 소스로 사용하세요.
+    
+    $ source devel/setup.bash
+
+<이더넷 설정>
+    ip a 입력해보기
+    <!-- 명칭 확인
+        nanonix@ubuntu:~/catkin_ws/src/ltme_node/src$ ip a
+        1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+            link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+            inet 127.0.0.1/8 scope host lo
+            valid_lft forever preferred_lft forever
+            inet6 ::1/128 scope host 
+            valid_lft forever preferred_lft forever
+        2: eth0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+            link/ether d8:3a:dd:29:1b:b9 brd ff:ff:ff:ff:ff:ff
+        3: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+            link/ether d8:3a:dd:29:1b:ba brd ff:ff:ff:ff:ff:ff
+    -->
+    명칭이 eth0 인걸 확인
+    sudo nano /etc/netplan/50-cloud-init-yaml으로 편집기 실행
+    <!-- 50-cloud-init-yaml
+        network:
+        version: 2
+        wifis:
+            wlan0:
+            access-points:
+                "NNX2-2.4G":
+                password: "비밀번호"
+            dhcp4: true
+        ethernets:
+            eth0:
+            dhcp4: no
+            addresses: [192.168.10.159/24]
+            gateway4: 192.168.10.1
+            nameservers:
+                addresses: [8.8.8.8, 8.8.4.4]
+    -->
+    <최종적으로 이더넷연결까지>
+    network:
+        version: 2
+        ethernets:
+            eth0:
+            dhcp4: no
+            addresses: [192.168.10.150/24]
+        wifis:
+            wlan0:
+            access-points:
+                NNX2-2.4G:
+                password: $@43skshslrtm
+            dhcp4: true
+            optional: true
+
+
+<ltme_node 다운로드>
+    source /opt/ros/noetic/setup.bash
+    git clone https://github.com/LitraTech/ltme_node.git
+    catkin_make
+    rosparam set /ltme_node/device_model "LTME-02A"
+    rosparam set /ltme_node/device_address "192.168.10.160"
+    rosrun ltme_node ltme_node
+
+
+<rqt_graph 실행>
+    source ~/catkin_ws/devel/setup.bash
+    <!-- ros코어 실행 -->
+    roscore
+    <!-- 다른 터미널을 열어서 소스 다시 실행 -->
+    ros_graph
