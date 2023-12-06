@@ -1,0 +1,153 @@
+https://wiki.ros.org/ROS/Tutorials/WritingServiceClient%28python%29
+
+<간단한 서비스 및 클라이언트 작성(Python)>
+    이 튜토리얼은 Python에서 ROS 서비스 노드를 작성하는 방법에 대해 다룹니다.
+    여기서는 두 개의 정수를 받아 합을 반환하는 서비스("add_two_ints_server") 노드를 생성합니다.
+
+
+<서비스 노드 작성>
+    이전 튜토리얼에서 생성한 beginner_tutorials 패키지로 디렉토리를 변경합니다.
+    <!-- 터미널 입력 -->
+        roscd beginner_tutorials
+
+    이 튜토리얼에서 필요한 서비스를 생성하기 위해 이전 튜토리얼의 지침을 따랐는지 확인하세요.
+    AddTwoInts.srv를 생성합니다 (링크의 위쪽에서 사용 중인 빌드 도구의 올바른 버전을 선택하세요).
+
+    beginner_tutorials 패키지 내에 scripts/add_two_ints_server.py 파일을 생성하고
+    
+    다음 내용을 붙여넣습니다.
+        sudo nano scripts/add_two_ints_server.py
+
+    <!-- add_two_ints_server.py
+
+        #!/usr/bin/env python
+        from __future__ import print_function
+
+        from beginner_tutorials.srv import AddTwoInts, AddTwoIntsResponse
+        import rospy
+
+        def handle_add_two_ints(req):
+            print("Returning [%s + %s = %s]"%(req.a, req.b, (req.a + req.b)))
+            return AddTwoIntsResponse(req.a + req.b)
+
+        def add_two_ints_server():
+            rospy.init_node('add_two_ints_server')
+            s = rospy.Service('add_two_ints', AddTwoInts, handle_add_two_ints)
+            print("Ready to add two ints.")
+            rospy.spin()
+
+        if __name__ == "__main__":
+            add_two_ints_server()
+     -->
+
+     생성한 파일에 실행권한을 설정합니다.
+        chmod +x scripts/add_two_ints_server.py
+
+    CMakeLists.txt에 다음을 추가합니다.
+    이는 Python 스크립트가 올바르게 설치되고 올바른 Python 인터프리터를 사용하도록 합니다.
+
+    <!-- CMakeLists.txt -->
+    catkin_install_python(PROGRAMS scripts/add_two_ints_server.py
+        DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+    )
+
+    <파이썬 코드 설명>
+
+    <!--
+        rospy.init_node('add_two_ints_server')
+    --> rospy를 사용하여 서비스를 작성하는 것은 매우 간단합니다.
+        우리는 init_node()를 사용하여 노드를 선언하고 서비스를 선언합니다:
+
+    <!-- 
+        s = rospy.Service('add_two_ints', AddTwoInts, handle_add_two_ints)
+    --> 이는 AddTwoInts 서비스 타입으로 add_two_ints라는 새 서비스를 선언합니다.
+        모든 요청은 handle_add_two_ints 함수로 전달됩니다.
+        handle_add_two_ints는 AddTwoIntsRequest의 인스턴스를 받아 AddTwoIntsResponse의 인스턴스를 반환합니다.
+        서브스크라이버 예제와 마찬가지로 rospy.spin()은 서비스가 종료될 때까지 코드가 종료되지 않도록 합니다.
+
+
+
+<클라이언트 노드 작성하기>
+
+    beginner_tutorials 패키지 내에 scripts/add_two_ints_client.py파일을 생성하고
+    
+    다음 내용을 붙여넣습니다.
+    <!-- add_two_ints_client.py
+        #!/usr/bin/env python
+        from __future__ import print_function
+
+        import sys
+        import rospy
+        from beginner_tutorials.srv import *
+
+        def add_two_ints_client(x, y):
+            rospy.wait_for_service('add_two_ints')
+            try:
+                add_two_ints = rospy.ServiceProxy('add_two_ints', AddTwoInts)
+                resp1 = add_two_ints(x, y)
+                return resp1.sum
+            except rospy.ServiceException as e:
+                print("Service call failed: %s"%e)
+
+        def usage():
+            return "%s [x y]"%sys.argv[0]
+
+        if __name__ == "__main__":
+            if len(sys.argv) == 3:
+                x = int(sys.argv[1])
+                y = int(sys.argv[2])
+            else:
+                print(usage())
+                sys.exit(1)
+            print("Requesting %s+%s"%(x, y))
+            print("%s + %s = %s"%(x, y, add_two_ints_client(x, y)))
+    -->
+
+    생성한 파일에 접근권한을 부여하여 실행할 수 있도록 합니다.
+
+        chmod +x scripts/add_two_ints_client.py
+
+    <코드 설명>
+    서비스를 호출하기 위한 클라이언트 코드도 간단합니다.
+    클라이언트의 경우 init_node()를 호출할 필요가 없습니다.
+    먼저 다음을 호출합니다.
+
+
+    <!--
+        rospy.wait_for_service('add_two_ints')
+    --> 이는 add_two_ints라는 서비스가 사용 가능할 때까지 대기하는 편리한 메서드입니다.
+
+    다음으로 서비스를 호출하기 위한 핸들을 생성합니다.
+
+    <!--
+        add_two_ints = rospy.ServiceProxy('add_two_ints', AddTwoInts)
+    --> 이 핸들을 일반 함수처럼 사용하여 호출할 수 있습니다:
+
+    <!-- 
+        resp1 = add_two_ints(x, y)
+        return resp1.sum
+    --> 서비스 타입을 AddTwoInts로 선언했기 때문에
+        AddTwoIntsRequest 객체를 생성하는 작업을 대신 해줍니다(대신 자신의 객체를 전달할 수도 있습니다).
+        반환 값은 AddTwoIntsResponse 객체입니다.
+        호출이 실패하면 rospy.ServiceException이 발생할 수 있으므로 적절한 try/except 블록을 설정해야 합니다.
+
+
+
+<노드 빌드하기>
+    <!-- 터미널 입력 -->
+        cd ~/catkin_ws
+        catkin_make
+
+
+<서비스와 클라이언트 실행하기>
+    <!-- 터미널 입력 -->
+        rosrun beginner_tutorials add_two_ints_server.py
+    <!-- 결과 -->
+        Ready to add two ints.
+
+
+    <!-- 터미널 입력 -->
+        rosrun beginner_tutorials add_two_ints_client.py 1 3
+    <!-- 결과 -->
+        Requesting 1+3
+        1 + 3 = 4

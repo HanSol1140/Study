@@ -1,0 +1,106 @@
+https://wiki.ros.org/tf2/Tutorials
+
+<tf2 소개>
+
+    <데모 설치>
+        종속성을 가져오고 데모 패키지를 컴파일하는 것부터 시작해 보겠습니다.
+        
+        설치 방법
+        sudo apt-get install ros-$ROS_DISTRO-turtle-tf2 ros-$ROS_DISTRO-tf2-tools ros-$ROS_DISTRO-tf
+
+        <!-- 터미널 실행 -->
+        sudo apt-get install ros-noetic-turtle-tf2 ros-noetic-tf2-tools ros-noetic-tf
+    
+    <데모 실행>
+        이제 Turtle_tf2 튜토리얼 패키지 컴파일을 마쳤으므로 데모를 실행해 보겠습니다.
+        roslaunch turtle_tf2 turtle_tf2_demo.launch
+
+        <!-- 에러발생 -->
+            setting /run_id to fbeb4d58-932b-11ee-825b-2f373d0684af
+            process[rosout-1]: started with pid [2027]
+            started core service [/rosout]
+            process[sim-2]: started with pid [2030]
+            process[teleop-3]: started with pid [2031]
+            process[turtle1_tf2_broadcaster-4]: started with pid [2032]
+            /usr/bin/env: ‘python’: No such file or directory
+            process[turtle2_tf2_broadcaster-5]: started with pid [2033]
+            /usr/bin/env: ‘python’: No such file or directory
+            /usr/bin/env: process[turtle_pointer-6]: started with pid [2034]
+            ‘python’: No such file or directory
+            [turtle1_tf2_broadcaster-4] process has died [pid 2032, exit code 127, cmd /opt/ros/noetic/lib/turtle_tf2/turtle_tf2_broadcaster.py __name:=turtle1_tf2_broadcaster __log:=/home/nanonix/.ros/log/fbeb4d58-932b-11ee-825b-2f373d0684af/turtle1_tf2_broadcaster-4.log].
+            log file: /home/nanonix/.ros/log/fbeb4d58-932b-11ee-825b-2f373d0684af/turtle1_tf2_broadcaster-4*.log
+            [turtle2_tf2_broadcaster-5] process has died [pid 2033, exit code 127, cmd /opt/ros/noetic/lib/turtle_tf2/turtle_tf2_broadcaster.py __name:=turtle2_tf2_broadcaster __log:=/home/nanonix/.ros/log/fbeb4d58-932b-11ee-825b-2f373d0684af/turtle2_tf2_broadcaster-5.log].
+            log file: /home/nanonix/.ros/log/fbeb4d58-932b-11ee-825b-2f373d0684af/turtle2_tf2_broadcaster-5*.log
+            [turtle_pointer-6] process has died [pid 2034, exit code 127, cmd /opt/ros/noetic/lib/turtle_tf2/turtle_tf2_listener.py __name:=turtle_pointer __log:=/home/nanonix/.ros/log/fbeb4d58-932b-11ee-825b-2f373d0684af/turtle_pointer-6.log].
+            log file: /home/nanonix/.ros/log/fbeb4d58-932b-11ee-825b-2f373d0684af/turtle_pointer-6*.log
+
+            실행 시 거북이가 두개가 나오고 조작가능한 거북이를 움직이면 나머지 하나가 따라와야하는데
+
+            붉은색 글씨로 에러가 뜨면서 내용을 읽어보면
+
+            <!-- /usr/bin/env: ‘python’: No such file or directory -->
+            즉, 파이썬을 찾을 수 없다고나옴,
+            ubuntu 20.04에서는 기본적으로 python3가 설치되어있음(python3 --version)
+
+            따라서
+            ls /opt/ros/noetic/lib/turtle_tf2에 설치된 파일들을 전부 검토해서
+            파이썬 파일들의 상단에
+                #!/usr/bin/env python
+                로 되어있는 부분을
+                #!/usr/bin/env python3
+                뒤에 3을 붙여서 수정하면 파이썬을 찾을 수 없다는 에러가 사라지면서 문제없이 작동을 합니다.
+
+    <view_frames 사용>
+
+        view_frames는 ROS를 통해 tf2가 브로드캐스트하는 프레임의 다이어그램을 생성합니다.
+
+        <!-- 터미널 입력 -->
+            rosrun tf2_tools view_frames.py
+        <!-- 결과 -->
+            Listening to tf data during 5 seconds...<!-- 5초 동안 tf 데이터를 듣는 중... -->
+            Generating graph in frames.pdf file...  <!-- frames.pdf 파일에 그래프를 생성하는 중... -->
+
+        <!-- 터미널 입력 -->
+            evince frames.pdf
+
+
+            여기서 우리는 tf2 world, Turtle1 및 Turtle2에 의해 방송되는 세 개의 프레임을 볼 수 있으며
+            해당 세계는 Turtle1 및 Turtle2 프레임의 부모입니다.
+            view_frames는 또한 가장 오래되고 가장 최근의 프레임 변환이 수신된 시기와
+            디버깅 목적으로 tf2 프레임이 tf2에 게시되는 속도에 대한 몇 가지 진단 정보도 보고합니다.
+
+
+        <tf_echo 사용>
+            tf_echo는 ROS를 통해 브로드캐스트되는 두 프레임 간의 변환을 보고합니다.
+
+            사용법
+                rosrun tf tf_echo [참조_프레임] [대상_프레임]
+
+            <!-- 터미널 입력 -->
+                rosrun tf tf_echo turtle1 turtle2
+            <!-- 결과 -->
+                At time 1701753959.087
+                - Translation: [-0.007, -0.002, 0.000]
+                - Rotation: in Quaternion [0.000, 0.000, 0.132, 0.991]
+                            in RPY (radian) [0.000, -0.000, 0.266]
+                            in RPY (degree) [0.000, -0.000, 15.224]
+                At time 1701753960.094
+                - Translation: [-0.004, -0.001, 0.000]
+                - Rotation: in Quaternion [0.000, 0.000, 0.132, 0.991]
+                            in RPY (radian) [0.000, -0.000, 0.266]
+                            in RPY (degree) [0.000, -0.000, 15.224]
+                At time 1701753961.086
+                ...
+            두 거북이가 움직이면서 값이 변하는것을 볼 수 있습니다.
+
+            
+
+    <rviz와 tf2>
+    rviz 는 tf2 프레임을 검사하는 데 유용한 시각화 도구입니다.
+    rviz를 사용하여 거북이 프레임을 살펴보겠습니다.
+    rviz 에 -d 옵션을 사용하여 turtle_tf2 구성 파일로 rviz를 시작하겠습니다 .
+        <!-- 터미널 입력 -->
+            rosrun rviz rviz -d `rospack find turtle_tf2`/rviz/turtle_rviz.rviz
+        <!-- 결과-->
+            실행된 rviz에 거북이 두개의 위치가 표현되는것을 확인할 수 있습니다.
+        

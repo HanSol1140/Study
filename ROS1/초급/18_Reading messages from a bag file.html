@@ -1,0 +1,26 @@
+https://wiki.ros.org/ROS/Tutorials/reading%20msgs%20from%20a%20bag%20file
+
+<가방 파일에서 메시지 읽기>
+    정말 편리한 ros_readbagfile 스크립트 를 사용하는 것을 포함하여
+    백 파일에서 원하는 주제의 메시지를 읽는 두 가지 방법을 알아보세요.
+
+    <가방 파일 다운로드 또는 녹음>
+        가방 파일 다운로드 또는 녹음
+        먼저 가방 파일이 필요합니다. 이 튜토리얼( ROS/Tutorials/Recording 및 데이터 재생 )을 따라 직접 제작하거나
+        여기에서 https://webviz.io 데모를 다운로드하세요( https://open-source-webviz-ui.s3.amazonaws.com/demo.bag)
+        다음과 같이 wget 명령을 사용합니다.
+
+
+        또는 ROS가 이미 실행 중인 시스템에 있다고 가정하면 관심 있는 주제에 대한 30초 데이터 조각을
+        백 파일에 기록하는 빠른 명령이 있습니다(예: /topic1 , /topic2 및 /topic3 ​​).
+        지속 시간을 30초로 설정하므로 이 시간이 지나면 녹음이 자동으로 중지됩니다.
+        <!-- 터미널 입력 -->
+        rosbag record --duration=30 --output-name=/tmp/mybagfile.bag \
+        /topic1 /topic2 /topic3
+
+
+
+
+        
+        time rosbag info mybag.bag
+        time rosbag info mybag.bag | grep -E "(/turtle/pose|topic2|topic3)"

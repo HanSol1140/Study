@@ -1,0 +1,131 @@
+https://wiki.ros.org/ROS/Turostorials/UsingRqtconsoleRoslaunch
+
+이 튜토리얼에서는 디버깅을 위해 rqt_console 및 rqt_logger_level을 사용하고
+한 번에 많은 노드를 시작하기 위해 roslaunch를 사용하는 ROS를 소개합니다.
+rqt를 완전히 사용할 수 없는 ROS fuerte 또는 ealier 배포판을 사용하는 경우
+이전 rx 기반 도구를 사용하는 이 페이지 와 함께 이 페이지를 참조하세요.
+
+
+<rqt 및 Turtlesim 패키지 전제조건>
+
+    이 튜토리얼에서는 rqt 및 Turtlesim 패키지를 모두 사용합니다.
+    이 자습서를 수행하려면 아직 설치하지 않은 경우 두 패키지를 모두 설치하십시오.
+    sudo apt-get install ros-<distro>-rqt ros-<distro>-rqt-common-plugins ros-<distro>-turtlesim
+    <!-- 터미너 입력 -->
+    sudo apt-get install ros-noetic-rqt ros-noetic-rqt-common-plugins ros-noetic-turtlesim
+
+
+<rqt_console 및 rqt_logger_level 실행>
+
+    rosrun rqt_console rqt_console
+    rosrun rqt_logger_level rqt_logger_level
+
+    두 개의 창 팝업이 표시됩니다.
+
+
+<turtlesim 실행>
+
+    rosrun turtlesim turtlesim_node
+    rosrun turtlesim turtle_teleop_node
+
+
+    이제 거북이를 움직여서 경고메세지를 출력해봅시다.
+    rostopic pub /turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '{linear: {x: 2.0, y: 0.0, z: 0.0}, angular: {x: 0.0,y: 0.0,z: 0.0}}'
+
+    이 명령을 입력해 계속 벽에 부딪히게 만들거나, teleop_node의 키보드 화살표를 조작해 벽에 부딪히면
+
+    rqt_console에 에러메세지가 출력되는것을 볼 수 있습니다.
+
+
+<로그 메세지 출력에 대한 참고사항>
+
+    로깅 수준은 다음 순서로 우선순위가 지정됩니다.
+    <!-- 로그 수준 -->
+        Fatal
+        Error
+        Warn
+        Info
+        Debug
+
+        Fatal 의 우선순위가 가장 높고 Debug 의 우선순위가 가장 낮습니다.
+        로거 수준을 설정하면 해당 우선순위 수준 이상의 모든 메시지를 받게 됩니다.
+        예를 들어 수준을 Warn 으로 설정하면 Warn, Error 및 Fatal 로깅 메시지가 모두 표시됩니다.
+
+
+<roslaunch 사용>
+    roslaunch는 시작 파일에 정의된 대로 노드를 시작합니다
+
+    사용법
+        roslaunch [패키지] [파일명.launch]
+
+
+    먼저 앞서 생성 하고 빌드한 Beginner_tutorials 패키지 로 이동합니다.
+    <!-- 터미널 입력 -->
+        roscd beginner_tutorials
+        mkdir launch
+        cd launch
+
+        참고: 실행 파일을 저장할 디렉터리의 이름을 반드시 launch 로 지정할 필요는 없습니다.
+        실제로 디렉토리에 저장할 필요조차 없습니다.
+        roslaunch 명령은 전달된 패키지를 자동으로 조사하고 사용 가능한 시작 파일을 감지합니다.
+        그러나 이는 좋은 관행으로 간주됩니다.
+
+    <Turtlemimic.launch라는 실행 파일 생성>
+
+        turtlemimic.launch라는 실행 파일을 만들고 다음을 붙여넣어 보겠습니다.
+
+        <!-- 터미널 입력 -->
+            sudo nano turtlemimic.launch
+
+
+        다음과 같이 입력하세요.
+        <launch>
+
+            <group ns="turtlesim1">
+                <node pkg="turtlesim" name="sim" type="turtlesim_node"/>
+            </group>
+        
+            <group ns="turtlesim2">
+                <node pkg="turtlesim" name="sim" type="turtlesim_node"/>
+            </group>
+        
+            <group ns="turtlesim3">
+                <node pkg="turtlesim" name="sim" type="turtlesim_node"/>
+            </group>
+        
+            <node pkg="turtlesim" name="mimic1" type="mimic">
+                <remap from="input" to="turtlesim1/turtle1"/>
+                <remap from="output" to="turtlesim2/turtle1"/>
+            </node>
+        
+            <node pkg="turtlesim" name="mimic2" type="mimic">
+                <remap from="input" to="turtlesim1/turtle1"/>
+                <remap from="output" to="turtlesim3/turtle1"/>
+            </node>
+        
+        </launch>
+        
+        <!-- 하나의 input에는 하나의 output만 연결할 수 있습니다. -->
+
+        input (입력) : mimic 노드는 input으로 지정된 토픽으로부터 데이터를 받습니다.
+        이 데이터는 다른 노드에서 발행(publish)된 메시지일 수 있습니다.
+        예를 들어, remap from="input" to="turtlesim1/turtle1"는 turtlesim1/turtle1 토픽에서 데이터를 받는다는 것을 의미합니다.
+
+        Output (출력): mimic 노드는 받은 데이터를 그대로 output으로 지정된 토픽에 전달합니다.
+        이 토픽은 다른 노드가 구독(subscribe)할 수 있습니다.
+        예를 들어, remap from="output" to="turtlesim2/turtle1"는 turtlesim2/turtle1 토픽으로 데이터를 전달한다는 것을 의미합니다.
+
+        이런 방식으로, mimic 노드는 input에서 받은 데이터를 output으로 지정된 다른 토픽으로 전달하여,
+        다른 노드가 이 데이터를 사용할 수 있게 합니다.
+        이는 ROS에서 데이터의 흐름을 조정하고 다양한 노드 간의 상호작용을 가능하게 하는 핵심 메커니즘 중 하나입니다.
+            
+
+    <launch파일 실행>
+        이제 생성한 launch파일을 실행하고,
+        turtlesim이 여러개 실행된걸 확인한 후 터미널로 명령을 보내 움직여봅시다.
+        <!-- 터미널 입력 -->
+            roslaunch beginner_tutorials turtlemimic.launch
+            rostopic pub /turtlesim1/turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, -1.8]'
+
+        
+            rqt_graph에서 데이터의 흐름을 이해할 수 있습니다.

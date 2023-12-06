@@ -2,8 +2,18 @@
     https://wiki.ros.org/noetic/Installation/Ubuntu
 
     설치대로 따라간뒤
+    sudo apt update
+    sudo apt install python3-catkin-pkg
     sudo apt install catkin
 
+    mkdir catkin_ws
+    cd catkin_ws
+    mkdir src
+    cd src
+    catkin_create_pkg nnx_robot1
+    폴더가 제대로 생성됫다면
+    cd catkin_ws
+    catkin_make
     마지막에 source /opt/ros/noetic/setup.bash
     한뒤에 생성한 catkin_ws(워크스페이스) 경로로 이동해서
     catkin_cmake

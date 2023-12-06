@@ -1,0 +1,182 @@
+https://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29
+
+<Publisher 노드 작성하기>
+    "노드"는 ROS 네트워크에 연결된 실행 가능한 파일을 의미합니다.
+    여기서는 메시지를 지속적으로 방송하는 퍼블리셔("talker") 노드를 생성합니다."
+
+
+    이전 튜토리얼에서 생성한 beginner_tutorials 패키지로 디렉토리를 변경합니다.
+    <!-- 터미널 입력 -->
+        roscd beginner_tutorials
+        
+        <!-- 먼저 Python 스크립트를 저장할 'scripts' 폴더를 생성합니다 -->
+        mkdir scripts
+        cd scripts
+
+        <!-- 예제 talker.py 다운로드 -->
+        <!-- https://raw.githubusercontent.com/ros/ros_tutorials/kinetic-devel/rospy_tutorials/001_talker_listener/talker.py -->
+        <!-- talker.py파일을 생성하여 위 링크의 코드 삽입 -->
+        sudo nano talker.py
+        sudo chmod +x talker.py
+
+    <CMakeLists.txt파일 수정>
+    
+        CMakeLists.txt 에 다음을 수정하세요. <!-- 주석되어 있는 것을 해제 -->
+        이렇게 하면 Python 스크립트가 올바르게 설치되고 올바른 Python 인터프리터를 사용하게 됩니다.
+        <!-- 수정 -->
+        catkin_install_python(PROGRAMS scripts/talker.py
+            DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+        )
+
+    <파이썬 코드 분석>
+    #!/usr/bin/env python
+
+    import rospy
+    from std_msgs.msg import String
+
+    def talker():
+        pub = rospy.Publisher('chatter', String, queue_size=10)
+        rospy.init_node('talker', anonymous=True)
+        rate = rospy.Rate(10) # 10hz
+        while not rospy.is_shutdown():
+            hello_str = "hello world %s" % rospy.get_time()
+            rospy.loginfo(hello_str)
+            pub.publish(hello_str)
+            rate.sleep()
+
+    if __name__ == '__main__':
+        try:
+            talker()
+        except rospy.ROSInterruptException:
+            pass
+        
+        <!--
+            #!/usr/bin/env 파이썬
+        -->
+            모든 Python ROS 노드의 상단에는 이 선언이 있습니다.
+            첫 번째 줄은 스크립트가 Python 스크립트로 실행되는지 확인합니다.
+        <!--
+            import rospy
+            from std_msgs.msg import String
+        -->
+            ROS 노드를 작성하려면 rospy를 가져와야 합니다. std_msgs.msg 가져오기는 게시를 위해
+            std_msgs/String 메시지 유형(간단한 문자열 컨테이너)을 재사용 할 수 있도록 하기 위한 것입니다.
+
+        <!--
+            pub = rospy.Publisher('chatter', String, queue_size=10)
+            rospy.init_node('talker', anonymous=True)
+        -->
+            이 코드 섹션은 ROS의 나머지 부분에 대한 Talker의 인터페이스를 정의합니다.
+            pub = rospy.Publisher("chatter", String, queue_size=10)는 노드가
+            String 메시지 유형을 사용하여 Chatter <topic>에 게시하고 있음을 선언합니다.
+            여기서 문자열은 실제로 std_msgs.msg.String 클래스입니다.
+            queue_size 인수는 ROS Hydro의 새로운 기능이며
+            구독자가 메시지를 충분히 빨리 받지 못하는 경우 대기열에 있는 메시지의 양을 제한합니다.
+
+        <!-- 
+            rate = rospy.Rate(10) # 10hz
+        -->
+            이 줄은 Rate 개체 비율을 생성합니다.
+            sleep() 메서드를 사용하면 원하는 속도로 반복하는 편리한 방법을 제공합니다.
+            10 인수를 사용하면 초당 10번 루프를 통과할 것으로 예상됩니다(처리 시간이 1/10초를 초과하지 않는 한).
+
+        <!-- 
+            while not rospy.is_shutdown():
+            hello_str = "hello world %s" % rospy.get_time()
+            rospy.loginfo(hello_str)
+            pub.publish(hello_str)
+            rate.sleep()
+        -->
+            이 루프는 상당히 표준적인 rospy 구성입니다.
+            rospy.is_shutdown() 플래그를 확인한 다음 작업을 수행합니다.
+            프로그램이 종료되어야 하는지 확인하려면 is_shutdown()을 확인해야 합니다 예: Ctrl-C 또는 기타 키 가 있는지.
+            이 경우 "작업"은 chatter 주제 에 문자열을 게시하는 pub.publish(hello_str) 에 대한 호출입니다.
+            루프는 rate.sleep() 을 호출하는데, 이는 루프를 통해 원하는 속도를 유지할 수 있을 만큼만 잠자기 상태로 유지됩니다.
+        
+            std_msgs.msg.String 은 매우 간단한 메시지 유형이므로
+            더 복잡한 유형을 게시하면 어떤 모습일지 궁금할 수 있습니다.
+            일반적인 경험 법칙은 생성자 인수가 .msg 파일 과 동일한 순서라는 것입니다.
+            인수를 전달하지 않고 필드를 직접 초기화할 수도 있습니다. 예:
+        <!-- 
+            msg = String()
+            msg.data = str
+        -->
+
+            또는 일부 필드를 초기화하고 나머지는 기본값으로 둘 수 있습니다.
+        <!-- 
+            String(data=str)
+        -->
+
+
+        <!-- 
+
+            try:
+                talker()
+            except rospy.ROSInterruptException:
+                pass
+        -->
+            표준 Python __main__ 검사 외에도 Ctrl-C를 누르거나 노드가 종료될 때
+            rospy.sleep() 및 rospy.Rate.sleep() 메서드 에서 발생할 수 있는
+            rospy.ROSInterruptException 예외 를 포착합니다.
+            이 예외가 발생하는 이유는 실수로 sleep() 이후에 코드를 계속 실행하지 않기 위해서입니다 .
+
+            이제 메시지를 수신할 노드를 작성해야 합니다.
+
+
+<Subscriber 노드 작성하기>
+
+    <!-- 예제 listener.py 다운로드 -->
+    <!-- https://raw.githubusercontent.com/ros/ros_tutorials/kinetic-devel/rospy_tutorials/001_talker_listener/listener.py -->
+    <!-- talker.py파일을 생성하여 위 링크의 코드 삽입 -->
+        sudo nano listener.py
+        sudo chmod +x listener.py
+
+    <CMakeLists.txt파일 수정>
+    
+        CMakeLists.txt을 수정하세요
+        CMakeLists.txt에서 catkin_install_python() 호출을 편집하여 다음과 같이 만듭니다.
+
+        <!-- CMakeLists.txt -->
+        catkin_install_python(PROGRAMS
+            scripts/talker.py
+            scripts/listener.py
+            DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+        )
+
+    <Subscriber 코드 설명>
+        rospy.init_node('listener', anonymous=True)
+
+        rospy.Subscriber("chatter", String, callback)
+    
+        # spin() simply keeps python from exiting until this node is stopped
+        rospy.spin()
+
+        이는 노드가 std_msgs.msgs.String 유형의 Chatter 주제를 구독함을 선언합니다.
+        새 메시지가 수신되면 메시지를 첫 번째 인수로 사용하여 콜백이 호출됩니다.
+
+        또한 rospy.init_node() 호출을 다소 변경했습니다. 익명=True 키워드 인수를 추가했습니다.
+        ROS에서는 각 노드에 고유한 이름이 있어야 합니다. 동일한 이름의 노드가 나타나면 이전 노드와 충돌합니다.
+        이는 오작동하는 노드가 네트워크에서 쉽게 쫓겨날 수 있도록 하기 위한 것입니다.
+        익명 =True 플래그는 rospy에게 노드에 대한 고유한 이름을 생성하도록 지시하여 여러 개의 listener.py 노드를 쉽게 실행할 수 있도록 합니다.
+
+        마지막 추가 기능인 rospy.spin()은 노드가 종료될 때까지 노드가 종료되지 않도록 유지합니다.
+        roscpp와 달리 rospy.spin()은 구독자 콜백 함수에 영향을 주지 않습니다.
+        왜냐하면 구독자 콜백 함수에는 자체 스레드가 있기 때문입니다.
+
+
+<node build>
+
+    catkin 작업 공간으로 이동하여 catkin_make를 실행하십시오 
+
+        <!-- 터미널 입력 -->
+            cd ~/catkin_ws
+            catkin_make
+
+
+
+<구축한 Pub Sub 검사하기>
+    <!-- 터미널 입력 -->
+        rosrun beginner_tutorials talker.py
+        rosrun beginner_tutorials listener.py
+
+    구독자와 발신자가 작동하는 것을 확인하세요.
