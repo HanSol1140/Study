@@ -112,6 +112,10 @@ network:
 
 
 <패키지를 하나 생성후 launch파일 생성>
+<!--
+    패키지는 알아서, 기존에 잇던파일에 LAUNCH만 추가하던, LAUNCH관리용 패키지를 만들던
+    어차피 패키지에 설치된게아니라 ros에 설치된 HECTOR_SLAM을 실행시키는 역할
+-->
 <?xml version="1.0"?>
 
 <launch>
@@ -175,5 +179,30 @@ network:
   </node>
   
 </launch>
-  
-  
+
+roscore
+ltme_node(라이다 스캔노드, 각종 설정,)
+이렇게 실행한뒤 위의 launch파일을 실행시켜서 맵핑후에
+
+맵세이버를 실행시켜서 맵파일을 저장
+<맵세이버 인스톨>
+sudo apt-get install ros-noetic-map-server
+
+<맵파일 저장>
+rosrun map_server map_saver -f map_file_name
+
+rosrun map_server map_server [맵 파일 경로].yaml
+rosrun map_server map_server /home/nanonix/catkin_ws/mapmap.yaml
+
+
+<amcl 설치>
+amcl (Adaptive Monte Carlo Localization)은 ROS에서 널리 사용되는 로컬라이제이션 노드로, 주어진 맵 상에서 로봇의 위치를 추정합니다. 이는 Particle Filter 기반의 방법을 사용하여 로봇의 위치와 방향을 추적합니다. amcl은 주로 정적인 맵에서 사용되며, 라이다와 같은 센서 데이터를 기반으로 로봇의 위치를 추정합니다.
+
+amcl의 기본 원리:
+amcl은 여러 개의 "파티클"을 사용하여 로봇의 위치를 추정합니다.
+각 파티클은 로봇이 맵 상에 있을 가능성 있는 위치와 방향을 나타냅니다.
+로봇이 움직일 때마다, 이 파티클들은 센서 데이터와 동작 모델을 기반으로 업데이트되며, 이를 통해 로봇의 위치를 더 정확하게 추정할 수 있습니다.
+amcl 노드 설치 및 설정:
+설치: amcl은 대부분의 ROS 설치에 기본적으로 포함되어 있습니다. 설치되어 있지 않다면, 다음 명령어를 통해 설치할 수 있습니다:
+    <설치>
+    sudo apt-get install ros-noetic-amcl
