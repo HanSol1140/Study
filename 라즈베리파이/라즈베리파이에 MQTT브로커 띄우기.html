@@ -27,8 +27,11 @@ sudo iptables -L
 
 sudo apt-get install iptables-persistent 명령을 사용하여 iptables-persistent 패키지를 설치합니다.
     설치 중에 설정 파일을 저장할 것인지 묻는 메시지가 나타날 수 있습니다. 모든 규칙을 저장하려면 Yes를 선택하십시오.
-규칙을 수정한 후 sudo netfilter-persistent save 명령을 사용하여 변경 사항을 저장합니다.
-    sudo systemctl enable netfilter-persistent 명령을 사용하여 부팅시에 규칙을 자동으로 로드하도록 설정합니다.
+규칙을 수정한 후
+sudo netfilter-persistent save
+명령을 사용하여 변경 사항을 저장합니다.
+sudo systemctl enable netfilter-persistent
+명령을 사용하여 부팅시에 규칙을 자동으로 로드하도록 설정합니다.
 
 <라즈베리파이 자체 발신/수신 테스트>
     <Subscriber(구독자) 실행 테스트>
@@ -44,3 +47,6 @@ mqtt나 mosquitto라고 나온다면 실행중인것
 sudo service mosquitto status
 <모스키토 설정파일 수정>
 /etc/mosquitto/mosquitto.conf
+
+<접속할 모스키토에서 방화벽 설정>
+
