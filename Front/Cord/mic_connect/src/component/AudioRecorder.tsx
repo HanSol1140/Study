@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+// 기본적인 녹음, 정지, 다운로드
 const AudioRecorder = () => {
   const [isRecording, setIsRecording] = useState(false);
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);

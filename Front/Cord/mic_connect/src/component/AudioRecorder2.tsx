@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+// 녹음이 시작되면 녹음중...이라는 메세지 출력
 const AudioRecorder2 = () => {
     const [isRecording, setIsRecording] = useState(false);
     const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);

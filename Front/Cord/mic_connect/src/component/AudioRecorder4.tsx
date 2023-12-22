@@ -1,12 +1,50 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 // 2초간 음성이 감지되지 않으면 녹음을 종료함(챗지피티로 보낼 수 있지 않을까)
-const AudioRecorder3 = () => {
+const AudioRecorder4 = () => {
     const [isRecording, setIsRecording] = useState(false);
     const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
     const [audioUrl, setAudioUrl] = useState<string | null>(null);
     const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
     const [analyser, setAnalyser] = useState<AnalyserNode | null>(null);
     const [silenceStart, setSilenceStart] = useState<number | null>(null);
+    const [response, setResponse] = useState('');
+
+    const audioRef = useRef(new Audio());
+    const fetchGPT = () => {
+        fetch('https://192.168.0.137:8080/audiotest2')
+            .then(response => response.text())
+            .then(data => {
+                setResponse(data);
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error fetching response:', error);
+            });
+    }
+    const fetchAudio = () => {
+        fetch('https://192.168.0.137:8080/audioTest')
+            .then(response => response.blob())
+            .then(blob => {
+                const audioUrl = URL.createObjectURL(blob);
+                audioRef.current.src = audioUrl;
+                audioRef.current.play().catch(e => console.error('오디오 재생 에러:', e));
+            })
+            .catch(error => {
+                console.error('Error fetching audio:', error);
+            });
+    }
+    const fetchAudio3 = () => {
+        fetch('https://192.168.0.137:8080/audioTest3')
+            .then(response => response.blob())
+            .then(blob => {
+                const audioUrl = URL.createObjectURL(blob);
+                audioRef.current.src = audioUrl;
+                audioRef.current.play().catch(e => console.error('오디오 재생 에러:', e));
+            })
+            .catch(error => {
+                console.error('Error fetching audio:', error);
+            });
+    }
     // const stopRecording = useCallback(() => {
     //     setIsRecording(false); // 이 부분을 먼저 호출해야 합니다.
     //     mediaRecorder?.stop();
@@ -55,6 +93,10 @@ const AudioRecorder3 = () => {
                         console.log('입력 감지 못함');
                         setSilenceStart(null);
                         stopRecording();
+                        fetchAudio();
+                        setTimeout(() =>{
+                            fetchAudio3();
+                        },5000);
                     }
                 }
                 // else {
@@ -129,8 +171,11 @@ const AudioRecorder3 = () => {
             </button>
 
             {isRecording && <div>🎤 녹음 중...</div>}
+
+            <audio ref={audioRef} controls style={{ display: 'none' }} />
+
         </div>
     );
 };
 
-export default AudioRecorder3;
+export default AudioRecorder4;
