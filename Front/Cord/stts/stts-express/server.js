@@ -21,7 +21,7 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 // Google Cloud Text-to-Speech 클라이언트 생성
 const TTSclient = new textToSpeech.TextToSpeechClient({
-  keyFilename: "D:key-hope-389706-a991d39a7ce8.json",
+  keyFilename: "D:hansol-410700-9ed905e72df6.json",
 });
 
 
