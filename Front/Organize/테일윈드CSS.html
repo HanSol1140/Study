@@ -1,0 +1,34 @@
+<설치>
+    npm install -d tailwindcss
+    npx tailwindcss init
+
+<tailewind.config.js 수정>
+    /** @type {import('tailwindcss').Config} */
+    module.exports = {
+      content: [],
+      theme: {
+        extend: {},
+      },
+      plugins: [],
+    }
+    이런 파일이 나올건데 
+
+    content: ["./src/**/*.{html,js,ts,tsx}"],
+    로 수정
+<src/input.css에 테일윈드 지시어 추가>
+    src/input.css생성
+
+    <!-- src/input.css -->
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+    
+    <!-- src/index.css -->
+    <!-- 상단에 추가 -->
+    @import './output.css';
+    
+<Tailwind CLI 빌드 프로세스 시작>
+    npx tailwindcss -i ./src/input.css -o ./src/output.css --watch
+
+
+<

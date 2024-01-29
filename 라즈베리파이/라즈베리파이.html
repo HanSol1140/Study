@@ -25,7 +25,6 @@
     sudo apt-get install -y fonts-nanum*
     
     한글 입력기 설치
-    sudo apt-get install ibus-setup
     sudo apt-get install -y ibus ibus-hangul
     ibus를 기본 입력방법으로 설정
     im-config -n ibus
@@ -436,7 +435,7 @@ http://wiki.sunfounder.cc/index.php?title=PN532_NFC_Module_for_Raspberry_Pi
     생성한 아이디에 권한 부여
 
         sudo usermod –a –G sudo remote
-
+    <!-- sudo userdel -r remote => 삭제 -->
 
     ifconfig을 통해 ip확인
 
