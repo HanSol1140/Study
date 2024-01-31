@@ -438,10 +438,12 @@ http://wiki.sunfounder.cc/index.php?title=PN532_NFC_Module_for_Raspberry_Pi
 
     sudo chmod -R 777 /home/nanonix
     모든 계정에게 권한부여(보안위험이슈잇음)
+    <!-- remote 계정에게 gpio 접근권한 부여 -->
     sudo usermod -aG gpio remote
-    remote 계정에게 gpio 접근권한 부여
+    <!-- USB접근권한 부여 -->
+    sudo usermod -aG dialout remote
 
-    ifconfig을 통해 ip확인
+    <!-- ifconfig을 통해 ip확인 -->
 
     이제 PC의 원격 데스크탑 접속 실행
     ifconfig으로 확인한 IP입력
@@ -457,6 +459,10 @@ http://wiki.sunfounder.cc/index.php?title=PN532_NFC_Module_for_Raspberry_Pi
     관리자 계정에서
     sudo chmod 777 /home
     모든 사용자가 원격접속시 관리자 폴더와 파일을 수정할 수 있음
+<remote가 만든 파일을 관리자가 접근할 수 없을때>
+    해당 파일들을 수정할 상위폴더로 이동
+    sudo find . -user remote -exec chmod 777 {} \;
+    이러면 관리자가 해당 파일들을 수정할 수 있게됨
 
 <사용자 계정에서 핀에 접근할 수 없을때>
     ttyAMA2등 시리얼 통신을 위한 권한이 없어서 사용이 불가능할 때
