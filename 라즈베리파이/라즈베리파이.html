@@ -49,8 +49,9 @@
 
 <깃허브 설치>
 sudo apt install git
-git config —global user.email "skycriperd@gmail.com"
-git config —global user.name "SongHanSol"
+git config --global user.email "skycriperd@gmail.com"
+
+git config --global user.name "SongHanSol"
 
 <VS Code를 설치>
     sudo apt install code
@@ -156,6 +157,7 @@ node.js용 <pm2> 설치
     
     pm2 start /home/nanonix/ai/table/server.js
     pm2 startup
+    나오는 sudo env로 시작하는 명령어 복사해서 터미널에 붙여넣고 실행
     pm2 save
     재부팅
     이제부터 재부팅시 서버가 실행됩니다.
@@ -434,8 +436,10 @@ http://wiki.sunfounder.cc/index.php?title=PN532_NFC_Module_for_Raspberry_Pi
 
     생성한 아이디에 권한 부여
 
-        sudo usermod –a –G sudo remote
-    <!-- sudo userdel -r remote => 삭제 -->
+    sudo chmod -R 777 /home/nanonix
+    모든 계정에게 권한부여(보안위험이슈잇음)
+    sudo usermod -aG gpio remote
+    remote 계정에게 gpio 접근권한 부여
 
     ifconfig을 통해 ip확인
 
