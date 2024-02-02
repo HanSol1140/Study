@@ -30,5 +30,46 @@
 <Tailwind CLI 빌드 프로세스 시작>
     npx tailwindcss -i ./src/input.css -o ./src/output.css --watch
 
+<App.tsx에 output.css import>
 
-<
+<!--
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './App.css';
+import './output.css';
+import { RecoilRoot } from 'recoil';
+import Main from './component/Main';
+import KioskMain from './component/kioskcomponent/KioskMain';
+import MobileMain from './component/mobilecomponent/MobileMain';
+import Setting from './component/Settings/Setting';
+import SettingCategory from './component/Settings/SettingCategory';
+import SettingOption from './component/Settings/SettingOption';
+import SettingProduct from './component/Settings/SettingProduct';
+import Order from './component/voiceorder/Order';
+import OrderTwo from './component/voiceorder/OrderTwo';
+
+function App() {
+    return (
+        <RecoilRoot>
+            <Router>
+                <section className="App">
+                    <Routes>
+                        <Route path="/" element={<Main />} />
+                        <Route path="/KioskMain" element={<KioskMain />} />
+                        <Route path="/MobileMain" element={<MobileMain />} />
+                        <Route path="/SettingCategory" element={<SettingCategory />} />
+                        <Route path="/SettingOption" element={<SettingOption />} />
+                        <Route path="/SettingProduct" element={<SettingProduct />} />
+                        <Route path="/Setting" element={<Setting />} />
+                        <Route path="/Order" element={<Order />} />
+                        <Route path="/OrderTwo" element={<OrderTwo />} />   
+                        {/* <Route path="/Test" element={<Test />} /> */}
+                        {/* <Route path="/Step2" element={<Step2 />} /> */}
+                    </Routes>
+                </section>
+            </Router>
+        </RecoilRoot>
+    );
+}
+
+export default App;
+-->
