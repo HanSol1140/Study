@@ -128,22 +128,27 @@ dtoverlay=uart3
 
 dtoverlay=uart0,txd0_pin=14,rxd0_pin=15
 <라즈베리파이에 max98357 앰프(스피커) 연결하기>
-sudo nano /boot/config.txt
-    dtoverlay=hifiberry-dac
-    dtoverlay=i2s-mmap
-재부팅 - sudo reboot
+    <핀연결>
+        GPIO18 - BCLK
+        GPIO19 - LRC
+        GPIO21 - DIN
+    <라즈베리파이 설정>
+        sudo nano /boot/config.txt
+            dtoverlay=hifiberry-dac
+            dtoverlay=i2s-mmap
+        재부팅 - sudo reboot
 
-sudo raspi-config
-1. system option - audio 를 보면
-처음 config.txt를 변경하기전에
-0 HeadPhones
-1 MAI PCM i2s-HIFI-0
-이렇게 되어있었는데 설정을 하고나니
-2 HifiBerry Dac HiFi pcm5102a-hifi-0 이 추가되었음 <!-- 2번이 추가되었다는 말임 -->
-새로 생긴 2번을 선택한뒤 Finish를 선택
-sudo reboot
+        sudo raspi-config
+        1. system option - audio 를 보면
+        처음 config.txt를 변경하기전에
+        0 HeadPhones
+        1 MAI PCM i2s-HIFI-0
+        이렇게 되어있었는데 설정을 하고나니
+        2 HifiBerry Dac HiFi pcm5102a-hifi-0 이 추가되었음 <!-- 2번이 추가되었다는 말임 -->
+        새로 생긴 2번을 선택한뒤 Finish를 선택
+        sudo reboot
 
-이러면 이제 사운드 장치 설정이 끝남, 사운드 조절이 가능함
+        이러면 이제 사운드 장치 설정이 끝남, 사운드 조절이 가능함
 
 
 
@@ -449,7 +454,7 @@ http://wiki.sunfounder.cc/index.php?title=PN532_NFC_Module_for_Raspberry_Pi
     ifconfig으로 확인한 IP입력
 
         xorg
-        remote
+        remoteㅊㅇ 
         remote
         로 접속
 
@@ -457,14 +462,18 @@ http://wiki.sunfounder.cc/index.php?title=PN532_NFC_Module_for_Raspberry_Pi
 <관리자 계정에서 모든 사용자에게 권한 허용>
     <remote에서 nanonix(관리자 계정 파일을 수정할 수 없어서 접속할 수 없어서 찾은 방법)>
     관리자 계정에서
-    sudo chmod 777 /home
+    sudo chmod -R 777 /home
     모든 사용자가 원격접속시 관리자 폴더와 파일을 수정할 수 있음
 <remote가 만든 파일을 관리자가 접근할 수 없을때>
     해당 파일들을 수정할 상위폴더로 이동
-    sudo find . -user remote -exec chmod 777 {} \;
+    sudo chmod -R 777 /home/nanonix/
     이러면 관리자가 해당 파일들을 수정할 수 있게됨
 
 <사용자 계정에서 핀에 접근할 수 없을때>
     ttyAMA2등 시리얼 통신을 위한 권한이 없어서 사용이 불가능할 때
     sudo usermod -a -G dialout remote
     이렇게 dialout의 권한을 remote에게 주면 된다.
+
+<I2C 접근권한 허용>
+    sudo usermod -aG i2c remote
+    i2cdetect -y 1 <!-- 체크 -->
