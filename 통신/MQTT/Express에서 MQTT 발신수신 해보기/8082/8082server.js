@@ -21,11 +21,8 @@ client.on('reconnect', function () {
 });
 
  
-var message = {
-    robotname : "cleaningbot_01",
-    robotstate : true
-}
-client.publish('door', JSON.stringify(message));
+ 
+client.publish('loadCell', JSON.stringify(message));
 
 
 // client.publish('cleaningbot_in', "123");
