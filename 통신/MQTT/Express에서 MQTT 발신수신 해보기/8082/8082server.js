@@ -20,9 +20,12 @@ client.on('reconnect', function () {
     console.log('MQTT client is trying to reconnect');
 });
 
+var message = {
+    tableNumber: 1,
+    cleaningRobotState: false
+}
  
- 
-client.publish('loadCell', JSON.stringify(message));
+client.publish('tableButton', JSON.stringify(message));
 
 
 // client.publish('cleaningbot_in', "123");
