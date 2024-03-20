@@ -1,0 +1,152 @@
+{
+    "major_category_name": "음료",
+    "major_category_order": 0,
+    "menu_category_name": "에스프레소",
+    "menu_category_order": 0,
+    "menu_code": "01",
+    "menu_name": "아메리카노",
+    "menu_price": 3000,
+    "menu_imagepath": "Content\\Menu\\MenuImage\\Caffe Americano.jpg",
+    "menu_default_option_code": "1-2-1000-0-00",
+    "menu_id": 38,
+    "menu_order": 0,
+    "options": {
+        "HOT / ICE": [
+            {
+                "option_item_name": "HOT",
+                "option_item_price": 0,
+                "option_item_order": 1,
+                "option_item_stock": 0,
+                "available": true,
+                "details": []
+            }
+        ],
+        "사이즈": [
+            {
+                "option_item_name": "8oz",
+                "option_item_price": -500,
+                "option_item_order": 1,
+                "option_item_stock": 0,
+                "available": false,
+                "details": []
+            },
+            {
+                "option_item_name": "12oz",
+                "option_item_price": 0,
+                "option_item_order": 2,
+                "option_item_stock": 0,
+                "available": true,
+                "details": []
+            },
+            {
+                "option_item_name": "16oz",
+                "option_item_price": 500,
+                "option_item_order": 3,
+                "option_item_stock": 0,
+                "available": false,
+                "details": []
+            },
+            {
+                "option_item_name": "20oz",
+                "option_item_price": 1000,
+                "option_item_order": 4,
+                "option_item_stock": 0,
+                "available": false,
+                "details": []
+            }
+        ],
+        "카페인 조절": [
+            {
+                "option_item_name": "에스프레소 샷(ml)",
+                "option_item_price": 600,
+                "option_item_order": 1,
+                "option_item_stock": 0,
+                "available": true,
+                "details": []
+            }
+        ],
+        "얼음 조절": [
+            {
+                "option_item_name": "없음",
+                "option_item_price": 0,
+                "option_item_order": 0,
+                "option_item_stock": 0,
+                "available": true,
+                "details": []
+            }
+        ],
+        "시럽 추가": [
+            {
+                "option_item_name": "없음(기본)",
+                "option_item_price": 0,
+                "option_item_order": 0,
+                "option_item_stock": 0,
+                "available": true,
+                "details": []
+            },
+            {
+                "option_item_name": "카라멜 시럽",
+                "option_item_price": 500,
+                "option_item_order": 1,
+                "option_item_stock": 0,
+                "available": false,
+                "details": [
+                    {
+                        "option_item_detail_name": "적게",
+                        "additionalCost": 0
+                    },
+                    {
+                        "option_item_detail_name": "보통",
+                        "additionalCost": 0
+                    },
+                    {
+                        "option_item_detail_name": "많이",
+                        "additionalCost": 0
+                    }
+                ]
+            },
+            {
+                "option_item_name": "헤이즐넛 시럽",
+                "option_item_price": 500,
+                "option_item_order": 2,
+                "option_item_stock": 0,
+                "available": false,
+                "details": [
+                    {
+                        "option_item_detail_name": "적게",
+                        "additionalCost": 0
+                    },
+                    {
+                        "option_item_detail_name": "보통",
+                        "additionalCost": 0
+                    },
+                    {
+                        "option_item_detail_name": "많이",
+                        "additionalCost": 0
+                    }
+                ]
+            },
+            {
+                "option_item_name": "설탕 시럽",
+                "option_item_price": 500,
+                "option_item_order": 3,
+                "option_item_stock": 0,
+                "available": false,
+                "details": [
+                    {
+                        "option_item_detail_name": "적게",
+                        "additionalCost": 0
+                    },
+                    {
+                        "option_item_detail_name": "보통",
+                        "additionalCost": 0
+                    },
+                    {
+                        "option_item_detail_name": "많이",
+                        "additionalCost": 0
+                    }
+                ]
+            }
+        ]
+    }
+}
