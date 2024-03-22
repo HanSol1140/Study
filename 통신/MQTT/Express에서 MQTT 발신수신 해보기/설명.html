@@ -152,3 +152,14 @@ allow_anonymous true
 
         필요한 경우 다른 방화벽 규칙을 추가로 설정하거나 수정할 수 있습니다. sudo ufw 명령어를 사용하여 방화벽 규칙을 관리할 수 있습니다.
         예를 들어, 특정 IP 주소에서의 접속을 허용하려면 sudo ufw allow from <IP> to any port <port> 형식의 명령어를 사용합니다.
+
+
+<웹소켓 연결방식>
+listener 1883
+protocol mqtt
+listener 9001 <!-- 웹소켓포트 -->
+protocol websockets <!-- 웹소켓 프로토콜 선언 -->
+<!-- SSL 인증서 설정 -->
+cafile C:/https/intermediate.cert.pem
+certfile C:/https/domain.cert.pem
+keyfile C:/https/private.key.pem
