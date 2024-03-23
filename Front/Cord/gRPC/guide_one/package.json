@@ -1,0 +1,20 @@
+
+{
+  "name": "guide_one",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "proto:gen":"proto-gen.sh",
+    "start": "ts-node server.ts",
+    "client": "ts-node client.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.10.3",
+    "@grpc/proto-loader": "^0.7.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
+  }
+}
