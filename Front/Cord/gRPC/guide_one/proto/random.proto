@@ -41,5 +41,5 @@ message ChatRequest {
 
 message ChatResponse {
     string username = 1;
-    string meessage = 2;
+    string message = 2;
 }

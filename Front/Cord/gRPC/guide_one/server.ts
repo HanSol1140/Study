@@ -39,7 +39,7 @@ const callObjByUsername = new Map<string, grpc.ServerDuplexStream<ChatRequest, C
 function getServer() {
     const server = new grpc.Server()
     server.addService(randomPackage.Random.service, {
-        PingPong: (req, res) => {
+        PingPong: (req, res) => { 
             console.log(req.request);
             res(null, { message: "Pong" });
         },
@@ -70,7 +70,32 @@ function getServer() {
         },
 
         Chat: (call) =>{
-            const username = call.metadata.get("username")[0] as string;
+            call.on("data", (req) => {
+                const username = call.metadata.get("username")[0] as string;
+                const msg = req.message;
+                console.log(username, req.message);
+                for(let [user, userCall] of callObjByUsername){
+                    if(username !== user){
+                        userCall.write({
+                            username: username,
+                            message: msg
+                        });
+                    }
+                }
+                if (callObjByUsername.get(username) === undefined){
+                    callObjByUsername.set(username, call);
+                }
+            });
+            call.on("end", () => {
+                const username = call.metadata.get("username")[0] as string;
+                callObjByUsername.delete(username);
+                console.log(`${username} is ending their chat seesion`);
+                call.write({
+                    username : "Server",
+                    message: `See you later ${username}`
+                })
+            });
+ 
         }
     } as RandomHandlers)
     return server

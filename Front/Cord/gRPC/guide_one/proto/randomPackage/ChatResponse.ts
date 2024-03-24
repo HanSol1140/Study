@@ -3,10 +3,10 @@
 
 export interface ChatResponse {
   'username'?: (string);
-  'meessage'?: (string);
+  'message'?: (string);
 }
 
 export interface ChatResponse__Output {
   'username'?: (string);
-  'meessage'?: (string);
+  'message'?: (string);
 }
