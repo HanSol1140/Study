@@ -47,12 +47,41 @@ function main() {
         server.start();
     });
 }
+const todoList = {
+    todos: []
+};
+const callObjByUsername = new Map();
 function getServer() {
     const server = new grpc.Server();
     server.addService(randomPackage.Random.service, {
-        "PingPong": (req, res) => {
+        PingPong: (req, res) => {
             console.log(req.request);
             res(null, { message: "Pong" });
+        },
+        RandomNumbers: (call) => {
+            const { maxVal = 10 } = call.request; // any 타입으로 캐스팅 후 request 사용
+            let runCount = 0;
+            const interval = setInterval(() => {
+                runCount++;
+                call.write({ num: Math.floor(Math.random() * maxVal) }); // any 타입으로 캐스팅 후 write 사용
+                if (runCount >= 10) {
+                    clearInterval(interval);
+                    call.end(); // any 타입으로 캐스팅 후 end 사용
+                }
+            }, 500);
+        },
+        TodoList: (call, callback) => {
+            call.on("data", (chunk) => {
+                var _a;
+                (_a = todoList.todos) === null || _a === void 0 ? void 0 : _a.push(chunk);
+                console.log(chunk);
+            });
+            call.on("end", () => {
+                callback(null, { todos: todoList.todos });
+            });
+        },
+        Chat: (call) => {
+            const username = call.metadata.get("username")[0];
         }
     });
     return server;

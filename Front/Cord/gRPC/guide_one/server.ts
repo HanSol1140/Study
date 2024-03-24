@@ -4,6 +4,10 @@ import * as grpc from '@grpc/grpc-js'
 import * as protoLoader from '@grpc/proto-loader'
 import { ProtoGrpcType } from './proto/random'
 import { RandomHandlers } from './proto/randomPackage/Random'
+import { TodoRequest } from './proto/randomPackage/TodoRequest';
+import { TodoResponse } from './proto/randomPackage/TodoResponse';
+import { ChatRequest } from './proto/randomPackage/ChatRequest';
+import { ChatResponse } from './proto/randomPackage/ChatResponse';
 
 const PORT = 8081;
 const PROTO_FILE = './proto/random.proto';
@@ -27,15 +31,48 @@ function main() {
         });
 }
 
+const todoList: TodoResponse = {
+    todos:[]
+};
+const callObjByUsername = new Map<string, grpc.ServerDuplexStream<ChatRequest, ChatResponse>>();
 
 function getServer() {
     const server = new grpc.Server()
     server.addService(randomPackage.Random.service, {
-        "PingPong": (req, res) => {
+        PingPong: (req, res) => {
             console.log(req.request);
             res(null, { message: "Pong" });
+        },
+
+        RandomNumbers: (call: any) => {
+            const { maxVal = 10 } = call.request; // any 타입으로 캐스팅 후 request 사용
+
+            let runCount = 0;
+
+            const interval = setInterval(() => {
+                runCount++;
+                call.write({ num: Math.floor(Math.random() * maxVal) }); // any 타입으로 캐스팅 후 write 사용
+                if (runCount >= 10) {
+                    clearInterval(interval);
+                    call.end(); // any 타입으로 캐스팅 후 end 사용
+                }
+            }, 500);
+        },
+
+        TodoList: (call, callback) => {
+            call.on("data", (chunk: TodoRequest) => {
+                todoList.todos?.push(chunk);
+                console.log(chunk);
+            });
+            call.on("end", () => {
+                callback(null, {todos: todoList.todos})
+            })
+        },
+
+        Chat: (call) =>{
+            const username = call.metadata.get("username")[0] as string;
         }
-     } as RandomHandlers)
+    } as RandomHandlers)
     return server
 }
 main();
