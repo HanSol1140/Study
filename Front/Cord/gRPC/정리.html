@@ -1,0 +1,27 @@
+<gRPC를 사용하기위해>
+
+<바젤 설치>
+    <!-- https://bazel.build/install/windows?hl=ko -->
+
+    해당 경로에서 bazel-version-windows-x86_64.exe를 다운로드받아 C:\로 옮긴다.
+
+    시스템 환경변수에서 PATH에 C:\를 지정
+
+    이제 cmd에서 bazel ~~~로 명령어 사용가능
+
+<MSYS2 설치>
+    https://www.msys2.org/로 이동하여 다운로드
+    C:\msys64로 설치
+
+    시스템 환경변수 설정
+    새로만들기 - BAZEL_SH / c:\msys64\usr\bin\bash.exe
+cd HanSol\Alldata\test2\proto
+<사용>
+
+    <!-- https://github.com/googleapis/googleapis?tab=readme-ov-file -->
+    
+    여기로 이동하여 googleapis를 다운로드 받는다. => 그냥 해당 github를 받으면 됨
+    googleapis-master안의 내용을<WORKSPACE가 보일것임> 프로젝트/proto/에 복사
+    C:\HanSol\Alldata\test2\proto>와 같이 <루트 프로젝트 폴더/proto>로 이동
+    \google\cloud\speech\v1\cloud_speech.proto
+    bazel build //google/cloud/speech/v1:all-node
