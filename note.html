@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Range Slider with Steps and Marks</title>
     <style>
         * {
-            
             padding: 0;
             margin: 0;
+            font-size: 22px;
         }
+
         body {
+            width: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -30,19 +31,17 @@
             height: 10px;
             background: #ddd;
             outline: none;
-            opacity: 0.7;
             transition: opacity .2s;
         }
 
         .slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            position: relative;
-            left: -10px;
             width: 20px;
             height: 20px;
-            background: #4CAF50;
+            background: #1166FF;
             cursor: pointer;
+            border-radius: 32px;
         }
 
         .slider::-moz-range-thumb {
@@ -54,7 +53,7 @@
 
         .marks {
             position: absolute;
-            top: -20px;
+            top: -6px;
             width: 100%;
             display: flex;
             justify-content: space-between;
@@ -63,45 +62,69 @@
         .mark {
             position: absolute;
             color: #000;
-            /* 눈금 텍스트의 위치 조정 */
             bottom: -70px;
-            /* 텍스트를 눈금 아래로 이동 */
             transform: translateX(-50%);
         }
-
+        
         .mark::before {
             content: '';
             display: block;
             width: 1px;
-            /* 세로 눈금의 두께 */
             height: 10px;
-            /* 세로 눈금의 길이 */
             background-color: #000;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            /* 세로 눈금을 중앙 정렬 */
             top: -20px;
-            /* 세로 눈금의 위치를 조정 */
+        }
+
+        .slider {
+            --thumb-position: 0%;
+        }
+
+        .slider::-webkit-slider-thumb {
+            transform: translateX(var(--thumb-position));
+        }
+
+        .slider::-moz-range-thumb {
+            transform: translateX(var(--thumb-position));
         }
     </style>
 </head>
-
 <body>
     <div class="slider-container">
-        <input type="range" min="0" max="36" value="0" step="1" class="slider" id="rangeSlider">
+        <input type="range" min="0" max="100" value="0" step="10" class="slider" id="rangeSlider">
         <div class="marks" id="marksContainer"></div>
     </div>
     <script>
+        const rangeSlider = document.getElementById('rangeSlider');
         const marksContainer = document.getElementById('marksContainer');
-        for (let i = 0; i <= 9; i++) {
+
+        for (let i = 0; i <= 10; i++) {
             const mark = document.createElement('span');
             mark.className = 'mark';
-            mark.style.left = `${i * 100 / 9}%`;
-            mark.innerText = i;
+            mark.style.left = `${i * 10}%`;
+            mark.innerText = (0 + i) * 10;
             marksContainer.appendChild(mark);
         }
+    
+        function updateSliderThumbPosition(slider) {
+            const value = parseInt(slider.value, 10);
+            const max = parseInt(slider.max, 10);
+            const min = parseInt(slider.min, 10);
+            const percent = value / 100 * 100;
+            let thumbOffset;
+            // if(value <= 50) {
+            //     thumbOffset = (50 - percent) * 0.2; // Scale offset up to 50%
+            // } else {
+            //     thumbOffset = (100 - percent) * 0.2; // Scale offset down from 50% to 100%
+            // }
+            const newPosition = `calc(${percent}% - ${10}px)`;
+            slider.style.setProperty('--thumb-position', newPosition);
+        }
+    
+        rangeSlider.addEventListener('input', () => updateSliderThumbPosition(rangeSlider));
+        updateSliderThumbPosition(rangeSlider); // Update on load
     </script>
 </body>
-
 </html>

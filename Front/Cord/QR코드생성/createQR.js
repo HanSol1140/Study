@@ -1,8 +1,11 @@
 // npm i qrcode
 const QRCode = require('qrcode');
 
-// const qrCodeData = `tel:01031277711`;
-const qrCodeData = `https://nanonix.lol`;
+const qrCodeData = `tel:010-3127-7711`;
+// const qrCodeData = `hsadfsadfsasadfasdf`;
+// const qrCodeData = `http://nanonix.lol`;
+// const qrCodeData = `www.naver.com`;
+// const qrCodeData = `http://192.168.0.137:3000/CallPage`;
 
 const qrCodeOptions = {
   errorCorrectionLevel: 'H',
@@ -16,7 +19,7 @@ const qrCodeOptions = {
   },
 };
 
-QRCode.toFile('phoneQRCode.png', qrCodeData, qrCodeOptions, (err) => {
+QRCode.toFile('phoneQRCode.jpg', qrCodeData, qrCodeOptions, (err) => {
   if (err) {
     console.error('QR 코드 생성 중 오류가 발생했습니다:', err);
   } else {
