@@ -1,7 +1,7 @@
 // npm i qrcode
 const QRCode = require('qrcode');
 
-const qrCodeData = `tel:010-3127-7711`;
+const qrCodeData = `tel:070-4099-4350`;
 // const qrCodeData = `hsadfsadfsasadfasdf`;
 // const qrCodeData = `http://nanonix.lol`;
 // const qrCodeData = `www.naver.com`;
