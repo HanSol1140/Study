@@ -9,7 +9,7 @@ const qrCodeData = `tel:070-4099-4350`;
 
 const qrCodeOptions = {
   errorCorrectionLevel: 'H',
-  type: 'image/png',
+  type: 'image/jpg',
   quality: 1,
   margin: 1,
   width: 300,
