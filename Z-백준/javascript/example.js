@@ -1,6 +1,6 @@
 var fs = require('fs');
 // var input = fs.readFileSync('/dev/stdin').toString().trim().split("\n");
-var input = fs.readFileSync('C:/songhansol/Study/Z-백준/javascript/input.txt').toString().trim().split("\r\n");
+var input = fs.readFileSync('/Users/songhansol/Desktop/code/Study/Z-백준/javascript/input.txt').toString().trim().split("\r\n");
 
 
 
@@ -19,5 +19,5 @@ for (let i = 0; i < num1; i++) {
     
     console.log(answer);
 }
-(O) https://example.com
-(X) https://www.example.com
+// (O) https://example.com
+// (X) https://www.example.com
