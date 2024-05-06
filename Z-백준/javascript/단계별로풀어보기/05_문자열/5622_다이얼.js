@@ -30,8 +30,8 @@
 
 // 풀이
 var fs = require('fs');
-// var input = fs.readFileSync('/dev/stdin').toString().trim().split("\n");
-var input = fs.readFileSync('/Users/songhansol/Desktop/code/Study/Z-백준/javascript/단계별로풀어보기/05_문자열/input.txt').toString().trim().split("");
+// var input = fs.readFileSync('/dev/stdin').toString().trim();
+var input = fs.readFileSync('/Users/songhansol/Desktop/code/Study/Z-백준/javascript/단계별로풀어보기/05_문자열/input.txt').toString().trim();
 let alphabet = {
 	2: "ABC",
 	3: "DEF",
