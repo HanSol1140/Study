@@ -29,9 +29,10 @@ let AppController = class AppController {
         return "HelloWWAorld!";
     }
     ;
-    getByBranchCode(query) {
-        console.log(query.branchCode);
-        return query.branchCode;
+    createOption(body) {
+        console.log(body.settingPassword);
+        console.log(body.options);
+        return "Option created successfully";
     }
 };
 exports.AppController = AppController;
@@ -42,12 +43,12 @@ __decorate([
     __metadata("design:returntype", String)
 ], AppController.prototype, "getHelloWorld", null);
 __decorate([
-    (0, common_1.Get)("Branch/getCategoryByBranch"),
-    __param(0, (0, common_1.Query)()),
+    (0, common_1.Post)("Setting/createOption"),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", String)
-], AppController.prototype, "getByBranchCode", null);
+], AppController.prototype, "createOption", null);
 exports.AppController = AppController = __decorate([
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [app_service_1.AppService])

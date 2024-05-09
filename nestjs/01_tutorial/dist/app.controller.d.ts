@@ -4,5 +4,5 @@ export declare class AppController {
     constructor(appService: AppService);
     getHello(): string;
     getHelloWorld(): string;
-    getByBranchCode(query: any): string;
+    createOption(body: any): string;
 }

@@ -8,7 +8,6 @@ import { ExpressAdapter } from '@nestjs/platform-express';
 import * as express from 'express';
 import * as path from 'path';
 // .env config
-import { ConfigService } from '@nestjs/config';
 
 console.log(path.resolve(__dirname, '../build/index.html'));
 console.log(path.join(__dirname, '../build/index.html'));
@@ -31,9 +30,6 @@ async function bootstrap() {
 
   // CORS 설정
   app.enableCors();
-
-  // .env
-  const configService = app.get(ConfigService);
 
   server.use(express.static(path.join(__dirname, "../build/")));
   server.get('', (req, res) => {
