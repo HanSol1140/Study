@@ -62,27 +62,27 @@ nest generate service Setting --flat
             // 나머지 코드
         }
     
-    <typeorm설치를 통해 DB연결>
-        npm install @nestjs/typeorm typeorm pg
-        <!-- pg는 postgreSQL 모듈 -->
+<typeorm설치를 통해 DB연결>
+    npm install @nestjs/typeorm typeorm pg
+    <!-- pg는 postgreSQL 모듈 -->
 
-        <!-- AppModule에 TypeORM등록 -->
-            import { Module } from '@nestjs/common';
-            import { TypeOrmModule } from '@nestjs/typeorm';
+    <!-- AppModule에 TypeORM등록 -->
+        import { Module } from '@nestjs/common';
+        import { TypeOrmModule } from '@nestjs/typeorm';
 
-            @Module({
-            imports: [
-                TypeOrmModule.forRoot({
-                type: 'postgres',
-                host: process.env.DB_HOST,
-                port: Number(process.env.DB_PORT),
-                username: process.env.DB_USER,
-                password: process.env.DB_PASSWORD,
-                database: process.env.DB_DATABASE,
-                entities: [],
-                synchronize: true,
-                }),
-                // 다른 모듈
-            ],
-            })
-            export class AppModule {}
+        @Module({
+        imports: [
+            TypeOrmModule.forRoot({
+            type: 'postgres',
+            host: process.env.DB_HOST,
+            port: Number(process.env.DB_PORT),
+            username: process.env.DB_USER,
+            password: process.env.DB_PASSWORD,
+            database: process.env.DB_DATABASE,
+            entities: [],
+            synchronize: true,
+            }),
+            // 다른 모듈
+        ],
+        })
+        export class AppModule {}
