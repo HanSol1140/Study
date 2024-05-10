@@ -86,3 +86,24 @@ nest generate service Setting --flat
         ],
         })
         export class AppModule {}
+
+<dto>
+    <!-- DTO(Data Transfer Object)는 데이터 전송 객체로 데이터베이스에서 데이터를 가져와 사용자에게 전달할 때 사용하는 객체이다. -->
+    npm i class-validator
+    <!-- DTO에 대한 유효성 검사를 위한 라이브러리 -->
+    npm i class-transformer
+    <!-- DTO를 변환하기 위한 라이브러리 -->
+    npm i @nestjs/mapped-types
+    <!-- DTO를 상속받아서 사용할 수 있는 라이브러리 -->
+    
+<test>
+    .spec.ts파일을 통해 테스트를 진행할 수 있다.
+    npm run test
+    <!-- 테스트 코드를 실행한다. -->
+    npm run test:cov
+    <!-- 커버리지 확인 -->
+    <!-- 커버리지는 테스트 코드가 얼마나 커버하는지를 나타내는 지표이다. -->
+    <!-- 커버리지가 100%라는 것은 테스트 코드가 모든 코드를 커버한다는 것을 의미한다. -->
+    <!-- 커버리지가 100%가 아니라는 것은 테스트 코드가 모든 코드를 커버하지 않는다는 것을 의미한다. -->
+    npm run test:watch
+    <!-- 테스트 코드를 수정할 때마다 자동으로 테스트를 실행한다. -->
