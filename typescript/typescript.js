@@ -144,6 +144,8 @@
 // }
 // ============================================
 // 인터페이스와 클래스 결합
+// abstract class => 추상 클래스
+// 추상클래스를 상속받는 클래스가 가질 property와 메소드를 지정
 class User {
     constructor(firstName, lastName) {
         this.firstName = firstName;
