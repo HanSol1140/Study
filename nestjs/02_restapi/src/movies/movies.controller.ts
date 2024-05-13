@@ -18,7 +18,7 @@ export class MoviesController {
         return this.moviesService.getAll();
     };
 
-        
+    
     @Get("search")
     search(@Query('year') searchingYear: string){
         return `We are searching for a movie a made after: ${searchingYear}`
