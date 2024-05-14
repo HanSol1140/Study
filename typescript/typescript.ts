@@ -189,12 +189,120 @@
 
 
 // ============================================
-// 인터페이스와 클래스 결합
-// abstract class => 추상 클래스
-// 추상클래스를 상속받는 클래스가 가질 property와 메소드를 지정
-abstract class User {
+// // 추상 클래스
+// // abstract class => 추상 클래스
+// // 추상클래스를 상속받는 클래스가 가질 property와 메소드를 지정
+// abstract class User {
+//     constructor(
+//         public name: string,
+//         public lastName: string
+//     ) { }
+//     abstract sayHi(name:string):string;
+//     abstract fullName():string;
+// }
+// class Player extends User {
+//     sayHi(name:string){
+//         return `Hello ${name}, my name is ${this.name}`
+//     }
+//     fullName(){
+//         return this.name + this.lastName
+//     }
+// }
+
+
+// ============================================
+// // 인터페이스와 클래스 결합
+// interface User {
+//     firstName: string;
+//     lastName: string;
+//     sayHi(name: string): string;
+//     fullName(): string;
+// }
+// // implements => 구현
+// // => 인터페이스를 구현하는 클래스는 인터페이스에 정의된 모든 메소드를 구현해야함
+
+// interface Human {
+//     health: number;
+// }
+// // User인터페이스를 구현한 Player클래스
+// class Player implements User, Human {
+//     constructor(
+//         public firstName: string,
+//         public lastName: string,
+//         public health: number
+//         // public이 들어가야하는 이유
+//         // => 생성자에 public을 붙이면 클래스 내부에 같은 이름의 프로퍼티가 생성되고
+//         // => this.프로퍼티명으로 접근 가능해짐
+//         // => public을 붙이지 않으면 클래스 내부에 프로퍼티가 생성되지 않아서 this.프로퍼티명으로 접근 불가
+//         // => 따라서 생성자에 public을 붙여서 클래스 내부에 프로퍼티를 생성해주어야함
+//     ){}
+//     fullName(){
+//         return this.firstName + this.lastName
+//     }
+//     sayHi(name: string){
+//         return `Hello ${name}, my name is ${this.firstName}`
+//     }
+// }
+
+
+// function makeUser(user: User) : User{
+//  return {
+//     firstName: "nico",
+//     lastName: "las",
+//     fullName: () => "xx",
+//     sayHi: (name) => "string"
+//  }
+// }
+// makeUser({
+//     firstName: "nico",
+//     lastName: "las",
+//     fullName: () => "xx",
+//     sayHi: (name) => "string"
+// });
+// ============================================
+// // 타입과 인터페이스 비교 복습
+// type PlayerA = {
+//     name: string;
+// }
+// type PlayerAA = PlayerA & { // => 타입상속
+//     lastName: string
+// }
+// const playerA : PlayerAA = {
+//     name: "nico",
+//     lastName: "las"
+
+//     // team: "red",
+//     // health: 100
+// }
+
+// interface PlayerB{
+//     name: string;
+// }
+// interface PlayerBB extends PlayerB{ // => 인터페이스 확장(상속)
+//     lastName: string
+// }
+
+// interface PlayerBB { // 이것도 상속이 됨
+//     health: number 
+// }
+// const playerB: PlayerBB = {
+//     name: "nico",
+//     lastName: "las",
+//     health: 1
+//     // team: "red",
+//     // health: 100
+// }
+// ============================================
+// // 타입과 인터페이스 비교 복습2
+type PlayerA = {
+    firstName:string
+}
+
+interface PlayerB{
+    firstName:string
+}
+class User implements PlayerA, PlayerB {
     constructor(
-        protected firstName: string,
-        protected lastName: string
-    ) {}
+        public firstName: string
+    ){}
 }
