@@ -1,0 +1,98 @@
+// vito-stt-client.proto
+syntax = "proto3";
+
+package online_decoder;
+
+option go_package = "github.com/vito-ai/go-genproto/stt;stt";
+option java_multiple_files = true;
+option java_outer_classname = "VitoProto";
+option java_package = "ai.vito.openapi.v1";
+
+service OnlineDecoder {
+    rpc Decode (stream DecoderRequest) returns (stream DecoderResponse) {}
+}
+
+message DecoderRequest {
+
+    oneof streaming_request {
+        DecoderConfig streaming_config = 1;
+        bytes audio_content = 2;
+    }
+}
+
+
+message DecoderResponse {
+    enum SpeechEventType {
+        SPEECH_EVENT_UNSPECIFIED = 0;
+        END_OF_SINGLE_UTTERANCE = 1;
+        START_OF_VAD = 2;
+        END_OF_VAD = 3;
+    }
+    bool error = 1;
+    repeated StreamingRecognitionResult results = 2;
+    SpeechEventType speech_event_type = 4;
+}
+
+
+message StreamingRecognitionResult {
+    repeated SpeechRecognitionAlternative alternatives = 1;
+    bool is_final = 2;
+    float stability = 3;
+    int32 duration = 4;
+    int32 start_at = 5;
+}
+
+message SpeechRecognitionAlternative {
+    string text = 1;
+    float confidence = 2;
+    repeated WordInfo words = 3;
+}
+
+message WordInfo {
+    int64 start_at = 1;
+    int64 duration = 2;
+    string text = 3;
+    float confidence = 4;
+    int32 speaker_tag = 5;
+}
+
+
+message DecoderConfig {
+    enum AudioEncoding {
+        ENCODING_UNSPECIFIED = 0;
+        LINEAR16 = 1;
+        WAV = 2;
+
+        // `FLAC` (Free Lossless Audio
+        // Codec) is the recommended encoding because it is
+        // lossless--therefore recognition is not compromised--and
+        // requires only about half the bandwidth of `LINEAR16`. `FLAC` stream
+        // encoding supports 16-bit and 24-bit samples, however, not all fields in
+        // `STREAMINFO` are supported.
+        FLAC = 3;
+        // 8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law.
+        MULAW = 4;
+        ALAW = 5;
+        // Adaptive Multi-Rate Narrowband codec. `sample_rate_hertz` must be 8000.
+        AMR = 6;
+        // Adaptive Multi-Rate Wideband codec. `sample_rate_hertz` must be 16000.
+        AMR_WB = 7;
+        // Opus encoded audio frames in Ogg container
+        // ([OggOpus](https://wiki.xiph.org/OggOpus)).
+        // `sample_rate_hertz` must be one of 8000, 12000, 16000, 24000, or 48000.
+        OGG_OPUS = 8;
+        // Opus encoded audio frames without container
+        OPUS = 9;
+
+    }
+
+    int32 sample_rate = 1;
+    AudioEncoding encoding = 2;
+    // Model name: 'default' for Korean, 'sommers_ja' for Japanese
+    optional string model_name = 3;
+    optional bool use_itn= 5;
+    optional bool use_disfluency_filter = 13;
+    optional bool use_profanity_filter = 14;
+    repeated string keywords = 23;
+}
+

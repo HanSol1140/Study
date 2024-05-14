@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button id="start">Start recording</button>
+<button id="stop">Stop recording</button>
+
+<script>
+let mediaRecorder;
+let audioChunks = [];
+
+navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => {
+        mediaRecorder = new MediaRecorder(stream);
+
+        mediaRecorder.ondataavailable = event => {
+            audioChunks.push(event.data);
+        };
+
+        document.getElementById("start").onclick = () => {
+            audioChunks = [];
+            mediaRecorder.start();
+        };
+
+        document.getElementById("stop").onclick = () => {
+            mediaRecorder.stop();
+
+            const audioBlob = new Blob(audioChunks, {type: mediaRecorder.mimeType});
+            const reader = new FileReader();
+
+            reader.readAsDataURL(audioBlob);
+            reader.onloadend = () => {
+                const base64audio = reader.result.split(',')[1];
+
+                fetch('http://localhost:5000/transcribe', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ audioData: base64audio }),
+                })
+                .then(response => response.text())
+                .then(data => console.log(data))
+                .catch((error) => console.error('Error:', error));
+            };
+        };
+    });
+</script>
+
+</body>
+</html>

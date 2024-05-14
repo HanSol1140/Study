@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+        <title>getUserMedia() example</title>
+        <script type="text/javascript">
+            function enableMedia() {
+                var video = document.getElementById("captureVideo");
+
+                navigator.getUserMedia = navigator.mediaDevices.getUserMedia || navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+
+                if (navigator.getUserMedia) {
+                    navigator.mediaDevices.getUserMedia( {audio: false, video: { facingMode: "environment"} } )
+                        .then(function(stream) {
+                            video.srcObject = stream;
+                            video.onloadedmetadata = function(e) {
+                                video.play();
+                            };
+                        })
+                        .catch(function(e) {
+                            console.log("error: " + e);
+                        })
+                } else {
+                    console.log("getUserMedia() not available.")
+                    video.src = 'somevideo.webm'; // fallback.
+                }
+            }
+
+            $(document).ready( enableMedia )
+        </script>
+    </head>
+    <body>
+        <h2>capture example</h2>
+        <video id="captureVideo" controls autoplay muted playsinline style="width:100%;height:100%;border:1px solid black"></video>
+    </body>
+</html>

@@ -1,0 +1,215 @@
+버튼을 누를 때 오디오 녹음을 시작하고 중지할 수 있는 Express와 클라이언트 측 웹페이지가 포함된 기본 Node.js 서버를 만든 다음, 이 오디오를 서버로 전송하여 Google 클라우드 음성-텍스트 변환을 사용하려는 것으로 이해합니다.
+
+브라우저 기반 녹음의 경우 Node.js 자체는 사용자의 마이크에 액세스할 수 없으므로 일종의 브라우저 API 또는 라이브러리를 사용해야 합니다. 이 예제에서는 MediaRecorder API를 사용하겠습니다.
+
+다음은 시작하는 데 도움이 되는 간단한 예제입니다:
+
+서버 측 설정(Express + Google Cloud Speech-to-Text):
+<!-- ─────────────────────────────────────────────────────────────── -->
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Google Cloud Speech-to-Text setup
+const speech = require('@google-cloud/speech');
+const client = new speech.SpeechClient();
+
+app.use(express.json({ limit: '50mb' }));
+
+app.post('/transcribe', async (req, res) => {
+    const audioBytes = req.body.audioData;
+
+    const audio = {
+        content: audioBytes,
+    };
+
+    const config = {
+        encoding: 'LINEAR16',
+        sampleRateHertz: 16000,
+        languageCode: 'en-US',
+    };
+
+    const request = {
+        audio: audio,
+        config: config,
+    };
+
+    const [response] = await client.recognize(request);
+    const transcription = response.results
+        .map(result => result.alternatives[0].transcript)
+        .join('\n');
+    console.log(`Transcription: ${transcription}`);
+    res.send(transcription);
+});
+
+app.listen(port, () => {
+    console.log(`Server listening at http://localhost:${port}`);
+});
+<!-- ─────────────────────────────────────────────────────────────── -->
+<!-- ─────────────────────────────────────────────────────────────── -->
+Client-side setup (HTML + Javascript for recording and sending audio data):
+<!-- ─────────────────────────────────────────────────────────────── -->
+<!DOCTYPE html>
+<html>
+<body>
+
+<button id="start">Start recording</button>
+<button id="stop">Stop recording</button>
+
+<script>
+let mediaRecorder;
+let audioChunks = [];
+
+navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => {
+        mediaRecorder = new MediaRecorder(stream);
+
+        mediaRecorder.ondataavailable = event => {
+            audioChunks.push(event.data);
+        };
+
+        document.getElementById("start").onclick = () => {
+            audioChunks = [];
+            mediaRecorder.start();
+        };
+
+        document.getElementById("stop").onclick = () => {
+            mediaRecorder.stop();
+
+            const audioBlob = new Blob(audioChunks, {type: mediaRecorder.mimeType});
+            const reader = new FileReader();
+
+            reader.readAsDataURL(audioBlob);
+            reader.onloadend = () => {
+                const base64audio = reader.result.split(',')[1];
+
+                fetch('http://localhost:3000/transcribe', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ audioData: base64audio }),
+                })
+                .then(response => response.text())
+                .then(data => console.log(data))
+                .catch((error) => console.error('Error:', error));
+            };
+        };
+    });
+</script>
+
+</body>
+</html>
+
+<!-- ─────────────────────────────────────────────────────────────── -->
+<!-- ─────────────────────────────────────────────────────────────── -->
+이 설정에는 두 개의 버튼이 있는 기본 웹페이지가 포함됩니다: "녹음 시작" 및 "녹음 중지" 버튼이 있습니다. "녹음 시작" 버튼을 누르면 웹페이지가 사용자의 마이크에서 오디오를 녹음하기 시작합니다. "녹음 중지" 버튼을 누르면 웹페이지가 녹음을 중지하고 녹음된 오디오를 base64 문자열로 변환한 후 이 문자열을 서버로 전송하여 트랜스크립션합니다.
+
+로컬 컴퓨터에서 서버와 클라이언트를 모두 실행해야 하며, 서버가 실행 중이 아닌 경우 'http://localhost:3000/transcribe'를 실제 서버의 URL로 바꿔야 합니다. Express를 사용하여 기본 Node.js 서버와 버튼을 누르면 오디오 녹음을 시작하고 중지할 수 있는 클라이언트 측 웹페이지를 만든 다음 이 오디오를 서버로 전송하여 Google Cloud Speech-to-Text를 사용하여 트랜스크립션하고자 하는 것으로 이해합니다.
+
+브라우저 기반 녹음의 경우 Node.js 자체는 사용자의 마이크에 액세스할 수 없으므로 일종의 브라우저 API 또는 라이브러리를 사용해야 합니다. 이 예제에서는 MediaRecorder API를 사용하겠습니다.
+
+다음은 시작하는 데 도움이 되는 간단한 예제입니다:
+<!-- ─────────────────────────────────────────────────────────────── -->
+<!-- ─────────────────────────────────────────────────────────────── -->
+Server-side setup (Express + Google Cloud Speech-to-Text):
+<!-- ─────────────────────────────────────────────────────────────── -->
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Google Cloud Speech-to-Text setup
+const speech = require('@google-cloud/speech');
+const client = new speech.SpeechClient();
+
+app.use(express.json({ limit: '50mb' }));
+
+app.post('/transcribe', async (req, res) => {
+    const audioBytes = req.body.audioData;
+
+    const audio = {
+        content: audioBytes,
+    };
+
+    const config = {
+        encoding: 'LINEAR16',
+        sampleRateHertz: 16000,
+        languageCode: 'en-US',
+    };
+
+    const request = {
+        audio: audio,
+        config: config,
+    };
+
+    const [response] = await client.recognize(request);
+    const transcription = response.results
+        .map(result => result.alternatives[0].transcript)
+        .join('\n');
+    console.log(`Transcription: ${transcription}`);
+    res.send(transcription);
+});
+
+app.listen(port, () => {
+    console.log(`Server listening at http://localhost:${port}`);
+});
+
+<!-- ─────────────────────────────────────────────────────────────── -->
+<!-- ─────────────────────────────────────────────────────────────── -->
+Client-side setup (HTML + Javascript for recording and sending audio data):
+<!-- ─────────────────────────────────────────────────────────────── -->
+<!DOCTYPE html>
+<html>
+<body>
+
+<button id="start">Start recording</button>
+<button id="stop">Stop recording</button>
+
+<script>
+let mediaRecorder;
+let audioChunks = [];
+
+navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => {
+        mediaRecorder = new MediaRecorder(stream);
+
+        mediaRecorder.ondataavailable = event => {
+            audioChunks.push(event.data);
+        };
+
+        document.getElementById("start").onclick = () => {
+            audioChunks = [];
+            mediaRecorder.start();
+        };
+
+        document.getElementById("stop").onclick = () => {
+            mediaRecorder.stop();
+
+            const audioBlob = new Blob(audioChunks, {type: mediaRecorder.mimeType});
+            const reader = new FileReader();
+
+            reader.readAsDataURL(audioBlob);
+            reader.onloadend = () => {
+                const base64audio = reader.result.split(',')[1];
+
+                fetch('http://localhost:3000/transcribe', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ audioData: base64audio }),
+                })
+                .then(response => response.text())
+                .then(data => console.log(data))
+                .catch((error) => console.error('Error:', error));
+            };
+        };
+    });
+</script>
+
+</body>
+</html>
+
+<!-- ─────────────────────────────────────────────────────────────── -->
+<!-- ─────────────────────────────────────────────────────────────── -->
+<!-- ─────────────────────────────────────────────────────────────── -->
