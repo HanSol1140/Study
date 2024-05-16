@@ -1,2 +1,125 @@
-var a = [1,2,3,4] + false
-console.log(a);
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espresso Concentration Adjustment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    .header {
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    .slider-container {
+      margin: 20px 0;
+    }
+    .slider-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .slider-label span {
+      font-size: 16px;
+    }
+    .slider {
+      width: 100%;
+      margin: 10px 0;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 10px;
+      background: linear-gradient(to right, #00c853, #e0e0e0);
+      border-radius: 5px;
+      outline: none;
+      opacity: 0.7;
+      transition: opacity .2s;
+    }
+    .slider:hover {
+      opacity: 1;
+    }
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background: #00c853;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      background: #00c853;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .button-container button {
+      width: 48%;
+      background-color: #00c853;
+      color: white;
+      border: none;
+      padding: 10px 0;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .button-container button:active {
+      background-color: #009624;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>에스프레소 농도 조절</h1>
+    </div>
+    <div class="slider-container">
+      <div class="slider-label">
+        <span>농도</span>
+        <span id="concentrationValuel">15%</span>
+      </div>
+      <input type="range" id="concentrationSlider" class="slider" min="0" max="100" value="15" oninput="updateConcentration(this)">
+    </div>
+    <div class="button-container">
+      <button onclick="changeConcentration(-5)">-</button>
+      <button onclick="changeConcentration(5)">+</button>
+    </div>lo
+  </div>
+
+  <script>
+    function updateConcentration(element) {
+      const output = document.getElementById('concentrationValue');
+      output.textContent = element.value + '%';
+      element.style.background = `linear-gradient(to right, #00c853 ${element.value}%, #e0e0e0 ${element.value}%)`;
+    }
+
+    function changeConcentration(delta) {
+      const slider = document.getElementById('concentrationSlider');
+      slider.value = Math.max(0, Math.min(100, parseInt(slider.value) + delta));
+      updateConcentration(slider);
+    }
+  </script>
+</body>
+</html>

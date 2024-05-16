@@ -168,23 +168,23 @@
 
 // ============================================
 // // 인터페이스 쌓기
-// interface User {
-//     name: string
-// }
+interface User {
+    name: string
+}
 
-// interface User{
-//     lastName: string
-// }
+interface User{
+    lastName: string
+}
 
-// interface User{
-//     health: number   
-// }
+interface User{
+    health: number   
+}
 
-// const nico: User = {
-//     name: "nico",
-//     lastName: "n",
-//     health: 5
-// }
+const nico: User = {
+    name: "nico",
+    lastName: "n",
+    health: 5
+}
 
 
 
