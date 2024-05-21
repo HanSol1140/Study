@@ -48,7 +48,7 @@ nest generate service Setting --flat
         @Injectable()
         export class BranchService {
             private readonly pool: Pool;
-            
+            <!-- ConfigService 인스턴스를 생성해야함 -->
             constructor(private configService: ConfigService) {
                 this.pool = new Pool({
                 host: this.configService.get<string>('DB_HOST'),
