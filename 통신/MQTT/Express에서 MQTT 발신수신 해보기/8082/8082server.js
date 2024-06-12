@@ -2,7 +2,8 @@ const fs = require('fs');
 var express = require('express');
 var mqtt = require('mqtt');
 var app = express();
-var client = mqtt.connect('mqtt://192.168.0.137:1883');
+var client = mqtt.connect('mqtt://192.168.0.44:1883');
+// var client = mqtt.connect('mqtt://127.0.0.1:1883');
 
 // 일반 메세지 전송
     client.on('connect', function () {
@@ -26,8 +27,8 @@ var client = mqtt.connect('mqtt://192.168.0.137:1883');
         cleaningRobotState: false
     }
     
-    client.publish('JR01_1', JSON.stringify(message));
-    // client.publish('JR01_1', "테스트");
+    // client.publish('temperature', JSON.stringify(message));
+    client.publish('ColdBrewMachineSetup', "setTmpPoint1/35");
 
 // // 오디오 전송
 //     var filePath = './Voice.wavFUckyo'; 

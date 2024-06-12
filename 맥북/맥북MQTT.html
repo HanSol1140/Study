@@ -1,0 +1,28 @@
+<설치>
+brew install mosquitto
+<모스키토 방화벽 설정>
+sudo nano /opt/homebrew/etc/mosquitto/mosquitto.conf
+=> 불편하므로
+open /opt/homebrew/etc/mosquitto
+=> 실행후 VS코드로 .conf파일 이동하여 편집
+
+Listeners부분에
+    listener 1883 구문 추가
+allow_anonymous로 검색
+    allow_anonymous false가 주석처리 되어있을텐데
+    주석해제후 allow_anonymous true로 변경
+
+
+<실행>
+<!-- 서비스 실행 -->
+brew services start mosquitto
+=> 방화벽연결을 허용할것이냐고 물어봄
+-> 이제부터 맥북을 재부팅해도 계속실행됨
+<!-- 중지 -->
+    brew services stop mosquitto
+<!-- 재시작 -->
+    brew services restart mosquitto
+
+
+<확인>
+netstat -an | grep LISTEN | grep 1883
