@@ -1,11 +1,16 @@
 var express = require('express');
 var mqtt = require('mqtt');
 var app = express();
+var options = {
+    clientId: 'admin' ,
+    username: 'admin', // 사용자 이름
+    password: 'admin',  // 패스워드
+    host: '192.168.0.44',
+    port: 1883
 
-var client = mqtt.connect('mqtt://192.168.0.44:1883', {
-    clean: false, // 클린 세션 비활성화
-    clientId: 'mqttjs_' + Math.random().toString(16).substr(2, 8)
-});
+};
+var client = mqtt.connect(options);
+
 
 client.on('connect', function () {
     // // 여기에 구독명입력
@@ -20,17 +25,19 @@ client.on('connect', function () {
             console.log('Connected to MQTT broker');
         }
     });
-    // client.subscribe('coldbrewController', function (err) {
-    //     if (!err) {
-    //         console.log('Connected to MQTT broker');
-    //     }
-    // });
+    client.subscribe('coldbrewController', function (err) {
+        if (!err) {
+            console.log('Connected to MQTT broker');
+        }
+    });
 });
 
 // // 설정값 받기
 client.on('message', function (topic, message) {
     // message is Buffer
-    // console.log(message.toString());
+    // if(topic == "coldbrewController") {
+        // console.log(message.toString());
+    // }
 });
 
 // 커피머신 세정명령

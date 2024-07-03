@@ -1,4 +1,4 @@
-<설치>
+<MQTT 설치>
 brew install mosquitto
 <모스키토 방화벽 설정>
 sudo nano /opt/homebrew/etc/mosquitto/mosquitto.conf
@@ -10,7 +10,8 @@ Listeners부분에
     listener 1883 구문 추가
 allow_anonymous로 검색
     allow_anonymous false가 주석처리 되어있을텐데
-    주석해제후 allow_anonymous true로 변경
+    주석해제후 allow_anonymous true로 변경 <!-- 모든접속허용 -->
+
 
 
 <실행>
@@ -26,67 +27,42 @@ brew services start mosquitto
 
 <확인>
 netstat -an | grep LISTEN | grep 1883
+<로그남기기(에러체크용)>
+mosquitto.conf에 추가
+# write log
+log_dest file /opt/homebrew/etc/mosquitto/mosquitto.log
+log_type all
 
 
-<Persistence 설정>
-    <!-- 연결이 끊긴 세션도 이전에 받지못한 데이터를 받을 수 있음 -->
-    open /opt/homebrew/etc/mosquitto
-    => 실행후 VS코드로 mosquitto.conf파일 이동하여 편집
+<MQTT 비밀번호 설정방법>
+<!-- mosquitto.conf파일 수정 -->
+allow_anonymous false
+password_file /opt/homebrew/etc/mosquitto/passwd
 
 
-# =================================================================
-# Persistence
-# =================================================================
-해당탭으로 이동하여 수정
-
-<예시>
-# =================================================================
-# Persistence
-# =================================================================
-
-# If persistence is enabled, save the in-memory database to disk
-# every autosave_interval seconds. If set to 0, the persistence
-# database will only be written when mosquitto exits. See also
-# autosave_on_changes.
-# Note that writing of the persistence database can be forced by
-# sending mosquitto a SIGUSR1 signal.
-# autosave_interval 1800 # 30분마다 저장
-# autosave_interval: 비활성화 (메모리 내에서만 데이터 유지)
-autosave_interval 0 # 비활성화
-
-# If true, mosquitto will count the number of subscription changes, retained
-# messages received and queued messages and if the total exceeds
-# autosave_interval then the in-memory database will be saved to disk.
-# If false, mosquitto will save the in-memory database to disk by treating
-# autosave_interval as a time in seconds.
-# autosave_on_changes: 활성화 (메모리 내에서 데이터 변경 시 자동 저장)
-autosave_on_changes true
-
-# Save persistent message data to disk (true/false).
-# This saves information about all messages, including
-# subscriptions, currently in-flight messages and retained
-# messages.
-# persistence: 비활성화 (디스크에 데이터 저장하지 않음)
-persistence false
-
-# The filename to use for the persistent database, not including
-# the path.
-
-#persistence true가 아닐시 주석을 해제해도 비활성화됨
-# persistence_file mosquitto.db # 디스크에 저장할 데이터 파일 이름
-
-
-# Location for persistent database.
-# Default is an empty string (current directory).
-# Set to e.g. /var/lib/mosquitto if running as a proper service on Linux or
-# similar.
-#persistence true가 아닐시 주석을 해제해도 비활성화됨
-# persistence_location /usr/local/var/lib/mosquitto/ # 저장경로
+<!-- 해당 경로로 이동 -->
+open /opt/homebrew/etc/mosquitto
+<!-- 패스워드 파일 생성 -->
+touch passwd
+<!-- 권한 설정 : 패스워드를 추가하려면 해줘야함 -->
+sudo chown root:wheel /opt/homebrew/etc/mosquitto/passwd
+sudo chmod 604 /opt/homebrew/etc/mosquitto/passwd
+<!-- 패스워드 추가 : 아이디 / 비밀번호-->
+sudo mosquitto_passwd -b /opt/homebrew/etc/mosquitto/passwd coldbrew_ESP32_1 coldbrew_ESP32_1
+sudo mosquitto_passwd -b /opt/homebrew/etc/mosquitto/passwd coldbrew_ESP32_2 coldbrew_ESP32_2
+<!-- 설정한 아이디에 비밀번호 변경 -->
+=> 그냥 다시한번 입력하면 변경됩니다
+sudo mosquitto_passwd -b /opt/homebrew/etc/mosquitto/passwd coldbrew_ESP32_1 new_password
+<!-- 비밀번호가 제대로 추가됬는지 확인 : 해쉬로 설정되어있어 구체적인 값은 확인이 불가능함 -->
+sudo cat /opt/homebrew/etc/mosquitto/passwd
 
 
 
-모든 수정이 끝낫다면
+
+<모든 수정이 끝낫다면>
 <!-- 중지 -->
 brew services stop mosquitto
 <!-- 재시작 -->
     brew services restart mosquitto
+
+    
