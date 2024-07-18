@@ -5,6 +5,9 @@ var options = {
     clientId: 'admin' ,
     username: 'admin', // 사용자 이름
     password: 'admin',  // 패스워드
+    // clientId: 'coldbrewESP32_1' ,
+    // username: 'coldbrewESP32_1', // 사용자 이름
+    // password: 'coldbrewESP32_1',  // 패스워드
     host: '192.168.0.44',
     port: 1883
 
@@ -19,12 +22,12 @@ client.on('connect', function () {
             console.log('Connected to MQTT broker');
         }
     });
-    // 설정
-    client.subscribe('middleServer1', { qos: 2}, function (err) {
-        if (!err) {
-            console.log('Connected to MQTT broker');
-        }
-    });
+    // // 설정
+    // client.subscribe('middleServer1', { qos: 2}, function (err) {
+    //     if (!err) {
+    //         console.log('Connected to MQTT broker');
+    //     }
+    // });
     client.subscribe('coldbrewController', function (err) {
         if (!err) {
             console.log('Connected to MQTT broker');
@@ -36,7 +39,7 @@ client.on('connect', function () {
 client.on('message', function (topic, message) {
     // message is Buffer
     // if(topic == "coldbrewController") {
-        // console.log(message.toString());
+        console.log(message.toString());
     // }
 });
 

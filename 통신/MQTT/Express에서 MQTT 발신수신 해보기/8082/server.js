@@ -10,6 +10,9 @@ var options = {
     clientId: 'admin' ,
     username: 'admin', // 사용자 이름
     password: 'admin',  // 패스워드
+    // clientId: 'coldbrewESP32_1' ,
+    // username: 'coldbrewESP32_1', // 사용자 이름
+    // password: 'coldbrewESP32_1',  // 패스워드
     host: '192.168.0.44',
     port: 1883
 
@@ -39,18 +42,20 @@ client.on('reconnect', function () {
 
 // ESP32_1 설정변경 MQTT메세지
 // 설정값 받기
-client.publish('coldbrewMachineSetup', "initInfo");
+// client.publish('coldbrewMachineSetup', "initInfo");
 
-// client.publish('coldbrewMachineSetup', "setTmpPoint1/35");
-// client.publish('coldbrewMachineSetup', "setTmpPoint2/40");
-// client.publish('coldbrewMachineSetup', "tmpOutLimit1/55");
-// client.publish('coldbrewMachineSetup', "tmpOutLimit2/80");
+// client.publish('coldbrewMachineSetup', "tmpSetDecafP/35");
+client.publish('coldbrewMachineSetup', "tmpSetCBP/33");
+// client.publish('coldbrewMachineSetup', "tmpDecafOLimit/55");
+// client.publish('coldbrewMachineSetup', "tmpCBOLimit/80");
 // client.publish('coldbrewMachineSetup', "coolingStatus/true");
 // client.publish('coldbrewMachineSetup', "coldbrewCoolingStatus/false");
 
-// client.publish('coldbrewMachineSetup', "scale1/120");
-// client.publish('coldbrewMachineSetup', "scale2/120");
-// client.publish('coldbrewMachineSetup', "limitScale2/30");
+// client.publish('coldbrewMachineSetup', "ctDecafScale/1");
+// client.publish('coldbrewMachineSetup', "ctCBScale/120");
+// client.publish('coldbrewMachineSetup', "ctCoolerScale/120");
+// client.publish('coldbrewMachineSetup', "ctDecafLimit/30");
+// client.publish('coldbrewMachineSetup', "ctCoolerLimit/60");
 // client.publish('coldbrewMachineSetup', "limitScale2/60");
 // client.publish('coldbrewMachineSetup', "totalFlow1/0.0");
 // client.publish('coldbrewMachineSetup', "totalFlow2/0.0");

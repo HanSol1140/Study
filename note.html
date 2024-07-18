@@ -1,38 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<style>
-
-  .main-text {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.main-text div {
-    border: 1px solid red;
-}
-
-.main-text-1 {
-    display: flex;
-    flex-direction: row; /* 이미 이 속성이 적용되어 있음 */
-}
+  <title>ESP PWM Control</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{
+      width: 100%;
+    }
+    form{
+      border: 1px solid #000;
+      width: 500px;
+    }
+    input{
+      border: 1px solid #000;
+    }
 </style>
+</head>
 <body>
-  <main>
-    <div class="main-text">
-        <div class="main-text-1">
-            <img src="#" alt="기사 이미지">
-            <div>기사 제목 넣기</div>
-            <p>기사 내용 넣기</p>
-        </div>
-        <div>2</div>
-        <div>3</div>
-    </div>
-  </main>
-  
+  <h2>PWM Control</h2>
+  <form action="/get">
+  <p>
+    Frequency: <input type="number" name="frequency" value="%FREQUENCY%"> Hz
+  </p>
+  <p>
+    Target Duty Cycle: <input type="number" name="targetDuty" value="%TARGETDUTY%"> %
+  </p>
+  <p>
+    Start Duty Cycle: <input type="number" name="startDuty" value="%STARTDUTY%"> %
+  </p>
+    <input type="submit" value="설정변경">
+  </form>
 </body>
 </html>

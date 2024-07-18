@@ -28,7 +28,7 @@ var client = mqtt.connect('mqtt://192.168.0.44:1883');
     }
     
     // client.publish('temperature', JSON.stringify(message));
-    client.publish('ColdBrewMachineSetup', "setTmpPoint1/35");
+    client.publish('ColdBrewMachineSetup', "tmpSetCBP/25");
 
 // // 오디오 전송
 //     var filePath = './Voice.wavFUckyo'; 

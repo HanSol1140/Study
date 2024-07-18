@@ -8,3 +8,6 @@ console.time('Math.round');
 var c = Math.round(a * 100) / 100;
 console.log(c);
 console.timeEnd('Math.round');
+
+
+console.log((2.5/3.3)*255);
