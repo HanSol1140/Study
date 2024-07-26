@@ -171,8 +171,8 @@ dtoverlay=uart0,txd0_pin=14,rxd0_pin=15
         pm2 restart [app-name]으로 재부팅하지않아도 서버를 재시작할 수 있습니다.
 
         <서버 자동실행 설정 취소하기>
-        pm2 stop server.js
-        pm2 delete server.js
+        pm2 stop server
+        pm2 delete server
         pm2 unstartup
         pm2 save
 
@@ -413,7 +413,7 @@ http://wiki.sunfounder.cc/index.php?title=PN532_NFC_Module_for_Raspberry_Pi
     따라서 nfc.pcsc를 사용해야함
     sudo apt-get install -y libpcsclite-dev libpcsclite1
 
-<!-- -------------------------------------------------------------- -->
+<!------------------------------------------------------------------>
 
 
 <원격 접속 방법>
@@ -480,3 +480,6 @@ http://wiki.sunfounder.cc/index.php?title=PN532_NFC_Module_for_Raspberry_Pi
 <I2C 접근권한 허용>
     sudo usermod -aG i2c remote
     i2cdetect -y 1 <!-- 체크 -->
+
+
+<!------------------------------------------------------------------>

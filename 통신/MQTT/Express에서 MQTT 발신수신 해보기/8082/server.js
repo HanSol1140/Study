@@ -13,7 +13,7 @@ var options = {
     // clientId: 'coldbrewESP32_1' ,
     // username: 'coldbrewESP32_1', // 사용자 이름
     // password: 'coldbrewESP32_1',  // 패스워드
-    host: '192.168.0.44',
+    host: '192.168.0.254',
     port: 1883
 
 };
@@ -34,42 +34,60 @@ client.on('offline', function () {
 client.on('reconnect', function () {
     console.log('MQTT client is trying to reconnect');
 });
+// ////////////////////////////////////////////////
+// client.publish('coffee', "bean/clear");
+// client.publish('coffee', "coffeeLong/on");
+// client.publish('coffee', "espresso/on");
+// client.publish('packing1', "movement/5");
+// client.publish('packing2', "movement/5");
+// client.publish('packing1', "positionMove/0/2");
+// client.publish('packing1', "positionMove/0/2");
+// client.publish('packing1', "left/0/50000");
+// client.publish('packing1', "left/1/50000");
+// client.publish('packing1', "left/2/50000");
+// client.publish('packing1', "left/3/50000");
+// client.publish('packing1', "left/4/50000");
+// client.publish('packing1', "left/5/50000");
+// client.publish('packing1', "left/6/50000");
+// client.publish('packing1', "left/7/50000");
+// client.publish('packing1', "left/8/50000");
+// client.publish('packing1', "left/9/50000");
+// client.publish('packing1', "left/10/50000");
+// client.publish('packing2', "left/0/50000");
+// client.publish('packing2', "left/1/50000");
+// client.publish('packing2', "left/2/50000");
+// client.publish('packing2', "left/3/50000");
+// client.publish('packing2', "left/4/50000");
+// client.publish('packing2', "left/5/50000");
+// client.publish('packing2', "left/6/50000");
+// client.publish('packing2', "left/7/50000");
+// client.publish('packing2', "left/8/50000");
+// client.publish('packing2', "left/9/50000");
+// client.publish('packing2', "left/10/50000");
+// ////////////////////////////////////////////////
 
-// client.publish('middleServer1_Response', "coffeeMachine/status/3", { qos: 2 });
-// }, 200)
-
-
-
-// ESP32_1 설정변경 MQTT메세지
-// 설정값 받기
-// client.publish('coldbrewMachineSetup', "initInfo");
-
-// client.publish('coldbrewMachineSetup', "tmpSetDecafP/35");
-client.publish('coldbrewMachineSetup', "tmpSetCBP/33");
-// client.publish('coldbrewMachineSetup', "tmpDecafOLimit/55");
-// client.publish('coldbrewMachineSetup', "tmpCBOLimit/80");
-// client.publish('coldbrewMachineSetup', "coolingStatus/true");
-// client.publish('coldbrewMachineSetup', "coldbrewCoolingStatus/false");
-
-// client.publish('coldbrewMachineSetup', "ctDecafScale/1");
-// client.publish('coldbrewMachineSetup', "ctCBScale/120");
-// client.publish('coldbrewMachineSetup', "ctCoolerScale/120");
-// client.publish('coldbrewMachineSetup', "ctDecafLimit/30");
-// client.publish('coldbrewMachineSetup', "ctCoolerLimit/60");
-// client.publish('coldbrewMachineSetup', "limitScale2/60");
-// client.publish('coldbrewMachineSetup', "totalFlow1/0.0");
-// client.publish('coldbrewMachineSetup', "totalFlow2/0.0");
-// client.publish('coldbrewMachineSetup', "flowLimit1/500");
-// client.publish('coldbrewMachineSetup', "flowLimit2/1000")
-;
-// client.publish('coldbrewMachineSetup', "limitLevel/200");
-// client.publish('coldbrewMachineSetup', "limitLevelMin/300");
-// client.publish('coldbrewMachineSetup', "limitLevelMax/100");
-// client.publish('coldbrewMachineSetup', "decafCleanCount/2");
-// client.publish('coldbrewMachineSetup', "decafCleanTime/60");
-// client.publish('coldbrewMachineSetup', "cbCleanCount/2");
-// client.publish('coldbrewMachineSetup', "cbCleanTime/60");
-// client.publish('coldbrewMachineSetup', "timer1/1");
-// client.publish('coldbrewMachineSetup', "timer2/10");
-// client.publish('coldbrewMachineSetup', "timer3/30");
-// client.publish('coldbrewMachineSetup', "timer4/60");
+// setTimeout(() => {
+// client.publish('packing1', "stop/00");
+// client.publish('packing1', "stop/01");
+// client.publish('packing1', "stop/02");
+// client.publish('packing1', "stop/03");
+// client.publish('packing1', "stop/04");
+// client.publish('packing1', "stop/05");
+// client.publish('packing1', "stop/06");
+// client.publish('packing1', "stop/07");
+// client.publish('packing1', "stop/08");
+// client.publish('packing1', "stop/09");
+// client.publish('packing1', "stop/10");
+// client.publish('packing2', "stop/0");
+// client.publish('packing2', "stop/01");
+// client.publish('packing2', "stop/02");
+// client.publish('packing2', "stop/03");
+// client.publish('packing2', "stop/04");
+// client.publish('packing2', "stop/05");
+// client.publish('packing2', "stop/06");
+// client.publish('packing2', "stop/07");
+// client.publish('packing2', "stop/08");
+// client.publish('packing2', "stop/9");
+// client.publish('packing2', "stop/10");
+// }, 5000);
+// //////////////////////////////////////////////////////?

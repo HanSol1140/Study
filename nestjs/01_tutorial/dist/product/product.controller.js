@@ -18,7 +18,7 @@ let ProductController = class ProductController {
 };
 exports.ProductController = ProductController;
 __decorate([
-    (0, common_1.Get)(),
+    (0, common_1.Get)('asdf'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", String)
