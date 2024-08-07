@@ -446,6 +446,11 @@ http://wiki.sunfounder.cc/index.php?title=PN532_NFC_Module_for_Raspberry_Pi
 
     sudo chmod -R 777 /home/nanonix
     모든 계정에게 권한부여(보안위험이슈잇음)
+
+    <!-- 관리자 권한 부여 -->
+    sudo usermod -aG sudo remote
+
+
     <!-- remote 계정에게 gpio 접근권한 부여 -->
     sudo usermod -aG gpio remote
     <!-- USB접근권한 부여 -->
@@ -457,7 +462,7 @@ http://wiki.sunfounder.cc/index.php?title=PN532_NFC_Module_for_Raspberry_Pi
     ifconfig으로 확인한 IP입력
 
         xorg
-        remoteㅊㅇ 
+        remote
         remote
         로 접속
 

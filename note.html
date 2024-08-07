@@ -1,35 +1,65 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ESP PWM Control</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
   <style>
-    body{
-      width: 100%;
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
     }
-    form{
+
+    body {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+
+    }
+    div {
       border: 1px solid #000;
-      width: 500px;
     }
-    input{
-      border: 1px solid #000;
+    .div1 {
+      grid-row: 1 / span 3;
+      grid-column: 1;
+      
     }
-</style>
+    .div2 {
+      grid-row: 2;
+      grid-column: 2;
+    }
+    .div3 {
+      grid-row: 1 / span 2;
+      grid-column: 2;
+    }
+    .div4 {
+      grid-row: 1;
+      grid-column: 4;
+    }
+    .div5 {
+      grid-row: 2;
+      grid-column: 3;
+    }
+    .div6 {
+      grid-row: 2;
+      grid-column: 4;
+    }
+    .div7 {
+      grid-row: 3;
+      grid-column: 4;
+    }
+  </style>
 </head>
 <body>
-  <h2>PWM Control</h2>
-  <form action="/get">
-  <p>
-    Frequency: <input type="number" name="frequency" value="%FREQUENCY%"> Hz
-  </p>
-  <p>
-    Target Duty Cycle: <input type="number" name="targetDuty" value="%TARGETDUTY%"> %
-  </p>
-  <p>
-    Start Duty Cycle: <input type="number" name="startDuty" value="%STARTDUTY%"> %
-  </p>
-    <input type="submit" value="설정변경">
-  </form>
+
+  <div class="div1">1</div>
+  <div class="div2">2</div>
+  <div class="div3">3</div>
+  <div class="div4">4</div>
+  <div class="div5">5</div>
+  <div class="div6">6</div>
+  <div class="div7">7</div>
+
 </body>
 </html>

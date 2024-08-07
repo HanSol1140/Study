@@ -31,8 +31,13 @@ async function bootstrap() {
   // CORS 설정
   app.enableCors();
 
+  // 경로 확인을 위해 콘솔에 출력
+  console.log("============================================");
+  const buildPath = path.join(__dirname, '../build');
+  console.log('Serving static files from:', buildPath);
+  console.log("============================================");
   server.use(express.static(path.join(__dirname, "../build/")));
-  server.get('', (req, res) => {
+  server.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../build/index.html'));
   });
 
