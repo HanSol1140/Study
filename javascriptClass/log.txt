@@ -1,3 +1,0 @@
-FileLogger: User Bob has been created.
-FileLogger: User Bob has been created.
-FileLogger: User Bob has been created.
