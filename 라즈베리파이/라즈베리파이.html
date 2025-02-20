@@ -98,8 +98,8 @@ npm -v
 
         reboot해주세요 -->
 
-nodejs 홈페이지 - 다운로드 ARMv7 다운로드 (홈경로)
-node-v18.16.1-linux-armv7l.tar.xz파일 압축해제
+nodejs 홈페이지 - 다운로드 ARM 다운로드 (홈경로)
+.xz파일 압축해제
 터미널을켜서
 echo 'export PATH=$HOME/node-v18.16.1-linux-armv7l/bin:$PATH' > ~/.bashrc
 source ~/.bashrc
@@ -118,12 +118,16 @@ sudo raspi-config
 sudo nano /boot/config.txt
 dtoverlay=uart2
 dtoverlay=uart3
-    <uart2>
-        TX = GPIO00(27)
-        RX = GPIO07(28)
-    <uart3>
-        TX = GPIO04(07)
-        RX = GPIO05(29)
+핀 기본 할당
+<uart2>
+    TX = GPIO00(27)
+    RX = GPIO07(28) => GPIO 7이 아니라 1이라는 AI 답변이 존재 (BCM28번임은 동일)
+<uart3>
+    TX = GPIO04(07)
+    RX = GPIO05(29)
+<uart4>
+    TX = GPIO08(24)
+    RX = GPIO09(21)
 <!-- uart0,1은 기본설정과 할당된 핀이 잇어서 uart2부터 할당해야함 -->
 
 dtoverlay=uart0,txd0_pin=14,rxd0_pin=15
@@ -420,9 +424,8 @@ http://wiki.sunfounder.cc/index.php?title=PN532_NFC_Module_for_Raspberry_Pi
 
 기본적으로 라즈베리파이의 VNC기능을 활성화(설정에 있음)
 1. REAL VNC를 사용한 방법
+    sudo raspi-config을 이용해 VNC사용 설정
     설정한 후 REAL VNC를 설치하면 접속이 가능함
-
-    그러나 특정 상황에서 오류가 발생 => 본인의 경우에는 REAL VNC를 사용시 웹브라우저가 사용이 불가능할정도로 느려졌음
 
 2. xrdp를 사용한 방법
 
@@ -455,6 +458,8 @@ http://wiki.sunfounder.cc/index.php?title=PN532_NFC_Module_for_Raspberry_Pi
     sudo usermod -aG gpio remote
     <!-- USB접근권한 부여 -->
     sudo usermod -aG dialout remote
+    <!-- sudo접근권한 부여 -->
+    sudo usermod -aG sudo remote
 
     <!-- ifconfig을 통해 ip확인 -->
 
