@@ -21,12 +21,13 @@ import textToSpeech from "@google-cloud/text-to-speech";
 import voiceTospeech from '@google-cloud/speech';
 // STT
 const STTclient = new voiceTospeech.SpeechClient({
-    keyFilename: "D:hansol-410700-9ed905e72df6.json",
+    keyFilename: "./hansol-410700-194ccaee67a6.json",
 });
 // TTS
 const TTSclient = new textToSpeech.TextToSpeechClient({
-    keyFilename: "D:hansol-410700-9ed905e72df6.json",
+    keyFilename: "./hansol-410700-194ccaee67a6.json",
 });
+// AIzaSyBbadtR2wNfDIKL5VjZBKzcWFTc320NFb4
 // =======================================================================================================
 // 오디오 저장 API
 // npm install fluent-ffmpeg @types/fluent-ffmpeg --save
@@ -139,6 +140,6 @@ async function TTS(){
         }
     });
 }
-// TTS();
+TTS();
 // =======================================================================================================
 // =======================================================================================================
