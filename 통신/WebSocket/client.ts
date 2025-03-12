@@ -8,3 +8,6 @@ ws.on('open', function open() {
 ws.on('close', function close() {
   console.log('Disconnected from server');
 });
+ws.on('message', function incoming(data) {
+  console.log(data);
+});
