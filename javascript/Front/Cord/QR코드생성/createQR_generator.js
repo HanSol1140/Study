@@ -5,6 +5,9 @@ const fs = require('fs');
 // 전화번호 설정
 const phoneNumber = '07040994350';
 const telLink = `tel:07040994350`;
+// URL 
+const URL1 = 'https://nanonix.help?tn=1';
+const URL2 = 'https://nanonix.help?tn=2';
 
 // QR 코드 생성 (SVG 형식)
 let qrCode = qr(4, 'L');
